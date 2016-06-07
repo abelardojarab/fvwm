@@ -1,0 +1,304 @@
+############################################################################
+#                                   菜单定义
+#############################################################################
+
+DestroyMenu MenuFvwmRoot
+AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
++ "%actions/menu.png%   Main Menu"   Exec exec notify-send "Menus of FVWM!"
++ "%actions/desktop.png% Show Desktop" All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail
++ "" Nop
+
++ "AudioVideo" Popup MenuAudioVideo
++ "Development" Popup MenuDevelopment
++ "Education" Popup MenuEducation
++ "GNOME" Popup MenuGNOME
++ "GTK" Popup MenuGTK
++ "Game" Popup MenuGame
++ "Graphics" Popup MenuGraphics
++ "MultiMedia" Popup MenuMultiMedia
++ "%/home/abelardojara/.fvwm/icons/apps/applications-internet.png%Network" Popup MenuNetwork
++ "Office" Popup MenuOffice
++ "%/home/abelardojara/.fvwm/icons/apps/applications-other.png%Other" Popup MenuOther
++ "Qt" Popup MenuQt
++ "Science" Popup MenuScience
++ "System" Popup MenuSystem
++ "Utilities" Popup MenuUtilities
++ "Video" Popup MenuVideo
++ "%/home/abelardojara/.fvwm/icons/apps/applications-wine.png%Wine" Popup MenuWine
++ "Wine-Programs-Accessories" Popup MenuWine-Programs-Accessories
++ "" Nop
++ "Restart Fvwm" Restart
++ "Quit Fvwm" Quit
+
+DestroyMenu MenuAudioVideo
+AddToMenu MenuAudioVideo
++ "PulseAudio Equalizer" Exec exec pulseaudio-equalizer-gtk
++ "%/home/abelardojara/.fvwm/icons/apps/kodi.png%Open in standalone mode" Exec exec kodi --standalone
+
+DestroyMenu MenuDevelopment
+AddToMenu MenuDevelopment
++ "%/home/abelardojara/.fvwm/icons/apps/devhelp.png%Devhelp" Exec exec devhelp
++ "%/home/abelardojara/.fvwm/icons/apps/zeal.png%Zeal" Exec exec zeal
++ "%/home/abelardojara/.fvwm/icons/apps/umbrello.png%Umbrello" Exec exec umbrello %u -caption
++ "%/home/abelardojara/.fvwm/icons/apps/monodevelop.png%MonoDevelop" Exec exec monodevelop
++ "%/home/abelardojara/.fvwm/icons/apps/sublime-text.png%New File" Exec exec /opt/sublime_text/sublime_text --command new_file
++ "Oracle Java 8 Mission Control" Exec exec /usr/lib/jvm/java-8-oracle/bin/jmc
++ "%/home/abelardojara/.fvwm/icons/apps/qgit.png%Qgit" Exec exec qgit
++ "%/home/abelardojara/.fvwm/icons/apps/emacs24.png%GNU Emacs 24" Exec exec /usr/bin/emacs24
++ "%/home/abelardojara/.fvwm/icons/apps/atom.png%Atom" Exec exec /opt/atom/atom
++ "%/home/abelardojara/.fvwm/icons/apps/glade.png%Glade" Exec exec glade
++ "%/home/abelardojara/.fvwm/icons/apps/rstudio.png%RStudio" Exec exec /usr/lib/rstudio/bin/rstudio
+
+DestroyMenu MenuEducation
+AddToMenu MenuEducation
++ "%/home/abelardojara/.fvwm/icons/apps/octave-logo.png%GNU Octave" Exec exec /usr/bin/octave --force-gui
+
+DestroyMenu MenuGNOME
+AddToMenu MenuGNOME
++ "%/home/abelardojara/.fvwm/icons/apps/gnome-sudoku.png%Sudoku" Exec exec gnome-sudoku
++ "Simple Scan" Exec exec simple-scan
++ "Pithos" Exec exec pithos
++ "%/home/abelardojara/.fvwm/icons/apps/cheese.png%Cheese" Exec exec cheese
++ "%/home/abelardojara/.fvwm/icons/apps/gnome-mines.png%Big board" Exec exec gnome-mines --big
++ "%/home/abelardojara/.fvwm/icons/apps/dia.png%Dia" Exec exec dia
++ "%/home/abelardojara/.fvwm/icons/apps/gnome-aisleriot.png%AisleRiot Solitaire" Exec exec /usr/games/sol
++ "%/home/abelardojara/.fvwm/icons/apps/openshot.png%OpenShot Video Editor" Exec exec openshot
++ "%/home/abelardojara/.fvwm/icons/apps/gnome-mahjongg.png%Mahjongg" Exec exec gnome-mahjongg
+
+DestroyMenu MenuGTK
+AddToMenu MenuGTK
++ "%/home/abelardojara/.fvwm/icons/apps/totem.png%Fullscreen" Exec exec totem --fullscreen
++ "XSane Image scanning program" Exec exec xsane
+
+DestroyMenu MenuGame
+AddToMenu MenuGame
++ "Violett" Exec exec steam steam://rungameid/257830
++ "%/home/abelardojara/.fvwm/icons/apps/playonlinux.png%PlayOnLinux" Exec exec playonlinux
++ "The Cave" Exec exec steam steam://rungameid/221810
++ "Trine 2" Exec exec steam steam://rungameid/35720
++ "Mark of the Ninja" Exec exec steam steam://rungameid/214560
++ "Kentucky Route Zero" Exec exec steam steam://rungameid/231200
++ "%/home/abelardojara/.fvwm/icons/apps/dosbox.png%DOSBox Emulator" Exec exec dosbox
++ "Broken Age" Exec exec steam steam://rungameid/232790
++ "%/home/abelardojara/.fvwm/icons/apps/steam.png%Bastion" Exec exec steam steam://rungameid/107100
++ "%/home/abelardojara/.fvwm/icons/apps/steam.png%The Bard's Tale" Exec exec steam steam://rungameid/41900
++ "ScummVM" Exec exec scummvm
+
+DestroyMenu MenuGraphics
+AddToMenu MenuGraphics
++ "%/home/abelardojara/.fvwm/icons/apps/shotwell.png%Shotwell" Exec exec shotwell
++ "LRF Viewer" Exec exec lrfviewer
++ "%/home/abelardojara/.fvwm/icons/apps/mtpaint.png%MtPaint graphic editor" Exec exec mtpaint
++ "%/home/abelardojara/.fvwm/icons/apps/rlogo_icon.png%R" Exec exec R
+
+DestroyMenu MenuMultiMedia
+AddToMenu MenuMultiMedia
++ "%/home/abelardojara/.fvwm/icons/apps/audacious.png%Audacious" Exec exec audacious
++ "%/home/abelardojara/.fvwm/icons/apps/brasero.png%Create a Video Project" Exec exec brasero --video
++ "%/home/abelardojara/.fvwm/icons/apps/audacious.png%Audacious Qt Interface" Exec exec audacious --qt
++ "%/home/abelardojara/.fvwm/icons/apps/gimp.png%GIMP Image Editor" Exec exec gimp-2.8
++ "%/home/abelardojara/.fvwm/icons/apps/eog.png%Image Viewer" Exec exec eog
++ "HandBrake" Exec exec ghb
++ "%/home/abelardojara/.fvwm/icons/apps/amarok.png%Amarok" Exec exec amarok
++ "%/home/abelardojara/.fvwm/icons/apps/smplayer.png%SMPlayer" Exec exec smplayer
++ "%/home/abelardojara/.fvwm/icons/apps/display-im6.png%ImageMagick (display Q16)" Exec exec /usr/lib/i386-linux-gnu/ImageMagick-6.8.9/bin-Q16/display
++ "%/home/abelardojara/.fvwm/icons/apps/inkscape.png%New Drawing" Exec exec inkscape
++ "%/home/abelardojara/.fvwm/icons/apps/vlc.png%VLC media player" Exec exec /usr/bin/vlc --started-from-file
++ "%/home/abelardojara/.fvwm/icons/apps/gnome-mplayer.png%GNOME MPlayer" Exec exec gnome-mplayer
++ "%/home/abelardojara/.fvwm/icons/apps/display-im6.png%ImageMagick (display Q16)" Exec exec /usr/bin/display-im6
++ "%/home/abelardojara/.fvwm/icons/apps/rhythmbox.png%Previous" Exec exec rhythmbox-client --previous
+
+DestroyMenu MenuNetwork
+AddToMenu MenuNetwork
++ "%/home/abelardojara/.fvwm/icons/apps/transmission.png%Start Transmission Minimized" Exec exec transmission-gtk --minimized
++ "%/home/abelardojara/.fvwm/icons/apps/xchat.png%XChat IRC" Exec exec sh -c "xchat --existing --url
++ "%/home/abelardojara/.fvwm/icons/apps/sylpheed.png%Sylpheed" Exec exec sylpheed
++ "%/home/abelardojara/.fvwm/icons/apps/thunderbird.png%Contacts" Exec exec thunderbird -addressbook
++ "%/home/abelardojara/.fvwm/icons/apps/steam.png%Friends" Exec exec steam steam://open/friends
++ "%/home/abelardojara/.fvwm/icons/apps/firefox.png%Open a New Private Window" Exec exec firefox -private-window
++ "Avahi VNC Server Browser" Exec exec /usr/bin/bvnc
++ "Avahi SSH Server Browser" Exec exec /usr/bin/bssh
++ "%/home/abelardojara/.fvwm/icons/apps/filezilla.png%FileZilla" Exec exec filezilla
++ "%/home/abelardojara/.fvwm/icons/apps/midori.png%Midori Private Browsing" Exec exec midori --private
++ "%/home/abelardojara/.fvwm/icons/apps/oracle_java9.png%Oracle Java 9 Web Start" Exec exec /usr/lib/jvm/java-9-oracle/bin/javaws
++ "%/home/abelardojara/.fvwm/icons/apps/empathy.png%Open Accounts" Exec exec unity-control-center credentials
++ "%/home/abelardojara/.fvwm/icons/apps/midori.png%New P_rivate Browsing Window" Exec exec midori --private
++ "%/home/abelardojara/.fvwm/icons/apps/wicd-gtk.png%Wicd Network Manager" Exec exec wicd-gtk --no-tray
++ "Wireshark" Exec exec wireshark
++ "%/home/abelardojara/.fvwm/icons/apps/splashtop-client.png%Splashtop Personal" Exec exec python /opt/splashtop-client/SRRemote.pyc
++ "%/home/abelardojara/.fvwm/icons/apps/pidgin.png%Pidgin Internet Messenger" Exec exec pidgin
++ "%/home/abelardojara/.fvwm/icons/apps/chromium-browser.png%Open a New Window with a temporary profile" Exec exec chromium-browser --temp-profile
++ "%/home/abelardojara/.fvwm/icons/apps/webbrowser-app.png%Browser" Exec exec webbrowser-app
+
+DestroyMenu MenuOffice
+AddToMenu MenuOffice
++ "%/home/abelardojara/.fvwm/icons/apps/libreoffice-writer.png%New Document" Exec exec libreoffice --writer
++ "%/home/abelardojara/.fvwm/icons/apps/texmaker.png%Texmaker" Exec exec texmaker
++ "%/home/abelardojara/.fvwm/icons/apps/gnucash-icon.png%GnuCash" Exec exec gnucash
++ "%/home/abelardojara/.fvwm/icons/apps/evince.png%Document Viewer" Exec exec evince
++ "%/home/abelardojara/.fvwm/icons/apps/calibre-gui.png%Calibre" Exec exec calibre
++ "%/home/abelardojara/.fvwm/icons/apps/gnumeric.png%Gnumeric" Exec exec gnumeric
++ "%/home/abelardojara/.fvwm/icons/apps/libreoffice-calc.png%New Spreadsheet" Exec exec libreoffice --calc
++ "E-Book Viewer" Exec exec ebook-viewer
++ "%/home/abelardojara/.fvwm/icons/apps/libreoffice-draw.png%New Drawing" Exec exec libreoffice --draw
++ "%/home/abelardojara/.fvwm/icons/apps/libreoffice-impress.png%New Presentation" Exec exec libreoffice --impress
++ "%/home/abelardojara/.fvwm/icons/apps/okular.png%Okular" Exec exec okular %U %i -caption
+
+DestroyMenu MenuOther
+AddToMenu MenuOther
++ "%/home/abelardojara/.fvwm/icons/apps/wine.png%Document1 - Microsoft Word" Exec exec C:\\Program Files\\Microsoft Office\\Office12\\WINWORD.EXE
+
+DestroyMenu MenuQt
+AddToMenu MenuQt
++ "%/home/abelardojara/.fvwm/icons/apps/smtube.png%YouTube Browser for SMPlayer" Exec exec smtube
+
+DestroyMenu MenuScience
+AddToMenu MenuScience
++ "%/home/abelardojara/.fvwm/icons/apps/rkward.png%RKWard" Exec exec rkward -caption "%c"
+
+DestroyMenu MenuSystem
+AddToMenu MenuSystem
++ "Customize Look and Feel" Exec exec lxappearance
++ "Network" Exec exec network-admin
++ "Network Connections" Exec exec nm-connection-editor
++ "%/home/abelardojara/.fvwm/icons/apps/hp-logo.png%HPLIP Toolbox" Exec exec /usr/bin/hp-toolbox
++ "%/home/abelardojara/.fvwm/icons/apps/synaptic.png%Synaptic Package Manager" Exec exec synaptic-pkexec
++ "%/home/abelardojara/.fvwm/icons/apps/input-keyboard.png%Keyboard and Mouse" Exec exec lxinput
++ "GNOME System Monitor" Exec exec gnome-system-monitor
++ "%/home/abelardojara/.fvwm/icons/apps/obconf.png%Openbox Configuration Manager" Exec exec obconf
++ "System Monitor" Exec exec gnome-system-monitor
++ "%/home/abelardojara/.fvwm/icons/apps/oracle_java9.png%Oracle Java 9 VisualVM" Exec exec /usr/lib/jvm/java-9-oracle/bin/jvisualvm
++ "%/home/abelardojara/.fvwm/icons/apps/remmina.png%Start Remmina Minimized" Exec exec remmina --icon
++ "Details" Exec exec unity-control-center info
++ "Desktop Preferences" Exec exec pcmanfm --desktop-pref
++ "Landscape Service" Exec exec landscape-client-ui-install
++ "%/home/abelardojara/.fvwm/icons/apps/seahorse.png%Passwords and Keys" Exec exec /usr/bin/seahorse
++ "Light Locker Settings" Exec exec /usr/bin/light-locker-settings
++ "%/home/abelardojara/.fvwm/icons/apps/bluetooth.png%Bluetooth" Exec exec unity-control-center bluetooth
++ "Network" Exec exec unity-control-center network
++ "%/home/abelardojara/.fvwm/icons/apps/lightdm-gtk-greeter-settings.png%LightDM GTK+ Greeter settings" Exec exec lightdm-gtk-greeter-settings-pkexec
++ "System Testing" Exec exec checkbox-gui
++ "%/home/abelardojara/.fvwm/icons/apps/unity-power-panel.png%Power" Exec exec unity-control-center power
++ "%/home/abelardojara/.fvwm/icons/apps/fcitx.png%Fcitx Configuration" Exec exec fcitx-configtool
++ "Default applications for LXSession" Exec exec lxsession-default-apps
++ "Personal File Sharing" Exec exec gnome-file-share-properties
++ "%/home/abelardojara/.fvwm/icons/apps/logview.png%System Log" Exec exec gnome-system-log-pkexec
++ "%/home/abelardojara/.fvwm/icons/apps/lubuntu-software-center.png%Lubuntu Software Center" Exec exec lubuntu-software-center
++ "%/home/abelardojara/.fvwm/icons/apps/psensor.png%Psensor" Exec exec psensor
++ "%/home/abelardojara/.fvwm/icons/apps/activity-log-manager.png%Security & Privacy" Exec exec unity-control-center activity-log-manager
++ "%/home/abelardojara/.fvwm/icons/apps/gnome-power-statistics.png%Power Statistics" Exec exec gnome-power-statistics
++ "%/home/abelardojara/.fvwm/icons/apps/gnome-tweak-tool.png%Tweak Tool" Exec exec gnome-tweak-tool
++ "%/home/abelardojara/.fvwm/icons/apps/bleachbit.png%BleachBit" Exec exec bleachbit
++ "%/home/abelardojara/.fvwm/icons/apps/session-properties.png%Startup Applications" Exec exec gnome-session-properties
++ "%/home/abelardojara/.fvwm/icons/apps/lxterminal.png%LXTerminal" Exec exec lxterminal
++ "%/home/abelardojara/.fvwm/icons/apps/oracle_java9.png%Oracle Java 9 Plugin Control Panel" Exec exec /usr/lib/jvm/java-9-oracle/bin/ControlPanel
++ "Printers" Exec exec system-config-printer
++ "New Terminal" Exec exec gnome-terminal
++ "%/home/abelardojara/.fvwm/icons/apps/input-keyboard.png%Input Method" Exec exec im-config
++ "%/home/abelardojara/.fvwm/icons/apps/oracle_java9.png%Oracle Java 9 Policy Tool" Exec exec /usr/lib/jvm/java-9-oracle/bin/policytool
++ "%/home/abelardojara/.fvwm/icons/apps/deja-dup.png%Back Up" Exec exec deja-dup --backup
++ "%/home/abelardojara/.fvwm/icons/apps/unity-sound-panel.png%Sound" Exec exec unity-control-center sound
++ "Users and Groups" Exec exec users-admin
++ "Task Manager" Exec exec lxtask
++ "%/home/abelardojara/.fvwm/icons/apps/xfpm-ac-adapter.png%Power Manager" Exec exec xfce4-power-manager-settings
++ "User Accounts" Exec exec unity-control-center user-accounts
++ "Settings" Exec exec gnome-control-center --overview
++ "%/home/abelardojara/.fvwm/icons/apps/unity-datetime-panel.png%Time & Date" Exec exec unity-control-center datetime
++ "Startup Disk Creator" Exec exec usb-creator-gtk
++ "%/home/abelardojara/.fvwm/icons/apps/gnome-disks.png%Disks" Exec exec gnome-disks
++ "Appearance" Exec exec unity-control-center appearance
++ "%/home/abelardojara/.fvwm/icons/apps/oracle_java9.png%Oracle Java 9 Console" Exec exec /usr/lib/jvm/java-9-oracle/bin/jconsole
++ "%/home/abelardojara/.fvwm/icons/apps/video-display.png%Monitor Settings" Exec exec lxrandr
++ "Wacom Tablet" Exec exec unity-control-center wacom
++ "%/home/abelardojara/.fvwm/icons/apps/software-properties.png%Software & Updates" Exec exec software-properties-gtk
++ "%/home/abelardojara/.fvwm/icons/apps/baobab.png%Disk Usage Analyzer" Exec exec baobab
++ "%/home/abelardojara/.fvwm/icons/apps/credentials-preferences.png%Online Accounts" Exec exec credentials-preferences
++ "%/home/abelardojara/.fvwm/icons/apps/blueman.png%Bluetooth Manager" Exec exec blueman-manager
++ "%/home/abelardojara/.fvwm/icons/apps/logo.png%System Profiler and Benchmark" Exec exec hardinfo
++ "%/home/abelardojara/.fvwm/icons/apps/microscope.png%Xdiagnose" Exec exec pkexec xdiagnose
++ "Universal Access" Exec exec unity-control-center universal-access
++ "Language Support" Exec exec /usr/bin/gnome-language-selector
++ "Text Entry" Exec exec unity-control-center region
++ "%/home/abelardojara/.fvwm/icons/apps/xfce4-notifyd.png%Notifications" Exec exec xfce4-notifyd-config
++ "%/home/abelardojara/.fvwm/icons/apps/software-properties.png%Software & Updates" Exec exec software-properties-gtk
++ "%/home/abelardojara/.fvwm/icons/apps/unity-color-panel.png%Color" Exec exec unity-control-center color
++ "IBus Preferences" Exec exec ibus-setup
++ "%/home/abelardojara/.fvwm/icons/apps/input-mouse.png%Mouse & Touchpad" Exec exec unity-control-center mouse
++ "%/home/abelardojara/.fvwm/icons/apps/softwarecenter.png%Ubuntu Software Center" Exec exec /usr/bin/software-center
++ "%/home/abelardojara/.fvwm/icons/apps/time-admin.png%Time and Date" Exec exec time-admin
++ "%/home/abelardojara/.fvwm/icons/apps/gparted.png%GParted" Exec exec gparted-pkexec
++ "%/home/abelardojara/.fvwm/icons/apps/bleachbit.png%BleachBit (as root)" Exec exec su-to-root -X -c bleachbit
++ "GDebi Package Installer" Exec exec gdebi-gtk
++ "Desktop Sharing" Exec exec vino-preferences
++ "Laptop Mode Tools Configuration" Exec exec /usr/sbin/lmt-config-gui
++ "%/home/abelardojara/.fvwm/icons/apps/unity-display-panel.png%Displays" Exec exec unity-control-center display
++ "%/home/abelardojara/.fvwm/icons/apps/input-keyboard.png%Keyboard" Exec exec unity-control-center keyboard
++ "%/home/abelardojara/.fvwm/icons/apps/credentials-preferences.png%Online Accounts" Exec exec unity-control-center credentials
++ "%/home/abelardojara/.fvwm/icons/apps/deja-dup.png%Back Up" Exec exec deja-dup --backup
++ "Software Updater" Exec exec /usr/bin/update-manager
++ "Brightness & Lock" Exec exec unity-control-center screen
++ "System Settings" Exec exec unity-control-center --overview
+
+DestroyMenu MenuUtilities
+AddToMenu MenuUtilities
++ "%/home/abelardojara/.fvwm/icons/apps/orca.png%Screen Reader" Exec exec orca --replace
++ "Contacts" Exec exec gnome-contacts
++ "Open a New Window" Exec exec nautilus --new-window
++ "%/home/abelardojara/.fvwm/icons/apps/xterm-color.png%UXTerm" Exec exec uxterm
++ "File Manager PCManFM" Exec exec pcmanfm
++ "%/home/abelardojara/.fvwm/icons/apps/galculator.png%Galculator" Exec exec galculator
++ "Take a Screenshot of a Selected Area" Exec exec gnome-screenshot -a
++ "Open a New Window" Exec exec nautilus --new-window
++ "%/home/abelardojara/.fvwm/icons/apps/leafpad.png%Leafpad" Exec exec leafpad
++ "%/home/abelardojara/.fvwm/icons/apps/file-roller.png%Archive Manager" Exec exec file-roller
++ "TypeCatcher" Exec exec /usr/bin/typecatcher
++ "Xpad" Exec exec xpad
++ "Burn Image (xfburn)" Exec exec xfburn -i
++ "%/home/abelardojara/.fvwm/icons/apps/activity-log-manager.png%Activity Log Manager" Exec exec activity-log-manager
++ "%/home/abelardojara/.fvwm/icons/apps/xterm-color.png%XTerm" Exec exec xterm
++ "Character Map" Exec exec gucharmap
++ "%/home/abelardojara/.fvwm/icons/apps/shutter.png%Capture the current active window" Exec exec shutter --active
++ "Help" Exec exec yelp
++ "Calculator" Exec exec gnome-calculator
++ "%/home/abelardojara/.fvwm/icons/apps/gpicview.png%Image Viewer" Exec exec gpicview
++ "%/home/abelardojara/.fvwm/icons/apps/vim.png%Vim" Exec exec vim
++ "%/home/abelardojara/.fvwm/icons/apps/synergy.png%Synergy" Exec exec synergy
++ "%/home/abelardojara/.fvwm/icons/apps/fcitx.png%Fcitx" Exec exec fcitx
++ "Open a New Document" Exec exec gedit --new-document
++ "Font Viewer" Exec exec gnome-font-viewer
+
+DestroyMenu MenuVideo
+AddToMenu MenuVideo
++ "%/home/abelardojara/.fvwm/icons/apps/guvcview.png%Guvcview" Exec exec guvcview
+
+DestroyMenu MenuWine
+AddToMenu MenuWine
++ "Microsoft Office Excel 2007" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+Excel+2007.lnk"
++ "Microsoft Office InfoPath 2007" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+InfoPath+2007.lnk"
++ "Remove MathType" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_Public_Start^2BMenu/Programs/MathType+6/Remove+MathType.lnk"
++ "Microsoft Office Publisher 2007" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+Publisher+2007.lnk"
++ "%/home/abelardojara/.fvwm/icons/apps/wine-winecfg.png%Configure Wine" Exec exec winecfg
++ "Winetricks" Exec exec winetricks
++ "Microsoft Office PowerPoint 2007" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+PowerPoint+2007.lnk"
++ "MathType Help" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_Public_Start^2BMenu/Programs/MathType+6/MathType+Help.lnk"
++ "Microsoft Office 2007 Language Settings" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+Tools/Microsoft+Office+2007+Language+Settings.lnk"
++ "Microsoft Office Word 2007" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+Word+2007.lnk"
++ "Microsoft Office Diagnostics" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+Tools/Microsoft+Office+Diagnostics.lnk"
++ "MathType Server" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_Public_Start^2BMenu/Programs/MathType+6/MathType+Server.lnk"
++ "Digital Certificate for VBA Projects" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+Tools/Digital+Certificate+for+VBA+Projects.lnk"
++ "%/home/abelardojara/.fvwm/icons/apps/cxmenu-cxoffice-0-crossover.png%CrossOver" Exec exec /opt/cxoffice/bin/crossover
++ "%/home/abelardojara/.fvwm/icons/apps/folder-wine.png%Browse C: Drive" Exec exec xdg-open .wine/dosdevices/c:
++ "Microsoft Office Outlook 2007" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+Outlook+2007.lnk"
++ "Microsoft Office Groove 2007" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+Groove+2007.lnk"
++ "Microsoft Office OneNote 2007" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+OneNote+2007.lnk"
++ "%/home/abelardojara/.fvwm/icons/apps/wine-uninstaller.png%Uninstall Wine Software" Exec exec wine uninstaller
++ "Microsoft Office Picture Manager" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+Tools/Microsoft+Office+Picture+Manager.lnk"
++ "Equation Conversion Manager" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_Public_Start^2BMenu/Programs/MathType+6/Equation+Conversion+Manager.lnk"
++ "MathType" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_Public_Start^2BMenu/Programs/MathType+6/MathType.lnk"
++ "Microsoft Clip Organizer" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+Tools/Microsoft+Clip+Organizer.lnk"
++ "%/home/abelardojara/.fvwm/icons/apps/cxmenu-cxoffice-0-cxuninstall.png%Uninstall CrossOver Linux" Exec exec /opt/cxoffice/bin/cxuninstall
++ "Microsoft Office Access 2007" Exec exec "/home/abelardojara/.cxoffice/Microsoft_Office_2007/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+Access+2007.lnk"
+
+DestroyMenu MenuWine-Programs-Accessories
+AddToMenu MenuWine-Programs-Accessories
++ "%/home/abelardojara/.fvwm/icons/apps/wine-notepad.png%Notepad" Exec exec notepad
