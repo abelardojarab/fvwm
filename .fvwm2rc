@@ -2,7 +2,7 @@
 SetEnv fvwm_wallpaper $[HOME]/workspace/fvwm/.fvwm/images/wallpapers/fable_3_concept_art-wallpaper-2560x1440.png
 SetEnv fvwm_cache $[HOME]/.fvwm.cache
 SetEnv fvwm_userdir $[HOME]/.fvwm
-Setenv fvwm_colors $[$HOME]/.fvwm/images/icons/colors
+Setenv fvwm_colors $[HOME]/.fvwm/images/icons/colors
 
 # Pixmap
 ImagePath $[fvwm_userdir]/images:$[fvwm_userdir]/images/icons:$[fvwm_userdir]/images/icons/decorations:$[fvwm_userdir]/images/bar:$[fvwm_userdir]/images/tiles:$[fvwm_userdir]/images/buttons:$[fvwm_userdir]/images/actions:[fvwm_userdir]/images/mini:/usr/share/icons/fvwm:/usr/share/icons/hicolor/16x16/apps:/usr/share/icons/HighContrast/scalable/apps-extra:/usr/share/icons/icons/hicolor/16x16/apps:/usr/share/icons/oxygen/16x16/apps:/usr/share/icons/oxygen/16x16/actions:/usr/share/icons/gnome/16x16/apps:/usr/share/icons/gnome/16x16/mimetypes:/usr/share/icons/oxygen/16x16/categories:/usr/share/icons/hicolor/scalable/apps:/usr/share/icons/HighContrast/16x16/apps:/usr/share/icons/locolor/16x16/apps:$[fvwm_userdir]/images/icons/apps:$[fvwm_userdir]/images/icons/actions
@@ -77,16 +77,20 @@ ClickTime 550
 
 # Start function
 AddToFunc StartFunction
++ I Test (Init) Exec exec fvwm-root --dither --retain-pixmap $[fvwm_wallpaper]
 + I FvwmButtons
 + I FvwmTaskBar
 + I Module FvwmProxy
 + I Module FvwmCommandS
 + I Module FvwmAnimate
 + I Module FvwmEvent
++ I Module FvwmProxy
++ I Module FvwmButtons -g 126x$[vp.height]-0+0 FvwmShelf
++ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-129))x28+0-0 FvwmBar"
 + I Module FvwmButtons -g 18x42+0+-28 DeskControl
-+ I Test (Init) Exec exec fvwm-root --dither --retain-pixmap $[fvwm_wallpaper]
 # + I FvwmAuto FvwmAutohide -menter FuncAutoEnter
 # + I Test (Init) StartHiddenConsole
++ I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, Icon $[fvwm_cache]/icon.tmp.$[w.id].png
 
 # Init function
 DestroyFunc InitFunction
@@ -177,9 +181,9 @@ Style * SmartPlacement, MinOverlapPlacement
 
 # Comment these lines if you dont like Icons to have Titles.
 Colorset 12 fg white, bg black, fgsh black
-Style * IconBox 20 20 100 -15, IconGrid 3 3, IconFill right top
+Style * IconBox 20 20 20 20, IconGrid 3 3, IconFill right bottom
 Style * IconTitle, IconTitleColorset 12, HilightIconTitleColorset 12
-Style * IconFont "$[infostore.font_mono]", IndexedIconName, IconBackgroundPadding 2
+Style * IconFont "$[infostore.font_mono]"
 Style * IconBackgroundRelief 0, IconBackGroundColorset 12
 Style * StickyIcon
 
@@ -646,7 +650,6 @@ Mouse 0      R       N      Menu MenuFvwmRoot Nop
 Mouse 0      R       A      Menu MenuFvwmRoot Nop
 Mouse 1      R       A      Menu MenuFvwmRoot Nop
 Mouse 2      R       A      Menu MenuFvwmRoot Nop
-Mouse 3      R       A      Menu MenuFvwmRoot Nop
 
 # When you click the edge of a window
 #     Button Context Modifi Function
@@ -655,11 +658,6 @@ Mouse 1      T       A      Move-or-Raise
 Mouse 1      I       A      Move-or-Iconify
 Mouse 2      I       A      Iconify
 Mouse 2      T       A      Menu Window-Ops Nop
-
-# Raise or lower window with mouse button 3
-#     Button Context Modifi Function
-Mouse 2      SF      A      Move-or-Raise
-Mouse 3      SF      A      Move-or-Raise
 
 # Handle key bindings
 #   Keyname     Context Modifi  Function
@@ -747,6 +745,80 @@ Key KP_Right A       C      MoveAndGotoPage 2 1
 Key KP_End   A       C      MoveAndGotoPage 0 2
 Key KP_Down  A       C      MoveAndGotoPage 1 2
 Key KP_Next  A       C      MoveAndGotoPage 2 2
+
+####
+# Mouse Gestures.
+#
+# Syntax reminder:
+#
+#   1   2   3
+#
+#   4   5   6
+#
+#   7   8   9
+#
+# Stroke Sequence Button Context Modifiers Function
+#
+# I use mouse gestures in Opera and Mozilla, so I've duplicated some common ones here.
+#
+# To try these out, hold down the Left mouse button and trace the pattern on the Root
+# Window, the sequence is a pattern on the grid above, so 14789 would be down then Right.
+#################
+
+####
+# First, define a StrokeFunc.
+#
+# Without this, you would have to execute all of your gestures entirely on the Root
+# Window, This lets you change the Context and have a few other Neat Features, such as
+# DrawMotion, which will draw a line as you make your Gesture (Neat!).
+#
+# There is also EchoSequence, Feedback and NotStayPressed.
+#
+# Note: EchoSequence prints sequences to STDERR.
+#################
+Mouse 3 R A     StrokeFunc DrawMotion FeedBack StrokeWidth 1
+#Stroke 0 0 R N     Menu MenuFvwmRoot
+
+# Down, Then Up.
+Stroke 25852 0 R N  Refresh
+
+# Directions...
+Stroke 456 0 R N    GotoPage +1p 0p
+Stroke 654 0 R N    GotoPage -1p 0p
+Stroke 852 0 R N    GotoPage 0p -1p
+Stroke 258 0 R N    GotoPage 0p +1p
+
+# Diagonal...
+Stroke 159 0 R N    GotoPage +1p +1p
+Stroke 951 0 R N    GotoPage -1p -1p
+Stroke 357 0 R N    GotoPage -1p +1p
+Stroke 753 0 R N    GotoPage +1p -1p
+
+#####
+# Quit
+#
+# Down, Then Right.
+#
+# Dont worry about running this gesture by accident,
+# you will be asked to confirm
+#################
+Stroke 14789 0 R N  Module FvwmForm FvwmForm-QuitVerify
+
+####
+# Up, Then Down: Close a window.
+#
+# Note that you can also enter the sequence as it appears on your
+# Numeric Keypad, by preceding the sequence with an `N`.
+#
+# The FVWM developers think of everything :)
+#################
+Stroke N25852 0 R N Pick Close
+
+# Start a Web Browser
+Stroke N1478963 0 R N Exec exec opera -newpage -bigicon
+
+# Make a new Sticky Note
+Stroke N1598753 0 R N Exec exec xpad
 
 # Menu Style
 Colorset 5 bg #979f9c, fg #001a19
