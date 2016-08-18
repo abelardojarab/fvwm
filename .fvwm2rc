@@ -125,8 +125,11 @@ AddToFunc   InitFunction
 #   @4 Invisible (just move the pointer, dont draw anything)
 
 # Windows
-Colorset 1 fg #b1b1b1, bg #4e4f4a, fgsh #f9f9f9, hi #8b8b8b, sh #171717, pixmap btn_bg.png, Tint #464646 70
-Colorset 2 fg #979797, bg #424242, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 70
+#Active
+Colorset 1 bg #535454, fg #ffffff, fgsh #f9f9f9 hi #fbfbfb, sh #171717, pixmap btn_bg.png, Tint #464646 70
+#Inactive
+Colorset 2 bg #343434, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 20
+#Pixmaps
 Colorset 11 fg white, bg #525252, fgsh #191919, hi #8f8f8f, sh #454545
 DestroyDecor MyDecoration
 AddToDecor   MyDecoration
@@ -239,12 +242,22 @@ Style "FvwmShelf"   NoTitle, StaysOnBottom, Sticky, WindowListSkip, CirculateSki
 Style "DeskControl" NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles
 
 # Note: FvwmPager will be swallowed by FvwmButtons (below)
-Colorset 4 fg #cfcfcf, bg #606060, fgsh white, hi #8b8b8b, sh #f0f0f0
 Colorset 11 pixmap tile_gray.png
+#active window
+Colorset 6 fg #9a875f, bg #9a875f
+#line separators
+Colorset 7 fg #9a875f, bg #181512
+#window colors
+Colorset 8 fg #332d29, bg #332d29
+#balloon tooltip colors (fg = font, bg = background)
+Colorset 9 fg #181512, bg #9a875f
+#Selected desktop shading
+Colorset 10 fg #504339, bg #181512
 *FvwmPagerFont "$[infostore.font_mono]"
-*FvwmPager: Colorset * 4
-*FvwmPager: HilightColorset * 11
-*FvwmPager: SolidSeparators
+*FvwmPager: Colorset * 11
+*FvwmPager: HiLightColorset * 10
+*FvwmPager: WindowColorsets 8 6
+*FvwmPager: BalloonColorset * 9
 *FvwmPager: Balloons All
 *FvwmPager: Label 0 "0: General"
 *FvwmPager: Label 1 "1: Office"
