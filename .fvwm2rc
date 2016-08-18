@@ -125,18 +125,19 @@ AddToFunc   InitFunction
 #   @4 Invisible (just move the pointer, dont draw anything)
 
 # Windows
-Colorset 1 fg #f1f1f1, bg #4e4f4a, fgsh #f9f9f9, hi #8b8b8b, sh #171717, pixmap btn_bg.png, Tint #464646 70
-Colorset 2 fg #f1f1f1, bg #424242, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 70
+Colorset 1 fg #b1b1b1, bg #4e4f4a, fgsh #f9f9f9, hi #8b8b8b, sh #171717, pixmap btn_bg.png, Tint #464646 70
+Colorset 2 fg #979797, bg #424242, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 70
+Colorset 11 fg white, bg #525252, fgsh #191919, hi #8f8f8f, sh #454545
 DestroyDecor MyDecoration
 AddToDecor   MyDecoration
 + TitleStyle -- Raised
-+ TitleStyle Centered Height 24
++ TitleStyle Centered Height 26
 + TitleStyle InActive ( Colorset 2 -- Flat ) Active ( Colorset 1 -- Flat )
-+ AddTitleStyle Active ( TiledPixmap tile_solid-1.png -- Flat ) \
-    Inactive ( TiledPixmap tile_gray.png -- Flat )
++ AddTitleStyle Active ( TiledPixmap tile_solid-1.png ) \
+    Inactive ( TiledPixmap tile_gray.png )
 + ButtonStyle All -- UseTitleStyle
 + ButtonStyle All InActive ( Colorset 2 -- Flat ) -- HiddenHandles
-+ ButtonStyle All Active ( Colorset 1 -- Flat )
++ ButtonStyle All Active ( Colorset 11  -- Raised )
 + ButtonStyle 1 ActiveUp Vector 4 30x30@3 60x60@3 60x30@4 30x60@3
 + ButtonStyle 1 ActiveDown Vector 4 30x30@3 60x60@3 60x30@4 30x60@3
 + ButtonStyle 1 Inactive Vector 4 30x30@3 60x60@3 60x30@4 30x60@3
@@ -156,10 +157,10 @@ AddToDecor   MyDecoration
 # + AddButtonStyle  All Inactive Vector 9 80x60@4 80x40@2 60x20@2 40x20@2 20x40@2 20x60@2 40x80@2 60x80@2 80x60@2 -- Flat
 
 # Window behavior
-Colorset 13 fg #f6f6f6, bg black, IconAlpha
-Colorset 14 fg white, bg black, fgsh white, IconAlpha 100
-Style * Colorset 13, HilightColorset 14, MWMFunctions, MWMDecor, HintOverride
-Style * DecorateTransient, NoPPosition, NoTransientPPosition
+Colorset 3 fg #999999, bg black, fgsh #a0a0a0
+Colorset 4 fg #a0a0a0, bg black, fgsh #a4a4a4
+Style * Colorset 3, HilightColorset 4, MWMFunctions, MWMDecor, HintOverride
+Style * DecorateTransient, NoTransientPPosition
 Style * TileCascadePlacement
 Style * WindowShadeSteps 20, WindowShadeScrolls
 Style * UseDecor MyDecoration
@@ -175,16 +176,15 @@ Style * ResizeOutline, ResizeOpaque
 # This is another nice Placement Policy, which tries to avoid obscuring existing windows,
 # you can set penalties on certain window types so some are less likely to be obscured than
 # others. Check the manpage for even more Placement Policies.
-#Style * MinOverlapPercentPlacement
-#Style * MinOverlapPercentPlacementPenalties 2 5 1 2 0.5 50
-Style * SmartPlacement, MinOverlapPlacement
+Style * SmartPlacement, MinOverlapPercentPlacement
+Style * MinOverlapPercentPlacementPenalties 2 5 1 2 0.5 50
 
 # Comment these lines if you dont like Icons to have Titles.
-Colorset 12 fg white, bg black, fgsh black
+Colorset 5 fg white, bg #a6a6a6, fgsh black
 Style * IconBox 20 20 20 20, IconGrid 3 3, IconFill right bottom
-Style * IconTitle, IconTitleColorset 12, HilightIconTitleColorset 12
+Style * IconTitle, IconTitleColorset 5, HilightIconTitleColorset 5
 Style * IconFont "$[infostore.font_mono]"
-Style * IconBackgroundRelief 0, IconBackGroundColorset 12
+Style * IconBackgroundRelief 0, IconBackGroundColorset 5
 Style * StickyIcon
 
 #  Similar focus behavior to xfce/openbox.
@@ -239,11 +239,11 @@ Style "FvwmShelf"   NoTitle, StaysOnBottom, Sticky, WindowListSkip, CirculateSki
 Style "DeskControl" NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles
 
 # Note: FvwmPager will be swallowed by FvwmButtons (below)
-Colorset 4 fg #c1c1c1, bg #606060, fgsh white, hi #8b8b8b, sh #f0f0f0
+Colorset 4 fg #cfcfcf, bg #606060, fgsh white, hi #8b8b8b, sh #f0f0f0
 Colorset 11 pixmap tile_gray.png
 *FvwmPagerFont "$[infostore.font_mono]"
-*FvwmPager: Colorset * 11
-*FvwmPager: HilightColorset * 7
+*FvwmPager: Colorset * 4
+*FvwmPager: HilightColorset * 11
 *FvwmPager: SolidSeparators
 *FvwmPager: Balloons All
 *FvwmPager: Label 0 "0: General"
@@ -252,11 +252,11 @@ Colorset 11 pixmap tile_gray.png
 *FvwmPager: Label 3 "3: Other"
 
 # Set up the geometry so that the buttons stack vertically on the left.
-Colorset 5 bg #979f9c, fg #001a19
+Colorset 6 bg #979f9c, fg #001a19
 *FvwmButtonsFont  "$[infostore.font_mono]"
 *FvwmButtons: ButtonGeometry 100x50+0+0
 *FvwmButtonsFore blick
-*FvwmButtons: Colorset 5
+*FvwmButtons: Colorset 6
 *FvwmButtons: BoxSize fixed
 *FvwmButtons: Rows 15
 *FvwmButtons: Columns 1
@@ -578,8 +578,8 @@ AddToMenu MenuPageList
 + "9"   Pick MoveToPage 2 2
 
 # Task bar
-Colorset 5 bg #979f9c, fg #001a19
-Colorset 7 fg white, bg #525252, fgsh #191919, hi #8f8f8f, sh #454545
+Colorset 7 bg #979f9c, fg #001a19
+Colorset 8 fg white, bg #525252, fgsh #191919, hi #8f8f8f, sh #454545
 DestroyModuleConfig FvwmTaskBar: *
 *FvwmTaskBar: Geometry +0-0
 *FvwmTaskBar: Rows 1
@@ -597,8 +597,8 @@ DestroyModuleConfig FvwmTaskBar: *
 *FvwmTaskBar: StatusFont "$[infostore.font_mono]"
 *FvwmTaskBar: TipsBack bisque
 *FvwmTaskBar: TipsFore black
-*FvwmTaskBar: Colorset 5
-*FvwmTaskBar: FocusColorset 7
+*FvwmTaskBar: Colorset 7
+*FvwmTaskBar: FocusColorset 8
 *FvwmTaskBar: UseIconNames
 *FvwmTaskBar: StartName Start
 *FvwmTaskBar: StartMenu MenuFvwmRoot mouse c -100m -60p
@@ -821,16 +821,15 @@ Stroke N1478963 0 R N Exec exec opera -newpage -bigicon
 Stroke N1598753 0 R N Exec exec xpad
 
 # Menu Style
-Colorset 5 bg #979f9c, fg #001a19
-Colorset 6 fg #ffffff, bg #7d7d7d
-Colorset 7 fg white, bg #525252, fgsh #191919, hi #8f8f8f, sh #454545
+Colorset 9 bg #979f9c, fg #001a19
+Colorset 10 fg #ffffff, bg #7d7d7d
 MenuStyle * Hilight3DThin, PopupOffset 0 100, PopupDelay 300, TitleWarpOff
 MenuStyle * TitleUnderlines2, SeparatorsLong, TrianglesSolid, Animation
 MenuStyle * BorderWidth 2
 MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
 MenuStyle * ItemFormat "%|%5.5i%1.3l%2.3>%|"
 MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
-MenuStyle * MenuColorset 5, HilightBack, ActiveColorset 6
+MenuStyle * MenuColorset 9, HilightBack, ActiveColorset 10
 MenuStyle * "$[infostore.font_mono]"
 MenuStyle * MenuFace DGradient 64 Red Black
 
