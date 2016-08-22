@@ -53,6 +53,11 @@ SnapAttraction 3 SameType
 IgnoreModifiers L2
 
 #####
+# 'rubber-band' window-borders when moving and resizing windows.
+XORvalue 208
+#################
+
+#####
 # You can use EwmhBaseStruts to stop Maximised windows, and new windows from obscuring
 # TaskBars/ButtonBars or anything else you always want to be visible.
 #
@@ -162,16 +167,16 @@ AddToDecor   MyDecoration
 # Window behavior
 Colorset 3 fg #999999, bg black, fgsh #a0a0a0
 Colorset 4 fg #a0a0a0, bg black, fgsh #a4a4a4
-Style * Colorset 3, HilightColorset 4, MWMFunctions, MWMDecor, HintOverride
-Style * DecorateTransient, NoTransientPPosition
-Style * TileCascadePlacement
-Style * WindowShadeSteps 20, WindowShadeScrolls
 Style * UseDecor MyDecoration
+Style * Colorset 3, HilightColorset 4, MWMFunctions, MWMDecor, HintOverride
+Style * DecorateTransient, NakedTransient
+Style * WindowShadeSteps 20, WindowShadeScrolls
 Style * MWMBorder, FirmBorder
 Style * Font "$[infostore.font_mono]"
 Style * HandleWidth 3, BorderWidth 3
 Style * BackingStore, SaveUnder
 Style * EWMHMiniIconOverride
+Style * NoPPosition, NoTransientPPosition
 
 # Eye Candy preference of watching resize live
 Style * ResizeOutline, ResizeOpaque
@@ -179,12 +184,12 @@ Style * ResizeOutline, ResizeOpaque
 # This is another nice Placement Policy, which tries to avoid obscuring existing windows,
 # you can set penalties on certain window types so some are less likely to be obscured than
 # others. Check the manpage for even more Placement Policies.
-Style * SmartPlacement, MinOverlapPercentPlacement
+Style * SmartPlacement, CleverPlacement, MinOverlapPercentPlacement, TileCascadePlacement
 Style * MinOverlapPercentPlacementPenalties 2 5 1 2 0.5 50
 
 # Comment these lines if you dont like Icons to have Titles.
 Colorset 5 fg white, bg #a6a6a6, fgsh black
-Style * IconBox 20 20 20 20, IconGrid 3 3, IconFill right bottom
+Style * IconBox -5 -290 -134 -5, IconGrid 3 3
 Style * IconTitle, IconTitleColorset 5, HilightIconTitleColorset 5
 Style * IconFont "$[infostore.font_mono]"
 Style * IconBackgroundRelief 0, IconBackGroundColorset 5
@@ -232,6 +237,9 @@ Style "xman"                  Icon xman.xpm, ClickToFocus
 Style "xmag"                  Icon mag_glass.xpm, ClickToFocus
 Style "xgraph"                Icon graphs.xpm, ClickToFocus
 Style "xmosaic"               Color Green/Yellow, ClickToFocus
+Style "firefox"               CenterPlacement, MiniIcon browser.png
+Style "*Dialog_popup"         WindowListSkip
+Style "gkrellm"               BorderWidth 0, NoTitle, NoHandles
 
 # Buttons
 Style "FvwmButtons" WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnTop, Sticky
@@ -296,6 +304,17 @@ Style HiddenConsole WindowShadeSteps 100
 #####
 # Re-define our own functions
 ##################
+
+# (find-fvwmhelp "AddToFunc [name [I | M | C | H | D action]]")
+# The letter before the action tells what kind of action triggers the
+# command which follows it.
+#   I: Immediate
+#   M: Motion (user moves the mouse)
+#   C: Click
+#   H: Hold
+#   D: Double-click
+
+# Thumbnail
 DestroyFunc Thumbnail
 AddToFunc Thumbnail
 + I Raise
@@ -341,7 +360,7 @@ AddToFunc FvwmExpose
 + I Popup FvwmExposeMenu
 + I Exec exec rm -f $[fvwm_cache]/tmp/icon.exp.*
 
-# Screenshot Functions (uses ImageMagick)
+# Screenshot functions (uses ImageMagick)
 DestroyFunc FvwmWindowScreenshot
 AddToFunc   FvwmWindowScreenshot
 + I ThisWindow (!Shaded !Iconic Iconifiable) \
@@ -362,6 +381,7 @@ AddToFunc StartHiddenConsole
 + I Wait HiddenConsole
 + I Autohide HiddenConsole 250 0 N
 
+# Windows manipulation functions
 DestroyFunc TopHalfMix
 AddToFunc   TopHalfMix
 +           "I" Maximize 100 50
@@ -401,11 +421,11 @@ AddToFunc Maximize-func     "M" Maximize   0   100
 + I TestRc (NoMatch) WindowStyle, ResizeHintOverride, FixedPosition, FixedSize
 + I TestRc (NoMatch) Raise
 + I TestRc (NoMatch) UpdateStyles
-+ I TestRc (NoMatch) Maximize 99 -15p ewmhiwa true 100 100
++ I TestRc (NoMatch) Maximize 100 -10p ewmhiwa true 100 100
 
 DestroyFunc FullscreenWithOffset
 AddToFunc   FullscreenWithOffset
-+ I ThisWindow (!Maximized, !State 1) MaximizeWithFS 99 -20p ewmhiwa
++ I ThisWindow (!Maximized, !State 1) MaximizeWithFS 100 -10p ewmhiwa
 + I TestRc (NoMatch) ThisWindow (Maximized, State 1) UnMaximizeWithFS
 
 DestroyFunc MaximizeWithFS
@@ -422,6 +442,7 @@ AddToFunc   UnMaximizeWithFS
 + I DestroyWindowStyle
 + I UpdateStyles
 
+# Wheel scrolling function
 DestroyFunc WheelScroll
 AddToFunc WheelScroll I PipeRead 'case $0 in \
       up) test $[page.ny] -eq $$(($[desk.pagesy]-1)) -a $[page.nx] -lt $$(($[desk.pagesx]-1)) \
@@ -432,6 +453,7 @@ AddToFunc WheelScroll I PipeRead 'case $0 in \
          || echo GotoPage 0p -1p;; \
    esac'
 
+# Show desktop function
 DestroyFunc ShowDesktop
 AddToFunc ShowDesktop
 +  I All (AcceptsFocus CurrentPage !Iconic !Shaded !ButtonDocks) Iconify
