@@ -507,6 +507,18 @@ DestroyModuleConfig FvwmEvent: *
 *FvwmEvent: add_window NewWindowFunc
 *FvwmEvent: new_desk "SendToModule DeskControl ChangeButton desk Title $$[desk.n]"
 
+# Makes a window "dance"
+DestroyFunc Jiggle
+AddToFunc Jiggle
++ I PipeRead "for ((y=$0;y>=0;y--)) do \
+    printf 'AnimatedMove w+%up w+%up\\nAnimatedMove w-%up w-%up\\n' \
+    ${y} ${y} ${y} ${y}; done"
+
+# Used when new window pops up (for special events)
+DestroyFunc NewWindowFunc
+AddToFunc NewWindowFunc
++ I ThisWindow (xmessage) Jiggle 5
+
 # Animations are controlled by this module
 # You could also use Frame, Lines, Turn, Twist, Random and None
 DestroyModuleConfig FvwmAnimate: *
