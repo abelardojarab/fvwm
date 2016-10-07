@@ -279,22 +279,25 @@ Colorset 6 bg #979f9c, fg #001a19
 *FvwmButtonsFore blick
 *FvwmButtons: Colorset 6
 *FvwmButtons: BoxSize fixed
-*FvwmButtons: Rows 15
+*FvwmButtons: Rows 18
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
 *FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(Size 1x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 1 -strftime "%H:%M %a %d %b %Y " &')
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "Nautilus" nautilus &')
-*FvwmButtons(Title Chromium, Icon browser.png, Action 'Exec "Chromium" chromium-browser &')
-*FvwmButtons(Title Terminal, Icon gnome-terminal.png, Action 'Exec "Terminal" gnome-terminal &')
+*FvwmButtons(Title Browser, Icon firefox.png, Action 'Exec "Firefox" firefox &')
+*FvwmButtons(Title Terminal, Icon terminal.png, Action 'Exec "Terminal" gnome-terminal &')
+*FvwmButtons(Title Eclipse, Icon eclipse.png, Action 'Exec "Eclipse" eclipse &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
+*FvwmButtons(Title SmartGit, Icon logview.png, Action 'Exec "SmartGit" /usr/share/smartgit/bin/smartgit.sh &')
+*FvwmButtons(Title Umbrello, Icon umbrello.png, Action 'Exec "Umbrello" umbrello &')
 *FvwmButtons(Title Devhelp, Icon devhelp.png, Action 'Exec "Devhelp" devhelp &')
-*FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
+*FvwmButtons(Title DDD, Icon ddd.png, Action 'Exec "DDD" ddd &')
+*FvwmButtons(Title VMware, Icon vmware.png, Action 'Exec "VMware" vmware &')
+*FvwmButtons(Title Evince, Icon evince.png, Action 'Exec "Evince" evince &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
-*FvwmButtons(Title Calc, Icon libreoffice-calc.png, Action 'Exec "Calc" libreoffice --calc &')
 *FvwmButtons(Title Draw, Icon libreoffice-draw.png, Action 'Exec "Impress" libreoffice --draw &')
-*FvwmButtons(Title Transmission, Icon transmission.png, Action 'Exec "Transmission" transmission-gtk &')
 *FvwmButtons(Size 1x1, Swallow (NoKill, Respawn, UseOld) XBiff 'Exec xbiff &')
 
 # AutoHiding Console
