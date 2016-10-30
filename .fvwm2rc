@@ -1,5 +1,5 @@
 # .fvwm/.fvwm2rc
-SetEnv fvwm_wallpaper $[HOME]/workspace/fvwm/.fvwm/images/wallpapers/fable_3_concept_art-wallpaper-2560x1440.png
+SetEnv fvwm_wallpaper $[HOME]/workspace/fvwm/.fvwm/images/wallpapers/linux_terminal_wallpaper.png
 SetEnv fvwm_cache $[HOME]/.fvwm.cache
 SetEnv fvwm_userdir $[HOME]/.fvwm
 Setenv fvwm_colors $[HOME]/.fvwm/images/icons/colors
