@@ -1,4 +1,5 @@
-# .fvwm/.fvwm2rc
+## vim: sts=0:noet:syntax=fvwm:foldmethod=marker
+
 SetEnv fvwm_wallpaper $[HOME]/workspace/fvwm/.fvwm/images/wallpapers/linux_terminal_wallpaper.png
 SetEnv fvwm_cache $[HOME]/.fvwm.cache
 SetEnv fvwm_userdir $[HOME]/.fvwm
@@ -67,8 +68,9 @@ XORvalue 208
 #
 # you can also use the ewmhiwa flag on ceratin Maximize commands, so you could have one menu
 # option for normal maximization, and one for full-screen maximization.
+# Syntax: EwmhBaseStruts left right top bottom
 #################
-EwmhBaseStruts 120 22 22 22
+EwmhBaseStruts 116 0 24 12
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
@@ -103,8 +105,6 @@ AddToFunc   InitFunction
 + I Exec exec xrdb ~/.Xresources
 + I Exec exec feh --bg-scale $[fvwm_wallpaper]
 + I Exec exec trayer --SetDockType true --distance 200 --padding 10 --transparent true --tint a6aaaa --alpha 50 --edge top --align right --expand true --widthtype percent --width 12 --heighttype pixel --height 24 --distancefrom right
-# + I Exec wicd-gtk --tray &
-+ I Exec numlocx &
 + I Exec exec bash -c 'if [ `getconf LONG_BIT` = "64" ]; then /usr/lib/x86_64-linux-gnu/notify-osd; else /usr/lib/i386-linux-gnu/notify-osd; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then insync start; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then dropbox start; fi'
@@ -249,18 +249,27 @@ Style "FvwmTaskBar" NeverFocus, Layer 0
 Style "FvwmShelf"   NoTitle, StaysOnBottom, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
 Style "DeskControl" NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles
 
+# Windows stay opaque during Move cmnds.
+Style * ResizeOpaque
+OpaqueMoveSize unlimited
+
+# An even smoother AnimatedMove command.
+SetAnimation 20 -.01 0 .01 .02 .03 .05 .08 .13 .18 .24 .3 .37 \
+.45 .52 .6 .68 .75 .8 .85 .88 .90 .92 .94 .96 .97 .98 .99 1.0
+
+# Active window
+Colorset 6 fg #9a875f, bg #9a875f
+# Line separators
+Colorset 7 fg #9a875f, bg #181512
+# Window colors
+Colorset 8 fg #332d29, bg #332d29
+# Balloon tooltip colors (fg = font, bg = background)
+Colorset 9 fg #181512, bg #9a875f
+# Selected desktop shading
+Colorset 10 fg #504339, bg #181512
 # Note: FvwmPager will be swallowed by FvwmButtons (below)
 Colorset 11 pixmap tile_gray.png
-#active window
-Colorset 6 fg #9a875f, bg #9a875f
-#line separators
-Colorset 7 fg #9a875f, bg #181512
-#window colors
-Colorset 8 fg #332d29, bg #332d29
-#balloon tooltip colors (fg = font, bg = background)
-Colorset 9 fg #181512, bg #9a875f
-#Selected desktop shading
-Colorset 10 fg #504339, bg #181512
+
 *FvwmPagerFont "$[infostore.font_mono]"
 *FvwmPager: Colorset * 11
 *FvwmPager: HiLightColorset * 10
@@ -273,13 +282,11 @@ Colorset 10 fg #504339, bg #181512
 *FvwmPager: Label 3 "3: Other"
 
 # Set up the geometry so that the buttons stack vertically on the left.
-Colorset 6 bg #979f9c, fg #001a19
 *FvwmButtonsFont  "$[infostore.font_mono]"
 *FvwmButtons: ButtonGeometry 100x50+0+0
-*FvwmButtonsFore blick
-*FvwmButtons: Colorset 6
+*FvwmButtons: Colorset 13
 *FvwmButtons: BoxSize fixed
-*FvwmButtons: Rows 18
+*FvwmButtons: Rows 16
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
 *FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
@@ -289,10 +296,8 @@ Colorset 6 bg #979f9c, fg #001a19
 *FvwmButtons(Title Terminal, Icon terminal.png, Action 'Exec "Terminal" gnome-terminal &')
 *FvwmButtons(Title Eclipse, Icon eclipse.png, Action 'Exec "Eclipse" eclipse &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
-*FvwmButtons(Title SmartGit, Icon logview.png, Action 'Exec "SmartGit" /usr/share/smartgit/bin/smartgit.sh &')
 *FvwmButtons(Title Umbrello, Icon umbrello.png, Action 'Exec "Umbrello" umbrello &')
 *FvwmButtons(Title Devhelp, Icon devhelp.png, Action 'Exec "Devhelp" devhelp &')
-*FvwmButtons(Title DDD, Icon ddd.png, Action 'Exec "DDD" ddd &')
 *FvwmButtons(Title VMware, Icon vmware.png, Action 'Exec "VMware" vmware &')
 *FvwmButtons(Title Evince, Icon evince.png, Action 'Exec "Evince" evince &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
@@ -419,12 +424,23 @@ AddToFunc Resize-or-Raise   "I" Raise
 
 DestroyFunc Maximize-func
 AddToFunc Maximize-func     "M" Maximize   0   100
++ I SetEnv TEMP $[0]
 + I ThisWindow (!Maximized) Maximize 99 -15p ewmhiwa true 100 100
 + I ThisWindow (Maximized) DestroyWindowStyle
++ I InfoStoreAdd x_$[w.id] $[w.x]
++ I InfoStoreAdd y_$[w.id] $[w.y]
++ I InfoStoreAdd width_$[w.id] $[w.width]
++ I InfoStoreAdd height_$[w.id] $[w.height]
++ I Test (EnvMatch TEMP animate) \
+        SendToModule FvwmAnimate animate \
+    $[w.x] $[w.y] $[w.width] $[w.height] \
+    0 0 $[vp.width] $[vp.height]
++ I TestRc (NoMatch) UpdateStyles
 + I TestRc (NoMatch) WindowStyle, ResizeHintOverride, FixedPosition, FixedSize
++ I TestRc (NoMatch) UpdateStyles
 + I TestRc (NoMatch) Raise
 + I TestRc (NoMatch) UpdateStyles
-+ I TestRc (NoMatch) Maximize 100 -10p ewmhiwa true 100 100
++ I UnsetEnv TEMP
 
 DestroyFunc FullscreenWithOffset
 AddToFunc   FullscreenWithOffset
@@ -479,9 +495,39 @@ AddToFunc AutohideHide
 + I Schedule $0 $[w.id] Deschedule $[w.id]
 + I Schedule $0 $[w.id] Deschedule -$[w.id]
 
-AddToFunc WindowListFunc I WarpToWindow 50 50
+# Used by the WindowList command. Replaces the builtin function.
+DestroyFunc WindowListFunc
+AddToFunc WindowListFunc
++ I ThisWindow (Iconic) DeIconifyWindow
++ I ThisWindow FlipFocus NoWarp
++ I ThisWindow Raise
++ I ThisWindow (FvwmButtons) WarpToWindow 30 30
+
+# Used by the HiddenConsole
 DestroyFunc FuncAutoEnter
 AddToFunc FuncAutoEnter I Autohide HiddenConsole 250 500 N
+
+## WindowList Bindings
+
+## Alt + Tab: Switch focus to the next non-iconic window
+Key Tab A M WindowList (CurrentDesk, AcceptsFocus, !Iconic) Root c c \
+  NoCurrentDeskTitle, NoGeometry, CurrentAtEnd, \
+  IconifiedAtEnd, MaxLabelWidth 60, SelectOnRelease Meta_L
+
+## Shift + Alt + Tab: Switch focus to the previous non-iconic window
+Key Tab A SM WindowList (CurrentDesk, AcceptsFocus, !Iconic) Root c c \
+  NoCurrentDeskTitle, NoGeometry, CurrentAtEnd, ReverseOrder, \
+  IconifiedAtEnd, MaxLabelWidth 60, SelectOnRelease Meta_L
+
+## Super + Tab: Switch focus and deiconify the next iconic window
+Key Tab A 4 WindowList (CurrentDesk, Iconic) Root c c \
+  NoCurrentDeskTitle, NoGeometry, ReverseOrder, MaxLabelWidth 60, \
+  SelectOnRelease Super_L
+
+## Shift + Super_L + Tab:  Switch focus and deiconify the next iconic window
+Key Tab A S4 WindowList (CurrentDesk, Iconic) Root c c \
+  NoCurrentDeskTitle, NoGeometry, MaxLabelWidth 60, \
+  SelectOnRelease Super_L
 
 #####
 # Define our own configurations
@@ -628,8 +674,9 @@ AddToMenu MenuPageList
 + "9"   Pick MoveToPage 2 2
 
 # Task bar
-Colorset 7 bg #979f9c, fg #001a19
-Colorset 8 fg white, bg #525252, fgsh #191919, hi #8f8f8f, sh #454545
+Colorset 12 bg #979f9c, fg #001a19
+Colorset 13 fg white, bg #525252, fgsh #191919, hi #8f8f8f, sh #454545
+
 DestroyModuleConfig FvwmTaskBar: *
 *FvwmTaskBar: Geometry +0-0
 *FvwmTaskBar: Rows 1
@@ -647,8 +694,8 @@ DestroyModuleConfig FvwmTaskBar: *
 *FvwmTaskBar: StatusFont "$[infostore.font_mono]"
 *FvwmTaskBar: TipsBack bisque
 *FvwmTaskBar: TipsFore black
-*FvwmTaskBar: Colorset 7
-*FvwmTaskBar: FocusColorset 8
+*FvwmTaskBar: Colorset 12
+*FvwmTaskBar: FocusColorset 13
 *FvwmTaskBar: UseIconNames
 *FvwmTaskBar: StartName Start
 *FvwmTaskBar: StartMenu MenuFvwmRoot mouse c -100m -60p
@@ -710,38 +757,38 @@ Mouse 2      I       A      Iconify
 Mouse 2      T       A      Menu Window-Ops Nop
 
 # Handle key bindings
-#   Keyname     Context Modifi  Function
+#   Keyname Context Modifi  Function
 # Keyname is a standard X11 key name as defined in /usr/include/X11/keysymdef.h,
 # (without the XK_ prefix), or the keysym database /usr/X11R6/lib/X11/XKeysymDB
 
 # Key bindings using Alt + Fn
-#   Keyname Context Modifi  Function
-Key F1      A       M      Menu MenuFvwmRoot Nop
-Key F2      A       M      Menu Window-Ops   Nop
-Key F3      A       M      WindowList
-Key F4      A       M      SendToModule FvwmProxy ShowToggle
-Key F5      A       M      Move
-Key F6      A       M      FvwmExpose
-Key F10     A       M      Maximize-func
+#   Keyname Context  Modifi Function
+Key F1       A       M      Menu MenuFvwmRoot Nop
+Key F2       A       M      Menu Window-Ops   Nop
+Key F3       A       M      WindowList
+Key F4       A       M      SendToModule FvwmProxy ShowToggle
+Key F5       A       M      Move
+Key F6       A       M      FvwmExpose
+Key F10      A       M      Maximize-func
 
 # Key Bindings: ctrl-arrow shifts viewports, alt-arrow shifts desktops
-#   Keyname Context Modifi Function
-Key Left    A       C      GotoPage -1p +0p
-Key Right   A       C      GotoPage +1p +0p
-Key Up      A       C      GotoPage +0p -1p
-Key Down    A       C      GotoPage +0p +1p
-Key Left    A       M      GotoDesk -1  0 3
-Key Right   A       M      GotoDesk 1   0 3
-Key Up      A       M      GotoDesk -1  0 3
-Key Down    A       M      GotoDesk 1   0 3
+#   Keyname Context  Modifi Function
+Key Left     A       C      GotoPage -1p +0p
+Key Right    A       C      GotoPage +1p +0p
+Key Up       A       C      GotoPage +0p -1p
+Key Down     A       C      GotoPage +0p +1p
+Key Left     A       M      GotoDesk -1  0 3
+Key Right    A       M      GotoDesk 1   0 3
+Key Up       A       M      GotoDesk -1  0 3
+Key Down     A       M      GotoDesk 1   0 3
 
 # Switching focus between windows. (ALT-Tab)
-#   Keyname Context Modifi Function
-Key Tab     A       M       FuncSwitchWindow
+#   Keyname Context  Modifi Function
+# Key Tab     A        M      FuncSwitchWindow
 
 # Popup WindowList with the Windows "menu" key.
-#   Keyname Context Modifi Function
-Key F15     A       A      PickWindow
+#   Keyname Context  Modifi Function
+Key F15     A        A      PickWindow
 
 # Circulate through windows with left and right "window" keys.
 #   Keyname Context Modifi Function
@@ -827,7 +874,6 @@ Key KP_Next  A       C      MoveAndGotoPage 2 2
 # Note: EchoSequence prints sequences to STDERR.
 #################
 Mouse 3 R A     StrokeFunc DrawMotion FeedBack StrokeWidth 1
-#Stroke 0 0 R N     Menu MenuFvwmRoot
 
 # Down, Then Up.
 Stroke 25852 0 R N  Refresh
@@ -871,15 +917,15 @@ Stroke N1478963 0 R N Exec exec opera -newpage -bigicon
 Stroke N1598753 0 R N Exec exec xpad
 
 # Menu Style
-Colorset 9 bg #979f9c, fg #001a19
-Colorset 10 fg #ffffff, bg #7d7d7d
+Colorset 14 bg #979f9c, fg #001a19
+Colorset 15 fg #ffffff, bg #6d6d6d
 MenuStyle * Hilight3DThin, PopupOffset 0 100, PopupDelay 300, TitleWarpOff
 MenuStyle * TitleUnderlines2, SeparatorsLong, TrianglesSolid, Animation
 MenuStyle * BorderWidth 2
 MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
 MenuStyle * ItemFormat "%|%5.5i%1.3l%2.3>%|"
 MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
-MenuStyle * MenuColorset 9, HilightBack, ActiveColorset 10
+MenuStyle * MenuColorset 13, HilightBack, ActiveColorset 15
 MenuStyle * "$[infostore.font_mono]"
 MenuStyle * MenuFace DGradient 64 Red Black
 
