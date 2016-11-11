@@ -313,7 +313,6 @@ Style HiddenConsole WindowShadeSteps 100
 # Re-define our own functions
 ##################
 
-# (find-fvwmhelp "AddToFunc [name [I | M | C | H | D action]]")
 # The letter before the action tells what kind of action triggers the
 # command which follows it.
 #   I: Immediate
@@ -392,15 +391,15 @@ AddToFunc StartHiddenConsole
 # Windows manipulation functions
 DestroyFunc TopHalfMix
 AddToFunc   TopHalfMix
-+           "I" Maximize 100 50
++ I Maximize 100 50
 
 DestroyFunc LeftHalfMix
 AddToFunc   LeftHalfMix
-+           "I" Maximize 50  100
++ I Maximize 50  100
 
 DestroyFunc FullScreen
 AddToFunc   FullScreen
-+           "I" Maximize 100 100
++ I Maximize 100 100
 
 DestroyFunc Move-or-Raise
 AddToFunc Move-or-Raise     "I" Raise
@@ -508,7 +507,6 @@ DestroyFunc FuncAutoEnter
 AddToFunc FuncAutoEnter I Autohide HiddenConsole 250 500 N
 
 ## WindowList Bindings
-
 ## Alt + Tab: Switch focus to the next non-iconic window
 Key Tab A M WindowList (CurrentDesk, AcceptsFocus, !Iconic) Root c c \
   NoCurrentDeskTitle, NoGeometry, CurrentAtEnd, \
@@ -701,8 +699,9 @@ DestroyModuleConfig FvwmTaskBar: *
 *FvwmTaskBar: StartMenu MenuFvwmRoot mouse c -100m -60p
 
 # Handle mouse bindings
+# Mouse 0 is special to fvwm, meaning "any" mouse button
+
 # Recall that mouse formats look like this:
-#
 # +------------+
 # | ||  ||  || |
 # |            |
@@ -731,7 +730,7 @@ DestroyModuleConfig FvwmTaskBar: *
 #
 
 # Windows close,max,mini buttons
-#     Button    Context Modifi  Function
+#     Button Context   Modifi  Function
 Mouse 0      4          A      Iconify
 Mouse 0      2          A      Maximize-func
 Mouse 0      1          A      Close
@@ -742,24 +741,34 @@ Mouse 1      1          A      Close
 Mouse 1      3          A      Menu Window-Ops Nop
 
 # Main pop-up menus
-#     Button Context Modifi Function
-Mouse 0      R       N      Menu MenuFvwmRoot Nop
-Mouse 0      R       A      Menu MenuFvwmRoot Nop
-Mouse 1      R       A      Menu MenuFvwmRoot Nop
-Mouse 2      R       A      Menu MenuFvwmRoot Nop
+#     Button Context   Modifi  Function
+Mouse 1      R          N      Menu MenuFvwmRoot Nop
+Mouse 1      R          A      Menu MenuFvwmRoot Nop
+Mouse 2      R          N      WindowList
 
 # When you click the edge of a window
-#     Button Context Modifi Function
-Mouse 1      F       A      Resize-or-Raise
-Mouse 1      T       A      Move-or-Raise
-Mouse 1      I       A      Move-or-Iconify
-Mouse 2      I       A      Iconify
-Mouse 2      T       A      Menu Window-Ops Nop
+#     Button Context   Modifi  Function
+Mouse 1      F          A      Resize-or-Raise
+Mouse 1      T          A      Move-or-Raise
+Mouse 1      I          A      Move-or-Iconify
+Mouse 2      I          A      Iconify
+Mouse 2      T          A      Menu Window-Ops Nop
+
+# Roll mouse wheel anywhere with Shift-Ctrl + cursor left/right for goto page
+Mouse 4      A         SC      GotoPage +1p +0p
+Mouse 5      A         SC      GotoPage -1p +0p
+
+# Roll mouse wheel anywhere with Shift-Meta + cursor left/right for goto page
+# with active window
+Mouse 4      A         SM      MoveAndGotoPage +1p +0p
+Mouse 5      A         SM      MoveAndGotoPage -1p +0p
 
 # Handle key bindings
 #   Keyname Context Modifi  Function
 # Keyname is a standard X11 key name as defined in /usr/include/X11/keysymdef.h,
 # (without the XK_ prefix), or the keysym database /usr/X11R6/lib/X11/XKeysymDB
+# A=anywhere, C/M/S=control/meta/shift
+# Modifier 4 is the left "Windows" key
 
 # Key bindings using Alt + Fn
 #   Keyname Context  Modifi Function
@@ -781,19 +790,6 @@ Key Left     A       M      GotoDesk -1  0 3
 Key Right    A       M      GotoDesk 1   0 3
 Key Up       A       M      GotoDesk -1  0 3
 Key Down     A       M      GotoDesk 1   0 3
-
-# Switching focus between windows. (ALT-Tab)
-#   Keyname Context  Modifi Function
-# Key Tab     A        M      FuncSwitchWindow
-
-# Popup WindowList with the Windows "menu" key.
-#   Keyname Context  Modifi Function
-Key F15     A        A      PickWindow
-
-# Circulate through windows with left and right "window" keys.
-#   Keyname Context Modifi Function
-Key F13 A A Prev (CurrentPage !Sticky !Shaded !Iconic) RaiseAndFocus
-Key F14 A A Next (CurrentPage !Sticky !Shaded !Iconic) RaiseAndFocus
 
 # Switch pages via keypad (no modifier)
 #   Keyname  Context Modifi Function
@@ -911,7 +907,7 @@ Stroke 14789 0 R N  Module FvwmForm FvwmForm-QuitVerify
 Stroke N25852 0 R N Pick Close
 
 # Start a Web Browser
-Stroke N1478963 0 R N Exec exec opera -newpage -bigicon
+Stroke N1478963 0 R N Exec exec firefox
 
 # Make a new Sticky Note
 Stroke N1598753 0 R N Exec exec xpad
