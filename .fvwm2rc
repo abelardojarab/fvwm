@@ -130,22 +130,22 @@ AddToFunc   InitFunction
 #   @4 Invisible (just move the pointer, dont draw anything)
 
 # Windows
-#Active
+# Pixmaps
+Colorset 0 fg white, bg #525252, fgsh #f9f9f9, hi #8f8f8f, sh #454545
+# Active
 Colorset 1 bg #535454, fg #ffffff, fgsh #f9f9f9 hi #fbfbfb, sh #171717, pixmap btn_bg.png, Tint #464646 70
-#Inactive
+# Inactive
 Colorset 2 bg #343434, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 20
-#Pixmaps
-Colorset 11 fg white, bg #525252, fgsh #191919, hi #8f8f8f, sh #454545
 DestroyDecor MyDecoration
 AddToDecor   MyDecoration
 + TitleStyle -- Raised
 + TitleStyle Centered Height 26
-+ TitleStyle InActive ( Colorset 2 -- Flat ) Active ( Colorset 1 -- Flat )
-+ AddTitleStyle Active ( TiledPixmap tile_solid-1.png ) \
-    Inactive ( TiledPixmap tile_gray.png )
++ TitleStyle InActive (Colorset 2 -- Flat ) Active (Colorset 1 -- Flat)
++ AddTitleStyle Active (TiledPixmap tile_solid-1.png) \
+    Inactive (TiledPixmap tile_gray.png)
 + ButtonStyle All -- UseTitleStyle
-+ ButtonStyle All InActive ( Colorset 2 -- Flat ) -- HiddenHandles
-+ ButtonStyle All Active ( Colorset 11  -- Raised )
++ ButtonStyle All InActive (Colorset 2 -- Flat) -- HiddenHandles
++ ButtonStyle All Active (Colorset 1  -- Raised)
 + ButtonStyle 1 ActiveUp Vector 4 30x30@3 60x60@3 60x30@4 30x60@3
 + ButtonStyle 1 ActiveDown Vector 4 30x30@3 60x60@3 60x30@4 30x60@3
 + ButtonStyle 1 Inactive Vector 4 30x30@3 60x60@3 60x30@4 30x60@3
@@ -209,8 +209,7 @@ Style * FPSortWindowlistByFocus
 # FPClickToFocus, FPClickDecorToFocus or FPClickIconToFocus, click inside the window, modification, when the icon, the window receives focus.
 Style * FPClickToFocus
 
-# Click Raise window (Clicking at The window to The raise)
-# FPClickRaisesFocused, FPClickDecorRaisesFocused and FPClickIconRaisesFocused ,
+# Click Raise window (Clicking at the window to raise it)
 Style * FPClickRaisesFocused
 
 # FPEnterToFocus, when the pointer enters the window, the window receives focus
@@ -243,7 +242,7 @@ Style "gkrellm"               BorderWidth 0, NoTitle, NoHandles
 
 # Buttons
 Style "FvwmButtons" WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnTop, Sticky
-Style "FvwmPager"   BorderWidth 2, HandleWidth 2, NeverFocus, NoHandles, NoTitle, StaysOnTop, Sticky
+Style "FvwmPager"   BorderWidth 2, NoHandles, NeverFocus, NoTitle, StaysOnTop, Sticky, WindowListSkip, NoIconifiable
 Style "FvwmTaskBar" NoTitle, WindowListSkip, CirculateSkip, Sticky, BorderWidth 0, NoHandles, StaysOnTop
 Style "FvwmTaskBar" NeverFocus, Layer 0
 Style "FvwmShelf"   NoTitle, StaysOnBottom, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
@@ -258,7 +257,7 @@ SetAnimation 20 -.01 0 .01 .02 .03 .05 .08 .13 .18 .24 .3 .37 \
 .45 .52 .6 .68 .75 .8 .85 .88 .90 .92 .94 .96 .97 .98 .99 1.0
 
 # Active window
-Colorset 6 fg #9a875f, bg #9a875f
+Colorset 6 fg #9a875f, bg #fa875f
 # Line separators
 Colorset 7 fg #9a875f, bg #181512
 # Window colors
@@ -271,11 +270,12 @@ Colorset 10 fg #504339, bg #181512
 Colorset 11 pixmap tile_gray.png
 
 *FvwmPagerFont "$[infostore.font_mono]"
-*FvwmPager: Colorset * 11
+*FvwmPager: Colorset * 0
 *FvwmPager: HiLightColorset * 10
-*FvwmPager: WindowColorsets 8 6
-*FvwmPager: BalloonColorset * 9
+*FvwmPager: WindowColorsets 8 5
+*FvwmPager: BalloonColorset * 6
 *FvwmPager: Balloons All
+*FvwmPager: MiniIcons
 *FvwmPager: Label 0 "0: General"
 *FvwmPager: Label 1 "1: Office"
 *FvwmPager: Label 2 "2: CAD"
@@ -285,8 +285,8 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtonsFont  "$[infostore.font_mono]"
 *FvwmButtons: ButtonGeometry 100x50+0+0
 *FvwmButtons: Colorset 13
-*FvwmButtons: BoxSize fixed
-*FvwmButtons: Rows 16
+*FvwmButtons: BoxSize smart
+*FvwmButtons: Rows 17
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
 *FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
@@ -301,6 +301,7 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtons(Title VMware, Icon vmware.png, Action 'Exec "VMware" vmware &')
 *FvwmButtons(Title Evince, Icon evince.png, Action 'Exec "Evince" evince &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
+*FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(Title Draw, Icon libreoffice-draw.png, Action 'Exec "Impress" libreoffice --draw &')
 *FvwmButtons(Size 1x1, Swallow (NoKill, Respawn, UseOld) XBiff 'Exec xbiff &')
@@ -607,69 +608,58 @@ DestroyModuleConfig FvwmIconMan
 
 # Window Operation Menu
 DestroyMenu Window-Ops
-AddToMenu Window-Ops                                "Window Operations"                Title
-+         "Move%actions/move.png%"                  Move
-+         "Resize%actions/resize.png%"              Resize
-+         "(De) Iconify%actions/iconify.png%"       Iconify
-+         "(Un) Maximize%actions/maximize.png%"     Maximize-func
-+         "(Un) Thumbnail%actions/thumbnail.png%"   Thumbnail
-+         "(Un) Shade%actions/shade.png%"           WindowShade
-+         "(Un) Stick%actions/stick.png%"           Stick
-+         ""                                        Nop
-+         "Close%actions/close.png%"                Close
-+         "Delete%actions/delete.png%"              Delete
-+         "Destroy%actions/destroy.png%"            Destroy
-+         ""                                        Nop
-+         "Stays On Top%actions/ontop.png%"         Pick                       (CirculateHit) Layer 0 6
-+         "Layer +1%actions/raise.png%"             Pick                       (CirculateHit) Layer +1
-+         "Stays Put%actions/window.png%"           Pick                       (CirculateHit) Layer 0 4
-+         "Layer -1%actions/lower.png%"             Pick                       (CirculateHit) Layer -1
-+         "Stays On Bottom%actions/nontop.png%"     Pick                       (CirculateHit) Layer 0 2
-+         ""                                        Nop
-+         "%actions/window.png%Window Screenshot"   Pick                       (CirculateHit) FvwmWindowScreenshot
-+         "%actions/desktop.png%Screenshot"         FvwmDesktopScreenshot      5
-+         ""                                        Nop
-+         "Identify%actions/identify.png%"          Module                     FvwmIdent
+AddToMenu Window-Ops                                    "Window Operations"                Title
++ "Resize%actions/resize.png%"                  Resize
++ "Top Half%actions/resize.png%"                TopHalfMix
++ "Left Half%actions/resize.png%"               LeftHalfMix
++ ""                                            Nop
++ "(De) Iconify%actions/iconify.png%"           Iconify
++ "(Un) Maximize%actions/maximize.png%"         Maximize-func
++ "(Un) Thumbnail%actions/thumbnail.png%"       Thumbnail
++ "(Un) Shade%actions/shade.png%"               WindowShade
++ "(Un) Stick%actions/stick.png%"               Stick
++ ""                                            Nop
++ "Move%actions/move.png%"                      Move
++ "Close%actions/close.png%"                    Close
++ "Delete%actions/delete.png%"                  Delete
++ "Destroy%actions/destroy.png%"                Destroy
++ ""                                            Nop
++ "Stays On Top%actions/ontop.png%"             Pick                       (CirculateHit) Layer 0 6
++ "Layer +1%actions/raise.png%"                 Pick                       (CirculateHit) Layer +1
++ "Stays Put%actions/window.png%"               Pick                       (CirculateHit) Layer 0 4
++ "Layer -1%actions/lower.png%"                 Pick                       (CirculateHit) Layer -1
++ "Stays On Bottom%actions/nontop.png%"         Pick                       (CirculateHit) Layer 0 2
++ ""                                            Nop
++ "%actions/window.png%Window Screenshot"       Pick                       (CirculateHit) FvwmWindowScreenshot
++ "%actions/desktop.png%Desktop Screenshot"     FvwmDesktopScreenshot      5
++ "Identify%actions/identify.png%"              Module                     FvwmIdent
++ ""                                            Nop
++ "Modules%apps/software-properties.png%"       Popup                      MenuFvwmModules
++ "Send To...%actions/move.png%"                Popup                      MenuPageList
 
 DestroyMenu MenuFvwmModules
 AddToMenu MenuFvwmModules
-+   "Animation          "   Module FvwmAnimate
-+   "Button-Bar         "   Module FvwmButtons
-+   "Identify           "   Module FvwmIdent
-+   "IconMan            "   Module FvwmIconMan
-+   "Banner             "   Module FvwmBanner
-+   "Console            "   Module FvwmConsole -terminal rxvt
-+   "Pager              "   Module FvwmPager 0 1
-+   "Backer             "   Module FvwmBacker
-+   "ScrollBar          "   Module FvwmScroll 50 50
-+   "FvwmTaskBar        "   Module FvwmTaskBar
-+   "AutoRaise          "   Module FvwmAuto 200 Raise Nop
-+   "WinList            "   Module FvwmWinList
-+   ""                      Nop
-+   "Stop Module        "   Popup  MenuFvwmStopModule
++ "Proxy"         Module FvwmProxy
++ "Banner"        Module FvwmBanner
++ "Console"       Module StartHiddenConsole
++ ""              Nop
++ "Stop Module"   Popup  MenuFvwmStopModule
 
 DestroyMenu MenuFvwmStopModule
 AddToMenu MenuFvwmStopModule
-+   "Stop Button-Bar    "   KillModule FvwmButtons
-+   "Stop IconMan       "   KillModule FvwmIconMan
-+   "Stop Pager         "   KillModule FvwmPager
-+   "Stop Backer        "   KillModule FvwmBacker
-+   "Stop ScrollBar     "   KillModule FvwmScroll
-+   "Stop FvwmTaskBar   "   KillModule FvwmTaskBar
-+   "Stop AutoRaise     "   KillModule FvwmAuto
-+   "Stop WinList       "   KillModule FvwmWinList
++ "Stop Console       "   KillModule StartHiddenConsole
 
 DestroyMenu MenuPageList
 AddToMenu MenuPageList
-+ "1"   Pick MoveToPage 0 0
-+ "2"   Pick MoveToPage 1 0
-+ "3"   Pick MoveToPage 2 0
-+ "4"   Pick MoveToPage 0 1
-+ "5"   Pick MoveToPage 1 1
-+ "6"   Pick MoveToPage 2 1
-+ "7"   Pick MoveToPage 0 2
-+ "8"   Pick MoveToPage 1 2
-+ "9"   Pick MoveToPage 2 2
++ "Desktop 1"   Pick MoveToPage 0 0
++ "Desktop 2"   Pick MoveToPage 1 0
++ "Desktop 3"   Pick MoveToPage 2 0
++ "Desktop 4"   Pick MoveToPage 0 1
++ "Desktop 5"   Pick MoveToPage 1 1
++ "Desktop 6"   Pick MoveToPage 2 1
++ "Desktop 7"   Pick MoveToPage 0 2
++ "Desktop 8"   Pick MoveToPage 1 2
++ "Desktop 9"   Pick MoveToPage 2 2
 
 # Task bar
 Colorset 12 bg #979f9c, fg #001a19
