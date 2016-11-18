@@ -70,7 +70,7 @@ XORvalue 208
 # option for normal maximization, and one for full-screen maximization.
 # Syntax: EwmhBaseStruts left right top bottom
 #################
-EwmhBaseStruts 116 0 24 12
+EwmhBaseStruts 80 0 24 11
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
@@ -264,9 +264,9 @@ Colorset 7 fg #9a875f, bg #181512
 Colorset 8 fg #332d29, bg #332d29
 # Balloon tooltip colors (fg = font, bg = background)
 Colorset 9 fg #181512, bg #9a875f
-# Selected desktop shading
-Colorset 10 fg #504339, bg #181512
-# Note: FvwmPager will be swallowed by FvwmButtons (below)
+# Buttons colors
+Colorset 10 fg #e0d3d9, bg #181512
+# Note: FvwmPager willl be swallowed by FvwmButtons (below)
 Colorset 11 pixmap tile_gray.png
 
 *FvwmPagerFont "$[infostore.font_mono]"
@@ -283,8 +283,8 @@ Colorset 11 pixmap tile_gray.png
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtonsFont  "$[infostore.font_mono]"
-*FvwmButtons: ButtonGeometry 100x50+0+0
-*FvwmButtons: Colorset 13
+*FvwmButtons: ButtonGeometry 70x55+0+0
+*FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 17
 *FvwmButtons: Columns 1
@@ -663,7 +663,7 @@ AddToMenu MenuPageList
 
 # Task bar
 Colorset 12 bg #979f9c, fg #001a19
-Colorset 13 fg white, bg #525252, fgsh #191919, hi #8f8f8f, sh #454545
+Colorset 13 fg white, bg #523232, fgsh #191919, hi #8f8f8f, sh #454545
 
 DestroyModuleConfig FvwmTaskBar: *
 *FvwmTaskBar: Geometry +0-0
@@ -682,7 +682,7 @@ DestroyModuleConfig FvwmTaskBar: *
 *FvwmTaskBar: StatusFont "$[infostore.font_mono]"
 *FvwmTaskBar: TipsBack bisque
 *FvwmTaskBar: TipsFore black
-*FvwmTaskBar: Colorset 12
+*FvwmTaskBar: Colorset 10
 *FvwmTaskBar: FocusColorset 13
 *FvwmTaskBar: UseIconNames
 *FvwmTaskBar: StartName Start
@@ -911,7 +911,7 @@ MenuStyle * BorderWidth 2
 MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
 MenuStyle * ItemFormat "%|%5.5i%1.3l%2.3>%|"
 MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
-MenuStyle * MenuColorset 13, HilightBack, ActiveColorset 15
+MenuStyle * MenuColorset 10, HilightBack, ActiveColorset 15
 MenuStyle * "$[infostore.font_mono]"
 MenuStyle * MenuFace DGradient 64 Red Black
 
