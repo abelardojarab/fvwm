@@ -283,10 +283,10 @@ Colorset 11 pixmap tile_gray.png
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtonsFont  "$[infostore.font_mono]"
-*FvwmButtons: ButtonGeometry 70x55+0+0
+*FvwmButtons: ButtonGeometry 70x52+0+0
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
-*FvwmButtons: Rows 17
+*FvwmButtons: Rows 19
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
 *FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
@@ -296,8 +296,10 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtons(Title Terminal, Icon terminal.png, Action 'Exec "Terminal" gnome-terminal &')
 *FvwmButtons(Title Eclipse, Icon eclipse.png, Action 'Exec "Eclipse" eclipse &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
+*FvwmButtons(Title Filezilla, Icon filezilla.png, Action 'Exec "Filezilla" filezilla &')
 *FvwmButtons(Title Umbrello, Icon umbrello.png, Action 'Exec "Umbrello" umbrello &')
 *FvwmButtons(Title Devhelp, Icon devhelp.png, Action 'Exec "Devhelp" devhelp &')
+*FvwmButtons(Title Gitkraken, Icon qgit.png, Action 'Exec "Gitkraken" gitkraken &')
 *FvwmButtons(Title VMware, Icon vmware.png, Action 'Exec "VMware" vmware &')
 *FvwmButtons(Title Evince, Icon evince.png, Action 'Exec "Evince" evince &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
