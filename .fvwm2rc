@@ -223,9 +223,14 @@ Style "gkrellm"               !Title, !Handles, StaysOnTop, Sticky, NeverFocus, 
 Style "trayer"                !Title, StaysOnTop, FixedPosition
 Style "chromium-browser"      !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, MiniIcon browser.png
 Style "libreoffice*"          NoFuncHint
-Style "nautilus"              MiniIcon folder.png
+Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
+Style "gedit"                 MiniIcon gedit.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
+Style "nautilus"              MiniIcon folder.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
+Style "pcmanfm"               MiniIcon folder.png, EWMHMiniIconOverride
 Style "gimp"                  MiniIcon gimp.png
+Style "inkscape"              MiniIcon inkscape.png
 Style "emacs"                 MiniIcon emacs24.png
+Style "sublime_text"          MiniIcon sublime-text.png
 Style "devhelp"               MiniIcon devhelp.png
 Style "zeal"                  MiniIcon zeal.png
 Style "dia"                   MiniIcon dia.png
@@ -236,7 +241,7 @@ Style "xman"                  Icon xman.xpm, ClickToFocus
 Style "xmag"                  Icon mag_glass.xpm, ClickToFocus
 Style "xgraph"                Icon graphs.xpm, ClickToFocus
 Style "xmosaic"               Color Green/Yellow, ClickToFocus
-Style "firefox"               CenterPlacement, MiniIcon browser.png
+Style "firefox"               CenterPlacement, MiniIcon firefox.png
 Style "*Dialog_popup"         WindowListSkip
 Style "gkrellm"               BorderWidth 0, NoTitle, NoHandles
 
@@ -265,7 +270,7 @@ Colorset 8 fg #332d29, bg #332d29
 # Balloon tooltip colors (fg = font, bg = background)
 Colorset 9 fg #181512, bg #9a875f
 # Buttons colors
-Colorset 10 fg #e0d3d9, bg #453632
+Colorset 10 fg #e0d3d9, bg #484644
 # Note: FvwmPager willl be swallowed by FvwmButtons (below)
 Colorset 11 pixmap tile_gray.png
 
@@ -283,7 +288,7 @@ Colorset 11 pixmap tile_gray.png
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtonsFont  "$[infostore.font_mono]"
-*FvwmButtons: ButtonGeometry 70x52+0+0
+*FvwmButtons: ButtonGeometry 74x44+0+0
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 20
@@ -291,22 +296,22 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtons: Frame 1
 *FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(Size 1x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 1 -strftime "%H:%M %a %d %b %Y " &')
-*FvwmButtons(Title Home, Icon folder.png, Action 'Exec "Nautilus" nautilus &')
-*FvwmButtons(Title Browser, Icon firefox.png, Action 'Exec "Firefox" firefox &')
+*FvwmButtons(Title Home, Icon folder.png, Action 'Exec "PCmanFM" pcmanfm &')
+*FvwmButtons(Title Browser, Icon browser.png, Action 'Exec "Firefox" firefox &')
 *FvwmButtons(Title Terminal, Icon terminal.png, Action 'Exec "Terminal" gnome-terminal &')
 *FvwmButtons(Title Eclipse, Icon eclipse.png, Action 'Exec "Eclipse" eclipse &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
 *FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" sublime_text &')
 *FvwmButtons(Title Filezilla, Icon filezilla.png, Action 'Exec "Filezilla" filezilla &')
 *FvwmButtons(Title Umbrello, Icon umbrello.png, Action 'Exec "Umbrello" umbrello &')
-*FvwmButtons(Title Devhelp, Icon devhelp.png, Action 'Exec "Devhelp" devhelp &')
 *FvwmButtons(Title Gitkraken, Icon qgit.png, Action 'Exec "Gitkraken" gitkraken &')
 *FvwmButtons(Title VMware, Icon vmware.png, Action 'Exec "VMware" vmware &')
 *FvwmButtons(Title Evince, Icon evince.png, Action 'Exec "Evince" evince &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
-*FvwmButtons(Title Draw, Icon libreoffice-draw.png, Action 'Exec "Impress" libreoffice --draw &')
+*FvwmButtons(Title LOWriter, Icon libreoffice-writer.png, Action 'Exec "Writer" libreoffice --writer &')
+*FvwmButtons(Title LOCalc, Icon libreoffice-calc.png, Action 'Exec "Calc" libreoffice --calc &')
 *FvwmButtons(Size 1x1, Swallow (NoKill, Respawn, UseOld) XBiff 'Exec xbiff &')
 
 # AutoHiding Console
@@ -399,7 +404,7 @@ AddToFunc   TopHalfMix
 
 DestroyFunc LeftHalfMix
 AddToFunc   LeftHalfMix
-+ I Maximize 50  100
++ I Maximize 50  99
 
 DestroyFunc FullScreen
 AddToFunc   FullScreen
@@ -428,7 +433,7 @@ AddToFunc Resize-or-Raise   "I" Raise
 DestroyFunc Maximize-func
 AddToFunc Maximize-func     "M" Maximize   0   100
 + I SetEnv TEMP $[0]
-+ I ThisWindow (!Maximized) Maximize 99 -15p ewmhiwa true 100 100
++ I ThisWindow (!Maximized) Maximize 100 -1p ewmhiwa true 100 100
 + I ThisWindow (Maximized) DestroyWindowStyle
 + I InfoStoreAdd x_$[w.id] $[w.x]
 + I InfoStoreAdd y_$[w.id] $[w.y]
@@ -611,58 +616,55 @@ DestroyModuleConfig FvwmIconMan
 
 # Window Operation Menu
 DestroyMenu Window-Ops
-AddToMenu Window-Ops                                    "Window Operations"                Title
-+ "Resize%actions/resize.png%"                  Resize
-+ "Top Half%actions/resize.png%"                TopHalfMix
-+ "Left Half%actions/resize.png%"               LeftHalfMix
+AddToMenu Window-Ops "Window Operations"        Title
++ "Resize%xpms/mini.resize.xpm%"                Resize
++ "Top Half%xpms/mini.maximize-horiz.xpm%"      TopHalfMix
++ "Left Half%xpms/mini.maximize-vert.xpm%"      LeftHalfMix
 + ""                                            Nop
-+ "(De) Iconify%actions/iconify.png%"           Iconify
-+ "(Un) Maximize%actions/maximize.png%"         Maximize-func
-+ "(Un) Thumbnail%actions/thumbnail.png%"       Thumbnail
-+ "(Un) Shade%actions/shade.png%"               WindowShade
-+ "(Un) Stick%actions/stick.png%"               Stick
++ "(De) Iconify%xpms/mini.iconify.xpm%"         Iconify
++ "(Un) Maximize%xpms/mini.maximize1.xpm%"      Maximize-func
++ "(Un) Thumbnail%xpms/mini.zoom.xpm%"          Thumbnail
++ "(Un) Shade%xpms/mini.windowshade.xpm%"       WindowShade
++ "(Un) Stick%xpms/mini.stick1.xpm%"            Stick
 + ""                                            Nop
 + "Move%actions/move.png%"                      Move
-+ "Close%actions/close.png%"                    Close
-+ "Delete%actions/delete.png%"                  Delete
-+ "Destroy%actions/destroy.png%"                Destroy
++ "Close%xpms/small.exit.xpm%"                  Close
++ "Delete%xpms/mini.delete.xpm%"                Delete
++ "Destroy%xpms/mini.destroy.xpm%"              Destroy
 + ""                                            Nop
-+ "Stays On Top%actions/ontop.png%"             Pick                       (CirculateHit) Layer 0 6
-+ "Layer +1%actions/raise.png%"                 Pick                       (CirculateHit) Layer +1
-+ "Stays Put%actions/window.png%"               Pick                       (CirculateHit) Layer 0 4
-+ "Layer -1%actions/lower.png%"                 Pick                       (CirculateHit) Layer -1
-+ "Stays On Bottom%actions/nontop.png%"         Pick                       (CirculateHit) Layer 0 2
++ "Stays On Top%xpms/mini.raise3.xpm%"          Pick                       (CirculateHit) Layer 0 6
++ "Layer +1%xpms/mini.raise2.xpm%"              Pick                       (CirculateHit) Layer +1
++ "Stays Put%actions/nontop.png%"               Pick                       (CirculateHit) Layer 0 4
++ "Layer -1%xpms/mini.lower2.xpm%"              Pick                       (CirculateHit) Layer -1
++ "Stays On Bottom%xpms/mini.lower3.xpm%"       Pick                       (CirculateHit) Layer 0 2
 + ""                                            Nop
-+ "%actions/window.png%Window Screenshot"       Pick                       (CirculateHit) FvwmWindowScreenshot
-+ "%actions/desktop.png%Desktop Screenshot"     FvwmDesktopScreenshot      5
-+ "Identify%actions/identify.png%"              Module                     FvwmIdent
++ "%xpms/mini.window.xpm%Window Screenshot"     Pick                       (CirculateHit) FvwmWindowScreenshot
++ "%xpms/mini.desktop.xpm%Desktop Screenshot"   FvwmDesktopScreenshot      5
++ "Identify%xpms/mini.question.xpm%"            Module                     FvwmIdent
 + ""                                            Nop
-+ "Modules%apps/software-properties.png%"       Popup                      MenuFvwmModules
-+ "Send To...%actions/move.png%"                Popup                      MenuPageList
++ "Modules%xpms/mini.modules.xpm%"              Popup                      MenuFvwmModules
++ "Send To...%xpms/mini.pager.xpm%"             Popup                      MenuPageList
 
 DestroyMenu MenuFvwmModules
 AddToMenu MenuFvwmModules
-+ "Proxy"         Module FvwmProxy
-+ "Banner"        Module FvwmBanner
-+ "Console"       Module StartHiddenConsole
-+ ""              Nop
-+ "Stop Module"   Popup  MenuFvwmStopModule
++ "%xpms/mini.fvwm.xpm%Banner"              Module                     FvwmBanner
++ "%xpms/mini.desktop.xpm%Expose"               Module                     FvwmExpose
++ "%xpms/mini.xterm.xpm%Quake-style Console"    Module                     StartHiddenConsole
++ ""                                            Nop
++ "%xpms/small.exit.xpm%Stop modules"           Popup                      MenuFvwmStopModule
 
 DestroyMenu MenuFvwmStopModule
 AddToMenu MenuFvwmStopModule
-+ "Stop Console       "   KillModule StartHiddenConsole
++ "%xpms/mini.xterm.xpm%Stop Quake-style Console"   KillModule             StartHiddenConsole
 
 DestroyMenu MenuPageList
 AddToMenu MenuPageList
-+ "Desktop 1"   Pick MoveToPage 0 0
-+ "Desktop 2"   Pick MoveToPage 1 0
-+ "Desktop 3"   Pick MoveToPage 2 0
-+ "Desktop 4"   Pick MoveToPage 0 1
-+ "Desktop 5"   Pick MoveToPage 1 1
-+ "Desktop 6"   Pick MoveToPage 2 1
-+ "Desktop 7"   Pick MoveToPage 0 2
-+ "Desktop 8"   Pick MoveToPage 1 2
-+ "Desktop 9"   Pick MoveToPage 2 2
++ "%workspaces/workspace-1.png%Desktop 1"   Pick MoveToPage 0 0
++ "%workspaces/workspace-2.png%Desktop 2"   Pick MoveToPage 1 0
++ "%workspaces/workspace-3.png%Desktop 3"   Pick MoveToPage 2 0
++ "%workspaces/workspace-4.png%Desktop 4"   Pick MoveToPage 0 1
++ "%workspaces/workspace-5.png%Desktop 5"   Pick MoveToPage 1 1
++ "%workspaces/workspace-6.png%Desktop 6"   Pick MoveToPage 2 1
 
 # Task bar
 Colorset 12 bg #979f9c, fg #001a19
