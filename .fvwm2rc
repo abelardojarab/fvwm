@@ -1,6 +1,6 @@
 ## vim: sts=0:noet:syntax=fvwm:foldmethod=marker
 
-SetEnv fvwm_wallpaper $[HOME]/workspace/fvwm/.fvwm/images/wallpapers/linux_terminal_wallpaper.png
+SetEnv fvwm_wallpaper $[HOME]/workspace/fvwm/.fvwm/images/wallpapers/osxelcapitan.png
 SetEnv fvwm_cache $[HOME]/.fvwm.cache
 SetEnv fvwm_userdir $[HOME]/.fvwm
 Setenv fvwm_colors $[HOME]/.fvwm/images/icons/colors
