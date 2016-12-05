@@ -36,7 +36,7 @@ AddToMenu MenuDevelopment
 + "%apps/emacs24.png%GNU Emacs 24" Exec exec /usr/bin/emacs24
 + "%apps/atom.png%Atom" Exec exec /opt/atom/atom
 + "%apps/glade.png%Glade" Exec exec glade
-+ "%apps/vim.png%Vim" Exec exec vim
++ "%apps/vim.png%Vim" Exec exec gvim
 
 DestroyMenu MenuGNOME
 AddToMenu MenuGNOME
