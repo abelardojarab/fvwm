@@ -70,7 +70,7 @@ XORvalue 208
 # option for normal maximization, and one for full-screen maximization.
 # Syntax: EwmhBaseStruts left right top bottom
 #################
-EwmhBaseStruts 80 0 24 11
+EwmhBaseStruts 80 0 24 14
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
@@ -431,9 +431,9 @@ AddToFunc Resize-or-Raise   "I" Raise
 + M Resize
 
 DestroyFunc Maximize-func
-AddToFunc Maximize-func     "M" Maximize   0   100
+AddToFunc Maximize-func     "M" Maximize   0   99
 + I SetEnv TEMP $[0]
-+ I ThisWindow (!Maximized) Maximize 100 -1p ewmhiwa true 100 100
++ I ThisWindow (!Maximized) Maximize 100 -2p ewmhiwa true 100 99
 + I ThisWindow (Maximized) DestroyWindowStyle
 + I InfoStoreAdd x_$[w.id] $[w.x]
 + I InfoStoreAdd y_$[w.id] $[w.y]
@@ -617,6 +617,9 @@ DestroyModuleConfig FvwmIconMan
 # Window Operation Menu
 DestroyMenu Window-Ops
 AddToMenu Window-Ops "Window Operations"        Title
++ "Windows list...%xpms/mini.windows.xpm%"      WindowList                 (CurrentDesk, AcceptsFocus, !Iconic) Root c c \
+  NoGeometry IconifiedAtEnd, MaxLabelWidth 60
++ ""                                            Nop
 + "Resize%xpms/mini.resize.xpm%"                Resize
 + "Top Half%xpms/mini.maximize-horiz.xpm%"      TopHalfMix
 + "Left Half%xpms/mini.maximize-vert.xpm%"      LeftHalfMix
@@ -647,7 +650,7 @@ AddToMenu Window-Ops "Window Operations"        Title
 
 DestroyMenu MenuFvwmModules
 AddToMenu MenuFvwmModules
-+ "%xpms/mini.fvwm.xpm%Banner"              Module                     FvwmBanner
++ "%xpms/mini.fvwm.xpm%Banner"                  Module                     FvwmBanner
 + "%xpms/mini.desktop.xpm%Expose"               Module                     FvwmExpose
 + "%xpms/mini.xterm.xpm%Quake-style Console"    Module                     StartHiddenConsole
 + ""                                            Nop
@@ -746,8 +749,8 @@ Mouse 2      R          N      WindowList
 Mouse 1      F          A      Resize-or-Raise
 Mouse 1      T          A      Move-or-Raise
 Mouse 1      I          A      Move-or-Iconify
-Mouse 2      I          A      Iconify
-Mouse 2      T          A      Menu Window-Ops Nop
+Mouse 2      T          A      WindowList
+Mouse 3      T          A      Menu Window-Ops Nop
 
 # Roll mouse wheel anywhere with Shift-Ctrl + cursor left/right for goto page
 Mouse 4      A         SC      GotoPage +1p +0p
