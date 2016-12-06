@@ -70,7 +70,7 @@ XORvalue 208
 # option for normal maximization, and one for full-screen maximization.
 # Syntax: EwmhBaseStruts left right top bottom
 #################
-EwmhBaseStruts 80 0 0 24
+EwmhBaseStruts 80 0 0 25
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
@@ -408,25 +408,242 @@ AddToFunc   FvwmDesktopScreenshot
   "$[fvwm_cache]/screenshot/screenshot-`date +%F[%R]`.jpg"
 + I Exec notify-send "Desktop screenshot was taken."
 
-# Autohide console example: [4]http://dev.gentoo.org/~taviso/autohide_console.png
+# Autohide console example: http://dev.gentoo.org/~taviso/autohide_console.png
 DestroyFunc StartHiddenConsole
 AddToFunc StartHiddenConsole
 + I Exec exec rxvt +sb -geometry 144x8+2+0 -name HiddenConsole
 + I Wait HiddenConsole
 + I Autohide HiddenConsole 250 0 N
 
+# Tiling functions
+# From http://www.fvwmforums.org/phpBB3/viewtopic.php?t=3049
+# window states 1-9 representing the positions as they would on a numpad
+# i.e. 1 = lower-left corner; 9 = upper-right corner; 2 = bottom half of screen;
+# 8 = top half of screen; 6 = right half of screen; 3 = bottom-right corner; etc.
+DestroyFunc TileFunc
+AddToFunc TileFunc
++ I Function ClearTileStatesFunc
++ I State $0 True
++ I ResizeMoveMaximize Frame $1 $2 $3 $4
+
+DestroyFunc ClearTileStatesFunc
+AddToFunc ClearTileStatesFunc
++ I State 1 False
++ I State 2 False
++ I State 3 False
++ I State 4 False
++ I State 5 False
++ I State 6 False
++ I State 7 False
++ I State 8 False
++ I State 9 False
+
+DestroyFunc UnTileFunc
+AddToFunc UnTileFunc
++ I Maximize False
++ I Function ClearTileStatesFunc
+
+DestroyFunc TileLeftFunc
+AddToFunc TileLeftFunc
+# if not tiled, tile left
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 4 50 100 0 0
++ I TestRc (Match) Break
+# if tiled bottom-left, do nothing
++ I Current (State 1) Break
+# if tiled bottom, then tile bottom-left
++ I Current (State 2) Function TileFunc 1 50 50 0 50
++ I State 2 False
++ I TestRc (Match) Break
+# if tiled bottom-right, then tile bottom
++ I Current (State 3) Function TileFunc 2 100 50 0 50
++ I State 3 False
++ I TestRc (Match) Break
+# if tiled left, do nothing
++ I Current (State 4) Function TileFunc 4 25 100 0 0
+# if tiled middle, tile left
++ I Current (State 5) Function TileFunc 4 50 100 0 0
++ I State 5 False
++ I TestRc (Match) Break
+# if tiled right, then untile and remove tiled states
++ I Current (State 6) Function UnTileFunc
++ I TestRc (Match) Break
+# if tiled top-left, do nothing
++ I Current (State 7) Break
+# if tiled up, then tile top-left
++ I Current (State 8) Function TileFunc 7 50 50 0 0
++ I State 8 False
++ I TestRc (Match) Break
+# if tiled top-right, then tile top
++ I Current (State 9) Function TileFunc 8 100 50 0 0
++ I State 9 False
++ I TestRc (Match) Break
+
+DestroyFunc TileRightFunc
+AddToFunc TileRightFunc
+# if not tiled, tile right
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 6 50 100 50 0
++ I TestRc (Match) Break
+# if tiled bottom-left, tile to bottom
++ I Current (State 1) Function TileFunc 2 100 50 0 50
++ I State 1 False
++ I TestRc (Match) Break
+# if tiled bottom, then tile bottom-right
++ I Current (State 2) Function TileFunc 3 50 50 50 50
++ I State 2 False
++ I TestRc (Match) Break
+# if tiled bottom-right, then do nothing
++ I Current (State 3) Break
+# if tiled left, then untile
++ I Current (State 4) Function UnTileFunc
++ I TestRc (Match) Break
+# if tiled middle, tile right
++ I Current (State 5) Function TileFunc 6 50 100 50 0
++ I State 5 False
++ I TestRc (Match) Break
+# if tiled right, then do nothing
++ I Current (State 6) Function TileFunc 6 25 100 75 0
+# if tiled top-left, then tile top
++ I Current (State 7) Function TileFunc 8 100 50 0 0
++ I TestRc (Match) Break
+# if tiled up, then tile top-right
++ I Current (State 8) Function TileFunc 9 50 50 50 0
++ I State 8 False
++ I TestRc (Match) Break
+# if tiled top-right, then do nothing
++ I Current (State 9) Break
+
+DestroyFunc TileUpFunc
+AddToFunc TileUpFunc
+# if not tiled, tile up
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 5 100 100 0 0
++ I TestRc (Match) Break
+# if tiled bottom-left, tile to left
++ I Current (State 1) Function TileFunc 4 50 100 0 0
++ I State 1 False
++ I TestRc (Match) Break
+# if tiled bottom, then untile
++ I Current (State 2) Function UnTileFunc
++ I TestRc (Match) Break
+# if tiled bottom-right, then tile right
++ I Current (State 3) Function TileFunc 6 50 100 50 0
++ I State 3 False
++ I TestRc (Match) Break
+# if tiled left, then tile top left
++ I Current (State 4) Function TileFunc 7 50 50 0 0
++ I State 4 False
++ I TestRc (Match) Break
+# if tiled middle, tile up
++ I Current (State 5) Function TileFunc 8 100 50 0 0
++ I State 5 False
++ I TestRc (Match) Break
+# if tiled right, then tile top right
++ I Current (State 6) Function TileFunc 9 50 50 50 0
++ I State 6 False
++ I TestRc (Match) Break
+# if tiled top-left, then do nothing
++ I Current (State 7) Break
+# if tiled up, then do nothing
++ I Current (State 8) Break
+# if tiled top-right, then do nothing
++ I Current (State 9) Break
+# if tiled fullscreen, then tile top
++ I Current (State 5) Function TileFunc 8 100 50 0 0
++ I State 5 False
++ I TestRc (Match) Break
+
+DestroyFunc TileDownFunc
+AddToFunc TileDownFunc
+# if not tiled, tile down
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 2 100 50 0 50
++ I TestRc (Match) Break
+# if tiled bottom-left, do nothing
++ I Current (State 1) Break
+# if tiled bottom, do nothing
++ I Current (State 2) Break
+# if tiled bottom-right, then do nothing
++ I Current (State 3) Break
+# if tiled left, then tile bottom left
++ I Current (State 4) Function TileFunc 1 50 50 0 50
++ I State 4 False
++ I TestRc (Match) Break
+# if tiled middle, tile down
++ I Current (State 5) Function UnTileFunc
++ I State 5 False
++ I TestRc (Match) Break
+# if tiled right, then tile bottom right
++ I Current (State 6) Function TileFunc 3 50 50 50 50
++ I State 6 False
++ I TestRc (Match) Break
+# if tiled top-left, then tile left
++ I Current (State 7) Function TileFunc 4 50 100 0 0
++ I State 7 False
++ I TestRc (Match) Break
+# if tiled up, then tile to fullscreen
++ I Current (State 8) Function TileFunc 5 100 100 0 0
++ I State 8 False
++ I TestRc (Match) Break
+# if tiled top-right, then tile right
++ I Current (State 9) Function TileFunc 6 50 100 50 0
++ I State 9 False
++ I TestRc (Match) Break
+
 # Windows manipulation functions
 DestroyFunc TopHalfMix
 AddToFunc   TopHalfMix
-+ I Maximize 100 50 ewmhiwa true
++ I Maximize 100 50 ewmhiwa
++ I State 8 on
 
 DestroyFunc LeftHalfMix
 AddToFunc   LeftHalfMix
-+ I Maximize 50 100 -12p ewmhiwa true 100 100
++ I Maximize 50 -2p ewmhiwa
++ I State 4 on
+
+DestroyFunc BotHalfMix
+AddToFunc   BotHalfMix
++ I TileDownFunc
+
+DestroyFunc RightHalfMix
+AddToFunc   RightHalfMix
++ I TileRightFunc
 
 DestroyFunc FullScreen
 AddToFunc   FullScreen
-+ I Maximize 100 100 ewmhiwa true
++ I Maximize 100 -2p ewmhiwa
++ I State 10 on
+
+DestroyFunc Maximize-func
+AddToFunc Maximize-func
++ I SetEnv TEMP $[0]
++ I ThisWindow (!Maximized) Maximize 100 -2p ewmhiwa, WindowStyle FixedPosition, FixedSize, ResizeHintOverride, State 10 on, State 5 False
++ I TestRc (NoMatch) ThisWindow (Maximized) UnMaximizeWithFS
++ I InfoStoreAdd x_$[w.id] $[w.x]
++ I InfoStoreAdd y_$[w.id] $[w.y]
++ I InfoStoreAdd width_$[w.id] $[w.width]
++ I InfoStoreAdd height_$[w.id] $[w.height]
++ I Test (EnvMatch TEMP animate) \
+        SendToModule FvwmAnimate animate \
+    $[w.x] $[w.y] $[w.width] $[w.height] \
+    0 0 $[vp.width] $[vp.height]
++ I UnsetEnv TEMP
+
+DestroyFunc MaximizeWithFS
+AddToFunc   MaximizeWithFS
++ I WindowStyle !Borders, !Handles, BorderWidth 0, HandleWidth 0, !Title, ResizeHintOverride
++ I UpdateStyles
++ I State 10 on
++ I State 5 False
++ I Maximize $*
+
+DestroyFunc UnMaximizeWithFS
+AddToFunc   UnMaximizeWithFS
++ I Maximize false
++ I UnTileFunc
++ I State 10 False
++ I State 5 on
++ I DestroyWindowStyle
++ I UpdateStyles
++ I Raise
++ I UpdateStyles
 
 DestroyFunc Move-or-Raise
 AddToFunc Move-or-Raise
@@ -450,37 +667,6 @@ AddToFunc Resize-or-Raise
 + C Raise
 + C Focus
 + M Resize
-
-DestroyFunc Maximize-func
-AddToFunc Maximize-func
-+ I SetEnv TEMP $[0]
-+ I ThisWindow (!Maximized) Maximize 100 -12p ewmhiwa true 100 100, WindowStyle FixedPosition, FixedSize, ResizeHintOverride, State 1 on
-+ I TestRc (NoMatch) ThisWindow (Maximized) UnMaximizeWithFS
-+ I InfoStoreAdd x_$[w.id] $[w.x]
-+ I InfoStoreAdd y_$[w.id] $[w.y]
-+ I InfoStoreAdd width_$[w.id] $[w.width]
-+ I InfoStoreAdd height_$[w.id] $[w.height]
-+ I Test (EnvMatch TEMP animate) \
-        SendToModule FvwmAnimate animate \
-    $[w.x] $[w.y] $[w.width] $[w.height] \
-    0 0 $[vp.width] $[vp.height]
-+ I UnsetEnv TEMP
-
-DestroyFunc MaximizeWithFS
-AddToFunc   MaximizeWithFS
-+ I WindowStyle !Borders, !Handles, BorderWidth 0, HandleWidth 0, !Title, ResizeHintOverride
-+ I UpdateStyles
-+ I State 1 on
-+ I Maximize $*
-
-DestroyFunc UnMaximizeWithFS
-AddToFunc   UnMaximizeWithFS
-+ I Maximize
-+ I State 1 off
-+ I DestroyWindowStyle
-+ I UpdateStyles
-+ I Raise
-+ I UpdateStyles
 
 # Wheel scrolling function
 DestroyFunc WheelScroll
@@ -635,7 +821,9 @@ AddToMenu Window-Ops "Window Operations"        Title
 + ""                                            Nop
 + "Resize%xpms/mini.resize.xpm%"                Resize
 + "Top Half%xpms/mini.maximize-horiz.xpm%"      TopHalfMix
++ "Bottom Half%xpms/mini.maximize-horiz.xpm%"   BotHalfMix
 + "Left Half%xpms/mini.maximize-vert.xpm%"      LeftHalfMix
++ "Right Half%xpms/mini.maximize-vert.xpm%"     RightHalfMix
 + ""                                            Nop
 + "(De) Iconify%xpms/mini.iconify.xpm%"         Iconify
 + "(Un) Maximize%xpms/mini.maximize1.xpm%"      Maximize-func
