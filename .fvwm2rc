@@ -70,7 +70,7 @@ XORvalue 208
 # option for normal maximization, and one for full-screen maximization.
 # Syntax: EwmhBaseStruts left right top bottom
 #################
-EwmhBaseStruts 80 0 24 14
+EwmhBaseStruts 80 0 24 24
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
@@ -135,7 +135,7 @@ Colorset 0 fg white, bg #525252, fgsh #f9f9f9, hi #8f8f8f, sh #454545
 # Active
 Colorset 1 bg #535454, fg #ffffff, fgsh #f9f9f9 hi #fbfbfb, sh #171717, pixmap btn_bg.png, Tint #464646 70
 # Inactive
-Colorset 2 bg #343434, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 20
+Colorset 2 bg #444444, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 20
 DestroyDecor MyDecoration
 AddToDecor   MyDecoration
 + TitleStyle -- Raised
@@ -164,6 +164,11 @@ AddToDecor   MyDecoration
 # + AddButtonStyle  All Active Vector 9 80x60@4 80x40@2 60x20@2 40x20@2 20x40@2 20x60@2 40x80@2 60x80@2 80x60@2 -- Flat
 # + AddButtonStyle  All Inactive Vector 9 80x60@4 80x40@2 60x20@2 40x20@2 20x40@2 20x60@2 40x80@2 60x80@2 80x60@2 -- Flat
 
+# MWM emulation
+# mwm-style border reliefs (less deep than default fvwm) ?
+# Maximize button does mwm-inversion thingy
+Style "*" MWMBorder, MWMDecor, HintOverride, MWMFunctions, MWMButtons
+
 # Window behavior
 Colorset 3 fg #999999, bg black, fgsh #a0a0a0
 Colorset 4 fg #a0a0a0, bg black, fgsh #a4a4a4
@@ -171,7 +176,6 @@ Style * UseDecor MyDecoration
 Style * Colorset 3, HilightColorset 4, MWMFunctions, MWMDecor, HintOverride
 Style * DecorateTransient, NakedTransient
 Style * WindowShadeSteps 20, WindowShadeScrolls
-Style * MWMBorder, FirmBorder
 Style * Font "$[infostore.font_mono]"
 Style * HandleWidth 3, BorderWidth 3
 Style * BackingStore, SaveUnder
@@ -180,6 +184,9 @@ Style * NoPPosition, NoTransientPPosition
 
 # Eye Candy preference of watching resize live
 Style * ResizeOutline, ResizeOpaque
+
+# Horizontal bars that appear on the title bars of sticky windows, for all windows
+Style * StippledTitle
 
 # This is another nice Placement Policy, which tries to avoid obscuring existing windows,
 # you can set penalties on certain window types so some are less likely to be obscured than
@@ -400,41 +407,44 @@ AddToFunc StartHiddenConsole
 # Windows manipulation functions
 DestroyFunc TopHalfMix
 AddToFunc   TopHalfMix
-+ I Maximize 100 50
++ I Maximize 100 50 ewmhiwa true
 
 DestroyFunc LeftHalfMix
 AddToFunc   LeftHalfMix
-+ I Maximize 50  99
++ I Maximize 50 100 -12p ewmhiwa true 100 100
 
 DestroyFunc FullScreen
 AddToFunc   FullScreen
-+ I Maximize 100 100
++ I Maximize 100 100 ewmhiwa true
 
 DestroyFunc Move-or-Raise
-AddToFunc Move-or-Raise     "I" Raise
+AddToFunc Move-or-Raise
++ I Raise
 + D Maximize-func
 + C Raise
 + C Focus
 + M Move
 
 DestroyFunc Move-or-Iconify
-AddToFunc Move-or-Iconify   "I" Raise
+AddToFunc Move-or-Iconify
++ I Raise
 + D Maximize-func
 + M Move
 + C Iconify
 
 DestroyFunc Resize-or-Raise
-AddToFunc Resize-or-Raise   "I" Raise
+AddToFunc Resize-or-Raise
++ I Raise
 + D Maximize-func
 + C Raise
 + C Focus
 + M Resize
 
 DestroyFunc Maximize-func
-AddToFunc Maximize-func     "M" Maximize   0   99
+AddToFunc Maximize-func
 + I SetEnv TEMP $[0]
-+ I ThisWindow (!Maximized) Maximize 100 -2p ewmhiwa true 100 99
-+ I ThisWindow (Maximized) DestroyWindowStyle
++ I ThisWindow (!Maximized) Maximize 100 -12p ewmhiwa true 100 100, WindowStyle FixedPosition, FixedSize, ResizeHintOverride
++ I TestRc (NoMatch) ThisWindow (Maximized) UnMaximizeWithFS
 + I InfoStoreAdd x_$[w.id] $[w.x]
 + I InfoStoreAdd y_$[w.id] $[w.y]
 + I InfoStoreAdd width_$[w.id] $[w.width]
@@ -443,16 +453,11 @@ AddToFunc Maximize-func     "M" Maximize   0   99
         SendToModule FvwmAnimate animate \
     $[w.x] $[w.y] $[w.width] $[w.height] \
     0 0 $[vp.width] $[vp.height]
-+ I TestRc (NoMatch) UpdateStyles
-+ I TestRc (NoMatch) WindowStyle, ResizeHintOverride, FixedPosition, FixedSize
-+ I TestRc (NoMatch) UpdateStyles
-+ I TestRc (NoMatch) Raise
-+ I TestRc (NoMatch) UpdateStyles
 + I UnsetEnv TEMP
 
 DestroyFunc FullscreenWithOffset
 AddToFunc   FullscreenWithOffset
-+ I ThisWindow (!Maximized, !State 1) MaximizeWithFS 100 -10p ewmhiwa
++ I ThisWindow (!Maximized, !State 1) MaximizeWithFS 100 -12p ewmhiwa
 + I TestRc (NoMatch) ThisWindow (Maximized, State 1) UnMaximizeWithFS
 
 DestroyFunc MaximizeWithFS
@@ -467,6 +472,8 @@ AddToFunc   UnMaximizeWithFS
 + I Maximize
 + I State 1 off
 + I DestroyWindowStyle
++ I UpdateStyles
++ I Raise
 + I UpdateStyles
 
 # Wheel scrolling function
