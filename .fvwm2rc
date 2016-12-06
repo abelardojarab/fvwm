@@ -110,6 +110,7 @@ AddToFunc   InitFunction
 + I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then dropbox start; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then google-musicmanager; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then hp-systray; fi'
++ I Exec exec conky
 + I GotoPage 0 0
 
 # +----------------------------------------------------------+
