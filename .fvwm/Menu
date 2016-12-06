@@ -30,10 +30,12 @@ AddToMenu MenuDevelopment
 + "%apps/devhelp.png%Devhelp" Exec exec devhelp
 + "%apps/zeal.png%Zeal" Exec exec zeal
 + "%apps/umbrello.png%Umbrello" Exec exec umbrello %u -caption
++ "%apps/kdevelop.png%QDevelop" Exec exec qdevelop
 + "%apps/monodevelop.png%MonoDevelop" Exec exec monodevelop
-+ "%apps/sublime-text.png%New File" Exec exec /opt/sublime_text/sublime_text --command new_file
-+ "%apps/qgit.png%Qgit" Exec exec qgit
-+ "%apps/emacs24.png%GNU Emacs 24" Exec exec /usr/bin/emacs24
++ "%apps/eclipse.png%Eclipse" Exec exec eclipse
++ "%apps/sublime-text.png%New File" Exec exec sublime_text --command new_file
++ "%apps/qgit.png%Gitkraken" Exec exec gitkraken
++ "%apps/emacs24.png%GNU Emacs 24" Exec exec emacs
 + "%apps/atom.png%Atom" Exec exec /opt/atom/atom
 + "%apps/glade.png%Glade" Exec exec glade
 + "%apps/vim.png%Vim" Exec exec gvim
@@ -58,24 +60,22 @@ AddToMenu MenuGame
 + "Broken Age" Exec exec steam steam://rungameid/232790
 + "%apps/steam.png%Bastion" Exec exec steam steam://rungameid/107100
 + "%apps/steam.png%The Bard's Tale" Exec exec steam steam://rungameid/41900
-+ "ScummVM" Exec exec scummvm
++ "%apps/scummvm.png%ScummVM" Exec exec scummvm
 
 DestroyMenu MenuGraphics
 AddToMenu MenuGraphics
-+ "XSane Image scanning program" Exec exec xsane
++ "%apps/xsane.png%XSane Image scanning program" Exec exec xsane
 + "%apps/shotwell.png%Shotwell" Exec exec shotwell
 + "%apps/inkscape.png%Inkscape" Exec exec inkscape
 + "%apps/gimp.png%GIMP Image Editor" Exec exec gimp
 + "%apps/dia.png%Dia" Exec exec dia
-+ "%apps/display-im6.png%ImageMagick (display Q16)" Exec exec /usr/bin/display-im6
-+ "%apps/display-im6.png%ImageMagick (display Q16)" Exec exec /usr/lib/i386-linux-gnu/ImageMagick-6.8.9/bin-Q16/display
 
 DestroyMenu MenuMultiMedia
 AddToMenu MenuMultiMedia
 + "%apps/openshot.png%OpenShot Video Editor" Exec exec openshot
 + "%apps/brasero.png%CD/DVD Burner (Brasero)" Exec exec brasero --video
 + "%apps/audacious.png%Audacious Qt Interface" Exec exec audacious --qt
-+ "HandBrake" Exec exec ghb
++ "%apps/handbrake.png%HandBrake" Exec exec ghb
 + "%apps/vlc.png%VLC media player" Exec exec /usr/bin/vlc --started-from-file
 + "%apps/rhythmbox.png%Rhythmbox" Exec exec rhythmbox
 + "%apps/pithos.png%Pithos" Exec exec pithos
@@ -88,12 +88,12 @@ DestroyMenu MenuNetwork
 AddToMenu MenuNetwork
 + "%apps/chromium-browser.png%Chromium Browser" Exec exec chromium-browser
 + "%apps/firefox.png%Open a New Private Window in Firefox" Exec exec firefox -private-window
++ "%apps/evolution.png%Evolution Email Client" Exec exec evolution
 + "%apps/transmission.png%Start Transmission Minimized" Exec exec transmission-gtk --minimized
 + "%apps/xchat.png%XChat IRC" Exec exec sh -c "xchat --existing --url
-+ "%apps/thunderbird.png%Contacts" Exec exec thunderbird -addressbook
 + "%apps/filezilla.png%FileZilla" Exec exec filezilla
 + "%apps/wicd-gtk.png%Wicd Network Manager" Exec exec wicd-gtk --no-tray
-+ "Wireshark" Exec exec wireshark
++ "%apps/wireshark.png%Wireshark" Exec exec wireshark
 + "%apps/pidgin.png%Pidgin Internet Messenger" Exec exec pidgin
 
 DestroyMenu MenuOffice
@@ -103,84 +103,72 @@ AddToMenu MenuOffice
 + "%apps/gnucash-icon.png%GnuCash" Exec exec gnucash
 + "%apps/evince.png%Document Viewer" Exec exec evince
 + "%apps/calibre-gui.png%Calibre" Exec exec calibre
-+ "%apps/gnumeric.png%Gnumeric" Exec exec gnumeric
 + "%apps/libreoffice-calc.png%New Spreadsheet" Exec exec libreoffice --calc
 + "%apps/libreoffice-draw.png%New Drawing" Exec exec libreoffice --draw
 + "%apps/libreoffice-impress.png%New Presentation" Exec exec libreoffice --impress
-+ "%apps/okular.png%Okular" Exec exec okular %U %i -caption
 
 DestroyMenu MenuScience
 AddToMenu MenuScience
 + "%apps/octave-logo.png%GNU Octave" Exec exec /usr/bin/octave --force-gui
 + "%apps/rkward.png%RKWard" Exec exec rkward -caption "%c"
-+ "%apps/rstudio.png%RStudio" Exec exec /usr/lib/rstudio/bin/rstudio
++ "%apps/rstudio.png%RStudio" Exec exec rstudio
 + "%apps/rlogo_icon.png%R" Exec exec R
 
 DestroyMenu MenuSystem
 AddToMenu MenuSystem
-+ "PulseAudio Equalizer" Exec exec pulseaudio-equalizer-gtk
-+ "File Manager - Desktop Preferences" Exec exec pcmanfm --desktop-pref
++ "%apps/unity-sound-panel.png%PulseAudio Equalizer" Exec exec pulseaudio-equalizer-gtk
++ "%apps/folder.png%File Manager Preferences" Exec exec pcmanfm --desktop-pref
 + "%apps/deja-dup.png%Dejadup Back Up" Exec exec deja-dup --backup
 + "%apps/baobab.png%Disk Usage Analyzer" Exec exec baobab
 + "%apps/logo.png%System Profiler and Benchmark" Exec exec hardinfo
 + "%apps/gparted.png%GParted" Exec exec gparted-pkexec
 + "%apps/bleachbit.png%System Cleaner BleachBit" Exec exec bleachbit
 + "%apps/bleachbit.png%BleachBit (as root)" Exec exec su-to-root -X -c bleachbit
-+ "Laptop Mode Tools Configuration" Exec exec /usr/sbin/lmt-config-gui
 + "%apps/activity-log-manager.png%Activity Log Manager" Exec exec activity-log-manager
-+ "Networks...%xpms/mini.network.xpm%"        Popup                      MenuNetworkSettings
-+ "Printers...%xpms/mini.printer.xpm%"        Popup                      MenuPrinterSettings
-+ "Software...%xpms/mini.software.xpm%"       Popup                      MenuSWSettings
-+ "GNOME...%xpms/mini.gnome.xpm%"             Popup                      MenuGNOMESettings
++ "%apps/network.png%Networks..."                       Popup                      MenuNetworkSettings
++ "Printers...%apps/printer.png%"                       Popup                      MenuPrinterSettings
++ "Software...%apps/software-properties.png%"           Popup                      MenuSWSettings
++ "GNOME...%xpms/mini.gnome.xpm%"                       Popup                      MenuGNOMESettings
 
 DestroyMenu MenuSWSettings
 AddToMenu MenuSWSettings
-+ "%apps/software-properties.png%Software & Updates" Exec exec software-properties-gtk
++ "%apps/software-properties.png%Software and Updates" Exec exec software-properties-gtk
 + "%apps/softwarecenter.png%Ubuntu Software Center" Exec exec /usr/bin/software-center
 
 DestroyMenu MenuNetworkSettings
 AddToMenu MenuNetworkSettings
-+ "Network Settings" Exec exec network-admin
-+ "Network Connections" Exec exec nm-connection-editor
++ "%apps/network.png%Network Settings" Exec exec network-admin
++ "%xpms/mini.connect.xpm%Network Connections" Exec exec nm-connection-editor
 + "%apps/blueman.png%Bluetooth Manager" Exec exec blueman-manager
-+ "Desktop Sharing" Exec exec vino-preferences
++ "%apps/vino.png%Desktop Sharing" Exec exec vino-preferences
 
 DestroyMenu MenuPrinterSettings
 AddToMenu MenuPrinterSettings
 + "%apps/hp-logo.png%HPLIP Toolbox" Exec exec /usr/bin/hp-toolbox
-+ "Printers" Exec exec system-config-printer
++ "%apps/printer.png%Printers" Exec exec system-config-printer
 
 DestroyMenu MenuGNOMESettings
 AddToMenu MenuGNOMESettings
-+ "GNOME Settings" Exec exec gnome-control-center --overview
++ "%xpms/mini.gnome.xpm%GNOME Settings" Exec exec gnome-control-center --overview
 + "%apps/gnome-disks.png%GNOME Disks" Exec exec gnome-disks
-+ "GNOME System Monitor" Exec exec gnome-system-monitor
++ "%xpms/mini.monitor.xpm%GNOME System Monitor" Exec exec gnome-system-monitor
 + "%apps/gnome-power-statistics.png%GNOME Power Statistics" Exec exec gnome-power-statistics
-+ "%apps/gnome-tweak-tool.png%GNOME Tweak Tool" Exec exec gnome-tweak-tool
 + "%apps/session-properties.png%GNOME Startup Applications" Exec exec gnome-session-properties
 + "GNOME Personal File Sharing" Exec exec gnome-file-share-properties
 + "%apps/logview.png%GNOME System Log" Exec exec gnome-system-log-pkexec
-
-DestroyMenu MenuFvwmStopModule
-AddToMenu MenuFvwmStopModule
-+ "%xpms/mini.xterm.xpm%Stop Quake-style Console"   KillModule             StartHiddenConsole
-
-DestroyMenu MenuPageList
-AddToMenu MenuPageList
-+ "%workspaces/workspace-1.png%Desktop 1"   Pick MoveToPage 0 0
++ "%xpms/mini.font.xpm%GNOME Font Viewer" Exec exec gnome-font-viewer
++ "%apps/gnome-tweak-tool.png%GNOME Tweak Tool" Exec exec gnome-tweak-tool
 
 DestroyMenu MenuUtilities
 AddToMenu MenuUtilities
 + "%apps/orca.png%Screen Reader" Exec exec orca --replace
 + "Contacts" Exec exec gnome-contacts
-+ "File Manager PCManFM" Exec exec pcmanfm
++ "%apps/folder.png%File Manager PCManFM" Exec exec pcmanfm
 + "%apps/xterm-color.png%XTerm" Exec exec xterm
-+ "Character Map" Exec exec gucharmap
++ "%xpms/mini.font.xpm%Character Map" Exec exec gucharmap
 + "%apps/shutter.png%Capture the current active window" Exec exec shutter --active
-+ "Calculator" Exec exec gnome-calculator
-+ "%apps/synergy.png%Synergy" Exec exec synergy
-+ "Startup Disk Creator" Exec exec usb-creator-gtk
-+ "Font Viewer" Exec exec gnome-font-viewer
++ "%apps/galculator.png%Calculator" Exec exec gnome-calculator
++ "%xpms/mini.fdisk.xpm%Startup Disk Creator" Exec exec usb-creator-gtk
 
 # The following settings are interpreted by EMACS, do not remove them.
 # Local Variables:

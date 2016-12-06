@@ -231,15 +231,21 @@ Style "trayer"                !Title, StaysOnTop, FixedPosition
 Style "chromium-browser"      !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, MiniIcon browser.png
 Style "libreoffice*"          NoFuncHint
 Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
+Style "gnome-calculator"      MiniIcon galculator.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gedit"                 MiniIcon gedit.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "nautilus"              MiniIcon folder.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "pcmanfm"               MiniIcon folder.png, EWMHMiniIconOverride
 Style "gimp"                  MiniIcon gimp.png
 Style "inkscape"              MiniIcon inkscape.png
 Style "emacs"                 MiniIcon emacs24.png
+Style "evince"                MiniIcon evince.png
 Style "sublime_text"          MiniIcon sublime-text.png
 Style "devhelp"               MiniIcon devhelp.png
+Style "umbrello"              MiniIcon umbrello.png
 Style "zeal"                  MiniIcon zeal.png
+Style "atom"                  MiniIcon atom.png
+Style "filezilla"             MiniIcon filezilla.png
+Style "gitkraken"             MiniIcon qgit.png
 Style "dia"                   MiniIcon dia.png
 Style "Terminal"              MiniIcon terminal.png
 Style "gnome-terminal"        MiniIcon terminal.png
