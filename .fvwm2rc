@@ -443,7 +443,7 @@ AddToFunc Resize-or-Raise
 DestroyFunc Maximize-func
 AddToFunc Maximize-func
 + I SetEnv TEMP $[0]
-+ I ThisWindow (!Maximized) Maximize 100 -12p ewmhiwa true 100 100, WindowStyle FixedPosition, FixedSize, ResizeHintOverride
++ I ThisWindow (!Maximized) Maximize 100 -12p ewmhiwa true 100 100, WindowStyle FixedPosition, FixedSize, ResizeHintOverride, State 1 on
 + I TestRc (NoMatch) ThisWindow (Maximized) UnMaximizeWithFS
 + I InfoStoreAdd x_$[w.id] $[w.x]
 + I InfoStoreAdd y_$[w.id] $[w.y]
@@ -454,11 +454,6 @@ AddToFunc Maximize-func
     $[w.x] $[w.y] $[w.width] $[w.height] \
     0 0 $[vp.width] $[vp.height]
 + I UnsetEnv TEMP
-
-DestroyFunc FullscreenWithOffset
-AddToFunc   FullscreenWithOffset
-+ I ThisWindow (!Maximized, !State 1) MaximizeWithFS 100 -12p ewmhiwa
-+ I TestRc (NoMatch) ThisWindow (Maximized, State 1) UnMaximizeWithFS
 
 DestroyFunc MaximizeWithFS
 AddToFunc   MaximizeWithFS
