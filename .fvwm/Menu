@@ -22,7 +22,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "%apps/kconfigure.png%Utilities" Popup MenuUtilities
 + "" Nop
 + "%xpms/mini.fvwm.xpm%Restart Fvwm" Restart
-# + "%xpms/small.exit.xpm%Quit Fvwm" Quit
++ "%xpms/small.exit.xpm%Quit Fvwm" Module FvwmForm FvwmForm-QuitVerify
 
 DestroyMenu MenuDevelopment
 AddToMenu MenuDevelopment
