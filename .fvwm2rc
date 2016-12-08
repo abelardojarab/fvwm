@@ -104,12 +104,16 @@ DestroyFunc InitFunction
 AddToFunc   InitFunction
 + I Exec exec xrdb ~/.Xresources
 + I Exec exec feh --bg-scale $[fvwm_wallpaper]
-+ I Exec exec trayer --SetDockType true --distance 200 --padding 10 --transparent true --tint a6aaaa --alpha 50 --edge top --align right --expand true --widthtype percent --width 12 --heighttype pixel --height 24 --distancefrom right
++ I Exec exec trayer --SetDockType true --distance 150 --padding 10 --transparent true --tint a6aaaa --alpha 50 --edge top --align left --expand true --widthtype percent --width 12 --heighttype pixel --height 26 --distancefrom left
 + I Exec exec bash -c 'if [ `getconf LONG_BIT` = "64" ]; then /usr/lib/x86_64-linux-gnu/notify-osd; else /usr/lib/i386-linux-gnu/notify-osd; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then insync start; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then dropbox start; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then google-musicmanager; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then hp-systray; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then insync start; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then dropbox start; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then google-musicmanager; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then hp-systray; fi'
 + I Exec exec conky
 + I Exec exec gnome-do
 + I GotoPage 0 0
@@ -230,6 +234,9 @@ Style "conky"                 !Title, Sticky, WindowListSkip, StaysOnBottom, Nev
 Style "plank"                 !Title, !Handles, StaysOnTop, Sticky, NeverFocus, WindowListSkip
 Style "gkrellm"               !Title, !Handles, StaysOnTop, Sticky, NeverFocus, WindowListSkip, FixedPosition
 Style "trayer"                !Title, StaysOnTop, FixedPosition
+Style "google-chrome"         CenterPlacement, MiniIcon chrome.png
+Style "google-chrome-beta"    CenterPlacement, MiniIcon chrome.png
+Style "Google Chrome"         CenterPlacement, MiniIcon chrome.png
 Style "chromium-browser"      !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, MiniIcon browser.png
 Style "libreoffice*"          NoFuncHint
 Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
@@ -256,7 +263,8 @@ Style "xman"                  Icon xman.xpm, ClickToFocus
 Style "xmag"                  Icon mag_glass.xpm, ClickToFocus
 Style "xgraph"                Icon graphs.xpm, ClickToFocus
 Style "xmosaic"               Color Green/Yellow, ClickToFocus
-Style "firefox"               CenterPlacement, MiniIcon firefox.png
+Style "Mozilla Firefox"       CenterPlacement, MiniIcon browser.png
+Style "firefox"               CenterPlacement, MiniIcon browser.png
 Style "*Dialog_popup"         WindowListSkip
 Style "gkrellm"               BorderWidth 0, NoTitle, NoHandles, WindowListSkip
 Style "gnome-do"              CenterPlacement, BorderWidth 0, NoTitle, NoHandles, MiniIcon find1.xpm, EWMHMiniIconOverride, WindowListSkip

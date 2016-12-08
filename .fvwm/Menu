@@ -6,8 +6,9 @@
 
 DestroyMenu MenuFvwmRoot
 AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
-+ "%xpms/mini.desktop.xpm%Show Desktop" All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail
++ "%apps/chrome.png%Google Chrome" Exec exec google-chrome
 + "%apps/terminal.png%New Terminal" Exec exec gnome-terminal
++ "%xpms/mini.desktop.xpm%Show Desktop" All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail
 + "" Nop
 
 + "%apps/monodevelop.png%Development" Popup MenuDevelopment
@@ -86,6 +87,7 @@ AddToMenu MenuMultiMedia
 
 DestroyMenu MenuNetwork
 AddToMenu MenuNetwork
++ "%apps/chrome.png%Google Chrome" Exec exec google-chrome
 + "%apps/chromium-browser.png%Chromium Browser" Exec exec chromium-browser
 + "%apps/firefox.png%Open a New Private Window in Firefox" Exec exec firefox -private-window
 + "%apps/evolution.png%Evolution Email Client" Exec exec evolution
