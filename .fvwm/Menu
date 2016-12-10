@@ -94,9 +94,10 @@ AddToMenu MenuNetwork
 + "%apps/transmission.png%Start Transmission Minimized" Exec exec transmission-gtk --minimized
 + "%apps/xchat.png%XChat IRC" Exec exec sh -c "xchat --existing --url
 + "%apps/filezilla.png%FileZilla" Exec exec filezilla
++ "%apps/pidgin.png%Pidgin Internet Messenger" Exec exec pidgin
++ "%apps/skype.png%Skype" Exec exec skype
 + "%apps/wicd-gtk.png%Wicd Network Manager" Exec exec wicd-gtk --no-tray
 + "%apps/wireshark.png%Wireshark" Exec exec wireshark
-+ "%apps/pidgin.png%Pidgin Internet Messenger" Exec exec pidgin
 
 DestroyMenu MenuOffice
 AddToMenu MenuOffice

@@ -114,6 +114,7 @@ AddToFunc   InitFunction
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then dropbox start; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then google-musicmanager; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then hp-systray; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then skype; fi'
 + I Exec exec conky
 + I Exec exec gnome-do
 + I GotoPage 0 0
