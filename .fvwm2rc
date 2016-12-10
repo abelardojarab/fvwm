@@ -248,6 +248,7 @@ Style "gimp"                  MiniIcon gimp.png
 Style "inkscape"              MiniIcon inkscape.png
 Style "emacs"                 MiniIcon emacs24.png
 Style "evince"                MiniIcon evince.png
+Style "subl"                  MiniIcon sublime-text.png
 Style "sublime_text"          MiniIcon sublime-text.png
 Style "devhelp"               MiniIcon devhelp.png
 Style "umbrello"              MiniIcon umbrello.png
@@ -327,7 +328,7 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtons(Title Terminal, Icon terminal.png, Action 'Exec "Terminal" gnome-terminal &')
 *FvwmButtons(Title Eclipse, Icon eclipse.png, Action 'Exec "Eclipse" eclipse &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
-*FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" sublime_text &')
+*FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
 *FvwmButtons(Title Filezilla, Icon filezilla.png, Action 'Exec "Filezilla" filezilla &')
 *FvwmButtons(Title Umbrello, Icon umbrello.png, Action 'Exec "Umbrello" umbrello &')
 *FvwmButtons(Title Gitkraken, Icon qgit.png, Action 'Exec "Gitkraken" gitkraken &')
