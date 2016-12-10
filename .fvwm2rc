@@ -313,7 +313,7 @@ Colorset 11 pixmap tile_gray.png
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtonsFont  "$[infostore.font_mono]"
-*FvwmButtons: ButtonGeometry 74x44+0+0
+*FvwmButtons: ButtonGeometry 74x42+0+0
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 21
