@@ -142,9 +142,9 @@ AddToFunc   InitFunction
 # Pixmaps
 Colorset 0 fg white, bg #525252, fgsh #f9f9f9, hi #8f8f8f, sh #454545
 # Active
-Colorset 1 bg #535454, fg #ffffff, fgsh #f9f9f9 hi #fbfbfb, sh #171717, pixmap btn_bg.png, Tint #464646 70
+Colorset 1 bg #535454, fg #ffffff, fgsh #f9f9f9 hi #fbfbfb, sh #171717, Tint #464646 20
 # Inactive
-Colorset 2 bg #444444, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 20
+Colorset 2 bg #444444, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 60
 DestroyDecor MyDecoration
 AddToDecor   MyDecoration
 + TitleStyle -- Raised
@@ -180,7 +180,7 @@ Style "*" MWMBorder, MWMDecor, HintOverride, MWMFunctions, MWMButtons
 
 # Window behavior
 Colorset 3 fg #999999, bg black, fgsh #a0a0a0
-Colorset 4 fg #a0a0a0, bg black, fgsh #a4a4a4
+Colorset 4 fg #f0f0f0, bg black, fgsh #a4a4a4
 Style * UseDecor MyDecoration
 Style * Colorset 3, HilightColorset 4, MWMFunctions, MWMDecor, HintOverride
 Style * DecorateTransient, NakedTransient
@@ -507,7 +507,7 @@ AddToFunc TileRightFunc
 + I Current (State 4) Function UnTileFunc
 + I TestRc (Match) Break
 # if tiled middle, tile right
-+ I Current (State 5) Function TileFunc 6 50 100 50 0
++ I Current (State 5) Function TileFunc 6 50 97 47 0
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then do nothing
@@ -557,8 +557,8 @@ AddToFunc TileUpFunc
 # if tiled top-right, then do nothing
 + I Current (State 9) Break
 # if tiled fullscreen, then tile top
-+ I Current (State 5) Function TileFunc 8 100 50 0 0
-+ I State 5 False
++ I Current (State 10) Function TileFunc 8 100 50 0 0
++ I State 10 False
 + I TestRc (Match) Break
 
 DestroyFunc TileDownFunc
@@ -593,28 +593,30 @@ AddToFunc TileDownFunc
 + I State 8 False
 + I TestRc (Match) Break
 # if tiled top-right, then tile right
-+ I Current (State 9) Function TileFunc 6 50 100 50 0
++ I Current (State 9) Function TileFunc 6 50 98 50 0
 + I State 9 False
 + I TestRc (Match) Break
 
 # Windows manipulation functions
 DestroyFunc TopHalfMix
 AddToFunc   TopHalfMix
-+ I Maximize 100 50 ewmhiwa
++ I TileUpFunc
 + I State 8 on
 
 DestroyFunc LeftHalfMix
 AddToFunc   LeftHalfMix
-+ I Maximize 50 -2p ewmhiwa
++ I TileLeftFunc
 + I State 4 on
 
 DestroyFunc BotHalfMix
 AddToFunc   BotHalfMix
 + I TileDownFunc
++ I State 2 on
 
 DestroyFunc RightHalfMix
 AddToFunc   RightHalfMix
 + I TileRightFunc
++ I State 6 on
 
 DestroyFunc FullScreen
 AddToFunc   FullScreen
@@ -971,6 +973,10 @@ Mouse 5      A         SC      GotoPage -1p +0p
 # with active window
 Mouse 4      A         SM      MoveAndGotoPage +1p +0p
 Mouse 5      A         SM      MoveAndGotoPage -1p +0p
+
+# Ignore L (caps-lock) 2 (Numlock) and 5 (scroll lock) keys as modifiers
+# pretty much mandatory for key bindings to work properly, especially laptops
+IgnoreModifiers L25
 
 # Handle key bindings
 #   Keyname Context Modifi  Function
