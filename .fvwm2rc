@@ -115,6 +115,8 @@ AddToFunc   InitFunction
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then google-musicmanager; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then hp-systray; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then skype; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then wicd-client --tray; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then skype; fi'
 + I Exec exec conky
 + I Exec exec gnome-do
 + I GotoPage 0 0
@@ -1045,6 +1047,13 @@ Key KP_Right A       C      MoveAndGotoPage 2 1
 Key KP_End   A       C      MoveAndGotoPage 0 2
 Key KP_Down  A       C      MoveAndGotoPage 1 2
 Key KP_Next  A       C      MoveAndGotoPage 2 2
+
+# Pulseaudio keys
+Key XF86AudioRaiseVolume   A N   Exec notify-send " " -i notification-audio-volume-medium -h int:value:$(pactl set-sink-volume 0 +10% | grep -m 1 "%]" | cut -d "[" -f2|cut -d "%" -f1) -h string:synchronous:volume
+Key XF86AudioLowerVolume   A N   Exec notify-send " " -i notification-audio-volume-medium -h int:value:$(pactl set-sink-volume 0 -10% | grep -m 1 "%]" | cut -d "[" -f2|cut -d "%" -f1) -h string:synchronous:volume
+Key XF86AudioMute          A N   Exec pactl set-sink-mute 0 toggle
+Key XF86KbdBrightnessUp    A N   Exec xbacklight -inc 10
+Key XF86KbdBrightnessDown  A N   Exec xbacklight -dec 10
 
 ####
 # Mouse Gestures.
