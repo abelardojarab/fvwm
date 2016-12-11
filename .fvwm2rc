@@ -254,6 +254,7 @@ Style "sublime_text"          MiniIcon sublime-text.png
 Style "devhelp"               MiniIcon devhelp.png
 Style "umbrello"              MiniIcon umbrello.png
 Style "vncviewer"             MiniIcon vncviewer.png
+Style "VNC Viewer"             MiniIcon vncviewer.png
 Style "zeal"                  MiniIcon zeal.png
 Style "atom"                  MiniIcon atom.png
 Style "filezilla"             MiniIcon filezilla.png
