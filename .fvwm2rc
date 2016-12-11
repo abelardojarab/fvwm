@@ -315,7 +315,7 @@ Colorset 11 pixmap tile_gray.png
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtonsFont  "$[infostore.font_mono]"
-*FvwmButtons: ButtonGeometry 74x42+0+0
+*FvwmButtons: ButtonGeometry 74x45+0+0
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 21
@@ -327,19 +327,15 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "PCmanFM" pcmanfm &')
 *FvwmButtons(Title Browser, Icon browser.png, Action 'Exec "Firefox" firefox &')
 *FvwmButtons(Title Terminal, Icon terminal.png, Action 'Exec "Terminal" gnome-terminal &')
-*FvwmButtons(Title Eclipse, Icon eclipse.png, Action 'Exec "Eclipse" eclipse &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
 *FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
 *FvwmButtons(Title Filezilla, Icon filezilla.png, Action 'Exec "Filezilla" filezilla &')
 *FvwmButtons(Title Umbrello, Icon umbrello.png, Action 'Exec "Umbrello" umbrello &')
 *FvwmButtons(Title Gitkraken, Icon qgit.png, Action 'Exec "Gitkraken" gitkraken &')
 *FvwmButtons(Title VMware, Icon vmware.png, Action 'Exec "VMware" vmware &')
-*FvwmButtons(Title Evince, Icon evince.png, Action 'Exec "Evince" evince &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
-*FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(Title LOWriter, Icon libreoffice-writer.png, Action 'Exec "Writer" libreoffice --writer &')
-*FvwmButtons(Title LOCalc, Icon libreoffice-calc.png, Action 'Exec "Calc" libreoffice --calc &')
 *FvwmButtons(Size 1x1, Swallow (NoKill, Respawn, UseOld) XBiff 'Exec xbiff &')
 
 # AutoHiding Console
