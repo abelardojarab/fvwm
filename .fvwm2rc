@@ -456,12 +456,12 @@ AddToFunc UnTileFunc
 DestroyFunc TileLeftFunc
 AddToFunc TileLeftFunc
 # if not tiled, tile left
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 4 50 100 0 0
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 4 46 97 0 0
 + I TestRc (Match) Break
 # if tiled bottom-left, do nothing
 + I Current (State 1) Break
 # if tiled bottom, then tile bottom-left
-+ I Current (State 2) Function TileFunc 1 50 50 0 50
++ I Current (State 2) Function TileFunc 1 46 50 0 50
 + I State 2 False
 + I TestRc (Match) Break
 # if tiled bottom-right, then tile bottom
@@ -471,7 +471,7 @@ AddToFunc TileLeftFunc
 # if tiled left, do nothing
 + I Current (State 4) Function TileFunc 4 25 100 0 0
 # if tiled middle, tile left
-+ I Current (State 5) Function TileFunc 4 50 100 0 0
++ I Current (State 5) Function TileFunc 4 46 97 0 0
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then untile and remove tiled states
@@ -491,7 +491,7 @@ AddToFunc TileLeftFunc
 DestroyFunc TileRightFunc
 AddToFunc TileRightFunc
 # if not tiled, tile right
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 6 50 100 50 0
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 6 50 97 48 0
 + I TestRc (Match) Break
 # if tiled bottom-left, tile to bottom
 + I Current (State 1) Function TileFunc 2 100 50 0 50
@@ -507,7 +507,7 @@ AddToFunc TileRightFunc
 + I Current (State 4) Function UnTileFunc
 + I TestRc (Match) Break
 # if tiled middle, tile right
-+ I Current (State 5) Function TileFunc 6 50 97 47 0
++ I Current (State 5) Function TileFunc 6 50 97 48 0
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then do nothing
@@ -525,7 +525,7 @@ AddToFunc TileRightFunc
 DestroyFunc TileUpFunc
 AddToFunc TileUpFunc
 # if not tiled, tile up
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 5 100 100 0 0
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 5 97 50 0 0
 + I TestRc (Match) Break
 # if tiled bottom-left, tile to left
 + I Current (State 1) Function TileFunc 4 50 100 0 0
@@ -543,7 +543,7 @@ AddToFunc TileUpFunc
 + I State 4 False
 + I TestRc (Match) Break
 # if tiled middle, tile up
-+ I Current (State 5) Function TileFunc 8 100 50 0 0
++ I Current (State 5) Function TileFunc 8 97 50 0 0
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then tile top right
@@ -564,7 +564,7 @@ AddToFunc TileUpFunc
 DestroyFunc TileDownFunc
 AddToFunc TileDownFunc
 # if not tiled, tile down
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 2 100 50 0 50
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 2 97 48 0 50
 + I TestRc (Match) Break
 # if tiled bottom-left, do nothing
 + I Current (State 1) Break
@@ -577,7 +577,7 @@ AddToFunc TileDownFunc
 + I State 4 False
 + I TestRc (Match) Break
 # if tiled middle, tile down
-+ I Current (State 5) Function UnTileFunc
++ I Current (State 5) Function TileFunc 2 97 48 0 50
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then tile bottom right
