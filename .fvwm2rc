@@ -253,6 +253,7 @@ Style "subl"                  MiniIcon sublime-text.png
 Style "sublime_text"          MiniIcon sublime-text.png
 Style "devhelp"               MiniIcon devhelp.png
 Style "umbrello"              MiniIcon umbrello.png
+Style "vncviewer"             MiniIcon vncviewer.png
 Style "zeal"                  MiniIcon zeal.png
 Style "atom"                  MiniIcon atom.png
 Style "filezilla"             MiniIcon filezilla.png
@@ -315,7 +316,7 @@ Colorset 11 pixmap tile_gray.png
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtonsFont  "$[infostore.font_mono]"
-*FvwmButtons: ButtonGeometry 74x45+0+0
+*FvwmButtons: ButtonGeometry 74x46+0+0
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 21
@@ -330,7 +331,7 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
 *FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
 *FvwmButtons(Title Filezilla, Icon filezilla.png, Action 'Exec "Filezilla" filezilla &')
-*FvwmButtons(Title Umbrello, Icon umbrello.png, Action 'Exec "Umbrello" umbrello &')
+*FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
 *FvwmButtons(Title Gitkraken, Icon qgit.png, Action 'Exec "Gitkraken" gitkraken &')
 *FvwmButtons(Title VMware, Icon vmware.png, Action 'Exec "VMware" vmware &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')

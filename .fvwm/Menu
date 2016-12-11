@@ -96,6 +96,7 @@ AddToMenu MenuNetwork
 + "%apps/filezilla.png%FileZilla" Exec exec filezilla
 + "%apps/pidgin.png%Pidgin Internet Messenger" Exec exec pidgin
 + "%apps/skype.png%Skype" Exec exec skype
++ "%apps/vncviewer.png%VNC Viewer" Exec exec vncviewer
 + "%apps/wicd-gtk.png%Wicd Network Manager" Exec exec wicd-gtk --no-tray
 + "%apps/wireshark.png%Wireshark" Exec exec wireshark
 
