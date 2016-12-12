@@ -452,53 +452,62 @@ DestroyFunc UnTileFunc
 AddToFunc UnTileFunc
 + I Maximize False
 + I Function ClearTileStatesFunc
++ I State 5 On
 
 DestroyFunc TileLeftFunc
 AddToFunc TileLeftFunc
 # if not tiled, tile left
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 4 46 97 0 0
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 4 48 97 0 0
 + I TestRc (Match) Break
 # if tiled bottom-left, do nothing
-+ I Current (State 1) Break
++ I Current (State 1) Function TileFunc 4 48 97 0 0
++ I State 1 False
++ I TestRc (Match) Break
 # if tiled bottom, then tile bottom-left
-+ I Current (State 2) Function TileFunc 1 46 50 0 50
++ I Current (State 2) Function TileFunc 1 48 48 0 50
 + I State 2 False
 + I TestRc (Match) Break
 # if tiled bottom-right, then tile bottom
-+ I Current (State 3) Function TileFunc 2 100 50 0 50
++ I Current (State 3) Function TileFunc 2 97 48 0 50
 + I State 3 False
 + I TestRc (Match) Break
 # if tiled left, do nothing
-+ I Current (State 4) Function TileFunc 4 25 100 0 0
++ I Current (State 4) Function TileFunc 4 25 97 0 0
++ I TestRc (Match) Break
 # if tiled middle, tile left
-+ I Current (State 5) Function TileFunc 4 46 97 0 0
++ I Current (State 5) Function TileFunc 4 48 97 0 0
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then untile and remove tiled states
 + I Current (State 6) Function UnTileFunc
 + I TestRc (Match) Break
 # if tiled top-left, do nothing
-+ I Current (State 7) Break
++ I Current (State 7) Function TileFunc 4 48 97 0 0
++ I State 7 False
++ I TestRc (Match) Break
 # if tiled up, then tile top-left
-+ I Current (State 8) Function TileFunc 7 50 50 0 0
++ I Current (State 8) Function TileFunc 7 48 48 0 0
 + I State 8 False
 + I TestRc (Match) Break
 # if tiled top-right, then tile top
-+ I Current (State 9) Function TileFunc 8 100 50 0 0
++ I Current (State 9) Function TileFunc 8 48 48 0 0
 + I State 9 False
++ I TestRc (Match) Break
++ I Current (State 10) Function TileFunc 4 48 97 0 0
++ I State 10 False
 + I TestRc (Match) Break
 
 DestroyFunc TileRightFunc
 AddToFunc TileRightFunc
 # if not tiled, tile right
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 6 50 97 48 0
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 6 48 97 50 0
 + I TestRc (Match) Break
 # if tiled bottom-left, tile to bottom
-+ I Current (State 1) Function TileFunc 2 100 50 0 50
++ I Current (State 1) Function TileFunc 2 97 48 0 50
 + I State 1 False
 + I TestRc (Match) Break
 # if tiled bottom, then tile bottom-right
-+ I Current (State 2) Function TileFunc 3 50 50 50 50
++ I Current (State 2) Function TileFunc 3 48 48 50 50
 + I State 2 False
 + I TestRc (Match) Break
 # if tiled bottom-right, then do nothing
@@ -507,57 +516,66 @@ AddToFunc TileRightFunc
 + I Current (State 4) Function UnTileFunc
 + I TestRc (Match) Break
 # if tiled middle, tile right
-+ I Current (State 5) Function TileFunc 6 50 97 48 0
++ I Current (State 5) Function TileFunc 6 48 48 50 0
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then do nothing
-+ I Current (State 6) Function TileFunc 6 25 100 75 0
++ I Current (State 6) Function TileFunc 6 25 97 75 0
 # if tiled top-left, then tile top
-+ I Current (State 7) Function TileFunc 8 100 50 0 0
++ I Current (State 7) Function TileFunc 8 97 48 0 0
 + I TestRc (Match) Break
 # if tiled up, then tile top-right
-+ I Current (State 8) Function TileFunc 9 50 50 50 0
++ I Current (State 8) Function TileFunc 9 48 48 50 0
 + I State 8 False
 + I TestRc (Match) Break
 # if tiled top-right, then do nothing
 + I Current (State 9) Break
++ I Current (State 5) Function TileFunc 6 48 48 50 0
++ I State 10 False
++ I TestRc (Match) Break
 
 DestroyFunc TileUpFunc
 AddToFunc TileUpFunc
 # if not tiled, tile up
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 5 97 50 0 0
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 5 97 48 0 0
 + I TestRc (Match) Break
 # if tiled bottom-left, tile to left
-+ I Current (State 1) Function TileFunc 4 50 100 0 0
++ I Current (State 1) Function TileFunc 4 48 97 0 0
 + I State 1 False
 + I TestRc (Match) Break
 # if tiled bottom, then untile
 + I Current (State 2) Function UnTileFunc
 + I TestRc (Match) Break
 # if tiled bottom-right, then tile right
-+ I Current (State 3) Function TileFunc 6 50 100 50 0
++ I Current (State 3) Function TileFunc 6 48 97 50 0
 + I State 3 False
 + I TestRc (Match) Break
 # if tiled left, then tile top left
-+ I Current (State 4) Function TileFunc 7 50 50 0 0
++ I Current (State 4) Function TileFunc 7 48 48 0 0
 + I State 4 False
 + I TestRc (Match) Break
 # if tiled middle, tile up
-+ I Current (State 5) Function TileFunc 8 97 50 0 0
++ I Current (State 5) Function TileFunc 8 97 48 0 0
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then tile top right
-+ I Current (State 6) Function TileFunc 9 50 50 50 0
++ I Current (State 6) Function TileFunc 9 48 48 50 0
 + I State 6 False
 + I TestRc (Match) Break
 # if tiled top-left, then do nothing
-+ I Current (State 7) Break
-# if tiled up, then do nothing
-+ I Current (State 8) Break
++ I Current (State 7) Function TileFunc 8 97 48 0 0
++ I State 7 False
++ I TestRc (Match) Break
+# if tiled up, then do maximize
++ I Current (State 8) TileFunc 10 97 97 0 0
++ I State 8 False
++ I TestRc (Match) Break
 # if tiled top-right, then do nothing
-+ I Current (State 9) Break
-# if tiled fullscreen, then tile top
-+ I Current (State 10) Function TileFunc 8 100 50 0 0
++ I Current (State 9) TileFunc 8 97 48 0 0
++ I State 9 False
++ I TestRc (Match) Break
+# if tiled fullscreen, then untile
++ I Current (State 10) UnTileFunc
 + I State 10 False
 + I TestRc (Match) Break
 
@@ -568,12 +586,14 @@ AddToFunc TileDownFunc
 + I TestRc (Match) Break
 # if tiled bottom-left, do nothing
 + I Current (State 1) Break
-# if tiled bottom, do nothing
-+ I Current (State 2) Break
+# if tiled bottom, go fullscreen
++ I Current (State 2) TileFunc 10 97 97 0 0
++ I State 2 False
++ I TestRc (Match) Break
 # if tiled bottom-right, then do nothing
 + I Current (State 3) Break
 # if tiled left, then tile bottom left
-+ I Current (State 4) Function TileFunc 1 50 50 0 50
++ I Current (State 4) Function TileFunc 1 48 48 0 50
 + I State 4 False
 + I TestRc (Match) Break
 # if tiled middle, tile down
@@ -581,20 +601,24 @@ AddToFunc TileDownFunc
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then tile bottom right
-+ I Current (State 6) Function TileFunc 3 50 50 50 50
++ I Current (State 6) Function TileFunc 3 48 48 50 50
 + I State 6 False
 + I TestRc (Match) Break
 # if tiled top-left, then tile left
-+ I Current (State 7) Function TileFunc 4 50 100 0 0
++ I Current (State 7) Function TileFunc 4 48 97 0 0
 + I State 7 False
 + I TestRc (Match) Break
-# if tiled up, then tile to fullscreen
-+ I Current (State 8) Function TileFunc 5 100 100 0 0
+# if tiled up, then untile
++ I Current (State 8) UnTileFunc
 + I State 8 False
 + I TestRc (Match) Break
 # if tiled top-right, then tile right
-+ I Current (State 9) Function TileFunc 6 50 98 50 0
++ I Current (State 9) Function TileFunc 6 48 97 50 0
 + I State 9 False
++ I TestRc (Match) Break
+# if tiled fullscreen, then untile
++ I Current (State 10) UnTileFunc
++ I State 10 False
 + I TestRc (Match) Break
 
 # Windows manipulation functions
@@ -657,6 +681,14 @@ AddToFunc   UnMaximizeWithFS
 + I Raise
 + I UpdateStyles
 
+DestroyFunc PickWindowRaiseAndDeiconify
+AddToFunc PickWindowRaiseAndDeiconify
+ + I Pick
+ + I TestRc (Error) Break
+ + I Raise
+ + I Focus
+ + I Iconify off
+
 DestroyFunc Move-or-Raise
 AddToFunc Move-or-Raise
 + I Raise
@@ -679,6 +711,40 @@ AddToFunc Resize-or-Raise
 + C Raise
 + C Focus
 + M Resize
+
+# Move Window
+DestroyFunc MoveRight
+AddToFunc   MoveRight
++ I AnimatedMove w+20p keep
+
+DestroyFunc MoveLeft
+AddToFunc MoveLeft
++ I AnimatedMove w+-20p keep
+
+DestroyFunc MoveUp
+AddToFunc MoveUp
++ I AnimatedMove keep w+-20p
+
+DestroyFunc MoveDown
+AddToFunc MoveDown
++ I AnimatedMove keep w+20p
+
+DestroyFunc ShrinkEast
+AddToFunc ShrinkEast
++ I PipeRead "echo Resize $(($[cw.width] - 15))p keep"
+
+DestroyFunc GrowEast
+AddToFunc GrowEast
++ I PipeRead "echo Resize $(($[cw.width] + 15))p keep"
+
+DestroyFunc ShrinkSouth
+AddToFunc ShrinkSouth
++ I PipeRead "echo Resize keep $(($[cw.height] - 15))p"
+
+DestroyFunc GrowSouth
+AddToFunc GrowSouth
++ I PipeRead "echo Resize keep $(($[cw.height] + 15))p"
+
 
 # Wheel scrolling function
 DestroyFunc WheelScroll
@@ -824,6 +890,11 @@ DestroyModuleConfig FvwmIconMan
 *FvwmIconMan: Action   Mouse   3  N sendcommand Iconify
 *FvwmIconMan: ButtonGeometry 150x20
 *FvwmIconMan: MaxButtonWidth 300
+Style FvwmIconMan* !Title, HandleWidth 2, BorderWidth 2, Sticky, WindowListSkip, CirculateSkip, StaysOnBottom, NeverFocus
+
+*FvwmIconMan: Action    Mouse 1 N sendcommand "PickWindowRaiseAndDeiconify"
+*FvwmIconMan: Action    Mouse 2 N sendcommand "WindowShade toggle"
+*FvwmIconMan: Action    Mouse 3 N sendcommand sendcommand Focus, sendcommand "Iconify"
 
 # Window Operation Menu
 DestroyMenu Window-Ops
@@ -997,14 +1068,23 @@ Key F10      A       M      Maximize-func
 
 # Key Bindings: ctrl-arrow shifts viewports, alt-arrow shifts desktops
 #   Keyname Context  Modifi Function
-Key Left     A       C      GotoPage -1p +0p
-Key Right    A       C      GotoPage +1p +0p
-Key Up       A       C      GotoPage +0p -1p
-Key Down     A       C      GotoPage +0p +1p
-Key Left     A       M      GotoDesk -1  0 3
-Key Right    A       M      GotoDesk 1   0 3
-Key Up       A       M      GotoDesk -1  0 3
-Key Down     A       M      GotoDesk 1   0 3
+# Key Left     A       C      GotoPage -1p +0p
+# Key Right    A       C      GotoPage +1p +0p
+# Key Up       A       C      GotoPage +0p -1p
+# Key Down     A       C      GotoPage +0p +1p
+# Key Left     A       M      GotoDesk -1  0 3
+# Key Right    A       M      GotoDesk 1   0 3
+# Key Up       A       M      GotoDesk -1  0 3
+# Key Down     A       M      GotoDesk 1   0 3
+
+Key Left     A       C      TileLeftFunc
+Key Right    A       C      TileRightFunc
+Key Up       A       C      TileUpFunc
+Key Down     A       C      TileDownFunc
+Key Left     A       M      MoveLeft
+Key Right    A       M      MoveRight
+Key Up       A       M      MoveUp
+Key Down     A       M      MoveDown
 
 # Switch pages via keypad (no modifier)
 #   Keyname  Context Modifi Function
@@ -1024,10 +1104,10 @@ Key KP_Home  A       S      Move     0                   0
 Key KP_End   A       S      Move     0                   -0
 Key KP_Prior A       S      Move     -0                  0
 Key KP_Next  A       S      Move     -0                  -0
-Key KP_Up    A       S      Move     136p                0
-Key KP_Down  A       S      Move     136p                -0
-Key KP_Left  A       S      Move     136p                keep
-Key KP_Right A       S      Move     -0                  keep
+Key KP_Up    A       S      MoveUp
+Key KP_Down  A       S      MoveDown
+Key KP_Left  A       S      MoveLeft
+Key KP_Right A       S      MoveRight
 Key KP_Begin A       S      PipeRead 'fvwm_center_window $[vp.width] $[vp.height] $[w.width] $[w.height]'
 
 # Move a window to a different page via alt-keypad
