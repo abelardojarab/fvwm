@@ -239,9 +239,11 @@ Style "conky"                 !Title, Sticky, WindowListSkip, StaysOnBottom, Nev
 Style "plank"                 !Title, !Handles, StaysOnTop, Sticky, NeverFocus, WindowListSkip
 Style "gkrellm"               !Title, !Handles, StaysOnTop, Sticky, NeverFocus, WindowListSkip, FixedPosition
 Style "trayer"                !Title, StaysOnTop, FixedPosition
-Style "google-chrome"         CenterPlacement, MiniIcon chrome.png
-Style "google-chrome-beta"    CenterPlacement, MiniIcon chrome.png
-Style "Google Chrome"         CenterPlacement, MiniIcon chrome.png
+Style "vivaldi"               !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon browser.png
+Style "Vivaldi Browser"       !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon browser.png
+Style "google-chrome"         !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
+Style "google-chrome-beta"    !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
+Style "Google Chrome"         !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
 Style "chromium-browser"      !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, MiniIcon browser.png
 Style "libreoffice*"          NoFuncHint
 Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
