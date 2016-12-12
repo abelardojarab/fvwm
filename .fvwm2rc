@@ -269,6 +269,7 @@ Style "xman"                  Icon xman.xpm, ClickToFocus
 Style "xmag"                  Icon mag_glass.xpm, ClickToFocus
 Style "xgraph"                Icon graphs.xpm, ClickToFocus
 Style "xmosaic"               Color Green/Yellow, ClickToFocus
+Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon browser.png
 Style "firefox"               CenterPlacement, MiniIcon browser.png
 Style "*Dialog_popup"         WindowListSkip
