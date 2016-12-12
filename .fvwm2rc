@@ -116,6 +116,8 @@ AddToFunc   InitFunction
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then hp-systray; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then skype; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then wicd-client --tray; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then compton -b -c; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then volumeicon; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then skype; fi'
 + I Exec exec conky
 + I Exec exec gnome-do
