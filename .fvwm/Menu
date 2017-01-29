@@ -91,7 +91,7 @@ AddToMenu MenuNetwork
 + "%apps/chromium-browser.png%Chromium Browser" Exec exec chromium-browser
 + "%apps/firefox.png%Open a New Private Window in Firefox" Exec exec firefox -private-window
 + "%apps/browser.png%Vivaldi Browser" Exec exec vivaldi
-+ "%apps/evolution.png%Evolution Email Client" Exec exec evolution
++ "%apps/evolution.png%Geary Email Client" Exec exec geary
 + "%apps/transmission.png%Start Transmission Minimized" Exec exec transmission-gtk --minimized
 + "%apps/xchat.png%XChat IRC" Exec exec sh -c "xchat --existing --url
 + "%apps/filezilla.png%FileZilla" Exec exec filezilla

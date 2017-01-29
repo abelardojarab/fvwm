@@ -260,7 +260,7 @@ Style "sublime_text"          MiniIcon sublime-text.png
 Style "devhelp"               MiniIcon devhelp.png
 Style "umbrello"              MiniIcon umbrello.png
 Style "vncviewer"             MiniIcon vncviewer.png
-Style "VNC Viewer"             MiniIcon vncviewer.png
+Style "VNC Viewer"            MiniIcon vncviewer.png
 Style "zeal"                  MiniIcon zeal.png
 Style "atom"                  MiniIcon atom.png
 Style "filezilla"             MiniIcon filezilla.png
@@ -276,8 +276,10 @@ Style "xmosaic"               Color Green/Yellow, ClickToFocus
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon browser.png
 Style "firefox"               CenterPlacement, MiniIcon browser.png
+Style "Library"               CenterPlacement, MiniIcon browser.png
 Style "*Dialog_popup"         WindowListSkip
-Style "gkrellm"               BorderWidth 0, NoTitle, NoHandles, WindowListSkip
+Style "Geary"                 BorderWidth 0, NoTitle, MiniIcon apps/evolution.png
+Style "gkrellm"               BorderWidth 0, NoTitle, CenterPlacement, MiniIcon email.png
 Style "gnome-do"              CenterPlacement, BorderWidth 0, NoTitle, NoHandles, MiniIcon find1.xpm, EWMHMiniIconOverride, WindowListSkip
 Style "Do"                    CenterPlacement, BorderWidth 0, NoTitle, NoHandles, MiniIcon find1.xpm, EWMHMiniIconOverride, WindowListSkip
 
@@ -335,10 +337,10 @@ Colorset 11 pixmap tile_gray.png
 
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "PCmanFM" pcmanfm &')
 *FvwmButtons(Title Browser, Icon browser.png, Action 'Exec "Firefox" firefox &')
+*FvwmButtons(Title Email, Icon apps/evolution.png, Action 'Exec "Geary" geary &')
 *FvwmButtons(Title Terminal, Icon terminal.png, Action 'Exec "Terminal" gnome-terminal &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
 *FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
-*FvwmButtons(Title Filezilla, Icon filezilla.png, Action 'Exec "Filezilla" filezilla &')
 *FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
 *FvwmButtons(Title Gitkraken, Icon qgit.png, Action 'Exec "Gitkraken" gitkraken &')
 *FvwmButtons(Title VMware, Icon vmware.png, Action 'Exec "VMware" vmware &')
