@@ -11,7 +11,7 @@ IconPath  $[fvwm_userdir]/images:$[fvwm_userdir]/images/icons:$[fvwm_userdir]/im
 
 # Fonts
 InfoStoreAdd font_sans "xft:Aquabase:size=11:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Roboto-Bold:size=11:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Cousine:size=12:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
