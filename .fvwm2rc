@@ -336,7 +336,7 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtons(Size 1x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 1 -strftime "%H:%M %a %d %b %Y " &')
 
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "PCmanFM" pcmanfm &')
-*FvwmButtons(Title Browser, Icon browser.png, Action 'Exec "Firefox" firefox &')
+*FvwmButtons(Title Browser, Icon browser.png, Action 'Exec "Chromium Browser" chromium-browser &')
 *FvwmButtons(Title Email, Icon apps/evolution.png, Action 'Exec "Geary" geary &')
 *FvwmButtons(Title Terminal, Icon terminal.png, Action 'Exec "Terminal" gnome-terminal &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
