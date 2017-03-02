@@ -268,6 +268,7 @@ Style "gitkraken"             MiniIcon qgit.png
 Style "dia"                   MiniIcon dia.png
 Style "Terminal"              MiniIcon terminal.png
 Style "gnome-terminal"        MiniIcon terminal.png
+Style "xfce4-terminal"        MiniIcon terminal.png
 Style "xterm"                 MiniIcon terminal.png
 Style "xman"                  Icon xman.xpm, ClickToFocus
 Style "xmag"                  Icon mag_glass.xpm, ClickToFocus
@@ -338,7 +339,7 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "PCmanFM" pcmanfm &')
 *FvwmButtons(Title Browser, Icon browser.png, Action 'Exec "Chromium Browser" chromium-browser &')
 *FvwmButtons(Title Email, Icon apps/evolution.png, Action 'Exec "Geary" geary &')
-*FvwmButtons(Title Terminal, Icon terminal.png, Action 'Exec "Terminal" gnome-terminal &')
+*FvwmButtons(Title Terminal, Icon terminal.png, Action 'Exec "Terminal" xfce4-terminal &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
 *FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
 *FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
