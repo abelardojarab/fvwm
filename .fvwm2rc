@@ -4,16 +4,79 @@ SetEnv fvwm_wallpaper $[HOME]/workspace/fvwm/.fvwm/images/wallpapers/osxelcapita
 SetEnv fvwm_cache $[HOME]/.fvwm.cache
 SetEnv fvwm_userdir $[HOME]/.fvwm
 Setenv fvwm_colors $[HOME]/.fvwm/images/icons/colors
+ModulePath $[fvwm_userdir]/lib:$[fvwm_userdir]/modules:+
 
-# Pixmap
-ImagePath $[fvwm_userdir]/images:$[fvwm_userdir]/images/icons:$[fvwm_userdir]/images/icons/decorations:$[fvwm_userdir]/images/bar:$[fvwm_userdir]/images/tiles:$[fvwm_userdir]/images/buttons:$[fvwm_userdir]/images/actions:[fvwm_userdir]/images/mini:/usr/share/icons/fvwm:/usr/share/icons/hicolor/16x16/apps:/usr/share/icons/HighContrast/scalable/apps-extra:/usr/share/icons/icons/hicolor/16x16/apps:/usr/share/icons/oxygen/16x16/apps:/usr/share/icons/oxygen/16x16/actions:/usr/share/icons/gnome/16x16/apps:/usr/share/icons/gnome/16x16/mimetypes:/usr/share/icons/oxygen/16x16/categories:/usr/share/icons/hicolor/scalable/apps:/usr/share/icons/HighContrast/16x16/apps:/usr/share/icons/locolor/16x16/apps:$[fvwm_userdir]/images/icons/apps:$[fvwm_userdir]/images/icons/actions:$[fvwm_userdir]/images/icons/xpms
-IconPath  $[fvwm_userdir]/images:$[fvwm_userdir]/images/icons:$[fvwm_userdir]/images/icons/decorations:$[fvwm_userdir]/images/bar:$[fvwm_userdir]/images/tiles:$[fvwm_userdir]/images/buttons:$[fvwm_userdir]/images/actions:[fvwm_userdir]/images/mini:/usr/share/icons/fvwm:/usr/share/icons/hicolor/16x16/apps:/usr/share/icons/HighContrast/scalable/apps-extra:/usr/share/icons/icons/hicolor/16x16/apps:/usr/share/icons/oxygen/16x16/apps:/usr/share/icons/oxygen/16x16/actions:/usr/share/icons/gnome/16x16/apps:/usr/share/icons/gnome/16x16/mimetypes:/usr/share/icons/oxygen/16x16/categories:/usr/share/icons/hicolor/scalable/apps:/usr/share/icons/HighContrast/16x16/apps:/usr/share/icons/locolor/16x16/apps:$[fvwm_userdir]/images/icons/apps:$[fvwm_userdir]/images/icons/actions:$[fvwm_userdir]/images/icons/xpms
+#######
+# The default ImagePath for icons is:
+# /usr/include/X11/bitmap:/usr/include/X11/pixmaps
+#################
 
+ImagePath $[fvwm_userdir]/images
+ImagePath +:$[fvwm_userdir]/images/icons
+ImagePath +:$[fvwm_userdir]/images/bar
+ImagePath +:$[fvwm_userdir]/images/tiles
+ImagePath +:$[fvwm_userdir]/images/buttons
+ImagePath +:$[fvwm_userdir]/images/actions
+ImagePath +:$[fvwm_userdir]/images/mini
+ImagePath +:$[fvwm_userdir]/images/icons/decorations
+ImagePath +:$[fvwm_userdir]/images/icons/apps
+ImagePath +:$[fvwm_userdir]/images/icons/actions
+ImagePath +:$[fvwm_userdir]/images/icons/xpms
+
+IconPath  $[fvwm_userdir]/images
+IconPath +:$[fvwm_userdir]/images/icons
+IconPath +:$[fvwm_userdir]/images/bar
+IconPath +:$[fvwm_userdir]/images/tiles
+IconPath +:$[fvwm_userdir]/images/buttons
+IconPath +:$[fvwm_userdir]/images/actions
+IconPath +:$[fvwm_userdir]/images/icons/decorations
+IconPath +:$[fvwm_userdir]/images/icons/apps
+IconPath +:$[fvwm_userdir]/images/icons/actions
+IconPath +:$[fvwm_userdir]/images/icons/xpms
+
+######
+# Adjust ratio to calculate resolution dependant things
+#################
+
+PipeRead "echo InfoStoreAdd aspect_ratio `perl -e 'printf \"%.2f\",$[vp.width]/$[vp.height]'`"
+
+# find the smallest resolution depending on the aspect ratio
+PipeRead `perl -e 'if ($[infostore.aspect_ratio] > 2.0) { \
+                         print "InfoStoreAdd ref_width 800\\n"; \
+                         print "InfoStoreAdd ref_height 384\\n"; \
+                   } elsif ($[infostore.aspect_ratio] > 1.6) { \
+                         print "InfoStoreAdd ref_width 960\\n"; \
+                         print "InfoStoreAdd ref_height 540\\n"; \
+                   } elsif ($[infostore.aspect_ratio] > 1.4) { \
+                         print "InfoStoreAdd ref_width 960\\n"; \
+                         print "InfoStoreAdd ref_height 640\\n"; \
+                   } else { \
+                         print "InfoStoreAdd ref_width 800\\n"; \
+                         print "InfoStoreAdd ref_height 600\\n"; \
+                   }'`
+
+
+#InfoStoreAdd ratio 1.1
+PipeRead "echo InfoStoreAdd ratio `perl -e 'printf \"%.2f\",log($[vp.width]*$[vp.height])/log(10)-log($[infostore.ref_width]*$[infostore.ref_height])/log(10)+1'`"
+
+#InfoStoreAdd hratio 0.8
+PipeRead "echo InfoStoreAdd hratio `perl -e 'printf \"%.2f\",($[vp.height]/540)'`"
+
+#InfoStoreAdd wratio 2
+PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`"
+
+#######
 # Fonts
-InfoStoreAdd font_sans "xft:Aquabase:size=11:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Cousine:size=12:encoding=iso10646-1"
+#################
+InfoStoreAdd font_sans "xft:Meslo:size=11:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Cousine:size=11:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
+
+######
+# Resize and move feedback windows in the center of the screen
+#################
+Emulate mwm
 
 ######
 # Use an arrow rather than the `X` cursor on the root window.
@@ -82,7 +145,15 @@ EwmhBaseStruts 80 0 0 25
 #################
 ClickTime 550
 
+######
+# Extra modules
+#################
+Load $[fvwm_userdir]/modules/HorizontalPanel
+Load $[fvwm_userdir]/modules/KlikeBottomBar
+
+######
 # Start function
+#################
 AddToFunc StartFunction
 + I Test (Init) Exec exec fvwm-root --dither --retain-pixmap $[fvwm_wallpaper]
 + I FvwmButtons
@@ -92,19 +163,50 @@ AddToFunc StartFunction
 + I Module FvwmAnimate
 + I Module FvwmEvent
 + I Module FvwmProxy
-+ I Module FvwmButtons -g 126x$[vp.height]-0+0 FvwmShelf
-+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-129))x28+0-0 FvwmBar"
-+ I Module FvwmButtons -g 18x42+0+-28 DeskControl
+# + I Module FvwmButtons -g $[vp.width]x24-0+0 FvwmShelf
++ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-800))x28-400+0 FvwmShelf"
 # + I FvwmAuto FvwmAutohide -menter FuncAutoEnter
 # + I Test (Init) StartHiddenConsole
-+ I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, Icon $[fvwm_cache]/icon.tmp.$[w.id].png
++ I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
+  Icon $[fvwm_cache]/icon.tmp.$[w.id].png
 
+DestroyModuleConfig FvwmShelf: *
+*FvwmShelf: Columns 20
+*FvwmShelf: Rows 1
+*FvwmShelf: BoxSize smart
+*FvwmShelf: Colorset 10
+*FvwmShelf: Frame 1
+*FvwmShelf(Size 1x1, Swallow (NoKill, Respawn, UseOld) Trayer 'Exec trayer --SetDockType true --distance 190 --padding 10 --transparent true --tint a6aaaa --alpha 50 --edge top --align left --expand true --widthtype percent --width 12 --heighttype pixel --height 32 --distancefrom left &')
+# *FvwmShelf(Size 2x1, Swallow (NoKill, Respawn, UseOld) Trayer 'Exec stalonetray --options &')
+*FvwmShelf(Size 3x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 1 -strftime "%H:%M %a %d %b %Y " &')
+*FvwmShelf(Size 2x1, Swallow (NoKill, Respawn, UseOld) XBiff 'Exec xbiff &')
+
+######
+# Starts system tray applets like network, sound, etc
+#################
+DestroyFunc FuncStartSystrayApplets
+AddToFunc   FuncStartSystrayApplets
++ I PipeRead 'echo SetEnv systray_started `ps -e |grep -c trayer`'
++ I Test (EnvMatch systray_started 0 ) break
+# volume
++ I Test (x volumeicon) exec exec volumeicon
+# battery
++ I Test (x fdpowermon) exec exec fdpowermon
+# network
++ I Test (x nm-applet) exec exec nm-applet
+# bluetooth
++ I Test (x blueman-applet) exec exec blueman-applet
+# clipboard
++ I Test (x clipit) exec exec clipit
++ I TestRc (!Match) Test (x parcellite) exec exec parcellite
+
+######
 # Init function
+#################
 DestroyFunc InitFunction
 AddToFunc   InitFunction
 + I Exec exec xrdb ~/.Xresources
 + I Exec exec feh --bg-scale $[fvwm_wallpaper]
-+ I Exec exec trayer --SetDockType true --distance 150 --padding 10 --transparent true --tint a6aaaa --alpha 50 --edge top --align left --expand true --widthtype percent --width 12 --heighttype pixel --height 26 --distancefrom left
 + I Exec exec bash -c 'if [ `getconf LONG_BIT` = "64" ]; then /usr/lib/x86_64-linux-gnu/notify-osd; else /usr/lib/i386-linux-gnu/notify-osd; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then insync start; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then dropbox start; fi'
@@ -181,35 +283,96 @@ AddToDecor   MyDecoration
 # MWM emulation
 # mwm-style border reliefs (less deep than default fvwm) ?
 # Maximize button does mwm-inversion thing
-Style * MWMBorder, MWMDecor, HintOverride, MWMFunctions, MWMButtons
+Style * MWMBorder, MWMDecor, MWMFunctions, MWMButtons
+
+#######
+# makes fvwm attempt to recognize and respect the mwm decoration hints
+# that applications occasionally use
+#################
+Style * MWMDecor, MWMBorder, MWMFunctions, MWMButtons
+
+#######
+# makes fvwm shade out operations that mwm would prohibit, but it lets
+# you perform the operation anyway
+#################
+Style * HintOverride
+
+#######
+# Use EWMH hints and respect EWMH hints which change the window layer.
+#################
+Style * EWMHUseStackingOrderHints
+
+#######
+# The WindowShadeSteps option selects the number of steps for animation
+# when shading a window with WindowShade.
+#################
+Style * WindowShadeSteps 20, WindowShadeScrolls
+
+#######
+# NoPPosition instructs fvwm to ignore the PPosition field in window geometry hints.
+# Emacs annoyingly sets PPosition to (0,0)!
+#################
+Style * NoPPosition, NoTransientPPosition
+
+#######
+# Eye Candy preference of watching resize live
+#################
+Style * ResizeOutline, ResizeOpaque
+
+#######
+# Horizontal bars that appear on the title bars of sticky windows, for all windows
+#################
+Style * StippledTitle
+
+#######
+# TileCascadePlacement automatically places new windows in a smart
+# location - a location in which they do not overlap any other windows
+# on the screen.
+#################
+Style * TileCascadePlacement
+
+#######
+# Similar focus behavior to xfce/openbox.
+#################
+Style * SloppyFocus
+Style * ClickToFocus
+Style * RaiseTransient
+Style * LowerTransient
+Style * StackTransientParent
+
+#######
+# FP-related functions
+#################
+Style * FPSortWindowlistByFocus
+
+#######
+# The focus policy. Once you are used to clicking *inside* windows to
+# raise them you will not want to lose this feature.
+# FPClickToFocus, FPClickDecorToFocus or FPClickIconToFocus,
+# Click inside the window, modification occurs; when the icon, the window receives focus.
+#################
+Style * FPClickToFocus
+
+#######
+# Click Raise window (Clicking at the window to raise it)
+#################
+Style * FPClickRaisesFocused
+
+######
+# FPEnterToFocus, when the pointer enters the window, the window receives focus
+#################
+Style * FPEnterToFocus
 
 # Window behavior
 Colorset 3 fg #999999, bg black, fgsh #a0a0a0
 Colorset 4 fg #f0f0f0, bg black, fgsh #a4a4a4
 Style * UseDecor MyDecoration
-Style * Colorset 3, HilightColorset 4, MWMFunctions, MWMDecor, HintOverride
+Style * Colorset 3, HilightColorset 4
 Style * DecorateTransient, NakedTransient
-Style * WindowShadeSteps 20, WindowShadeScrolls
 Style * Font "$[infostore.font_mono]"
 Style * HandleWidth 3, BorderWidth 3
 Style * BackingStore, SaveUnder
 Style * EWMHMiniIconOverride
-
-# NoPPosition instructs fvwm to ignore the PPosition field in window geometry hints.
-# Emacs annoyingly sets PPosition to (0,0)!
-Style * NoPPosition, NoTransientPPosition
-
-# Eye Candy preference of watching resize live
-Style * ResizeOutline, ResizeOpaque
-
-# Horizontal bars that appear on the title bars of sticky windows, for all windows
-Style * StippledTitle
-
-# This is another nice Placement Policy, which tries to avoid obscuring existing windows,
-# you can set penalties on certain window types so some are less likely to be obscured than
-# others. Check the manpage for even more Placement Policies.
-Style * SmartPlacement, CleverPlacement, MinOverlapPercentPlacement, TileCascadePlacement
-Style * MinOverlapPercentPlacementPenalties 2 5 1 2 0.5 50
 
 # Comment these lines if you dont like Icons to have Titles.
 Colorset 5 fg white, bg #a6a6a6, fgsh black
@@ -218,38 +381,16 @@ Style * IconTitleColorset 5, HilightIconTitleColorset 5
 Style * IconFont "$[infostore.font_mono]"
 Style * IconBackgroundRelief 0, IconBackGroundColorset 5
 
-#  Similar focus behavior to xfce/openbox.
-Style * SloppyFocus
-Style * ClickToFocus
-Style * RaiseTransient
-Style * LowerTransient
-Style * StackTransientParent
-Style * EWMHUseStackingOrderHints
-
-# FP-related functions
-Style * FPSortWindowlistByFocus
-
-# FPClickToFocus, FPClickDecorToFocus or FPClickIconToFocus, click inside the window, modification, when the icon, the window receives focus.
-Style * FPClickToFocus
-
-# Click Raise window (Clicking at the window to raise it)
-Style * FPClickRaisesFocused
-
-# FPEnterToFocus, when the pointer enters the window, the window receives focus
-Style * FPEnterToFocus
-
 # !Handles, !Borders, !Title
 Style "wine"                  FPLenient, NoFuncHint, NoDecorHint, NoOLDecor
 Style "conky"                 !Title, Sticky, WindowListSkip, StaysOnBottom, NeverFocus
 Style "plank"                 !Title, !Handles, StaysOnTop, Sticky, NeverFocus, WindowListSkip
 Style "gkrellm"               !Title, !Handles, StaysOnTop, Sticky, NeverFocus, WindowListSkip, FixedPosition
-Style "trayer"                !Title, StaysOnTop, FixedPosition
-Style "vivaldi"               !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon browser.png
-Style "Vivaldi Browser"       !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon browser.png
-Style "google-chrome"         !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
-Style "google-chrome-beta"    !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
+Style "trayer"                !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
+Style "stalonetray"           !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
+Style "google-chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
 Style "Google Chrome"         !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
-Style "chromium-browser"      !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, MiniIcon browser.png
+Style "chromium-browser"      !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon browser.png
 Style "libreoffice*"          NoFuncHint
 Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gnome-calculator"      MiniIcon galculator.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
@@ -295,16 +436,8 @@ Style "FvwmButtons" WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnTop, 
 Style "FvwmPager"   BorderWidth 2, NoHandles, NeverFocus, NoTitle, StaysOnTop, Sticky, WindowListSkip, NoIconifiable
 Style "FvwmTaskBar" NoTitle, WindowListSkip, CirculateSkip, Sticky, BorderWidth 0, NoHandles, StaysOnTop
 Style "FvwmTaskBar" NeverFocus, Layer 0
-Style "FvwmShelf"   NoTitle, StaysOnBottom, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
+Style "FvwmShelf"   NoTitle, StaysOnTop, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
 Style "DeskControl" NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles
-
-# Windows stay opaque during Move cmnds.
-Style * ResizeOpaque
-OpaqueMoveSize unlimited
-
-# An even smoother AnimatedMove command.
-SetAnimation 20 -.01 0 .01 .02 .03 .05 .08 .13 .18 .24 .3 .37 \
-.45 .52 .6 .68 .75 .8 .85 .88 .90 .92 .94 .96 .97 .98 .99 1.0
 
 # Active window
 Colorset 6 fg #9a875f, bg #fa875f
@@ -340,7 +473,6 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
 *FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
-*FvwmButtons(Size 1x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 1 -strftime "%H:%M %a %d %b %Y " &')
 *FvwmButtons(Title Browser, Icon browser.png, \
                    Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
@@ -356,7 +488,6 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(Title LOWriter, Icon libreoffice-writer.png, Action 'Exec "Writer" libreoffice --writer &')
-*FvwmButtons(Size 1x1, Swallow (NoKill, Respawn, UseOld) XBiff 'Exec xbiff &')
 
 DestroyFunc FuncWinPaneApp
 AddToFunc FuncWinPaneApp
