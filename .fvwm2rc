@@ -68,7 +68,7 @@ PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`
 # Fonts
 #################
 InfoStoreAdd font_sans "xft:Meslo:size=11:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Cousine:size=12:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Cousine:size=11:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
@@ -147,8 +147,8 @@ ClickTime 550
 ######
 # Extra modules
 #################
-Load $[fvwm_userdir]/modules/HorizontalPanel
-Load $[fvwm_userdir]/modules/KlikeBottomBar
+Read $[fvwm_userdir]/modules/HorizontalPanel
+Read $[fvwm_userdir]/modules/KlikeBottomBar
 
 ######
 # Start function
@@ -162,14 +162,16 @@ AddToFunc StartFunction
 + I Module FvwmAnimate
 + I Module FvwmEvent
 + I Module FvwmProxy
-# + I Module FvwmButtons -g $[vp.width]x24-0+0 FvwmShelf
++ I Module FvwmButtons -g 24x80+0-100 FvwmDeskControl
 + I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-760))x24-380+0 FvwmShelf"
 # + I FvwmAuto FvwmAutohide -menter FuncAutoEnter
 # + I Test (Init) StartHiddenConsole
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
   Icon $[fvwm_cache]/icon.tmp.$[w.id].png
 
+# An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
+*FvwmShelf: Font "$[infostore.font_mono]"
 *FvwmShelf: Columns 22
 *FvwmShelf: Rows 1
 *FvwmShelf: BoxSize smart
@@ -178,6 +180,19 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf(Size 4x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 1 -strftime "%H:%M %a %d %b %Y " &')
 *FvwmShelf(Size 1x1, Swallow (NoKill, Respawn, UseOld) Trayer 'Exec trayer --SetDockType true --distance 383 --padding 10 --transparent true --tint a6aaaa --alpha 50 --edge top --align right --expand true --widthtype percent --width 12 --heighttype pixel --height 26 --distancefrom right &')
 *FvwmShelf(Size 2x1, Swallow (NoKill, Respawn, UseOld) XBiff 'Exec xbiff &')
+*FvwmShelf(Size 10x1, Swallow "FvwmIconMan" `FvwmIconMan`)
+
+# A little control panel for switching desks.
+DestroyModuleConfig FvwmDeskControl: *
+*FvwmDeskControl: Font "$[infostore.font_mono]"
+*FvwmDeskControl: Columns 1
+*FvwmDeskControl: Rows 3
+*FvwmDeskControl: Colorset 10
+*FvwmDeskControl: Frame 1
+*FvwmDeskControl: Padding 1 1
+*FvwmDeskControl: (1x1, Title "<", Action(Mouse 1) GotoDesk -1)
+*FvwmDeskControl: (1x1, Title ">", Action(Mouse 1) GotoDesk 1)
+*FvwmDeskControl: (1x1, Id desk, Title "$[desk.n]", Action(Mouse 1) `Next (CirculateHit, DeskControl) PipeRead 'echo LockingSlide keep $$(test $[w.y] -lt 0 && echo 0 || echo w-$$(($[w.height]-$height))p)'`)
 
 ######
 # Starts system tray applets like network, sound, etc
@@ -429,8 +444,7 @@ Style "Do"                    CenterPlacement, BorderWidth 0, NoTitle, NoHandles
 # Buttons
 Style "FvwmButtons" WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnTop, Sticky
 Style "FvwmPager"   BorderWidth 2, NoHandles, NeverFocus, NoTitle, StaysOnTop, Sticky, WindowListSkip, NoIconifiable
-Style "FvwmTaskBar" NoTitle, WindowListSkip, CirculateSkip, Sticky, BorderWidth 0, NoHandles, StaysOnTop
-Style "FvwmTaskBar" NeverFocus, Layer 0
+Style "FvwmTaskBar" NoTitle, WindowListSkip, CirculateSkip, Sticky, BorderWidth 0, NoHandles, StaysOnTop, NeverFocus, Layer 0
 Style "FvwmShelf"   NoTitle, StaysOnTop, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
 Style "DeskControl" NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles
 
@@ -461,7 +475,7 @@ Colorset 11 pixmap tile_gray.png
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtonsFont  "$[infostore.font_mono]"
-*FvwmButtons: ButtonGeometry 74x46+0+0
+*FvwmButtons: ButtonGeometry 74x54+0+0
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 21
@@ -901,7 +915,6 @@ DestroyFunc GrowSouth
 AddToFunc GrowSouth
 + I PipeRead "echo Resize keep $(($[cw.height] + 15))p"
 
-
 # Wheel scrolling function
 DestroyFunc WheelScroll
 AddToFunc WheelScroll I PipeRead 'case $0 in \
@@ -1018,39 +1031,35 @@ DestroyModuleConfig FvwmAnimate: *
 *FvwmAnimate: Width 2
 
 # Icon Manager
-DestroyModuleConfig FvwmIconMan
-*FvwmIconMan: NumManagers 1
-*FvwmIconMan: Colorset 40
-*FvwmIconMan: DrawIcons false
-*FvwmIconMan: FocusAndSelectButton flat
-*FvwmIconMan: FocusAndSelectColorset 40
-*FvwmIconMan: FocusButton flat
-*FvwmIconMan: FocusColorset 40
+Colorset 15 fg black, bg #c6c3c6, sh #dedbde, hi #dedbde, RootTransparent buffer, Tint #efebef 65
+Colorset 16 fg black, bg #c6c3c6, RootTransparent buffer, Tint #e4e5c7 90
+DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Font "$[infostore.font_mono]"
-*FvwmIconMan: Format %t
+*FvwmIconMan: ManagerGeometry 1x1
+*FvwmIconMan: ButtonGeometry 24x23
+*FvwmIconMan: FocusAndSelectButton flat
+*FvwmIconMan: FocusButton flat
 *FvwmIconMan: IconButton flat
-*FvwmIconMan: IconColorset 40
-*FvwmIconMan: ManagerGeometry 1x20
 *FvwmIconMan: PlainButton flat
-*FvwmIconMan: PlainColorset 40
-*FvwmIconMan: Resolution page
 *FvwmIconMan: SelectButton flat
-*FvwmIconMan: SelectColorset 40
-*FvwmIconMan: Sort id
-*FvwmIconMan: UseWinList true
-*FvwmIconMan: Tips false
-*FvwmIconMan: ReliefThickness 0
+# disable default binding of "Iconify"
+*FvwmIconMan: Action Mouse 0 N sendcommand Nop
+# redefine buttons 1, 2 and 3.
+*FvwmIconMan: Action Mouse 2 N sendcommand Thumbnail
+*FvwmIconMan: Action Mouse 1 N sendcommand "Iconify off", sendcommand RaiseLower, sendcommand FlipFocus
+*FvwmIconMan: Action Mouse 3 N sendcommand "Popup MenuFvwmWindowOps Rectangle +$left+$top 0 -100m"
+*FvwmIconMan: Colorset 10
+*FvwmIconMan: ReliefThickness 1
+*FvwmIconMan: FocusAndSelectColorset 16
+*FvwmIconMan: FocusColorset 16
+*FvwmIconMan: Resolution Page
+*FvwmIconMan: DrawIcons Always
+*FvwmIconMan: FollowFocus True
+*FvwmIconMan: UseWinList True
+*FvwmIconMan: ShowOnlyIcons False
 *FvwmIconMan: Title ""
-*FvwmIconMan: Action   Mouse   1  N sendcommand Raise
-*FvwmIconMan: Action   Mouse   2  N sendcommand 'WindowShade toggle'
-*FvwmIconMan: Action   Mouse   3  N sendcommand Iconify
-*FvwmIconMan: ButtonGeometry 150x20
-*FvwmIconMan: MaxButtonWidth 300
+*FvwmIconMan: Sort id
 Style FvwmIconMan* !Title, HandleWidth 2, BorderWidth 2, Sticky, WindowListSkip, CirculateSkip, StaysOnBottom, NeverFocus
-
-*FvwmIconMan: Action    Mouse 1 N sendcommand "PickWindowRaiseAndDeiconify"
-*FvwmIconMan: Action    Mouse 2 N sendcommand "WindowShade toggle"
-*FvwmIconMan: Action    Mouse 3 N sendcommand sendcommand Focus, sendcommand "Iconify"
 
 # Window Operation Menu
 DestroyMenu Window-Ops
@@ -1110,11 +1119,8 @@ AddToMenu MenuPageList
 + "%workspaces/workspace-6.png%Desktop 6"   Pick MoveToPage 2 1
 
 # Task bar
-Colorset 12 bg #979f9c, fg #001a19
-Colorset 13 fg white, bg #523232, fgsh #191919, hi #8f8f8f, sh #454545
-
 DestroyModuleConfig FvwmTaskBar: *
-*FvwmTaskBar: Geometry +0-0
+*FvwmTaskBar: Geometry $[vp.width]x36+0-0
 *FvwmTaskBar: Rows 1
 *FvwmTaskBar: AutoStick
 *FvwmTaskBar: UseSkipList
@@ -1122,7 +1128,6 @@ DestroyModuleConfig FvwmTaskBar: *
 *FvwmTaskBar: ShowTips
 *FvwmTaskBar: NoBrightFocus
 *FvwmTaskBar: 3DFvwm
-*FvwmTaskBar: MailCheck 0
 *FvwmTaskBar: ClockFormat %T [%d/%m/%y]
 *FvwmTaskBar: WindowButtonsRightMargin 124
 *FvwmTaskBar: Font "$[infostore.font_mono]"
@@ -1131,10 +1136,11 @@ DestroyModuleConfig FvwmTaskBar: *
 *FvwmTaskBar: TipsBack bisque
 *FvwmTaskBar: TipsFore black
 *FvwmTaskBar: Colorset 10
-*FvwmTaskBar: FocusColorset 13
+*FvwmTaskBar: FocusColorset 16
 *FvwmTaskBar: UseIconNames
 *FvwmTaskBar: StartName Start
 *FvwmTaskBar: StartMenu MenuFvwmRoot mouse c -100m -60p
+*FvwmTaskBar: MailCheck 0
 
 # Handle mouse bindings
 # Mouse 0 is special to fvwm, meaning "any" mouse button
@@ -1222,17 +1228,8 @@ Key F5       A       M      Move
 Key F6       A       M      FvwmExpose
 Key F10      A       M      Maximize-func
 
-# Key Bindings: ctrl-arrow shifts viewports, alt-arrow shifts desktops
+# Key Bindings: ctrl-arrow tile windows, alt-arrow moves windows
 #   Keyname Context  Modifi Function
-# Key Left     A       C      GotoPage -1p +0p
-# Key Right    A       C      GotoPage +1p +0p
-# Key Up       A       C      GotoPage +0p -1p
-# Key Down     A       C      GotoPage +0p +1p
-# Key Left     A       M      GotoDesk -1  0 3
-# Key Right    A       M      GotoDesk 1   0 3
-# Key Up       A       M      GotoDesk -1  0 3
-# Key Down     A       M      GotoDesk 1   0 3
-
 Key Left     A       C      TileLeftFunc
 Key Right    A       C      TileRightFunc
 Key Up       A       C      TileUpFunc
@@ -1241,6 +1238,13 @@ Key Left     A       M      MoveLeft
 Key Right    A       M      MoveRight
 Key Up       A       M      MoveUp
 Key Down     A       M      MoveDown
+
+# Key Bindings: ctrl-arrow tile windows, alt-arrow moves windows
+#   Keyname Context  Modifi Function
+Key Up      WTSF    SM  PackWrapperUp
+Key Down    WTSF    SM  PackWrapperDown
+Key Left    WTSF    SM  PackWrapperLeft
+Key Right   WTSF    SM  PackWrapperRight
 
 # Switch pages via keypad (no modifier)
 #   Keyname  Context Modifi Function
@@ -1257,9 +1261,9 @@ Key KP_Next  A       N      GotoPageFocus 2 2
 # Move windows to strategic points on the current page via shift-keypad
 #   Keyname  Context Modifi Function
 Key KP_Home  A       S      Move     0                   0
-Key KP_End   A       S      Move     0                   -0
-Key KP_Prior A       S      Move     -0                  0
-Key KP_Next  A       S      Move     -0                  -0
+Key KP_End   A       S      Move     0                  -0
+Key KP_Prior A       S      Move    -0                   0
+Key KP_Next  A       S      Move    -0                  -0
 Key KP_Up    A       S      MoveUp
 Key KP_Down  A       S      MoveDown
 Key KP_Left  A       S      MoveLeft
@@ -1371,15 +1375,15 @@ Stroke N1478963 0 R N Exec exec firefox
 Stroke N1598753 0 R N Exec exec xpad
 
 # Menu Style
-Colorset 14 bg #979f9c, fg #001a19
-Colorset 15 fg #ffffff, bg #6d6d6d
+Colorset 20 bg #979f9c, fg #001a19
+Colorset 21 fg #ffffff, bg #6d6d6d
 MenuStyle * Hilight3DThin, PopupOffset 0 100, PopupDelay 300, TitleWarpOff
 MenuStyle * TitleUnderlines2, SeparatorsLong, TrianglesSolid, Animation
 MenuStyle * BorderWidth 2
 MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
 MenuStyle * ItemFormat "%|%5.5i%1.3l%2.3>%|"
 MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
-MenuStyle * MenuColorset 10, HilightBack, ActiveColorset 15
+MenuStyle * MenuColorset 10, HilightBack, ActiveColorset 16
 MenuStyle * "$[infostore.font_mono]"
 MenuStyle * MenuFace DGradient 64 Red Black
 
