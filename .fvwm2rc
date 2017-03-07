@@ -102,12 +102,14 @@ ColormapFocus FollowsFocus
 #####
 # OpaqueMoveSize allows you to stop Large windows from being moved opaquely,
 # I like the effect, and have Cycles to burn, so all windows can use it.
-#
+#################
+OpaqueMoveSize -1
+
+#####
 # SnapAttraction lets nearby windows snap together, or snap to edges so that they
 # are easier to align on your desktop, The default is off, if you set it too large
 # it's annoying as hell, 3 pixels is just right.
 #################
-OpaqueMoveSize -1
 SnapAttraction 3 SameType
 
 #####
@@ -132,7 +134,7 @@ XORvalue 208
 # option for normal maximization, and one for full-screen maximization.
 # Syntax: EwmhBaseStruts left right top bottom
 #################
-EwmhBaseStruts 80 0 0 25
+EwmhBaseStruts 80 0 0 20
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
@@ -179,7 +181,6 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Frame 1
 *FvwmShelf(Size 4x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 1 -strftime "%H:%M %a %d %b %Y " &')
 *FvwmShelf(Size 1x1, Swallow (NoKill, Respawn, UseOld) Trayer 'Exec trayer --SetDockType true --distance 383 --padding 10 --transparent true --tint a6aaaa --alpha 50 --edge top --align right --expand true --widthtype percent --width 12 --heighttype pixel --height 26 --distancefrom right &')
-*FvwmShelf(Size 2x1, Swallow (NoKill, Respawn, UseOld) XBiff 'Exec xbiff &')
 *FvwmShelf(Size 10x1, Swallow "FvwmIconMan" `FvwmIconMan`)
 
 # A little control panel for switching desks.
@@ -199,7 +200,7 @@ DestroyModuleConfig FvwmDeskControl: *
 #################
 DestroyFunc FuncStartSystrayApplets
 AddToFunc   FuncStartSystrayApplets
-+ I PipeRead 'echo SetEnv systray_started `ps -e |grep -c trayer`'
++ I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 + I Test (EnvMatch systray_started 0 ) break
 # volume
 + I Test (x volumeicon) exec exec volumeicon
@@ -283,11 +284,6 @@ AddToDecor   MyDecoration
 + ButtonStyle 2 ActiveUp Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3
 + ButtonStyle 2 ActiveDown Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3
 + ButtonStyle 2 Inactive Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3
-
-# These two vectors draw a circle around the vectors above, uncomment
-# them and see what you think.
-# + AddButtonStyle  All Active Vector 9 80x60@4 80x40@2 60x20@2 40x20@2 20x40@2 20x60@2 40x80@2 60x80@2 80x60@2 -- Flat
-# + AddButtonStyle  All Inactive Vector 9 80x60@4 80x40@2 60x20@2 40x20@2 20x40@2 20x60@2 40x80@2 60x80@2 80x60@2 -- Flat
 
 # In Style statements, *’s are wild cards, so ‘Style *’ says apply this style to every window.
 # This is followed by a list of styles separated by commas that you wish to use.
@@ -387,8 +383,8 @@ Style * BackingStore, SaveUnder
 Style * EWMHMiniIconOverride
 
 # Comment these lines if you dont like Icons to have Titles.
-Colorset 5 fg white, bg #a6a6a6, fgsh black
-Style * StickyIcon, IconTitle, IconSize 24 24
+Colorset 5 fg white, bg #a6a6a6, fgsh black, RootTransparent
+Style * StickyIcon, IconTitle, IconTitleRelief 0, IconSize 20 20
 Style * IconTitleColorset 5, HilightIconTitleColorset 5
 Style * IconFont "$[infostore.font_mono]"
 Style * IconBackgroundRelief 0, IconBackGroundColorset 5
@@ -442,11 +438,11 @@ Style "gnome-do"              CenterPlacement, BorderWidth 0, NoTitle, NoHandles
 Style "Do"                    CenterPlacement, BorderWidth 0, NoTitle, NoHandles, MiniIcon find1.xpm, EWMHMiniIconOverride, WindowListSkip
 
 # Buttons
-Style "FvwmButtons" WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnTop, Sticky
-Style "FvwmPager"   BorderWidth 2, NoHandles, NeverFocus, NoTitle, StaysOnTop, Sticky, WindowListSkip, NoIconifiable
-Style "FvwmTaskBar" NoTitle, WindowListSkip, CirculateSkip, Sticky, BorderWidth 0, NoHandles, StaysOnTop, NeverFocus, Layer 0
-Style "FvwmShelf"   NoTitle, StaysOnTop, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
-Style "DeskControl" NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles
+Style "FvwmButtons"     WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnTop, Sticky
+Style "FvwmPager"       BorderWidth 2, NoHandles, NeverFocus, NoTitle, StaysOnTop, Sticky, WindowListSkip, NoIconifiable
+Style "FvwmTaskBar"     NoTitle, WindowListSkip, CirculateSkip, Sticky, BorderWidth 0, NoHandles, StaysOnTop, NeverFocus, Layer 0
+Style "FvwmShelf"       NoTitle, StaysOnTop, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
+Style "FvwmDeskControl" NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles
 
 # Active window
 Colorset 6 fg #9a875f, bg #fa875f
@@ -627,57 +623,57 @@ AddToFunc UnTileFunc
 DestroyFunc TileLeftFunc
 AddToFunc TileLeftFunc
 # if not tiled, tile left
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 4 48 97 0 0
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 4 48wa 98wa 0 0
 + I TestRc (Match) Break
 # if tiled bottom-left, do nothing
-+ I Current (State 1) Function TileFunc 4 48 97 0 0
++ I Current (State 1) Function TileFunc 4 48wa 98wa 0 0
 + I State 1 False
 + I TestRc (Match) Break
 # if tiled bottom, then tile bottom-left
-+ I Current (State 2) Function TileFunc 1 48 48 0 50
++ I Current (State 2) Function TileFunc 1 48wa 48wa 0 50
 + I State 2 False
 + I TestRc (Match) Break
 # if tiled bottom-right, then tile bottom
-+ I Current (State 3) Function TileFunc 2 97 48 0 50
++ I Current (State 3) Function TileFunc 2 98wa 48wa 0 50
 + I State 3 False
 + I TestRc (Match) Break
 # if tiled left, do nothing
-+ I Current (State 4) Function TileFunc 4 25 97 0 0
++ I Current (State 4) Function TileFunc 4 25 98wa 0 0
 + I TestRc (Match) Break
 # if tiled middle, tile left
-+ I Current (State 5) Function TileFunc 4 48 97 0 0
++ I Current (State 5) Function TileFunc 4 48wa 98wa 0 0
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then untile and remove tiled states
 + I Current (State 6) Function UnTileFunc
 + I TestRc (Match) Break
 # if tiled top-left, do nothing
-+ I Current (State 7) Function TileFunc 4 48 97 0 0
++ I Current (State 7) Function TileFunc 4 48wa 98wa 0 0
 + I State 7 False
 + I TestRc (Match) Break
 # if tiled up, then tile top-left
-+ I Current (State 8) Function TileFunc 7 48 48 0 0
++ I Current (State 8) Function TileFunc 7 48wa 48wa 0 0
 + I State 8 False
 + I TestRc (Match) Break
 # if tiled top-right, then tile top
-+ I Current (State 9) Function TileFunc 8 48 48 0 0
++ I Current (State 9) Function TileFunc 8 48wa 48wa 0 0
 + I State 9 False
 + I TestRc (Match) Break
-+ I Current (State 10) Function TileFunc 4 48 97 0 0
++ I Current (State 10) Function TileFunc 4 48wa 98wa 0 0
 + I State 10 False
 + I TestRc (Match) Break
 
 DestroyFunc TileRightFunc
 AddToFunc TileRightFunc
 # if not tiled, tile right
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 6 48 97 50 0
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 6 48wa 98wa 50 0
 + I TestRc (Match) Break
 # if tiled bottom-left, tile to bottom
-+ I Current (State 1) Function TileFunc 2 97 48 0 50
++ I Current (State 1) Function TileFunc 2 98wa 48wa 0 50
 + I State 1 False
 + I TestRc (Match) Break
 # if tiled bottom, then tile bottom-right
-+ I Current (State 2) Function TileFunc 3 48 48 50 50
++ I Current (State 2) Function TileFunc 3 48wa 48wa 50 50
 + I State 2 False
 + I TestRc (Match) Break
 # if tiled bottom-right, then do nothing
@@ -686,62 +682,62 @@ AddToFunc TileRightFunc
 + I Current (State 4) Function UnTileFunc
 + I TestRc (Match) Break
 # if tiled middle, tile right
-+ I Current (State 5) Function TileFunc 6 48 48 50 0
++ I Current (State 5) Function TileFunc 6 48wa 48wa 50 0
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then do nothing
-+ I Current (State 6) Function TileFunc 6 25 97 75 0
++ I Current (State 6) Function TileFunc 6 25 98wa 75 0
 # if tiled top-left, then tile top
-+ I Current (State 7) Function TileFunc 8 97 48 0 0
++ I Current (State 7) Function TileFunc 8 98wa 48wa 0 0
 + I TestRc (Match) Break
 # if tiled up, then tile top-right
-+ I Current (State 8) Function TileFunc 9 48 48 50 0
++ I Current (State 8) Function TileFunc 9 48wa 48wa 50 0
 + I State 8 False
 + I TestRc (Match) Break
 # if tiled top-right, then do nothing
 + I Current (State 9) Break
-+ I Current (State 5) Function TileFunc 6 48 48 50 0
++ I Current (State 5) Function TileFunc 6 48wa 48wa 50 0
 + I State 10 False
 + I TestRc (Match) Break
 
 DestroyFunc TileUpFunc
 AddToFunc TileUpFunc
 # if not tiled, tile up
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 5 97 48 0 0
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 5 98wa 48wa 0 0
 + I TestRc (Match) Break
 # if tiled bottom-left, tile to left
-+ I Current (State 1) Function TileFunc 4 48 97 0 0
++ I Current (State 1) Function TileFunc 4 48wa 98wa 0 0
 + I State 1 False
 + I TestRc (Match) Break
 # if tiled bottom, then untile
 + I Current (State 2) Function UnTileFunc
 + I TestRc (Match) Break
 # if tiled bottom-right, then tile right
-+ I Current (State 3) Function TileFunc 6 48 97 50 0
++ I Current (State 3) Function TileFunc 6 48wa 98wa 50 0
 + I State 3 False
 + I TestRc (Match) Break
 # if tiled left, then tile top left
-+ I Current (State 4) Function TileFunc 7 48 48 0 0
++ I Current (State 4) Function TileFunc 7 48wa 48wa 0 0
 + I State 4 False
 + I TestRc (Match) Break
 # if tiled middle, tile up
-+ I Current (State 5) Function TileFunc 8 97 48 0 0
++ I Current (State 5) Function TileFunc 8 98wa 48wa 0 0
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then tile top right
-+ I Current (State 6) Function TileFunc 9 48 48 50 0
++ I Current (State 6) Function TileFunc 9 48wa 48wa 50 0
 + I State 6 False
 + I TestRc (Match) Break
 # if tiled top-left, then do nothing
-+ I Current (State 7) Function TileFunc 8 97 48 0 0
++ I Current (State 7) Function TileFunc 8 98wa 48wa 0 0
 + I State 7 False
 + I TestRc (Match) Break
 # if tiled up, then do maximize
-+ I Current (State 8) TileFunc 10 97 97 0 0
++ I Current (State 8) TileFunc 10 98wa 98wa 0 0
 + I State 8 False
 + I TestRc (Match) Break
 # if tiled top-right, then do nothing
-+ I Current (State 9) TileFunc 8 97 48 0 0
++ I Current (State 9) TileFunc 8 98wa 48wa 0 0
 + I State 9 False
 + I TestRc (Match) Break
 # if tiled fullscreen, then untile
@@ -752,30 +748,30 @@ AddToFunc TileUpFunc
 DestroyFunc TileDownFunc
 AddToFunc TileDownFunc
 # if not tiled, tile down
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 2 97 48 0 50
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 2 98wa 48wa 0 50
 + I TestRc (Match) Break
 # if tiled bottom-left, do nothing
 + I Current (State 1) Break
 # if tiled bottom, go fullscreen
-+ I Current (State 2) TileFunc 10 97 97 0 0
++ I Current (State 2) TileFunc 10 98wa 98wa 0 0
 + I State 2 False
 + I TestRc (Match) Break
 # if tiled bottom-right, then do nothing
 + I Current (State 3) Break
 # if tiled left, then tile bottom left
-+ I Current (State 4) Function TileFunc 1 48 48 0 50
++ I Current (State 4) Function TileFunc 1 48wa 48wa 0 50
 + I State 4 False
 + I TestRc (Match) Break
 # if tiled middle, tile down
-+ I Current (State 5) Function TileFunc 2 97 48 0 50
++ I Current (State 5) Function TileFunc 2 98wa 48wa 0 50
 + I State 5 False
 + I TestRc (Match) Break
 # if tiled right, then tile bottom right
-+ I Current (State 6) Function TileFunc 3 48 48 50 50
++ I Current (State 6) Function TileFunc 3 48wa 48wa 50 50
 + I State 6 False
 + I TestRc (Match) Break
 # if tiled top-left, then tile left
-+ I Current (State 7) Function TileFunc 4 48 97 0 0
++ I Current (State 7) Function TileFunc 4 48wa 98wa 0 0
 + I State 7 False
 + I TestRc (Match) Break
 # if tiled up, then untile
@@ -783,7 +779,7 @@ AddToFunc TileDownFunc
 + I State 8 False
 + I TestRc (Match) Break
 # if tiled top-right, then tile right
-+ I Current (State 9) Function TileFunc 6 48 97 50 0
++ I Current (State 9) Function TileFunc 6 48wa 98wa 50 0
 + I State 9 False
 + I TestRc (Match) Break
 # if tiled fullscreen, then untile
@@ -814,13 +810,15 @@ AddToFunc   RightHalfMix
 
 DestroyFunc FullScreen
 AddToFunc   FullScreen
-+ I Maximize 100 -2p ewmhiwa
++ I Maximize True 100 -1p ewmhiwa
 + I State 10 on
 
 DestroyFunc Maximize-func
 AddToFunc Maximize-func
 + I SetEnv TEMP $[0]
-+ I ThisWindow (!Maximized) Maximize 100 -2p ewmhiwa, WindowStyle FixedPosition, FixedSize, ResizeHintOverride, State 10 on, State 5 False
++ I ThisWindow (!Maximized) Maximize True 100 -1p ewmhiwa, \
+  WindowStyle FixedPosition, FixedSize, ResizeHintOverride, \
+  State 10 on, State 5 False
 + I TestRc (NoMatch) ThisWindow (Maximized) UnMaximizeWithFS
 + I InfoStoreAdd x_$[w.id] $[w.x]
 + I InfoStoreAdd y_$[w.id] $[w.y]
@@ -997,7 +995,7 @@ DestroyModuleConfig FvwmIdent: *
 *FvwmIdent: Fore #f6f6f6
 *FvwmIdent: Font "xft:snap"
 
-# FvwmScroll swallows applications into smaller containers.
+# FvwmScroll swallows applications into smaller containers, sometimes handy.
 DestroyModuleConfig FvwmScroll: *
 *FvwmScroll: Back #f6f6f6
 *FvwmScroll: Fore #f6f6f6
@@ -1038,10 +1036,10 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 24x23
 *FvwmIconMan: FocusAndSelectButton flat
-*FvwmIconMan: FocusButton flat
-*FvwmIconMan: IconButton flat
-*FvwmIconMan: PlainButton flat
-*FvwmIconMan: SelectButton flat
+# *FvwmIconMan: FocusButton flat
+# *FvwmIconMan: IconButton flat
+# *FvwmIconMan: PlainButton flat
+# *FvwmIconMan: SelectButton flat
 # disable default binding of "Iconify"
 *FvwmIconMan: Action Mouse 0 N sendcommand Nop
 # redefine buttons 1, 2 and 3.
@@ -1238,13 +1236,6 @@ Key Left     A       M      MoveLeft
 Key Right    A       M      MoveRight
 Key Up       A       M      MoveUp
 Key Down     A       M      MoveDown
-
-# Key Bindings: ctrl-arrow tile windows, alt-arrow moves windows
-#   Keyname Context  Modifi Function
-Key Up      WTSF    SM  PackWrapperUp
-Key Down    WTSF    SM  PackWrapperDown
-Key Left    WTSF    SM  PackWrapperLeft
-Key Right   WTSF    SM  PackWrapperRight
 
 # Switch pages via keypad (no modifier)
 #   Keyname  Context Modifi Function
