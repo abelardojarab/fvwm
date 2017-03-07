@@ -134,7 +134,7 @@ XORvalue 208
 # option for normal maximization, and one for full-screen maximization.
 # Syntax: EwmhBaseStruts left right top bottom
 #################
-EwmhBaseStruts 80 0 0 20
+EwmhBaseStruts 80 0 28 0
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
@@ -158,14 +158,14 @@ Read $[fvwm_userdir]/modules/KlikeBottomBar
 AddToFunc StartFunction
 + I Test (Init) Exec exec fvwm-root --dither --retain-pixmap $[fvwm_wallpaper]
 + I FvwmButtons
-+ I FvwmTaskBar
+# + I FvwmTaskBar
 + I Module FvwmProxy
 + I Module FvwmCommandS
 + I Module FvwmAnimate
 + I Module FvwmEvent
 + I Module FvwmProxy
 + I Module FvwmButtons -g 24x80+0-100 FvwmDeskControl
-+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-760))x24-380+0 FvwmShelf"
++ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-360))x24-180+0 FvwmShelf"
 # + I FvwmAuto FvwmAutohide -menter FuncAutoEnter
 # + I Test (Init) StartHiddenConsole
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
@@ -174,14 +174,14 @@ AddToFunc StartFunction
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Font "$[infostore.font_mono]"
-*FvwmShelf: Columns 22
+*FvwmShelf: Columns 30
 *FvwmShelf: Rows 1
 *FvwmShelf: BoxSize smart
 *FvwmShelf: Colorset 10
 *FvwmShelf: Frame 1
 *FvwmShelf(Size 4x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 1 -strftime "%H:%M %a %d %b %Y " &')
-*FvwmShelf(Size 1x1, Swallow (NoKill, Respawn, UseOld) Trayer 'Exec trayer --SetDockType true --distance 383 --padding 10 --transparent true --tint a6aaaa --alpha 50 --edge top --align right --expand true --widthtype percent --width 12 --heighttype pixel --height 26 --distancefrom right &')
-*FvwmShelf(Size 10x1, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmShelf(Size 1x1, Swallow (NoKill, Respawn, UseOld) Trayer 'Exec trayer --SetDockType true --distance 183 --padding 10 --transparent true --tint a6aaaa --alpha 50 --edge top --align right --expand true --widthtype percent --width 12 --heighttype pixel --height 26 --distancefrom right &')
+*FvwmShelf(Size 18x1, Swallow "FvwmIconMan" `FvwmIconMan`)
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -450,19 +450,23 @@ Colorset 6 fg #9a875f, bg #fa875f
 Colorset 7 fg #9a875f, bg #181512
 # Window colors
 Colorset 8 fg #332d29, bg #332d29
-# Balloon tooltip colors (fg = font, bg = background)
-Colorset 9 fg #181512, bg #9a875f
+# Balloon tooltip colors
+Colorset 9 fg white, bg #8a775f, Plain
 # Buttons colors
 Colorset 10 fg #e0d3d9, bg #484644
 # Note: FvwmPager willl be swallowed by FvwmButtons (below)
 Colorset 11 pixmap tile_gray.png
 
-*FvwmPagerFont "$[infostore.font_mono]"
+*FvwmPager: Font "$[infostore.font_mono]"
+*FvwmPager: SmallFont "$[infostore.font_mono]"
 *FvwmPager: Colorset * 0
 *FvwmPager: HiLightColorset * 10
 *FvwmPager: WindowColorsets 8 5
-*FvwmPager: BalloonColorset * 6
+*FvwmPager: BalloonColorset * 9
 *FvwmPager: Balloons All
+*FvwmPager: BalloonFont "$[infostore.font_mono]"
+*FvwmPager: BalloonYOffset +2
+*FvwmPager: BalloonBorderWidth 1
 *FvwmPager: MiniIcons
 *FvwmPager: Label 0 "0: General"
 *FvwmPager: Label 1 "1: Office"
@@ -470,7 +474,7 @@ Colorset 11 pixmap tile_gray.png
 *FvwmPager: Label 3 "3: Other"
 
 # Set up the geometry so that the buttons stack vertically on the left.
-*FvwmButtonsFont  "$[infostore.font_mono]"
+*FvwmButtons: Font  "$[infostore.font_mono]"
 *FvwmButtons: ButtonGeometry 74x54+0+0
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
@@ -491,6 +495,7 @@ Colorset 11 pixmap tile_gray.png
 *FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
 *FvwmButtons(Title GitK, Icon qgit.png, Action 'Exec "Gitkraken" gitkraken &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
+*FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" libreoffice --writer &')
 
@@ -506,7 +511,7 @@ AddToFunc FuncWinPaneReset
 + I PipeRead "echo SendToModule FvwmButtons ChangeButton CmdTime Title \"`date +\"%H:%M\"`\""
 + I PipeRead "echo SendToModule FvwmButtons ChangeButton CmdDate Title \"`date +\"%d.%m.%Y\"`\""
 
-Schedule Periodic 1000 FuncWinPaneReset
+# Schedule Periodic 1000 FuncWinPaneReset
 
 # AutoHiding Console
 Style HiddenConsole Sticky, WindowListSkip, Notitle, StaysOnTop, !Handles, FixedSize, FixedPosition
@@ -1118,7 +1123,7 @@ AddToMenu MenuPageList
 
 # Task bar
 DestroyModuleConfig FvwmTaskBar: *
-*FvwmTaskBar: Geometry $[vp.width]x36+0-0
+*FvwmTaskBar: Geometry +0-0
 *FvwmTaskBar: Rows 1
 *FvwmTaskBar: AutoStick
 *FvwmTaskBar: UseSkipList
