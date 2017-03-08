@@ -403,7 +403,7 @@ Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderW
 Style "gnome-calculator"      MiniIcon galculator.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gedit"                 MiniIcon gedit.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "nautilus"              MiniIcon folder.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
-Style "Geary"                 MiniIcon apps/evolution.pngBorder, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
+Style "Geary"                 MiniIcon apps/email.pngBorder, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "pcmanfm"               MiniIcon folder.png
 Style "gimp"                  MiniIcon gimp.png
 Style "inkscape"              MiniIcon inkscape.png
@@ -486,7 +486,7 @@ Colorset 11 pixmap tile_gray.png
                    Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "PCmanFM" pcmanfm &')
-*FvwmButtons(Title Email, Icon apps/evolution.png, Action 'Exec "Geary" geary &')
+*FvwmButtons(Title Email, Icon apps/email.png, Action 'Exec "Geary" geary &')
 *FvwmButtons(Title Terminal, Icon terminal.png, \
                    Action (Mouse 1) 'Exec "Terminal" terminator &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/terminator &" Next "/bin/bash" +$left+$top)
