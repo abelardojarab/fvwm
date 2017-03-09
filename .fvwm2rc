@@ -1,4 +1,4 @@
-## vim: sts=0:noet:syntax=fvwm:foldmethod=marker
+# vim: sts=0:noet:syntax=fvwm:foldmethod=marker
 
 SetEnv fvwm_wallpaper $[HOME]/workspace/fvwm/.fvwm/images/wallpapers/osxelcapitan.png
 SetEnv fvwm_cache $[HOME]/.fvwm.cache
@@ -134,7 +134,7 @@ XORvalue 208
 # option for normal maximization, and one for full-screen maximization.
 # Syntax: EwmhBaseStruts left right top bottom
 #################
-EwmhBaseStruts 80 0 28 0
+EwmhBaseStruts 80 0 30 0
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
@@ -359,14 +359,15 @@ Read $[fvwm_userdir]/modules/KlikeBottomBar
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Font "$[infostore.font_mono]"
-*FvwmShelf: Columns 30
+*FvwmShelf: Columns 35
 *FvwmShelf: Rows 1
 *FvwmShelf: BoxSize smart
 *FvwmShelf: Colorset 10
 *FvwmShelf: Frame 1
-*FvwmShelf(Size 4x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 1 -strftime "%H:%M %a %d %b %Y " &')
-*FvwmShelf(Size 1x1, Swallow (NoKill, Respawn, UseOld) Trayer 'Exec trayer --SetDockType true --distance 183 --padding 10 --transparent true --tint a6aaaa --alpha 50 --edge top --align right --expand true --widthtype percent --width 12 --heighttype pixel --height 26 --distancefrom right &')
-*FvwmShelf(Size 18x1, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmShelf: Padding 1 1
+*FvwmShelf(Size 5x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
+*FvwmShelf(Size 24x1, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) Trayer 'Exec trayer --SetDockType true --distance 183 --padding 10 --transparent false --tint 484644 --alpha 100 --edge top --align right --expand true --widthtype pixel --width 286 --heighttype pixel --height 28 --distancefrom right &')
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -427,12 +428,12 @@ DestroyModuleConfig FvwmDeskControl: *
 DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Font "$[infostore.font_mono]"
 *FvwmIconMan: ManagerGeometry 1x1
-*FvwmIconMan: ButtonGeometry 24x23
+*FvwmIconMan: Padding 1 1
 *FvwmIconMan: FocusAndSelectButton flat
-# *FvwmIconMan: FocusButton flat
-# *FvwmIconMan: IconButton flat
-# *FvwmIconMan: PlainButton flat
-# *FvwmIconMan: SelectButton flat
+*FvwmIconMan: FocusButton flat
+*FvwmIconMan: IconButton up
+*FvwmIconMan: PlainButton up
+*FvwmIconMan: SelectButton flat
 # disable default binding of "Iconify"
 *FvwmIconMan: Action Mouse 0 N sendcommand Nop
 # redefine buttons 1, 2 and 3.
@@ -511,7 +512,7 @@ DestroyModuleConfig FvwmScroll: *
 DestroyModuleConfig FvwmEvent: *
 *FvwmEvent: deiconify DeThumbnail
 *FvwmEvent: add_window NewWindowFunc
-*FvwmEvent: new_desk "SendToModule DeskControl ChangeButton desk Title $$[desk.n]"
+*FvwmEvent: new_desk "SendToModule FvwmDeskControl ChangeButton desk Title $$[desk.n]"
 
 ######
 # Menus
@@ -654,7 +655,7 @@ AddToFunc StartFunction
 + I Module FvwmEvent
 + I Module FvwmProxy
 + I Module FvwmButtons -g 24x80+0-100 FvwmDeskControl
-+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-360))x24-180+0 FvwmShelf"
++ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-360))x26-180+0 FvwmShelf"
 # + I FvwmAuto FvwmAutohide -menter FuncAutoEnter
 # + I Test (Init) StartHiddenConsole
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
@@ -725,17 +726,15 @@ Schedule Periodic 1000 FuncWinPaneReset
 DestroyFunc Thumbnail
 AddToFunc Thumbnail
 + I Raise
-+ I SetEnv Icon-$[w.id] $[w.iconfile]
-+ I ThisWindow (!Shaded Iconifiable !Iconic) PipeRead \
-    "xwd -silent -id $[w.id] | convert -scale $$(($[w.width]/5)) -frame 1x1 \
++ I ThisWindow (!Iconic) SetEnv Icon-$[w.id] $[w.iconfile]
++ I ThisWindow (!Shaded, Iconifiable, !Iconic) PipeRead \
+    "xwd -silent -id $[w.id] | convert -scale 128 -frame 1x1 \
     -mattecolor black -quality 0 xwd:- png:$[fvwm_cache]/icon.tmp.$[w.id].png \
-    && echo Nop"
-+ I TestRc (Match) Test (f $[fvwm_icon]/$[w.iconfile], f $[fvwm_cache]/icon.tmp.$[w.id].png) \
-    PipeRead "composite -geometry +2+4 \
-    $[fvwm_icon]/$[w.iconfile] $[fvwm_cache]/icon.tmp.$[w.id].png \
-    $[fvwm_cache]/icon.tmp.$[w.id].png && \
-    echo WindowStyle IconOverride, Icon $[fvwm_cache]/icon.tmp.$[w.id].png || echo Nop"
-+ I TestRc (NoMatch) WindowStyle IconOverride, Icon $[fvwm_cache]/icon.tmp.$[w.id].png
+    && echo WindowStyle IconOverride, Icon $[fvwm_cache]/icon.tmp.$[w.id].png \
+    || echo Nop"
++ I TestRc (Match) Test (f $[w.miniiconfile], f $[fvwm_cache]/icon.tmp.$[w.id].png) PipeRead \
+    "composite -geometry +2+4 $[w.miniiconfile] $[fvwm_cache]/icon.tmp.$[w.id].png \
+    $[fvwm_cache]/icon.tmp.$[w.id].png; echo Nop"
 + I Iconify
 
 DestroyFunc DeThumbnail
