@@ -319,37 +319,34 @@ Style "HiddenConsole"         Sticky, WindowListSkip, Notitle, StaysOnTop, !Hand
 # Colorsets
 #################
 
-# Windows
+# Line separator on pager
 Colorset 0 fg white, bg #525252, fgsh #f9f9f9, hi #8f8f8f, sh #454545
-# Active
+# Active window decoration
 Colorset 1 bg #535454, fg #ffffff, fgsh #f9f9f9 hi #fbfbfb, sh #171717, Tint #464646 20
-# Inactive
+# Inactive window decoration
 Colorset 2 bg #444444, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 60
-# Active window
+# Default window colorset
 Colorset 3 fg #999999, bg black, fgsh #a0a0a0
-# Inactive window
+# Active window colorset
 Colorset 4 fg #f0f0f0, bg black, fgsh #a4a4a4
-# Icon colorset
+# Icon colorset, balloon colorset
 Colorset 5 fg white, bg #a6a6a6, fgsh black, RootTransparent
-# Active window
+# Available
 Colorset 6 fg #9a875f, bg #fa875f
-# Line separators
+# Available
 Colorset 7 fg #9a875f, bg #181512
-# Window colors
+# Balloon windows colorset
 Colorset 8 fg #332d29, bg #332d29
-# Balloon tooltip colors
-Colorset 9 fg white, bg #8a775f, Plain
-# Buttons colors
-Colorset 10 fg #e0d3d9, bg #484644
-# Note: FvwmPager willl be swallowed by FvwmButtons (below)
+# Balloon tooltip colorset
+Colorset 9 fg white, bg #686664, Plain
+# Buttons, menu, icon manager background colorset
+Colorset 10 fg #fffff9, bg #484644
+# Pattern colorset
 Colorset 11 pixmap tile_gray.png
-# Icon manager background colorset
-Colorset 15 pixmap tile_gray.png
 # Icon manager select colorset
 Colorset 16 fg black, bg #c6c3c6, RootTransparent buffer, Tint #e4e5c7 90
-# Menus
-Colorset 20 bg #979f9c, fg #001a19
-Colorset 21 fg #ffffff, bg #6d6d6d
+# Menu selection colorset
+Colorset 21 fg #ffffff, bg #6d8d6d
 
 ######
 # Extra modules
@@ -373,8 +370,8 @@ DestroyModuleConfig FvwmShelf: *
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
 *FvwmDeskControl: Font "$[infostore.font_mono]"
-*FvwmDeskControl: Columns 1
-*FvwmDeskControl: Rows 3
+*FvwmDeskControl: Columns 3
+*FvwmDeskControl: Rows 1
 *FvwmDeskControl: Colorset 10
 *FvwmDeskControl: Frame 1
 *FvwmDeskControl: Padding 1 1
@@ -408,22 +405,28 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
 *FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
-*FvwmButtons(Title Browser, Icon browser.png, \
+*FvwmButtons(Title Start, Icon logo.png, \
+	     Action (Mouse 1) "Popup MenuFvwmRoot Rectangle +80+$top 0 -100m")
+*FvwmButtons(Title Browser, Icon chrome.png, \
                    Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
-*FvwmButtons(Title Firefox, Icon firefox.png, Action 'Exec "Firefox" firefox &')
+*FvwmButtons(Title Firefox, Icon browser.png, Action 'Exec "Firefox" firefox &')
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "PCmanFM" pcmanfm &')
 *FvwmButtons(Title Email, Icon apps/email.png, Action 'Exec "Geary" geary &')
 *FvwmButtons(Title Terminal, Icon terminal.png, \
                    Action (Mouse 1) 'Exec "Terminal" terminator &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/terminator &" Next "/bin/bash" +$left+$top)
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
+*FvwmButtons(Title Devhelp, Icon devhelp.png, Action 'Exec "Devhelp" devhelp &')
 *FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
-*FvwmButtons(Title Gitg, Icon qgit.png, Action 'Exec "Gitg" gitg &')
+*FvwmButtons(Title Gitg, Icon git_kraken.png, Action 'Exec "Gitg" gitg &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" libreoffice --writer &')
+*FvwmButtons(Title Calc, Icon libreoffice-calc.png, Action 'Exec "Calc" libreoffice --calc &')
+*FvwmButtons(Title Rkward, Icon rkward.png, Action 'Exec "Rkward" rkward &')
+*FvwmButtons(Title Filezilla, Icon filezilla.png, Action 'Exec "Filezilla" filezilla &')
 
 # Icon Manager
 DestroyModuleConfig FvwmIconMan: *
@@ -441,7 +444,7 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Action Mouse 2 N sendcommand Thumbnail
 *FvwmIconMan: Action Mouse 1 N sendcommand "Iconify off", sendcommand RaiseLower, sendcommand FlipFocus
 *FvwmIconMan: Action Mouse 3 N sendcommand "Popup Window-Ops Rectangle +$left+$top 0 -100m"
-*FvwmIconMan: Colorset 15
+*FvwmIconMan: Colorset 10
 *FvwmIconMan: ReliefThickness 1
 *FvwmIconMan: FocusAndSelectColorset 16
 *FvwmIconMan: FocusColorset 16
@@ -524,7 +527,7 @@ MenuStyle * BorderWidth 2
 MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
 MenuStyle * ItemFormat "%|%5.5i%1.3l%2.3>%|"
 MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
-MenuStyle * MenuColorset 10, HilightBack, ActiveColorset 16
+MenuStyle * MenuColorset 10, HilightBack, ActiveColorset 21
 MenuStyle * "$[infostore.font_mono]"
 MenuStyle * MenuFace DGradient 64 Red Black
 
@@ -655,7 +658,7 @@ AddToFunc StartFunction
 + I Module FvwmAnimate
 + I Module FvwmEvent
 + I Module FvwmProxy
-+ I Module FvwmButtons -g 24x80+0-100 FvwmDeskControl
++ I Module FvwmButtons -g 80x24+80+0 FvwmDeskControl
 + I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-360))x28-180+0 FvwmShelf"
 # + I FvwmAuto FvwmAutohide -menter FuncAutoEnter
 # + I Test (Init) StartHiddenConsole
