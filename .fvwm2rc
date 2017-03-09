@@ -286,7 +286,7 @@ Style "VNC Viewer"            MiniIcon vncviewer.png
 Style "zeal"                  MiniIcon zeal.png
 Style "atom"                  MiniIcon atom.png
 Style "filezilla"             MiniIcon filezilla.png
-Style "gitkraken"             MiniIcon qgit.png
+Style "Gitg"                  MiniIcon qgit.png
 Style "dia"                   MiniIcon dia.png
 Style "Terminal"              MiniIcon terminal.png
 Style "gnome-terminal"        MiniIcon terminal.png
@@ -343,8 +343,9 @@ Colorset 9 fg white, bg #8a775f, Plain
 Colorset 10 fg #e0d3d9, bg #484644
 # Note: FvwmPager willl be swallowed by FvwmButtons (below)
 Colorset 11 pixmap tile_gray.png
-# Icon manager colorset
-Colorset 15 fg black, bg #c6c3c6, sh #dedbde, hi #dedbde, RootTransparent buffer, Tint #efebef 65
+# Icon manager background colorset
+Colorset 15 pixmap tile_gray.png
+# Icon manager select colorset
 Colorset 16 fg black, bg #c6c3c6, RootTransparent buffer, Tint #e4e5c7 90
 # Menus
 Colorset 20 bg #979f9c, fg #001a19
@@ -367,7 +368,7 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Padding 1 1
 *FvwmShelf(Size 5x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
 *FvwmShelf(Size 24x1, Swallow "FvwmIconMan" `FvwmIconMan`)
-*FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) Trayer 'Exec trayer --SetDockType true --distance 183 --padding 10 --transparent false --tint 484644 --alpha 100 --edge top --align right --expand true --widthtype pixel --width 286 --heighttype pixel --height 28 --distancefrom right &')
+*FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) Trayer 'Exec trayer --SetDockType true --distance 184 --padding 10 --transparent false --tint 484644 --alpha 100 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &')
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -410,15 +411,15 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Browser, Icon browser.png, \
                    Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
+*FvwmButtons(Title Firefox, Icon firefox.png, Action 'Exec "Firefox" firefox &')
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "PCmanFM" pcmanfm &')
 *FvwmButtons(Title Email, Icon apps/email.png, Action 'Exec "Geary" geary &')
 *FvwmButtons(Title Terminal, Icon terminal.png, \
                    Action (Mouse 1) 'Exec "Terminal" terminator &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/terminator &" Next "/bin/bash" +$left+$top)
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
-*FvwmButtons(Title Gedit, Icon gedit.png, Action 'Exec "Gedit" gedit &')
 *FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
-*FvwmButtons(Title GitK, Icon qgit.png, Action 'Exec "Gitkraken" gitkraken &')
+*FvwmButtons(Title Gitg, Icon qgit.png, Action 'Exec "Gitg" gitg &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
@@ -428,19 +429,19 @@ DestroyModuleConfig FvwmDeskControl: *
 DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Font "$[infostore.font_mono]"
 *FvwmIconMan: ManagerGeometry 1x1
+*FvwmIconMan: ButtonGeometry 200x28
+*FvwmIconMan: MaxButtonWidth 200
 *FvwmIconMan: Padding 1 1
 *FvwmIconMan: FocusAndSelectButton flat
-*FvwmIconMan: FocusButton flat
+*FvwmIconMan: FocusButton up
 *FvwmIconMan: IconButton up
 *FvwmIconMan: PlainButton up
-*FvwmIconMan: SelectButton flat
-# disable default binding of "Iconify"
+*FvwmIconMan: SelectButton down
 *FvwmIconMan: Action Mouse 0 N sendcommand Nop
-# redefine buttons 1, 2 and 3.
 *FvwmIconMan: Action Mouse 2 N sendcommand Thumbnail
 *FvwmIconMan: Action Mouse 1 N sendcommand "Iconify off", sendcommand RaiseLower, sendcommand FlipFocus
-*FvwmIconMan: Action Mouse 3 N sendcommand "Popup MenuFvwmWindowOps Rectangle +$left+$top 0 -100m"
-*FvwmIconMan: Colorset 10
+*FvwmIconMan: Action Mouse 3 N sendcommand "Popup Window-Ops Rectangle +$left+$top 0 -100m"
+*FvwmIconMan: Colorset 15
 *FvwmIconMan: ReliefThickness 1
 *FvwmIconMan: FocusAndSelectColorset 16
 *FvwmIconMan: FocusColorset 16
@@ -655,7 +656,7 @@ AddToFunc StartFunction
 + I Module FvwmEvent
 + I Module FvwmProxy
 + I Module FvwmButtons -g 24x80+0-100 FvwmDeskControl
-+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-360))x26-180+0 FvwmShelf"
++ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-360))x28-180+0 FvwmShelf"
 # + I FvwmAuto FvwmAutohide -menter FuncAutoEnter
 # + I Test (Init) StartHiddenConsole
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
