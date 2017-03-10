@@ -35,7 +35,7 @@ AddToMenu MenuDevelopment
 + "%apps/monodevelop.png%MonoDevelop" Exec exec monodevelop
 + "%apps/eclipse.png%Eclipse" Exec exec eclipse
 + "%apps/sublime-text.png%New File" Exec exec sublime_text --command new_file
-+ "%apps/qgit.png%Gitkraken" Exec exec gitkraken
++ "%apps/git_kraken.png%Gitkraken" Exec exec gitkraken
 + "%apps/emacs24.png%GNU Emacs 24" Exec exec emacs
 + "%apps/atom.png%Atom" Exec exec /opt/atom/atom
 + "%apps/glade.png%Glade" Exec exec glade

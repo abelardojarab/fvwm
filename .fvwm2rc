@@ -398,15 +398,15 @@ DestroyModuleConfig FvwmDeskControl: *
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtons: Font  "$[infostore.font_mono]"
-*FvwmButtons: ButtonGeometry 74x54+0+0
+*FvwmButtons: ButtonGeometry 74x52+0+0
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
-*FvwmButtons: Rows 21
+*FvwmButtons: Rows 22
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
 *FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(Title Start, Icon logo.png, \
-	     Action (Mouse 1) "Popup MenuFvwmRoot Rectangle +80+$top 0 -100m")
+         Action (Mouse 1) "Popup MenuFvwmRoot Rectangle +80+$top 0 -100m")
 *FvwmButtons(Title Browser, Icon chrome.png, \
                    Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
@@ -420,13 +420,16 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Devhelp, Icon devhelp.png, Action 'Exec "Devhelp" devhelp &')
 *FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
 *FvwmButtons(Title Gitg, Icon git_kraken.png, Action 'Exec "Gitg" gitg &')
+*FvwmButtons(Title Evince, Icon evince.png, Action 'Exec "Evince" evince &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" libreoffice --writer &')
 *FvwmButtons(Title Calc, Icon libreoffice-calc.png, Action 'Exec "Calc" libreoffice --calc &')
 *FvwmButtons(Title Rkward, Icon rkward.png, Action 'Exec "Rkward" rkward &')
+*FvwmButtons(Title Octave, Icon octave-logo.png, Action ' Exec exec /usr/bin/octave --force-gui'
 *FvwmButtons(Title Filezilla, Icon filezilla.png, Action 'Exec "Filezilla" filezilla &')
+*FvwmButtons(Title Transmission, Icon transmission.png, Action 'Exec "Transmission" transmission &')
 
 # Icon Manager
 DestroyModuleConfig FvwmIconMan: *
