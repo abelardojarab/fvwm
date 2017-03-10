@@ -791,7 +791,6 @@ AddToFunc   FvwmDesktopScreenshot
   "$[fvwm_cache]/screenshot/screenshot-`date +%F[%R]`.jpg"
 + I Exec notify-send "Desktop screenshot was taken."
 
-
 ######
 # Tiling functions
 #################
@@ -806,6 +805,7 @@ AddToFunc TileFunc
 + I Function ClearTileStatesFunc
 + I State $0 True
 + I ResizeMoveMaximize Frame $1 $2 $3 $4
++ I Current (State 10) Maximize True 100 -1p ewmhiwa
 
 DestroyFunc ClearTileStatesFunc
 AddToFunc ClearTileStatesFunc
@@ -830,7 +830,7 @@ AddToFunc TileLeftFunc
 # if not tiled, tile left
 + I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 4 48wa 98wa 0 0
 + I TestRc (Match) Break
-# if tiled bottom-left, do nothing
+# if tiled bottom-left, then tile left
 + I Current (State 1) Function TileFunc 4 48wa 98wa 0 0
 + I State 1 False
 + I TestRc (Match) Break
@@ -842,7 +842,7 @@ AddToFunc TileLeftFunc
 + I Current (State 3) Function TileFunc 2 98wa 48wa 0 50
 + I State 3 False
 + I TestRc (Match) Break
-# if tiled left, do nothing
+# if tiled left, reduce to quarter screen
 + I Current (State 4) Function TileFunc 4 25 98wa 0 0
 + I TestRc (Match) Break
 # if tiled middle, tile left
@@ -852,7 +852,7 @@ AddToFunc TileLeftFunc
 # if tiled right, then untile and remove tiled states
 + I Current (State 6) Function UnTileFunc
 + I TestRc (Match) Break
-# if tiled top-left, do nothing
+# if tiled top-left, then tile left
 + I Current (State 7) Function TileFunc 4 48wa 98wa 0 0
 + I State 7 False
 + I TestRc (Match) Break
@@ -864,6 +864,7 @@ AddToFunc TileLeftFunc
 + I Current (State 9) Function TileFunc 8 48wa 48wa 0 0
 + I State 9 False
 + I TestRc (Match) Break
+# if tiled fullscreen, then untile
 + I Current (State 10) Function TileFunc 4 48wa 98wa 0 0
 + I State 10 False
 + I TestRc (Match) Break
@@ -881,8 +882,10 @@ AddToFunc TileRightFunc
 + I Current (State 2) Function TileFunc 3 48wa 48wa 50 50
 + I State 2 False
 + I TestRc (Match) Break
-# if tiled bottom-right, then do nothing
-+ I Current (State 3) Break
+# if tiled bottom-right, then tile to right
++ I Current (State 3) Function TileFunc 6 48wa 98wa 50 0
++ I State 3 False
++ I TestRc (Match) Break
 # if tiled left, then untile
 + I Current (State 4) Function UnTileFunc
 + I TestRc (Match) Break
@@ -890,18 +893,23 @@ AddToFunc TileRightFunc
 + I Current (State 5) Function TileFunc 6 48wa 48wa 50 0
 + I State 5 False
 + I TestRc (Match) Break
-# if tiled right, then do nothing
-+ I Current (State 6) Function TileFunc 6 25 98wa 75 0
+# if tiled right, then reduce to quarter size
++ I Current (State 6) Function TileFunc 6 48wa 98wa 50 0
++ I TestRc (Match) Break
 # if tiled top-left, then tile top
-+ I Current (State 7) Function TileFunc 8 98wa 48wa 0 0
++ I Current (State 7) Function TileFunc 8 98wa 48wa 0 0C
++ I State 7 False
 + I TestRc (Match) Break
 # if tiled up, then tile top-right
 + I Current (State 8) Function TileFunc 9 48wa 48wa 50 0
 + I State 8 False
 + I TestRc (Match) Break
-# if tiled top-right, then do nothing
-+ I Current (State 9) Break
-+ I Current (State 5) Function TileFunc 6 48wa 48wa 50 0
+# if tiled top-right, then tile right
++ I Current (State 9) Function TileFunc 6 48wa 98wa 50 0
++ I State 9 False
++ I TestRc (Match) Break
+# if tiled fullscreen, then untile
++ I Current (State 10) Function TileFunc 6 48wa 48wa 50 0
 + I State 10 False
 + I TestRc (Match) Break
 
@@ -955,14 +963,18 @@ AddToFunc TileDownFunc
 # if not tiled, tile down
 + I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 2 98wa 48wa 0 50
 + I TestRc (Match) Break
-# if tiled bottom-left, do nothing
-+ I Current (State 1) Break
+# if tiled bottom-left, then tile down
++ I Current (State 1) Function TileFunc 2 98wa 48wa 0 50
++ I State 1 False
++ I TestRc (Match) Break
 # if tiled bottom, go fullscreen
 + I Current (State 2) TileFunc 10 98wa 98wa 0 0
 + I State 2 False
 + I TestRc (Match) Break
-# if tiled bottom-right, then do nothing
-+ I Current (State 3) Break
+# if tiled bottom-right, then tile down
++ I Current (State 3) Function TileFunc 2 98wa 48wa 0 50
++ I State 3 False
++ I TestRc (Match) Break
 # if tiled left, then tile bottom left
 + I Current (State 4) Function TileFunc 1 48wa 48wa 0 50
 + I State 4 False
@@ -1124,7 +1136,6 @@ DestroyFunc GrowSouth
 AddToFunc GrowSouth
 + I PipeRead "echo Resize keep $(($[cw.height] + 15))p"
 
-
 ######
 # Wheel scrolling function
 #################
@@ -1138,14 +1149,12 @@ AddToFunc WheelScroll I PipeRead 'case $0 in \
          || echo GotoPage 0p -1p;; \
    esac'
 
-
 ######
 # Show desktop function
 #################
 DestroyFunc ShowDesktop
 AddToFunc ShowDesktop
 +  I All (AcceptsFocus CurrentPage !Iconic !Shaded !ButtonDocks) Iconify
-
 
 ######
 # Custom functions
@@ -1179,7 +1188,6 @@ AddToFunc StartHiddenConsole
 
 DestroyFunc FuncAutoEnter
 AddToFunc FuncAutoEnter I Autohide HiddenConsole 250 500 N
-
 
 ######
 # Custom Window manipulation functions
@@ -1310,7 +1318,6 @@ Key Tab A 4 WindowList (CurrentDesk, Iconic) Root c c \
 Key Tab A S4 WindowList (CurrentDesk, Iconic) Root c c \
   NoCurrentDeskTitle, NoGeometry, MaxLabelWidth 60, \
   SelectOnRelease Super_L
-
 
 ######
 # Key bindings using Alt + Fn
