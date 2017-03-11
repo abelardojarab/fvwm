@@ -365,7 +365,7 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Padding 1 1
 *FvwmShelf(Size 5x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
 *FvwmShelf(Size 24x1, Swallow "FvwmIconMan" `FvwmIconMan`)
-*FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) Trayer 'Exec trayer --SetDockType true --distance 184 --padding 10 --transparent false --tint 484644 --alpha 100 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &')
+*FvwmShelf(Size 5x1, Swallow (NoKill, Respawn, UseOld) trayer 'Exec exec trayer --SetDockType true --distance 184 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right')
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -665,24 +665,6 @@ AddToFunc StartFunction
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
   Icon $[fvwm_cache]/icon.tmp.$[w.id].png
 
-######
-# Starts system tray applets like network, sound, etc
-#################
-DestroyFunc FuncStartSystrayApplets
-AddToFunc   FuncStartSystrayApplets
-+ I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
-+ I Test (EnvMatch systray_started 0 ) break
-# volume
-+ I Test (x volumeicon) exec exec volumeicon
-# battery
-+ I Test (x fdpowermon) exec exec fdpowermon
-# network
-+ I Test (x nm-applet) exec exec nm-applet
-# bluetooth
-+ I Test (x blueman-applet) exec exec blueman-applet
-# clipboard
-+ I Test (x clipit) exec exec clipit
-+ I TestRc (!Match) Test (x parcellite) exec exec parcellite
 
 ######
 # Init function
@@ -692,21 +674,35 @@ AddToFunc   InitFunction
 + I Exec exec xrdb ~/.Xresources
 + I Exec exec feh --bg-scale $[fvwm_wallpaper]
 + I Exec exec bash -c 'if [ `getconf LONG_BIT` = "64" ]; then /usr/lib/x86_64-linux-gnu/notify-osd; else /usr/lib/i386-linux-gnu/notify-osd; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then insync start; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then dropbox start; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then google-musicmanager; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then hp-systray; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then insync start; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then dropbox start; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then google-musicmanager; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then hp-systray; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then skype; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then compton -b -c; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then volumeicon; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then skype; fi'
 + I Exec exec conky
-+ I Exec exec gnome-do
-+ I FuncStartSystrayApplets
++ I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
++ I Test (EnvMatch systray_started 0 ) break
+# Insync
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then insync start; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then insync start; fi'
+# Dropbox
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then dropbox start; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then dropbox start; fi'
+# Google Music Manager
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then google-musicmanager; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then google-musicmanager; fi'
+# HP systray
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then hp-systray; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then hp-systray; fi'
+# Skype
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then skype; fi'
+# Volume
++ I Test (x volumeicon) Exec exec volumeicon
+# Battery
++ I Test (x fdpowermon) Exec exec fdpowermon
+# Network
++ I Test (x nm-applet) Exec exec nm-applet
+# Bluetooth
++ I Test (x blueman-applet) Exec exec blueman-applet
+# Clipboard
++ I Test (x clipit) exec Exec clipit
++ I TestRc (!Match) Test (x parcellite) Exec exec parcellite
 + I GotoPage 0 0
 
 ######
