@@ -428,7 +428,6 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Calc, Icon libreoffice-calc.png, Action 'Exec "Calc" libreoffice --calc &')
 *FvwmButtons(Title Rkward, Icon rkward.png, Action 'Exec "Rkward" rkward &')
 *FvwmButtons(Title Octave, Icon octave-logo.png, Action ' Exec exec /usr/bin/octave --force-gui'
-*FvwmButtons(Title Filezilla, Icon filezilla.png, Action 'Exec "Filezilla" filezilla &')
 *FvwmButtons(Title Transmission, Icon transmission.png, Action 'Exec "Transmission" transmission &')
 
 # Icon Manager
@@ -483,7 +482,6 @@ DestroyModuleConfig FvwmTaskBar: *
 *FvwmTaskBar: StartName Start
 *FvwmTaskBar: StartMenu MenuFvwmRoot mouse c -100m -60p
 *FvwmTaskBar: MailCheck 0
-
 
 #####
 # Module configurations
@@ -635,7 +633,6 @@ AddToDecor   MyDecoration
 + ButtonStyle 2 ActiveUp Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3
 + ButtonStyle 2 ActiveDown Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3
 + ButtonStyle 2 Inactive Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3
-
 
 #####
 # Re-define our own functions
@@ -843,7 +840,7 @@ AddToFunc TileLeftFunc
 + I State 3 False
 + I TestRc (Match) Break
 # if tiled left, reduce to quarter screen
-+ I Current (State 4) Function TileFunc 4 25 98wa 0 0
++ I Current (State 4) Function TileFunc 4 48wa 98wa 0 0
 + I TestRc (Match) Break
 # if tiled middle, tile left
 + I Current (State 5) Function TileFunc 4 48wa 98wa 0 0
