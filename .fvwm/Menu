@@ -104,7 +104,7 @@ AddToMenu MenuNetwork
 
 DestroyMenu MenuOffice
 AddToMenu MenuOffice
-+ "%apps/abiwors.png%Abiwors" Exec exec abiword
++ "%apps/abiword.png%Abiword" Exec exec abiword
 + "%apps/gnumeric.png%Gnumeric" Exec exec gnumeric
 + "%apps/libreoffice-writer.png%New Document" Exec exec libreoffice --writer
 + "%apps/texmaker.png%Texmaker" Exec exec texmaker
