@@ -69,6 +69,7 @@ AddToMenu MenuGraphics
 + "%apps/shotwell.png%Shotwell" Exec exec shotwell
 + "%apps/inkscape.png%Inkscape" Exec exec inkscape
 + "%apps/gimp.png%GIMP Image Editor" Exec exec gimp
++ "%apps/eog.png%Eye of Gnome" Exec exec eog
 + "%apps/dia.png%Dia" Exec exec dia
 
 DestroyMenu MenuMultiMedia

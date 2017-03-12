@@ -428,7 +428,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Calc, Icon libreoffice-calc.png, Action 'Exec "Calc" libreoffice --calc &')
 *FvwmButtons(Title Rkward, Icon rkward.png, Action 'Exec "Rkward" rkward &')
 *FvwmButtons(Title Octave, Icon octave-logo.png, Action ' Exec exec /usr/bin/octave --force-gui'
-*FvwmButtons(Title Transmission, Icon transmission.png, Action 'Exec "Transmission" transmission &')
+*FvwmButtons(Title Images, Icon eog.png, Action 'Exec "Eye of Gnome" eog &')
 
 # Icon Manager
 DestroyModuleConfig FvwmIconMan: *
@@ -776,13 +776,13 @@ DestroyFunc FvwmWindowScreenshot
 AddToFunc   FvwmWindowScreenshot
 + I ThisWindow (!Shaded !Iconic Iconifiable) \
   Exec import -window $[w.id] -quality 100 -silent \
-  "$[fvwm_cache]/screenshot/screenshot-`date +%F[%R]`.$[w.id].jpg"
+  "~/Pictures/Screenshots/screenshot-`date +%F[%R]`.$[w.id].jpg"
 + I Exec notify-send "Window screenshot was taken."
 
 DestroyFunc FvwmDesktopScreenshot
 AddToFunc   FvwmDesktopScreenshot
 + I Exec sleep $0; import -window root -quality 100 -silent \
-  "$[fvwm_cache]/screenshot/screenshot-`date +%F[%R]`.jpg"
+  "~/Pictures/Screenshots/screenshot-`date +%F[%R]`.jpg"
 + I Exec notify-send "Desktop screenshot was taken."
 
 ######
