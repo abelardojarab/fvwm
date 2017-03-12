@@ -66,6 +66,7 @@ AddToMenu MenuGame
 DestroyMenu MenuGraphics
 AddToMenu MenuGraphics
 + "%apps/xsane.png%XSane Image scanning program" Exec exec xsane
++ "%apps/shutter.png%Screenshots" Exec exec shutter
 + "%apps/shotwell.png%Shotwell" Exec exec shotwell
 + "%apps/inkscape.png%Inkscape" Exec exec inkscape
 + "%apps/gimp.png%GIMP Image Editor" Exec exec gimp
@@ -103,9 +104,12 @@ AddToMenu MenuNetwork
 
 DestroyMenu MenuOffice
 AddToMenu MenuOffice
++ "%apps/abiwors.png%Abiwors" Exec exec abiword
++ "%apps/gnumeric.png%Gnumeric" Exec exec gnumeric
 + "%apps/libreoffice-writer.png%New Document" Exec exec libreoffice --writer
 + "%apps/texmaker.png%Texmaker" Exec exec texmaker
 + "%apps/gnucash-icon.png%GnuCash" Exec exec gnucash
++ "%apps/acroread.png%Acrobat Reader" Exec exec acroread
 + "%apps/evince.png%Document Viewer" Exec exec evince
 + "%apps/calibre-gui.png%Calibre" Exec exec calibre
 + "%apps/libreoffice-calc.png%New Spreadsheet" Exec exec libreoffice --calc
