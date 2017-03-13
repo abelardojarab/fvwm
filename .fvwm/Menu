@@ -8,19 +8,19 @@ DestroyMenu MenuFvwmRoot
 AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "%apps/chrome.png%Google Chrome" Exec exec google-chrome
 + "%apps/terminal.png%New Terminal" Exec exec gnome-terminal
-+ "%xpms/mini.desktop.xpm%Show Desktop" All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail
++ "%apps/desktop.png%Show Desktop" All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail
 + "" Nop
 
 + "%apps/monodevelop.png%Development" Popup MenuDevelopment
-+ "%xpms/mini.gnome.xpm%GNOME" Popup MenuGNOME
++ "%apps/gnome-logo.png%GNOME" Popup MenuGNOME
 + "%apps/steam.png%Games" Popup MenuGame
 + "%xpms/mini.graph.xpm%Graphics" Popup MenuGraphics
 + "%apps/totem.png%MultiMedia" Popup MenuMultiMedia
 + "%apps/applications-internet.png%Network" Popup MenuNetwork
 + "%apps/libreoffice-writer.png%Office and Productivity" Popup MenuOffice
 + "%apps/octave-logo.png%Science" Popup MenuScience
-+ "%apps/gnome-settings.png%System Preferences" Popup MenuSystem
-+ "%apps/kconfigure.png%Utilities" Popup MenuUtilities
++ "%apps/kconfigure.png%System Preferences" Popup MenuSystem
++ "%apps/utilitaire.png%Utilities" Popup MenuUtilities
 + "" Nop
 + "%xpms/mini.fvwm.xpm%Restart Fvwm" Restart
 + "%xpms/small.exit.xpm%Quit Fvwm" Module FvwmForm FvwmForm-QuitVerify
@@ -138,7 +138,7 @@ AddToMenu MenuSystem
 + "%apps/network.png%Networks..."                       Popup                      MenuNetworkSettings
 + "Printers...%apps/printer.png%"                       Popup                      MenuPrinterSettings
 + "Software...%apps/software-properties.png%"           Popup                      MenuSWSettings
-+ "GNOME...%apps/gnome-icon.png%"                       Popup                      MenuGNOMESettings
++ "GNOME...%apps/gnome-logo.png%"                       Popup                      MenuGNOMESettings
 
 DestroyMenu MenuSWSettings
 AddToMenu MenuSWSettings
@@ -160,9 +160,9 @@ AddToMenu MenuPrinterSettings
 DestroyMenu MenuGNOMESettings
 AddToMenu MenuGNOMESettings
 + "%apps/gnome-contacts.png%GNOME Contacts" Exec exec gnome-contacts
-+ "%xpms/mini.gnome.xpm%GNOME Settings" Exec exec gnome-control-center --overview
++ "%apps/gnome-settings.png%GNOME Settings" Exec exec gnome-control-center --overview
 + "%apps/gnome-disks.png%GNOME Disks" Exec exec gnome-disks
-+ "%xpms/mini.monitor.xpm%GNOME System Monitor" Exec exec gnome-system-monitor
++ "%apps/system-monitor%GNOME System Monitor" Exec exec gnome-system-monitor
 + "%apps/gnome-power-statistics.png%GNOME Power Statistics" Exec exec gnome-power-statistics
 + "%apps/session-properties.png%GNOME Startup Applications" Exec exec gnome-session-properties
 + "GNOME Personal File Sharing" Exec exec gnome-file-share-properties
@@ -172,6 +172,7 @@ AddToMenu MenuGNOMESettings
 
 DestroyMenu MenuUtilities
 AddToMenu MenuUtilities
++ "%apps/system-monitor%GNOME System Monitor" Exec exec gnome-system-monitor
 + "%apps/orca.png%Screen Reader" Exec exec orca --replace
 + "%apps/folder.png%File Manager PCManFM" Exec exec pcmanfm
 + "%apps/xterm-color.png%XTerm" Exec exec xterm

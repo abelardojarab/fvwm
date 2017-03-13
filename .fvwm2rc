@@ -266,7 +266,7 @@ Style "trayer"                !Title, StaysOnTop, FixedPosition, EWMHUseStacking
 Style "stalonetray"           !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
 Style "google-chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
 Style "Google Chrome"         !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
-Style "chromium-browser"      !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon browser.png
+Style "chromium-browser"      !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chromium-browser.png
 Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gnome-calculator"      MiniIcon galculator.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gedit"                 MiniIcon gedit.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
@@ -294,9 +294,9 @@ Style "xfce4-terminal"        MiniIcon terminal.png
 Style "terminator"            MiniIcon terminal.png
 Style "xterm"                 MiniIcon terminal.png
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
-Style "Mozilla Firefox"       CenterPlacement, MiniIcon browser.png
-Style "firefox"               CenterPlacement, MiniIcon browser.png
-Style "Library"               CenterPlacement, MiniIcon browser.png
+Style "Mozilla Firefox"       CenterPlacement, MiniIcon firefox.png
+Style "firefox"               CenterPlacement, MiniIcon firefox.png
+Style "Library"               CenterPlacement, MiniIcon firefox.png
 Style "xman"                  Icon xman.xpm, ClickToFocus
 Style "xmag"                  Icon mag_glass.xpm, ClickToFocus
 Style "xgraph"                Icon graphs.xpm, ClickToFocus
@@ -398,7 +398,7 @@ DestroyModuleConfig FvwmDeskControl: *
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtons: Font  "$[infostore.font_mono]"
-*FvwmButtons: ButtonGeometry 88x52+0+30
+*FvwmButtons: ButtonGeometry 90x52+0+30
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 22
@@ -407,25 +407,24 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(Title Start, Icon logo.png, \
          Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +94+$top 0 -100m")
-*FvwmButtons(Title Browser, Icon chrome.png, \
+*FvwmButtons(Title Browser, Icon chromium-browser.png, \
                    Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
-*FvwmButtons(Title Firefox, Icon browser.png, Action 'Exec "Firefox" firefox &')
+*FvwmButtons(Title Firefox, Icon firefox.png, Action 'Exec "Firefox" firefox &')
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "PCmanFM" pcmanfm &')
-*FvwmButtons(Title Email, Icon apps/email.png, Action 'Exec "Geary" geary &')
+*FvwmButtons(Title Email, Icon apps/geary.png, Action 'Exec "Geary" geary &')
 *FvwmButtons(Title Terminal, Icon terminal.png, \
                    Action (Mouse 1) 'Exec "Terminal" terminator &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/terminator &" Next "/bin/bash" +$left+$top)
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
 *FvwmButtons(Title Devhelp, Icon devhelp.png, Action 'Exec "Devhelp" devhelp &')
 *FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
-*FvwmButtons(Title Gitg, Icon git_kraken.png, Action 'Exec "Gitg" gitg &')
+*FvwmButtons(Title Gitg, Icon gitg.png, Action 'Exec "Gitg" gitg &')
 *FvwmButtons(Title Evince, Icon evince.png, Action 'Exec "Evince" evince &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" libreoffice --writer &')
-*FvwmButtons(Title Calc, Icon libreoffice-calc.png, Action 'Exec "Calc" libreoffice --calc &')
 *FvwmButtons(Title Rkward, Icon rkward.png, Action 'Exec "Rkward" rkward &')
 *FvwmButtons(Title Octave, Icon octave-logo.png, Action ' Exec exec /usr/bin/octave --force-gui'
 *FvwmButtons(Title Images, Icon eog.png, Action 'Exec "Eye of Gnome" eog &')
