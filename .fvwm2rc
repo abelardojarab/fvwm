@@ -68,7 +68,7 @@ PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`
 # Fonts
 #################
 InfoStoreAdd font_sans "xft:Meslo:size=12:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Roboto Mono:size=12:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Ubuntu Mono Regular:size=12:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
