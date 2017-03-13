@@ -717,7 +717,7 @@ DestroyFunc FuncWinPaneReset
 AddToFunc FuncWinPaneReset
 + I PipeRead "echo SendToModule FvwmButtons ChangeButton CmdTime Title \"`date +\"%H:%M\"`\""
 + I PipeRead "echo SendToModule FvwmButtons ChangeButton CmdDate Title \"`date +\"%d.%m.%Y\"`\""
-Schedule Periodic 1000 FuncWinPaneReset
+# Schedule Periodic 1000 FuncWinPaneReset
 
 ######
 # Thumbnailing functions
