@@ -138,7 +138,7 @@ AddToMenu MenuSystem
 + "%apps/network.png%Networks..."                       Popup                      MenuNetworkSettings
 + "Printers...%apps/printer.png%"                       Popup                      MenuPrinterSettings
 + "Software...%apps/software-properties.png%"           Popup                      MenuSWSettings
-+ "GNOME...%xpms/mini.gnome.xpm%"                       Popup                      MenuGNOMESettings
++ "GNOME...%apps/gnome-icon.png%"                       Popup                      MenuGNOMESettings
 
 DestroyMenu MenuSWSettings
 AddToMenu MenuSWSettings
@@ -159,7 +159,7 @@ AddToMenu MenuPrinterSettings
 
 DestroyMenu MenuGNOMESettings
 AddToMenu MenuGNOMESettings
-+ "GNOME Contacts" Exec exec gnome-contacts
++ "%apps/gnome-contacts.png%GNOME Contacts" Exec exec gnome-contacts
 + "%xpms/mini.gnome.xpm%GNOME Settings" Exec exec gnome-control-center --overview
 + "%apps/gnome-disks.png%GNOME Disks" Exec exec gnome-disks
 + "%xpms/mini.monitor.xpm%GNOME System Monitor" Exec exec gnome-system-monitor
