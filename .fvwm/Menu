@@ -19,7 +19,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "%apps/applications-internet.png%Network" Popup MenuNetwork
 + "%apps/libreoffice-writer.png%Office and Productivity" Popup MenuOffice
 + "%apps/octave-logo.png%Science" Popup MenuScience
-+ "%apps/gnome-tweak-tool.png%System Preferences" Popup MenuSystem
++ "%apps/gnome-settings.png%System Preferences" Popup MenuSystem
 + "%apps/kconfigure.png%Utilities" Popup MenuUtilities
 + "" Nop
 + "%xpms/mini.fvwm.xpm%Restart Fvwm" Restart
@@ -86,6 +86,7 @@ AddToMenu MenuMultiMedia
 + "%apps/kodi.png%Open in standalone mode" Exec exec kodi --standalone
 + "%apps/cheese.png%Cheese" Exec exec cheese
 + "%apps/guvcview.png%Guvcview" Exec exec guvcview
++ "%apps/filebot.png%Filebot" Exec exec filebot
 
 DestroyMenu MenuNetwork
 AddToMenu MenuNetwork
@@ -142,7 +143,7 @@ AddToMenu MenuSystem
 DestroyMenu MenuSWSettings
 AddToMenu MenuSWSettings
 + "%apps/software-properties.png%Software and Updates" Exec exec software-properties-gtk
-+ "%apps/softwarecenter.png%Ubuntu Software Center" Exec exec /usr/bin/software-center
++ "%apps/software-center.png%Ubuntu Software Center" Exec exec /usr/bin/software-center
 
 DestroyMenu MenuNetworkSettings
 AddToMenu MenuNetworkSettings
