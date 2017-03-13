@@ -134,7 +134,7 @@ XORvalue 208
 # option for normal maximization, and one for full-screen maximization.
 # Syntax: EwmhBaseStruts left right top bottom
 #################
-EwmhBaseStruts 93 0 30 0
+EwmhBaseStruts 92 0 30 0
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
