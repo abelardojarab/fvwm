@@ -67,8 +67,8 @@ PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`
 #######
 # Fonts
 #################
-InfoStoreAdd font_sans "xft:Meslo:size=11:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Cousine:size=11:encoding=iso10646-1"
+InfoStoreAdd font_sans "xft:Meslo:size=12:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Roboto Mono:size=12:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
@@ -134,7 +134,7 @@ XORvalue 208
 # option for normal maximization, and one for full-screen maximization.
 # Syntax: EwmhBaseStruts left right top bottom
 #################
-EwmhBaseStruts 80 0 30 0
+EwmhBaseStruts 92 0 30 0
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
@@ -398,7 +398,7 @@ DestroyModuleConfig FvwmDeskControl: *
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtons: Font  "$[infostore.font_mono]"
-*FvwmButtons: ButtonGeometry 74x52+0+0
+*FvwmButtons: ButtonGeometry 88x52+0+30
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 22
@@ -406,7 +406,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons: Frame 1
 *FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(Title Start, Icon logo.png, \
-         Action (Mouse 1) "Popup MenuFvwmRoot Rectangle +80+$top 0 -100m")
+         Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +94+$top 0 -100m")
 *FvwmButtons(Title Browser, Icon chrome.png, \
                    Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
@@ -657,7 +657,7 @@ AddToFunc StartFunction
 + I Module FvwmAnimate
 + I Module FvwmEvent
 + I Module FvwmProxy
-+ I Module FvwmButtons -g 80x24+80+0 FvwmDeskControl
++ I Module FvwmButtons -g 88x24+0+0 FvwmDeskControl
 + I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-360))x28-180+0 FvwmShelf"
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
   Icon $[fvwm_cache]/icon.tmp.$[w.id].png
