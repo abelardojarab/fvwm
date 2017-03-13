@@ -681,17 +681,15 @@ AddToFunc StartFunction
 + I Test (x hp-systray) Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then hp-systray; fi'
 # Skype
 + I Test (x skype) Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then skype; fi'
+# Clipboard
++ I Test (x clipit) Exec exec clipit
++ I TestRc (!Match) Test (x parcellite) Exec exec parcellite
 # Volume
 + I Test (x volumeicon) Exec exec volumeicon
-# Battery
-+ I Test (x fdpowermon) Exec exec fdpowermon
 # Network
 + I Test (x nm-applet) Exec exec nm-applet
 # Bluetooth
 + I Test (x blueman-applet) Exec exec blueman-applet
-# Clipboard
-+ I Test (x clipit) exec Exec clipit
-+ I TestRc (!Match) Test (x parcellite) Exec exec parcellite
 
 ######
 # Init function
