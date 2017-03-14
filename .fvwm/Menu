@@ -14,7 +14,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "%apps/monodevelop.png%Development" Popup MenuDevelopment
 + "%apps/gnome-logo.png%GNOME" Popup MenuGNOME
 + "%apps/steam.png%Games" Popup MenuGame
-+ "%xpms/mini.graph.xpm%Graphics" Popup MenuGraphics
++ "%apps/eog.png%Graphics" Popup MenuGraphics
 + "%apps/totem.png%MultiMedia" Popup MenuMultiMedia
 + "%apps/applications-internet.png%Network" Popup MenuNetwork
 + "%apps/libreoffice-writer.png%Office and Productivity" Popup MenuOffice
@@ -36,6 +36,7 @@ AddToMenu MenuDevelopment
 + "%apps/eclipse.png%Eclipse" Exec exec eclipse
 + "%apps/sublime-text.png%New File" Exec exec sublime_text --command new_file
 + "%apps/git_kraken.png%Gitkraken" Exec exec gitkraken
++ "%apps/gitg.png%Gitg" Exec exec gitg
 + "%apps/emacs24.png%GNU Emacs 24" Exec exec emacs
 + "%apps/atom.png%Atom" Exec exec /opt/atom/atom
 + "%apps/glade.png%Glade" Exec exec glade
@@ -51,16 +52,9 @@ AddToMenu MenuGNOME
 DestroyMenu MenuGame
 AddToMenu MenuGame
 + "%apps/steam.png%Friends" Exec exec steam steam://open/friends
-+ "Violett" Exec exec steam steam://rungameid/257830
 + "%apps/playonlinux.png%PlayOnLinux" Exec exec playonlinux
-+ "The Cave" Exec exec steam steam://rungameid/221810
-+ "Trine 2" Exec exec steam steam://rungameid/35720
-+ "Mark of the Ninja" Exec exec steam steam://rungameid/214560
 + "Kentucky Route Zero" Exec exec steam steam://rungameid/231200
 + "%apps/dosbox.png%DOSBox Emulator" Exec exec dosbox
-+ "Broken Age" Exec exec steam steam://rungameid/232790
-+ "%apps/steam.png%Bastion" Exec exec steam steam://rungameid/107100
-+ "%apps/steam.png%The Bard's Tale" Exec exec steam steam://rungameid/41900
 + "%apps/scummvm.png%ScummVM" Exec exec scummvm
 
 DestroyMenu MenuGraphics
@@ -162,7 +156,7 @@ AddToMenu MenuGNOMESettings
 + "%apps/gnome-contacts.png%GNOME Contacts" Exec exec gnome-contacts
 + "%apps/gnome-settings.png%GNOME Settings" Exec exec gnome-control-center --overview
 + "%apps/gnome-disks.png%GNOME Disks" Exec exec gnome-disks
-+ "%apps/system-monitor%GNOME System Monitor" Exec exec gnome-system-monitor
++ "%apps/system-monitor.png%GNOME System Monitor" Exec exec gnome-system-monitor
 + "%apps/gnome-power-statistics.png%GNOME Power Statistics" Exec exec gnome-power-statistics
 + "%apps/session-properties.png%GNOME Startup Applications" Exec exec gnome-session-properties
 + "GNOME Personal File Sharing" Exec exec gnome-file-share-properties
