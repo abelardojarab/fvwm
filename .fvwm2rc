@@ -517,6 +517,7 @@ DestroyModuleConfig FvwmScroll: *
 DestroyModuleConfig FvwmEvent: *
 *FvwmEvent: deiconify DeThumbnail
 *FvwmEvent: add_window NewWindowFunc
+*FvwmEvent: focus_change "TransparencyChangeFocus"
 *FvwmEvent: new_desk "SendToModule FvwmDeskControl ChangeButton desk Title $$[desk.n]"
 
 ######
@@ -664,6 +665,18 @@ AddToFunc StartFunction
 + I GotoPage 0 0
 # + I FvwmAuto FvwmAutohide -menter FuncAutoEnter
 # + I Test (Init) StartHiddenConsole
+
+######
+# Init function
+#################
+DestroyFunc InitFunction
+AddToFunc   InitFunction
++ I Exec exec xrdb ~/.Xresources
++ I Exec exec feh --bg-scale $[fvwm_wallpaper]
++ I Exec exec bash -c 'if [ `getconf LONG_BIT` = "64" ]; then /usr/lib/x86_64-linux-gnu/notify-osd; else /usr/lib/i386-linux-gnu/notify-osd; fi'
++ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then compton -b -c; fi'
++ I Exec exec conky
++ I Exec exec trayer --SetDockType true --distance 184 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right
 # Tray section
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 # + I Test (EnvMatch systray_started 0 ) break
@@ -690,18 +703,6 @@ AddToFunc StartFunction
 + I Test (x nm-applet) Exec exec nm-applet
 # Bluetooth
 + I Test (x blueman-applet) Exec exec blueman-applet
-
-######
-# Init function
-#################
-DestroyFunc InitFunction
-AddToFunc   InitFunction
-+ I Exec exec xrdb ~/.Xresources
-+ I Exec exec feh --bg-scale $[fvwm_wallpaper]
-+ I Exec exec bash -c 'if [ `getconf LONG_BIT` = "64" ]; then /usr/lib/x86_64-linux-gnu/notify-osd; else /usr/lib/i386-linux-gnu/notify-osd; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then compton -b -c; fi'
-+ I Exec exec conky
-+ I Exec exec trayer --SetDockType true --distance 184 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right
 
 ######
 # Pane functions
@@ -766,6 +767,18 @@ AddToFunc FvwmExpose
     || Nop"
 + I Popup FvwmExposeMenu
 + I Exec exec rm -f $[fvwm_cache]/tmp/icon.exp.*
+
+######
+# Transparecy function
+#################
+DestroyFunc TransparencyChangeFocus
+AddToFunc TransparencyChangeFocus
+# + I Next (!Focused) Exec exec transset -i $[w.id] 0.5
++ I Next (!Focused) PipeRead "(echo -n nofocused; xwininfo -id $[w.id] | grep '^xwininfo') >> /tmp/log"
+# + I Prev (Focused) Exec exec transset -i $[w.id] 1
++ I Prev (Focused) PipeRead "(echo -n focused; xwininfo -id $[w.id] | grep '^xwininfo') >> /tmp/log"
+# + I Next (!Focused) Echo 'lose $[w.id]'
+# + I Prev (Focused) Echo 'get $[w.id]'
 
 ######
 # Screenshot functions (uses ImageMagick)
