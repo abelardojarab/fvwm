@@ -251,11 +251,12 @@ Style * BackingStore, SaveUnder
 Style * EWMHMiniIconOverride
 
 # Comment these lines if you dont like Icons to have Titles.
-Style * StickyIcon, IconTitle, IconTitleRelief 0, IconSize 20 20
-Style * IconTitleColorset 5, HilightIconTitleColorset 5
+Style * StickyIcon
+Style * IconSize 160 160, IconGrid 180 180, IconBox 180x1800+180+50, IconFill top left
+Style * IconTitle, IconTitleRelief 0, IconTitleColorset 10, HilightIconTitleColorset 5
 Style * IconFont "$[infostore.font_mono]"
 Style * IconBackgroundRelief 0, IconBackGroundColorset 5
-
+Style * !UseIconPosition
 
 # !Handles, !Borders, !Title
 Style "wine"                  FPLenient, NoFuncHint, NoDecorHint, NoOLDecor
