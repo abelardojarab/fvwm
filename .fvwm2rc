@@ -106,13 +106,6 @@ ColormapFocus FollowsFocus
 OpaqueMoveSize -1
 
 #####
-# SnapAttraction lets nearby windows snap together, or snap to edges so that they
-# are easier to align on your desktop, The default is off, if you set it too large
-# it's annoying as hell, 3 pixels is just right.
-#################
-SnapAttraction 3 SameType
-
-#####
 # http://www.fvwm.org/documentation/faq/#5.5
 #################
 IgnoreModifiers L2
@@ -154,6 +147,13 @@ ClickTime 550
 # bug, it is a problem of the application.
 #################
 BugOpts FlickeringMoveWorkaround True
+
+#####
+# SnapAttraction lets nearby windows snap together, or snap to edges so that they
+# are easier to align on your desktop, The default is off, if you set it too large
+# it's annoying as hell, 3 pixels is just right.
+#################
+Style * SnapAttraction 3 SameType
 
 # In Style statements, *’s are wild cards, so ‘Style *’ says apply this style to every window.
 # This is followed by a list of styles separated by commas that you wish to use.
@@ -276,7 +276,7 @@ Style "Geary"                 MiniIcon apps/email.pngBorder, EWMHMiniIconOverrid
 Style "pcmanfm"               MiniIcon folder.png
 Style "gimp"                  MiniIcon gimp.png
 Style "inkscape"              MiniIcon inkscape.png
-Style "emacs"                 MiniIcon emacs24.png
+Style "emacs*"                 MiniIcon emacs24.png
 Style "evince"                MiniIcon evince.png
 Style "subl"                  MiniIcon sublime-text.png
 Style "sublime_text"          MiniIcon sublime-text.png
@@ -292,7 +292,7 @@ Style "dia"                   MiniIcon dia.png
 Style "Terminal"              MiniIcon terminal.png
 Style "gnome-terminal"        MiniIcon terminal.png
 Style "xfce4-terminal"        MiniIcon terminal.png
-Style "terminator"            MiniIcon terminal.png
+Style "termin*"               MiniIcon terminal.png
 Style "xterm"                 MiniIcon terminal.png
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon firefox.png
@@ -349,12 +349,6 @@ Colorset 16 fg black, bg #c6c3c6, RootTransparent buffer, Tint #e4e5c7 90
 # Menu selection colorset
 Colorset 21 fg #ffffff, bg #6d8d6d
 
-######
-# Extra modules
-#################
-Read $[fvwm_userdir]/modules/HorizontalPanel
-Read $[fvwm_userdir]/modules/KlikeBottomBar
-
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Font "$[infostore.font_mono]"
@@ -366,7 +360,6 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Padding 1 1
 *FvwmShelf(Size 5x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
 *FvwmShelf(Size 25x1, Swallow "FvwmIconMan" `FvwmIconMan`)
-# *FvwmShelf(Size 5x1, Swallow (NoKill, Respawn, UseOld) trayer 'Exec exec trayer --SetDockType true --distance 184 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right')
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -436,7 +429,6 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 200x28
 *FvwmIconMan: MaxButtonWidth 200
-*FvwmIconMan: Padding 1 1
 *FvwmIconMan: FocusAndSelectButton flat
 *FvwmIconMan: FocusButton up
 *FvwmIconMan: IconButton up
