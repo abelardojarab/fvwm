@@ -669,7 +669,7 @@ AddToFunc   InitFunction
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then compton -b -c; fi'
 + I Exec exec conky
 + I Exec exec vncconfig -nowin
-+ I Exec exec trayer --SetDockType true --distance 184 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right
++ I Exec exec trayer --SetDockType true --distance 184 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 300 --heighttype pixel --height 28 --distancefrom right
 # Tray section
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 # + I Test (EnvMatch systray_started 0 ) break
