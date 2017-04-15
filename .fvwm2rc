@@ -67,8 +67,8 @@ PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`
 #######
 # Fonts
 #################
-InfoStoreAdd font_sans "xft:Meslo:size=11:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Ubuntu Mono Regular:size=11:encoding=iso10646-1"
+InfoStoreAdd font_sans "xft:Meslo:size=12:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Ubuntu Mono Regular:size=12:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
@@ -416,8 +416,11 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Gitg, Icon gitg.png, Action 'Exec "Gitg" gitg &')
 *FvwmButtons(Title Evince, Icon evince.png, Action 'Exec "Evince" evince &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
+*FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" libreoffice --writer &')
+*FvwmButtons(Title Rkward, Icon rkward.png, Action 'Exec "Rkward" rkward &')
+*FvwmButtons(Title Octave, Icon octave-logo.png, Action ' Exec exec /usr/bin/octave --force-gui'
 *FvwmButtons(Title Images, Icon eog.png, Action 'Exec "Eye of Gnome" eog &')
 
 # Icon Manager
