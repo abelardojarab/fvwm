@@ -66,6 +66,7 @@ AddToMenu MenuGraphics
 + "%apps/gimp.png%GIMP Image Editor" Exec exec gimp
 + "%apps/eog.png%Eye of Gnome" Exec exec eog
 + "%apps/dia.png%Dia" Exec exec dia
++ "%apps/gpick.png%Gpick Color Sampler" Exec exec gpick
 
 DestroyMenu MenuMultiMedia
 AddToMenu MenuMultiMedia
@@ -166,6 +167,7 @@ AddToMenu MenuGNOMESettings
 
 DestroyMenu MenuUtilities
 AddToMenu MenuUtilities
++ "%apps/virt-manager.png%Virtual Machine Manager" Exec exec virt-manager -c qemu+ssh://localhost/system
 + "%apps/system-monitor.png%GNOME System Monitor" Exec exec gnome-system-monitor
 + "%apps/orca.png%Screen Reader" Exec exec orca --replace
 + "%apps/folder.png%File Manager PCManFM" Exec exec pcmanfm
