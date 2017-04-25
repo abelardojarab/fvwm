@@ -15,7 +15,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "%apps/gnome-logo.png%GNOME" Popup MenuGNOME
 + "%apps/steam.png%Games" Popup MenuGame
 + "%apps/eog.png%Graphics" Popup MenuGraphics
-+ "%apps/totem.png%MultiMedia" Popup MenuMultiMedia
++ "%apps/totem.png%Multimedia" Popup MenuMultimedia
 + "%apps/applications-internet.png%Network" Popup MenuNetwork
 + "%apps/libreoffice-writer.png%Office and Productivity" Popup MenuOffice
 + "%apps/octave-logo.png%Science" Popup MenuScience
@@ -37,7 +37,7 @@ AddToMenu MenuDevelopment
 + "%apps/sublime-text.png%New File" Exec exec sublime_text --command new_file
 + "%apps/git_kraken.png%Gitkraken" Exec exec gitkraken
 + "%apps/gitg.png%Gitg" Exec exec gitg
-+ "%apps/emacs24.png%GNU Emacs 24" Exec exec emacs
++ "%apps/emacs24.png%GNU Emacs 25" Exec exec emacs
 + "%apps/atom.png%Atom" Exec exec /opt/atom/atom
 + "%apps/glade.png%Glade" Exec exec glade
 + "%apps/vim.png%Vim" Exec exec gvim
@@ -68,8 +68,8 @@ AddToMenu MenuGraphics
 + "%apps/dia.png%Dia" Exec exec dia
 + "%apps/gpick.png%Gpick Color Sampler" Exec exec gpick
 
-DestroyMenu MenuMultiMedia
-AddToMenu MenuMultiMedia
+DestroyMenu MenuMultimedia
+AddToMenu MenuMultimedia
 + "%apps/openshot.png%OpenShot Video Editor" Exec exec openshot
 + "%apps/brasero.png%CD/DVD Burner (Brasero)" Exec exec brasero --video
 + "%apps/audacious.png%Audacious Qt Interface" Exec exec audacious --qt
