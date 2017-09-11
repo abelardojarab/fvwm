@@ -68,7 +68,7 @@ PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`
 # Fonts
 #################
 InfoStoreAdd font_sans "xft:Meslo:size=12:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Ubuntu Mono Regular:size=12:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Fira Mono:size=12:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
@@ -679,6 +679,7 @@ AddToFunc   InitFunction
 # Dropbox
 + I Test (x dropbox) Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then dropbox start; fi'
 + I Test (x dropbox) Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then dropbox start; fi'
++ I Test (x dropbox) Exec exec bash -c 'if [ $DISPLAY = ":1" ]; then ~/.dropbox-dist/dropboxd; fi'
 # Google Music Manager
 + I Test (x google-musicmanager) Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then google-musicmanager; fi'
 + I Test (x google-musicmanager) Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then google-musicmanager; fi'
