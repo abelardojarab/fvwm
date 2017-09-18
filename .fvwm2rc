@@ -276,13 +276,14 @@ Style "Geary"                 MiniIcon apps/email.pngBorder, EWMHMiniIconOverrid
 Style "pcmanfm"               MiniIcon folder.png
 Style "gimp"                  MiniIcon gimp.png
 Style "inkscape"              MiniIcon inkscape.png
-Style "emacs*"                 MiniIcon emacs24.png
+Style "emacs*"                MiniIcon emacs24.png
 Style "evince"                MiniIcon evince.png
 Style "subl"                  MiniIcon sublime-text.png
 Style "sublime_text"          MiniIcon sublime-text.png
 Style "devhelp"               MiniIcon devhelp.png
 Style "umbrello"              MiniIcon umbrello.png
 Style "vncviewer"             MiniIcon vncviewer.png
+Style "realvnc*"              MiniIcon vncviewer.png
 Style "VNC Viewer"            MiniIcon vncviewer.png
 Style "zeal"                  MiniIcon zeal.png
 Style "atom"                  MiniIcon atom.png
