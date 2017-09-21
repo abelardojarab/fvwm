@@ -277,6 +277,7 @@ Style "pcmanfm"               MiniIcon folder.png
 Style "gimp"                  MiniIcon gimp.png
 Style "inkscape"              MiniIcon inkscape.png
 Style "emacs*"                MiniIcon emacs24.png
+Style "Code*"                 MiniIcon code.png
 Style "evince"                MiniIcon evince.png
 Style "subl"                  MiniIcon sublime-text.png
 Style "sublime_text"          MiniIcon sublime-text.png
@@ -411,8 +412,9 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Terminal, Icon terminal.png, \
                    Action (Mouse 1) 'Exec "Terminal" terminator &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/terminator &" Next "/bin/bash" +$left+$top)
+*FvwmButtons(Title Code, Icon code.png, Action 'Exec "Visual Studio Code" code &')
+*FvwmButtons(Title Atom, Icon atom.png, Action 'Exec "Atom" atom &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
-*FvwmButtons(Title Devhelp, Icon devhelp.png, Action 'Exec "Devhelp" devhelp &')
 *FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
 *FvwmButtons(Title Gitg, Icon gitg.png, Action 'Exec "Gitg" gitg &')
 *FvwmButtons(Title Evince, Icon evince.png, Action 'Exec "Evince" evince &')
