@@ -433,8 +433,8 @@ DestroyModuleConfig FvwmDeskControl: *
 DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Font "$[infostore.font_mono]"
 *FvwmIconMan: ManagerGeometry 1x1
-*FvwmIconMan: ButtonGeometry 200x28
-*FvwmIconMan: MaxButtonWidth 200
+*FvwmIconMan: ButtonGeometry 300x28
+*FvwmIconMan: MaxButtonWidth 300
 *FvwmIconMan: FocusAndSelectButton flat
 *FvwmIconMan: FocusButton up
 *FvwmIconMan: IconButton up
