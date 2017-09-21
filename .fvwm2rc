@@ -67,7 +67,7 @@ PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`
 #######
 # Fonts
 #################
-InfoStoreAdd font_sans "xft:Meslo:size=12:encoding=iso10646-1"
+InfoStoreAdd font_sans "xft:Ubuntu Mono:size=13:encoding=iso10646-1"
 InfoStoreAdd font_mono "xft:Fira Mono:size=12:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
@@ -363,8 +363,8 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Colorset 10
 *FvwmShelf: Frame 1
 *FvwmShelf: Padding 1 1
-*FvwmShelf(Size 8x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
-*FvwmShelf(Size 34x1, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmShelf(Size 7x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
+*FvwmShelf(Size 35x1, Swallow "FvwmIconMan" `FvwmIconMan`)
 *FvwmShelf(Size 8x1, Swallow(NoClose, Respawn, UseOld) "trayer" 'Exec trayer --SetDockType true --distance 284 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right ')
 
 # A little control panel for switching desks.
@@ -397,7 +397,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmPager: Label 3 "3: Other"
 
 # Set up the geometry so that the buttons stack vertically on the left.
-*FvwmButtons: Font  "$[infostore.font_mono]"
+*FvwmButtons: Font  "$[infostore.font_sans]"
 *FvwmButtons: ButtonGeometry 86x54+0+30
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
