@@ -296,9 +296,12 @@ Style "gnome-terminal"        MiniIcon terminal.png
 Style "xfce4-terminal"        MiniIcon terminal.png
 Style "termin*"               MiniIcon terminal.png
 Style "xterm"                 MiniIcon terminal.png
+Style "Acrobat*"              MiniIcon acroread.png
+Style "Adobe*"                MiniIcon acroread.png
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon firefox.png
-Style "firefox"               CenterPlacement, MiniIcon firefox.png
+Style "firefox*"              CenterPlacement, MiniIcon firefox.png
+Style "Firefox*"              CenterPlacement, MiniIcon firefox.png
 Style "Library"               CenterPlacement, MiniIcon firefox.png
 Style "xman"                  Icon xman.xpm, ClickToFocus
 Style "xmag"                  Icon mag_glass.xpm, ClickToFocus
@@ -354,14 +357,15 @@ Colorset 21 fg #ffffff, bg #6d8d6d
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Font "$[infostore.font_mono]"
-*FvwmShelf: Columns 35
+*FvwmShelf: Columns 50
 *FvwmShelf: Rows 1
 *FvwmShelf: BoxSize smart
 *FvwmShelf: Colorset 10
 *FvwmShelf: Frame 1
 *FvwmShelf: Padding 1 1
-*FvwmShelf(Size 5x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
-*FvwmShelf(Size 25x1, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmShelf(Size 8x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
+*FvwmShelf(Size 34x1, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmShelf(Size 8x1, Swallow(NoClose, Respawn, UseOld) "trayer" 'Exec trayer --SetDockType true --distance 284 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right ')
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -394,7 +398,7 @@ DestroyModuleConfig FvwmDeskControl: *
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtons: Font  "$[infostore.font_mono]"
-*FvwmButtons: ButtonGeometry 90x52+0+30
+*FvwmButtons: ButtonGeometry 86x54+0+30
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 22
@@ -408,7 +412,6 @@ DestroyModuleConfig FvwmDeskControl: *
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
 *FvwmButtons(Title Firefox, Icon firefox.png, Action 'Exec "Firefox" firefox &')
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "PCmanFM" pcmanfm &')
-*FvwmButtons(Title Email, Icon apps/geary.png, Action 'Exec "Geary" geary &')
 *FvwmButtons(Title Terminal, Icon terminal.png, \
                    Action (Mouse 1) 'Exec "Terminal" terminator &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/terminator &" Next "/bin/bash" +$left+$top)
@@ -416,8 +419,8 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Atom, Icon atom.png, Action 'Exec "Atom" atom &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
 *FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
-*FvwmButtons(Title Gitg, Icon gitg.png, Action 'Exec "Gitg" gitg &')
-*FvwmButtons(Title Evince, Icon evince.png, Action 'Exec "Evince" evince &')
+*FvwmButtons(Title Gitg, Icon qgit.png, Action 'Exec "Gitg" gitg &')
+*FvwmButtons(Title Acrobat, Icon acroread.png, Action 'Exec "Adobe Acrobat" acroread &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
@@ -647,9 +650,9 @@ AddToDecor   MyDecoration
 #################
 AddToFunc StartFunction
 + I Test (Init) Exec exec fvwm-root --dither --retain-pixmap $[fvwm_wallpaper]
-+ I FvwmButtons
++ I FvwmButtons 
 + I Module FvwmProxy
-+ I Module FvwmCommandS
++ I Module FvwmCommands
 + I Module FvwmAnimate
 + I Module FvwmEvent
 + I Module FvwmProxy
@@ -672,7 +675,6 @@ AddToFunc   InitFunction
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then compton -b -c; fi'
 + I Exec exec conky
 + I Exec exec vncconfig -nowin
-+ I Exec exec trayer --SetDockType true --distance 184 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 300 --heighttype pixel --height 28 --distancefrom right
 # Tray section
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 # + I Test (EnvMatch systray_started 0 ) break
