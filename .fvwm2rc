@@ -368,9 +368,9 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Colorset 10
 *FvwmShelf: Frame 1
 *FvwmShelf: Padding 1 1
-*FvwmShelf(Size 7x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
-*FvwmShelf(Size 35x1, Swallow "FvwmIconMan" `FvwmIconMan`)
-*FvwmShelf(Size 8x1, Swallow(NoClose, Respawn, UseOld) "trayer" 'Exec trayer --SetDockType true --distance 284 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right ')
+*FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
+*FvwmShelf(Size 36x1, Swallow "FvwmIconMan" `FvwmIconMan`)
+*FvwmShelf(Size 8x1, Swallow(NoClose, Respawn, UseOld) "trayer" 'Exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right ')
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -403,7 +403,7 @@ DestroyModuleConfig FvwmDeskControl: *
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtons: Font  "$[infostore.font_sans]"
-*FvwmButtons: ButtonGeometry 86x54+0+30
+*FvwmButtons: ButtonGeometry 86x56+0+30
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 22
@@ -415,7 +415,6 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Browser, Icon chromium-browser.png, \
                    Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
-*FvwmButtons(Title Firefox, Icon firefox.png, Action 'Exec "Firefox" firefox &')
 *FvwmButtons(Title Email, Icon geary.png, Action 'Exec "Geary" geary &')
 *FvwmButtons(Title Pidgin, Icon pidgin.png, Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "Nemo" nemo &')
@@ -661,7 +660,7 @@ AddToFunc StartFunction
 + I Module FvwmEvent
 + I Module FvwmProxy
 + I Module FvwmButtons -g 88x24+0+0 FvwmDeskControl
-+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-360))x28-180+0 FvwmShelf"
++ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-100))x28-0+0 FvwmShelf"
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
   Icon $[fvwm_cache]/icon.tmp.$[w.id].png
 + I GotoPage 0 0
