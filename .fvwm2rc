@@ -422,7 +422,6 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Gitg, Icon qgit.png, Action 'Exec "Gitg" gitg &')
 *FvwmButtons(Title Acrobat, Icon acroread.png, Action 'Exec "Adobe Acrobat" acroread &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
-*FvwmButtons(Title Gimp, Icon gimp.png, Action 'Exec "Gimp" gimp &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" libreoffice --writer &')
 *FvwmButtons(Title Rkward, Icon rkward.png, Action 'Exec "Rkward" rkward &')
