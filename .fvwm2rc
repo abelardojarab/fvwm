@@ -67,7 +67,7 @@ PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`
 #######
 # Fonts
 #################
-InfoStoreAdd font_sans "xft:Ubuntu Mono:size=13:encoding=iso10646-1"
+InfoStoreAdd font_sans "xft:Fira Mono:size=11:encoding=iso10646-1"
 InfoStoreAdd font_mono "xft:Fira Mono:size=12:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
@@ -292,12 +292,16 @@ Style "filezilla"             MiniIcon filezilla.png
 Style "Gitg"                  MiniIcon qgit.png
 Style "dia"                   MiniIcon dia.png
 Style "Terminal"              MiniIcon terminal.png
+Style "Tilix*"                MiniIcon terminal.png
+Style "*ermini*"              MiniIcon terminal.png
 Style "gnome-terminal"        MiniIcon terminal.png
 Style "xfce4-terminal"        MiniIcon terminal.png
 Style "termin*"               MiniIcon terminal.png
 Style "xterm"                 MiniIcon terminal.png
+Style "Pidgin*"               MiniIcon pidgin.png
 Style "Acrobat*"              MiniIcon acroread.png
 Style "Adobe*"                MiniIcon acroread.png
+Style "libreoffice-writer*"   MiniIcon libreoffice-writer.png
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon firefox.png
 Style "firefox*"              CenterPlacement, MiniIcon firefox.png
@@ -411,22 +415,22 @@ DestroyModuleConfig FvwmDeskControl: *
                    Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
 *FvwmButtons(Title Firefox, Icon firefox.png, Action 'Exec "Firefox" firefox &')
+*FvwmButtons(Title Email, Icon geary.png, Action 'Exec "Geary" geary &')
+*FvwmButtons(Title Pidgin, Icon pidgin.png, Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "PCmanFM" pcmanfm &')
 *FvwmButtons(Title Terminal, Icon terminal.png, \
-                   Action (Mouse 1) 'Exec "Terminal" terminator &', \
-                   Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/terminator &" Next "/bin/bash" +$left+$top)
+                   Action (Mouse 1) 'Exec "Terminal" tilix &', \
+                   Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/tilix &" Next "/bin/bash" +$left+$top)
 *FvwmButtons(Title Code, Icon code.png, Action 'Exec "Visual Studio Code" code &')
-*FvwmButtons(Title Atom, Icon atom.png, Action 'Exec "Atom" atom &')
+*FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
 *FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
 *FvwmButtons(Title Gitg, Icon qgit.png, Action 'Exec "Gitg" gitg &')
 *FvwmButtons(Title Acrobat, Icon acroread.png, Action 'Exec "Adobe Acrobat" acroread &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
-*FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" libreoffice --writer &')
 *FvwmButtons(Title Rkward, Icon rkward.png, Action 'Exec "Rkward" rkward &')
-*FvwmButtons(Title Octave, Icon octave-logo.png, Action ' Exec exec /usr/bin/octave --force-gui'
-*FvwmButtons(Title Images, Icon eog.png, Action 'Exec "Eye of Gnome" eog &')
+*FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" loffice --writer &')
 
 # Icon Manager
 DestroyModuleConfig FvwmIconMan: *
@@ -649,7 +653,7 @@ AddToDecor   MyDecoration
 #################
 AddToFunc StartFunction
 + I Test (Init) Exec exec fvwm-root --dither --retain-pixmap $[fvwm_wallpaper]
-+ I FvwmButtons 
++ I FvwmButtons
 + I Module FvwmProxy
 + I Module FvwmCommands
 + I Module FvwmAnimate
