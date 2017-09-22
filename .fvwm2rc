@@ -266,8 +266,8 @@ Style "gkrellm"               !Title, !Handles, StaysOnTop, Sticky, NeverFocus, 
 Style "trayer"                !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
 Style "stalonetray"           !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
 Style "google-chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
-Style "Google Chrome"         !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
-Style "chromium-browser"      !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chromium-browser.png
+Style "Google Chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
+Style "*hromium-browser*"     !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chromium-browser.png
 Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gnome-calculator"      MiniIcon galculator.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gedit"                 MiniIcon gedit.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
