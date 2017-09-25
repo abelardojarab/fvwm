@@ -148,6 +148,9 @@ ClickTime 550
 #################
 BugOpts FlickeringMoveWorkaround True
 
+# In Style statements, *’s are wild cards, so ‘Style *’ says apply this style to every window.
+# This is followed by a list of styles separated by commas that you wish to use.
+
 #####
 # SnapAttraction lets nearby windows snap together, or snap to edges so that they
 # are easier to align on your desktop, The default is off, if you set it too large
@@ -155,16 +158,11 @@ BugOpts FlickeringMoveWorkaround True
 #################
 Style * SnapAttraction 3 SameType
 
-# In Style statements, *’s are wild cards, so ‘Style *’ says apply this style to every window.
-# This is followed by a list of styles separated by commas that you wish to use.
-
-# MWM emulation
-# mwm-style border reliefs (less deep than default fvwm) ?
-# Maximize button does mwm-inversion thing
-Style * MWMBorder, MWMDecor, MWMFunctions, MWMButtons
-
 #######
-# makes fvwm attempt to recognize and respect the mwm decoration hints
+# MWM emulation:
+# 1) mwm-style border reliefs (less deep than default fvwm) ?
+# 2) maximize button does mwm-inversion thing
+# 3) makes fvwm attempt to recognize and respect the mwm decoration hints
 # that applications occasionally use
 #################
 Style * MWMDecor, MWMBorder, MWMFunctions, MWMButtons
@@ -419,7 +417,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Pidgin, Icon pidgin.png, Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "Nemo" nemo &')
 *FvwmButtons(Title Terminal, Icon terminal.png, \
-                   Action (Mouse 1) 'Exec "Terminal" tilix &', \
+                   Action (Mouse 1) 'Exec "Tilix" tilix &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/tilix &" Next "/bin/bash" +$left+$top)
 *FvwmButtons(Title Code, Icon code.png, Action 'Exec "Visual Studio Code" code &')
 *FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
@@ -446,7 +444,7 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Action Mouse 0 N sendcommand Nop
 *FvwmIconMan: Action Mouse 2 N sendcommand Thumbnail
 *FvwmIconMan: Action Mouse 1 N sendcommand "Iconify off", sendcommand RaiseLower, sendcommand FlipFocus
-*FvwmIconMan: Action Mouse 3 N sendcommand "Popup Window-Ops Rectangle +$left+$top 0 -100m"
+*FvwmIconMan: Action Mouse 3 N sendcommand "Menu Window-Ops Rectangle +$left+$top 0 -100m"
 *FvwmIconMan: Colorset 10
 *FvwmIconMan: ReliefThickness 1
 *FvwmIconMan: FocusAndSelectColorset 16
