@@ -419,8 +419,8 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Pidgin, Icon pidgin.png, Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "Nemo" nemo &')
 *FvwmButtons(Title Terminal, Icon terminal.png, \
-                   Action (Mouse 1) 'Exec "Terminal" terminator &', \
-                   Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/terminator &" Next "/bin/bash" +$left+$top)
+                   Action (Mouse 1) 'Exec "Terminal" tilix &', \
+                   Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/tilix &" Next "/bin/bash" +$left+$top)
 *FvwmButtons(Title Code, Icon code.png, Action 'Exec "Visual Studio Code" code &')
 *FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
 *FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
