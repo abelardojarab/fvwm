@@ -417,7 +417,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Pidgin, Icon pidgin.png, Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "Nemo" nemo &')
 *FvwmButtons(Title Terminal, Icon terminal.png, \
-                   Action (Mouse 1) 'Exec "Tilix" tilix &', \
+		   Action (Mouse 1) 'Exec "Tilix" tilix &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/tilix &" Next "/bin/bash" +$left+$top)
 *FvwmButtons(Title Code, Icon code.png, Action 'Exec "Visual Studio Code" code &')
 *FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
@@ -429,6 +429,24 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(Title Rkward, Icon rkward.png, Action 'Exec "Rkward" rkward &')
 *FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" loffice --writer &')
+
+# DockLaunch Function
+DestroyFunc DockLaunch
+AddToFunc DockLaunch
++ C Any ($1) Next ($1) WindowListFunc
++ H Any ($1) WindowList ($1) Rectangle +$2+$3 0 -100m CurrentAtEnd UseListSkip SortByClass NoCurrentDeskTitle
++ C TestRc (NoMatch) Exec exec $0
++ D Exec exec $0
+
+DestroyFunc RunProgram
+AddToFunc RunProgram
++ I PipeRead `$[HOME]/.fvwm/checkrun $*`
++ I None [$0] All (FvwmButtons) Raise
++ I None [$0] WindowList
++ I TestRc (Match) Break 1
++ I Next [$0] FlipFocus
++ I Current (Iconic) IconifyAndRearrange
++ I Current Raise
 
 # Icon Manager
 DestroyModuleConfig FvwmIconMan: *
