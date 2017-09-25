@@ -655,7 +655,7 @@ AddToFunc StartFunction
 + I Test (Init) Exec exec fvwm-root --dither --retain-pixmap $[fvwm_wallpaper]
 + I FvwmButtons
 + I Module FvwmProxy
-+ I Module FvwmCommands
++ I Module FvwmCommandS
 + I Module FvwmAnimate
 + I Module FvwmEvent
 + I Module FvwmProxy
