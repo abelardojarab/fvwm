@@ -320,6 +320,7 @@ Style "FvwmPager"             BorderWidth 2, NoHandles, NeverFocus, NoTitle, Sta
 Style "FvwmTaskBar"           NoTitle, WindowListSkip, CirculateSkip, Sticky, BorderWidth 0, NoHandles, StaysOnTop, NeverFocus, Layer 0
 Style "FvwmShelf"             NoTitle, StaysOnBottom, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
 Style "FvwmDeskControl"       NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles
+Style "FvwmIconMan*"          NoTitle, HandleWidth 2, BorderWidth 2, Sticky, WindowListSkip, CirculateSkip, StaysOnBottom, NeverFocus
 
 # AutoHiding Console
 Style "HiddenConsole"         Sticky, WindowListSkip, Notitle, StaysOnTop, !Handles, FixedSize, FixedPosition
@@ -359,7 +360,7 @@ Colorset 21 fg #ffffff, bg #6d8d6d
 
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
-*FvwmShelf: Font "$[infostore.font_mono]"
+*FvwmShelf: Font "$[infostore.font_sans]"
 *FvwmShelf: Columns 50
 *FvwmShelf: Rows 1
 *FvwmShelf: BoxSize smart
@@ -368,7 +369,7 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Padding 1 1
 *FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
 *FvwmShelf(Size 36x1, Swallow "FvwmIconMan" `FvwmIconMan`)
-*FvwmShelf(Size 8x1, Swallow(NoClose, Respawn, UseOld) "trayer" 'Exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right ')
+*FvwmShelf(Size 8x1, Swallow (NoClose, Respawn, UseOld) "trayer" 'Exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right ')
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -384,7 +385,7 @@ DestroyModuleConfig FvwmDeskControl: *
 
 # Main desk-switching panel
 *FvwmPager: Font "$[infostore.font_mono]"
-*FvwmPager: SmallFont "$[infostore.font_mono]"
+*FvwmPager: SmallFont "$[infostore.font_sans]"
 *FvwmPager: Colorset * 0
 *FvwmPager: HiLightColorset * 10
 *FvwmPager: WindowColorsets 8 5
@@ -417,7 +418,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Pidgin, Icon pidgin.png, Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(Title Home, Icon folder.png, Action 'Exec "Nemo" nemo &')
 *FvwmButtons(Title Terminal, Icon terminal.png, \
-		   Action (Mouse 1) 'Exec "Tilix" tilix &', \
+           Action (Mouse 1) 'Exec "Tilix" tilix &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/tilix &" Next "/bin/bash" +$left+$top)
 *FvwmButtons(Title Code, Icon code.png, Action 'Exec "Visual Studio Code" code &')
 *FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
@@ -427,7 +428,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Acrobat, Icon acroread.png, Action 'Exec "Adobe Acrobat" acroread &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
-*FvwmButtons(Title Rkward, Icon rkward.png, Action 'Exec "Rkward" rkward &')
+*FvwmButtons(Title RStudio, Icon rstudio.png, Action 'Exec "RStudio" rstudio &')
 *FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" loffice --writer &')
 
 # DockLaunch Function
@@ -474,7 +475,6 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: ShowOnlyIcons False
 *FvwmIconMan: Title ""
 *FvwmIconMan: Sort id
-Style FvwmIconMan* !Title, HandleWidth 2, BorderWidth 2, Sticky, WindowListSkip, CirculateSkip, StaysOnBottom, NeverFocus
 
 # Task bar
 DestroyModuleConfig FvwmTaskBar: *
@@ -547,7 +547,7 @@ MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
 MenuStyle * ItemFormat "%|%5.5i%1.3l%2.3>%|"
 MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
 MenuStyle * MenuColorset 10, HilightBack, ActiveColorset 21
-MenuStyle * "$[infostore.font_mono]"
+MenuStyle * "$[infostore.font_sans]"
 MenuStyle * MenuFace DGradient 64 Red Black
 
 Read Menu
