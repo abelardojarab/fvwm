@@ -669,6 +669,8 @@ AddToDecor   MyDecoration
 #################
 AddToFunc StartFunction
 + I Test (Init) Exec exec fvwm-root --dither --retain-pixmap $[fvwm_wallpaper]
++ I PipeRead 'mkdir -p $[fvwm_cache]'
++ I Exec rm $[fvwm_cache]/* 2>/dev/null
 + I FvwmButtons
 + I Module FvwmProxy
 + I Module FvwmCommandS
