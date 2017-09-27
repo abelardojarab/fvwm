@@ -27,6 +27,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 
 DestroyMenu MenuDevelopment
 AddToMenu MenuDevelopment
++ "%apps/code.png%Visual Studio Code" Exec exec code
 + "%apps/gedit.png%Open a New Document" Exec exec gedit --new-document
 + "%apps/devhelp.png%Devhelp" Exec exec devhelp
 + "%apps/zeal.png%Zeal" Exec exec zeal
@@ -34,10 +35,10 @@ AddToMenu MenuDevelopment
 + "%apps/qdevelop.png%QDevelop" Exec exec qdevelop
 + "%apps/monodevelop.png%MonoDevelop" Exec exec monodevelop
 + "%apps/eclipse.png%Eclipse" Exec exec eclipse
-+ "%apps/sublime-text.png%New File" Exec exec sublime_text --command new_file
++ "%apps/sublime-text.png%New File" Exec exec subl --command new_file
 + "%apps/gitg.png%Gitg" Exec exec gitg
 + "%apps/emacs24.png%GNU Emacs 25" Exec exec emacs
-+ "%apps/atom.png%Atom" Exec exec /opt/atom/atom
++ "%apps/atom.png%Atom" Exec exec atom
 + "%apps/glade.png%Glade" Exec exec glade
 + "%apps/vim.png%Vim" Exec exec gvim
 
@@ -52,7 +53,7 @@ DestroyMenu MenuGame
 AddToMenu MenuGame
 + "%apps/steam.png%Friends" Exec exec steam steam://open/friends
 + "%apps/playonlinux.png%PlayOnLinux" Exec exec playonlinux
-+ "Kentucky Route Zero" Exec exec steam steam://rungameid/231200
++ "%apps/steam.png%Kentucky Route Zero" Exec exec steam steam://rungameid/231200
 + "%apps/dosbox.png%DOSBox Emulator" Exec exec dosbox
 + "%apps/scummvm.png%ScummVM" Exec exec scummvm
 
