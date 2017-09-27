@@ -1,10 +1,10 @@
 # vim: sts=0:noet:syntax=fvwm:foldmethod=marker
 
-SetEnv fvwm_wallpaper $[HOME]/workspace/fvwm/.fvwm/images/wallpapers/osxelcapitan.png
 SetEnv fvwm_cache $[HOME]/.fvwm.cache
 SetEnv fvwm_userdir $[HOME]/.fvwm
+SetEnv fvwm_wallpaper $[fvwm_userdir]/images/wallpapers/osxelcapitan.png
 Setenv fvwm_colors $[HOME]/.fvwm/images/icons/colors
-ModulePath $[fvwm_userdir]/lib:$[fvwm_userdir]/modules:+
+ModulePath $[fvwm_userdir]:$[fvwm_userdir]/modules:+
 
 #######
 # The default ImagePath for icons is:
@@ -428,7 +428,6 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Acrobat, Icon acroread.png, Action 'Exec "Adobe Acrobat" acroread &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
-*FvwmButtons(Title RStudio, Icon rstudio.png, Action 'Exec "RStudio" rstudio &')
 *FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" loffice --writer &')
 
 # DockLaunch Function
@@ -507,11 +506,11 @@ DestroyModuleConfig FvwmTaskBar: *
 # Animations are controlled by this module
 # You could also use Frame, Lines, Turn, Twist, Random and None
 DestroyModuleConfig FvwmAnimate: *
-*FvwmAnimate: Effect Flip
-*FvwmAnimate: Delay 0
-*FvwmAnimate: Iterations 30
-*FvwmAnimate: Twist 1
+*FvwmAnimate: Effect Frame
+*FvwmAnimate: Iterations 32
 *FvwmAnimate: Width 2
+*FvwmAnimate: Twist 0.500000
+*FvwmAnimate: Delay 10
 
 # FvwmProxy allows to see all windows
 DestroyModuleConfig FvwmProxy: *
@@ -549,8 +548,6 @@ MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
 MenuStyle * MenuColorset 10, HilightBack, ActiveColorset 21
 MenuStyle * "$[infostore.font_sans]"
 MenuStyle * MenuFace DGradient 64 Red Black
-
-Read Menu
 
 # Window Operation Menu
 DestroyMenu Window-Ops
@@ -664,6 +661,10 @@ AddToDecor   MyDecoration
 #   H: Hold
 #   D: Double-click
 
+DestroyFunc FvwmEval
+AddToFunc   FvwmEval
++ I SendToModule FvwmPerl eval $*
+
 ######
 # Start function
 #################
@@ -678,9 +679,12 @@ AddToFunc StartFunction
 + I Module FvwmEvent
 + I Module FvwmProxy
 + I Module FvwmButtons -g 88x24+0+0 FvwmDeskControl
++ I Module FvwmPerl
++ I FvwmEval use POSIX
 + I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-100))x28-0+0 FvwmShelf"
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
   Icon $[fvwm_cache]/icon.tmp.$[w.id].png
++ I Read modules/Menu
 + I GotoPage 0 0
 # + I FvwmAuto FvwmAutohide -menter FuncAutoEnter
 # + I Test (Init) StartHiddenConsole
