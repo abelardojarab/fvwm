@@ -411,7 +411,8 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons: Frame 1
 *FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(Title Start, Icon logo.png, \
-         Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +94+$top 0 -100m")
+         Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +92+$top 0 -100m")
+*FvwmButtons(1x1, Swallow (UseOld) `cpumon` `Exec exec xosview -name cpumon -captions +labels +usedlabels +cpu -load -mem -swap -battery -gfx -net -page -disk -int -ints -irqrate -lmstemp -xrm 'cpumon*background: #484644'`)
 *FvwmButtons(Title Browser, Icon chromium-browser.png, \
                    Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
                    Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
