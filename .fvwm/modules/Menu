@@ -31,7 +31,7 @@ AddToMenu MenuDevelopment
 + "%apps/gedit.png%Open a New Document" Exec exec gedit --new-document
 + "%apps/devhelp.png%Devhelp" Exec exec devhelp
 + "%apps/zeal.png%Zeal" Exec exec zeal
-+ "%apps/umbrello.png%Umbrello" Exec exec umbrello %u -caption
++ "%apps/umbrello.png%Umbrello" Exec exec umbrello
 + "%apps/qdevelop.png%QDevelop" Exec exec qdevelop
 + "%apps/monodevelop.png%MonoDevelop" Exec exec monodevelop
 + "%apps/eclipse.png%Eclipse" Exec exec eclipse

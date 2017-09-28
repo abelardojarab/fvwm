@@ -430,6 +430,8 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(Title Acrobat, Icon acroread.png, Action 'Exec "Adobe Acrobat" acroread &')
 *FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
+*FvwmButtons(Title Zeal, Icon zeal.png, Action 'Exec "Zeal" zeal &')
+*FvwmButtons(Title Devhelp, Icon devhelp.png, Action 'Exec "devhelp" devhelp &')
 *FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" loffice --writer &')
 
 # DockLaunch Function
