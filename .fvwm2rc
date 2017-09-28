@@ -272,6 +272,7 @@ Style "gedit"                 MiniIcon gedit.png, EWMHMiniIconOverride, BorderWi
 Style "nautilus"              MiniIcon folder.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "Geary"                 MiniIcon apps/email.pngBorder, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "pcmanfm"               MiniIcon folder.png
+Style "Transmission*"         MiniIcon transmission.png
 Style "Nemo*"                 MiniIcon folder.png
 Style "gimp"                  MiniIcon gimp.png
 Style "inkscape"              MiniIcon inkscape.png
