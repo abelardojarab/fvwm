@@ -502,6 +502,18 @@ DestroyModuleConfig FvwmTaskBar: *
 *FvwmTaskBar: StartMenu MenuFvwmRoot mouse c -100m -60p
 *FvwmTaskBar: MailCheck 0
 
+# Conky
+DestroyModuleConfig FvwmConky: *
+DestroyModuleConfig FvwmConky: *
+*FvwmConky: Geometry 250x111
+*FvwmConky: Columns 250
+*FvwmConky: Rows 111
+*FvwmConky: Padding 0 0
+*FvwmConky: BoxSize smart
+*FvwmConky: Frame 0
+*FvwmConky: Colorset 10
+*FvwmConky: (18x36, Colorset 1, Swallow Conky 'Exec conky &')
+
 #####
 # Module configurations
 ##################
@@ -682,6 +694,7 @@ AddToFunc StartFunction
 + I Module FvwmEvent
 + I Module FvwmProxy
 + I Module FvwmButtons -g 88x24+0+0 FvwmDeskControl
++ I Module FvwmButtons -g 1x1-0-0 FvwmConky
 + I Module FvwmPerl
 + I FvwmEval use POSIX
 + I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-100))x28-0+0 FvwmShelf"
@@ -701,7 +714,6 @@ AddToFunc   InitFunction
 + I Exec exec feh --bg-scale $[fvwm_wallpaper]
 + I Exec exec bash -c 'if [ `getconf LONG_BIT` = "64" ]; then /usr/lib/x86_64-linux-gnu/notify-osd; else /usr/lib/i386-linux-gnu/notify-osd; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then compton -b -c; fi'
-+ I Exec exec conky
 + I Exec exec vncconfig -nowin
 # Tray section
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
