@@ -368,9 +368,13 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Colorset 10
 *FvwmShelf: Frame 1
 *FvwmShelf: Padding 1 1
-*FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) XClock 'Exec xclock -digital -twentyfour -fg black -bg gray -padding 4 -strftime "   %H:%M %a %d %b %Y " &')
-*FvwmShelf(Size 36x1, Swallow "FvwmIconMan" `FvwmIconMan`)
-*FvwmShelf(Size 8x1, Swallow (NoClose, Respawn, UseOld) "trayer" 'Exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right ')
+*FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) "XClock" \
+		`Exec xclock -digital -twentyfour -bg rgb:48/46/44 -fg white -padding 4 -strftime "   %H:%M %a %d %b %Y " &`, \
+		Action `Exec exec xterm +sb -sl 0 -name jcalendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`)
+*FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
+		`FvwmIconMan`)
+*FvwmShelf(Size 8x1, Swallow (NoClose, Respawn, UseOld) "trayer" \
+		`Exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &`)
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -396,42 +400,46 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmPager: BalloonYOffset +2
 *FvwmPager: BalloonBorderWidth 1
 *FvwmPager: MiniIcons
-*FvwmPager: Label 0 "0: General"
-*FvwmPager: Label 1 "1: Office"
+*FvwmPager: Label 0 "0: Desk"
+*FvwmPager: Label 1 "1: Code"
 *FvwmPager: Label 2 "2: CAD"
 *FvwmPager: Label 3 "3: Other"
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtons: Font  "$[infostore.font_sans]"
-*FvwmButtons: ButtonGeometry 86x55+0+30
+*FvwmButtons: ButtonGeometry 86x28+0+0
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
-*FvwmButtons: Rows 22
+*FvwmButtons: Rows 44
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
-*FvwmButtons(1x2+0+0, Swallow "FvwmPager" 'FvwmPager *')
-*FvwmButtons(Title Start, Icon logo.png, \
-         Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +92+$top 0 -100m")
-*FvwmButtons(1x1, Swallow (UseOld) `cpumon` `Exec exec xosview -name cpumon -captions +labels +usedlabels +cpu -load -mem -swap -battery -gfx -net -page -disk -int -ints -irqrate -lmstemp -xrm 'cpumon*background: #484644'`)
-*FvwmButtons(Title Browser, Icon chromium-browser.png, \
-                   Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
-                   Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
-*FvwmButtons(Title Email, Icon geary.png, Action 'Exec "Geary" geary &')
-*FvwmButtons(Title Pidgin, Icon pidgin.png, Action 'Exec "Pidgin" pidgin &')
-*FvwmButtons(Title Home, Icon folder.png, Action 'Exec "Nemo" nemo &')
-*FvwmButtons(Title Terminal, Icon terminal.png, \
-           Action (Mouse 1) 'Exec "Tilix" tilix &', \
-                   Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/tilix &" Next "/bin/bash" +$left+$top)
-*FvwmButtons(Title Code, Icon code.png, Action 'Exec "Visual Studio Code" code &')
-*FvwmButtons(Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
-*FvwmButtons(Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
-*FvwmButtons(Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
-*FvwmButtons(Title Gitg, Icon qgit.png, Action 'Exec "Gitg" gitg &')
-*FvwmButtons(Title Acrobat, Icon acroread.png, Action 'Exec "Adobe Acrobat" acroread &')
-*FvwmButtons(Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
-*FvwmButtons(Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
-*FvwmButtons(Title Zeal, Icon zeal.png, Action 'Exec "Zeal" zeal &')
-*FvwmButtons(Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" loffice --writer &')
+*FvwmButtons(1x4+0+0, Swallow "FvwmPager" 'FvwmPager *')
+*FvwmButtons(1x1, Swallow "FvwmDeskControl" 'FvwmDeskControl *')
+*FvwmButtons(1x1, Swallow (UseOld) "cpumon" \
+		  `Exec exec xosview -name cpumon -captions +labels +usedlabels +cpu -load -mem -swap -battery -gfx -net -page -disk -int -ints -irqrate -lmstemp -xrm 'cpumon*background: #484644'` \
+		  Action `exec xload -bg rgb:48/46/44 -fg white -update 3`)
+*FvwmButtons(1x2, Title Start, Icon logo.png, \
+		  Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +92+$top 0 -100m")
+*FvwmButtons(1x2, Title Browser, Icon chromium-browser.png, \
+                  Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
+                  Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
+*FvwmButtons(1x2, Title Email, Icon geary.png, Action 'Exec "Geary" geary &')
+*FvwmButtons(1x2, Title Pidgin, Icon pidgin.png, Action 'Exec "Pidgin" pidgin &')
+*FvwmButtons(1x2, Title Home, Icon folder.png, Action 'Exec "Nemo" nemo &')
+*FvwmButtons(1x2, Title Terminal, Icon terminal.png, \
+		  Action (Mouse 1) 'Exec "Tilix" tilix &', \
+                  Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/tilix &" Next "/bin/bash" +$left+$top)
+*FvwmButtons(1x2, Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
+*FvwmButtons(1x2, Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
+*FvwmButtons(1x2, Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
+*FvwmButtons(1x2, Title Gitg, Icon qgit.png, Action 'Exec "Gitg" gitg &')
+*FvwmButtons(1x2, Title Acrobat, Icon acroread.png, Action 'Exec "Adobe Acrobat" acroread &')
+*FvwmButtons(1x2, Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
+*FvwmButtons(1x2, Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
+*FvwmButtons(1x2, Title Zeal, Icon zeal.png, Action 'Exec "Zeal" zeal &')
+*FvwmButtons(1x2, Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" loffice --writer &')
+*FvwmButtons(1x2, Swallow "xbiff" `Exec exec xbiff -bg rgb:48/46/44 -fg white`, \
+		  Action 'exec xclock -bg rgb:48/46/44 -fg white', )
 
 # DockLaunch Function
 DestroyFunc DockLaunch
@@ -647,7 +655,7 @@ AddToDecor   MyDecoration
 + TitleStyle Centered Height 26
 + TitleStyle InActive (Colorset 2 -- Flat ) Active (Colorset 1 -- Flat)
 + AddTitleStyle Active (TiledPixmap tile_solid-1.png) \
-    Inactive (TiledPixmap tile_gray.png)
+  Inactive (TiledPixmap tile_gray.png)
 + ButtonStyle All -- UseTitleStyle
 + ButtonStyle All InActive (Colorset 2 -- Flat) -- HiddenHandles
 + ButtonStyle All Active (Colorset 1  -- Raised)
@@ -693,11 +701,11 @@ AddToFunc StartFunction
 + I Module FvwmAnimate
 + I Module FvwmEvent
 + I Module FvwmProxy
-+ I Module FvwmButtons -g 88x24+0+0 FvwmDeskControl
++ I Module FvwmButtons -g 86x24+0+0 FvwmDeskControl
 + I Module FvwmButtons -g 1x1-0-0 FvwmConky
 + I Module FvwmPerl
 + I FvwmEval use POSIX
-+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-100))x28-0+0 FvwmShelf"
++ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-98))x28-0+0 FvwmShelf"
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
   Icon $[fvwm_cache]/icon.tmp.$[w.id].png
 + I Read modules/Menu
@@ -767,12 +775,12 @@ AddToFunc Thumbnail
 + I Raise
 + I ThisWindow (!Iconic) SetEnv Icon-$[w.id] $[w.iconfile]
 + I ThisWindow (!Shaded, Iconifiable, !Iconic) PipeRead \
-    "xwd -silent -id $[w.id] | convert -scale 128 -frame 1x1 \
+  "xwd -silent -id $[w.id] | convert -scale 128 -frame 1x1 \
     -mattecolor black -quality 0 xwd:- png:$[fvwm_cache]/icon.tmp.$[w.id].png \
     && echo WindowStyle IconOverride, Icon $[fvwm_cache]/icon.tmp.$[w.id].png \
     || echo Nop"
 + I TestRc (Match) Test (f $[w.miniiconfile], f $[fvwm_cache]/icon.tmp.$[w.id].png) PipeRead \
-    "composite -geometry +2+4 $[w.miniiconfile] $[fvwm_cache]/icon.tmp.$[w.id].png \
+  "composite -geometry +2+4 $[w.miniiconfile] $[fvwm_cache]/icon.tmp.$[w.id].png \
     $[fvwm_cache]/icon.tmp.$[w.id].png; echo Nop"
 + I Iconify
 
@@ -797,7 +805,7 @@ AddToFunc FvwmExpose
 + I AddToMenu FvwmExposeMenu "e x p o s e" Title
 + I + DynamicPopDownAction DestroyMenu FvwmExposeMenu
 + I All (!Iconic !Shaded AcceptsFocus)\
-    PipeRead "echo Raise; \
+  PipeRead "echo Raise; \
         xwd -silent -id $[w.id] | convert -scale $$(($[w.width]/10)) -quality 0 xwd:- \
         png:$[fvwm_cache]/tmp/icon.exp.$[w.id].png \
     && echo AddToMenu FvwmExposeMenu \
@@ -832,7 +840,7 @@ AddToFunc   FvwmWindowScreenshot
 DestroyFunc FvwmDesktopScreenshot
 AddToFunc   FvwmDesktopScreenshot
 + I Exec sleep $0; import -window root -quality 100 -silent \
-  "~/Pictures/Screenshots/screenshot-`date +%F[%R]`.jpg"
+			  "~/Pictures/Screenshots/screenshot-`date +%F[%R]`.jpg"
 + I Exec notify-send "Desktop screenshot was taken."
 
 ######
@@ -1089,9 +1097,9 @@ AddToFunc Maximize-func
 + I InfoStoreAdd width_$[w.id] $[w.width]
 + I InfoStoreAdd height_$[w.id] $[w.height]
 + I Test (EnvMatch TEMP animate) \
-        SendToModule FvwmAnimate animate \
-    $[w.x] $[w.y] $[w.width] $[w.height] \
-    0 0 $[vp.width] $[vp.height]
+  SendToModule FvwmAnimate animate \
+  $[w.x] $[w.y] $[w.width] $[w.height] \
+  0 0 $[vp.width] $[vp.height]
 + I UnsetEnv TEMP
 
 DestroyFunc MaximizeWithFS
@@ -1115,11 +1123,11 @@ AddToFunc   UnMaximizeWithFS
 
 DestroyFunc PickWindowRaiseAndDeiconify
 AddToFunc PickWindowRaiseAndDeiconify
- + I Pick
- + I TestRc (Error) Break
- + I Raise
- + I Focus
- + I Iconify off
++ I Pick
++ I TestRc (Error) Break
++ I Raise
++ I Focus
++ I Iconify off
 
 DestroyFunc Move-or-Raise
 AddToFunc Move-or-Raise
@@ -1345,23 +1353,23 @@ IgnoreModifiers L25
 
 # Alt + Tab: Switch focus to the next non-iconic window
 Key Tab A M WindowList (CurrentDesk, AcceptsFocus, !Iconic) Root c c \
-  NoCurrentDeskTitle, NoGeometry, CurrentAtEnd, \
-  IconifiedAtEnd, MaxLabelWidth 60, SelectOnRelease Meta_L
+    NoCurrentDeskTitle, NoGeometry, CurrentAtEnd, \
+    IconifiedAtEnd, MaxLabelWidth 60, SelectOnRelease Meta_L
 
 # Shift + Alt + Tab: Switch focus to the previous non-iconic window
 Key Tab A SM WindowList (CurrentDesk, AcceptsFocus, !Iconic) Root c c \
-  NoCurrentDeskTitle, NoGeometry, CurrentAtEnd, ReverseOrder, \
-  IconifiedAtEnd, MaxLabelWidth 60, SelectOnRelease Meta_L
+    NoCurrentDeskTitle, NoGeometry, CurrentAtEnd, ReverseOrder, \
+    IconifiedAtEnd, MaxLabelWidth 60, SelectOnRelease Meta_L
 
 # Super + Tab: Switch focus and deiconify the next iconic window
 Key Tab A 4 WindowList (CurrentDesk, Iconic) Root c c \
-  NoCurrentDeskTitle, NoGeometry, ReverseOrder, MaxLabelWidth 60, \
-  SelectOnRelease Super_L
+    NoCurrentDeskTitle, NoGeometry, ReverseOrder, MaxLabelWidth 60, \
+    SelectOnRelease Super_L
 
 # Shift + Super_L + Tab:  Switch focus and deiconify the next iconic window
 Key Tab A S4 WindowList (CurrentDesk, Iconic) Root c c \
-  NoCurrentDeskTitle, NoGeometry, MaxLabelWidth 60, \
-  SelectOnRelease Super_L
+    NoCurrentDeskTitle, NoGeometry, MaxLabelWidth 60, \
+    SelectOnRelease Super_L
 
 ######
 # Key bindings using Alt + Fn
