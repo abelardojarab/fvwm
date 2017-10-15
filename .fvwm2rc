@@ -196,11 +196,6 @@ Style * NoPPosition, NoTransientPPosition
 Style * ResizeOutline, ResizeOpaque
 
 #######
-# Horizontal bars that appear on the title bars of sticky windows, for all windows
-#################
-Style * StippledTitle
-
-#######
 # TileCascadePlacement automatically places new windows in a smart
 # location - a location in which they do not overlap any other windows
 # on the screen.
@@ -244,7 +239,7 @@ Style * UseDecor MyDecoration
 Style * Colorset 3, HilightColorset 4
 Style * DecorateTransient, NakedTransient
 Style * Font "$[infostore.font_mono]"
-Style * HandleWidth 3, BorderWidth 3
+Style * HandleWidth 1, BorderWidth 1
 Style * BackingStore, SaveUnder
 Style * EWMHMiniIconOverride
 
@@ -331,9 +326,9 @@ Style "HiddenConsole"         Sticky, WindowListSkip, Notitle, StaysOnTop, !Hand
 #################
 
 # Line separator on pager
-Colorset 0 fg white, bg #525252, fgsh #f9f9f9, hi #8f8f8f, sh #454545
+Colorset 0 fg white, bg #3b3c37, fgsh #f9f9f9, hi #8f8f8f, sh #454545
 # Active window decoration
-Colorset 1 bg #535454, fg #ffffff, fgsh #f9f9f9 hi #fbfbfb, sh #171717, Tint #464646 20
+Colorset 1 bg #3b3c37, fg #ffffff, fgsh #f9f9f9 hi #fbfbfb, sh #171717, Tint #464646 20
 # Inactive window decoration
 Colorset 2 bg #444444, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 60
 # Default window colorset
@@ -377,7 +372,7 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
                 `FvwmIconMan`)
 *FvwmShelf(Size 8x1, Swallow (NoClose, Respawn, UseOld) "trayer" \
-                `Exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --tint 484644 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &`)
+                `Exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --tint 3b3c37 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &`)
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -410,7 +405,7 @@ DestroyModuleConfig FvwmDeskControl: *
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtons: Font  "$[infostore.font_sans]"
-*FvwmButtons: ButtonGeometry 86x28+0+0
+*FvwmButtons: ButtonGeometry 90x30+0+0
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 44
@@ -440,7 +435,6 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(1x2, Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(1x2, Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(1x2, Title Zeal, Icon zeal.png, Action 'Exec "Zeal" zeal &')
-*FvwmButtons(1x2, Title RStudio, Icon rstudio.png, Action 'Exec "RStudio" rstudio &')
 *FvwmButtons(1x2, Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" loffice --writer &')
 *FvwmButtons(1x2, Swallow "xbiff" \
              `Exec exec xbiff -bg rgb:48/46/44 -fg white`)
@@ -662,20 +656,32 @@ AddToDecor   MyDecoration
 + AddTitleStyle Active (TiledPixmap tile_solid-1.png) \
   Inactive (TiledPixmap tile_gray.png)
 + ButtonStyle All -- UseTitleStyle
-+ ButtonStyle All InActive (Colorset 2 -- Flat) -- HiddenHandles
-+ ButtonStyle All Active (Colorset 1  -- Raised)
-+ ButtonStyle 1 ActiveUp Vector 4 30x30@3 60x60@3 60x30@4 30x60@3
-+ ButtonStyle 1 ActiveDown Vector 4 30x30@3 60x60@3 60x30@4 30x60@3
-+ ButtonStyle 1 Inactive Vector 4 30x30@3 60x60@3 60x30@4 30x60@3
-+ ButtonStyle 4 ActiveUp Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3
-+ ButtonStyle 4 ActiveDown Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3
-+ ButtonStyle 4 Inactive Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3
-+ ButtonStyle 3 ActiveUp Vector 2 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3
-+ ButtonStyle 3 ActiveDown Vector 2 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3
-+ ButtonStyle 3 Inactive Vector 2 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3
-+ ButtonStyle 2 ActiveUp Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3
-+ ButtonStyle 2 ActiveDown Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3
-+ ButtonStyle 2 Inactive Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3
++ ButtonStyle All InActive (Colorset 0 -- Flat) -- HiddenHandles
++ ButtonStyle All Active (Colorset 2  -- Raised)
++ ButtonStyle 1 ActiveUp Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 \
+   -- Flat UseTitleStyle
++ ButtonStyle 1 ActiveDown Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 \
+   -- Flat UseTitleStyle
++ ButtonStyle 1 Inactive Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 \
+   -- Flat UseTitleStyle
++ ButtonStyle 4 ActiveUp Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
+   -- Flat UseTitleStyle
++ ButtonStyle 4 ActiveDown Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
+   -- Flat UseTitleStyle
++ ButtonStyle 4 Inactive Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
+   -- Flat UseTitleStyle
++ ButtonStyle 3 ActiveUp Vector 2 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
+   -- Flat UseTitleStyle
++ ButtonStyle 3 ActiveDown Vector 2 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
+   -- Flat UseTitleStyle
++ ButtonStyle 3 Inactive Vector 2 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
+   -- Flat UseTitleStyle
++ ButtonStyle 2 ActiveUp Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 \
+   -- Flat UseTitleStyle
++ ButtonStyle 2 ActiveDown Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 \
+   -- Flat UseTitleStyle
++ ButtonStyle 2 Inactive Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 \
+   -- Flat UseTitleStyle
 
 #####
 # Re-define our own functions
@@ -710,7 +716,7 @@ AddToFunc StartFunction
 + I Module FvwmButtons -g 1x1-0-0 FvwmConky
 + I Module FvwmPerl
 + I FvwmEval use POSIX
-+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-98))x28-0+0 FvwmShelf"
++ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-92))x28-0+0 FvwmShelf"
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
   Icon $[fvwm_cache]/icon.tmp.$[w.id].png
 + I Read modules/Menu
