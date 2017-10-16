@@ -356,6 +356,7 @@ Colorset 21 fg #ffffff, bg #6d8d6d
 
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
+*FvwmShelf: Geometry -0-0
 *FvwmShelf: Font "$[infostore.font_sans]"
 *FvwmShelf: Columns 50
 *FvwmShelf: Rows 1
@@ -371,7 +372,7 @@ DestroyModuleConfig FvwmShelf: *
                 `Exec exec xclock -bg rgb:48/46/44 -fg white`,)
 *FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
                 `FvwmIconMan`)
-*FvwmShelf(Size 8x1, Swallow (NoClose, Respawn, UseOld) "trayer" \
+*FvwmShelf(Size 8x1, Swallow (NoClose, NoKill, Respawn, UseOld) "trayer" \
                 `Exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &`)
 
 # A little control panel for switching desks.
@@ -435,6 +436,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(1x2, Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(1x2, Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(1x2, Title Zeal, Icon zeal.png, Action 'Exec "Zeal" zeal &')
+*FvwmButtons(1x2, Title Octave, Icon octave-logo.png, Action 'Exec "Octave" octave --force-gui &')
 *FvwmButtons(1x2, Swallow "xbiff" \
              `Exec exec xbiff -bg rgb:48/46/44 -fg white`)
 
