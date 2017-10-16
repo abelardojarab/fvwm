@@ -332,11 +332,11 @@ Colorset 1 bg #3b3c37, fg #ffffff, fgsh #f9f9f9 hi #fbfbfb, sh #171717, Tint #46
 # Inactive window decoration
 Colorset 2 bg #444444, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 60
 # Default window colorset
-Colorset 3 fg #999999, bg black, fgsh #a0a0a0
+Colorset 3 fg #999999, bg 3b3c37, fgsh #a0a0a0
 # Active window colorset
-Colorset 4 fg #f0f0f0, bg black, fgsh #a4a4a4
+Colorset 4 fg #f0f0f0, bg 3b3c37, fgsh #a4a4a4
 # Icon colorset, balloon colorset
-Colorset 5 fg white, bg #a6a6a6, fgsh black, RootTransparent
+Colorset 5 fg white, bg #a6a6a6, fgsh 3b3c37, RootTransparent
 # Available
 Colorset 6 fg #9a875f, bg #fa875f
 # Available
@@ -372,7 +372,7 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
                 `FvwmIconMan`)
 *FvwmShelf(Size 8x1, Swallow (NoClose, Respawn, UseOld) "trayer" \
-                `Exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --tint 3b3c37 --alpha 60 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &`)
+                `Exec trayer --SetDockType true --distance 0 --padding 10 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &`)
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
