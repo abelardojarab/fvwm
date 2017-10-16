@@ -405,9 +405,9 @@ DestroyModuleConfig FvwmDeskControl: *
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtons: Font  "$[infostore.font_sans]"
-*FvwmButtons: ButtonGeometry 90x30+0+0
+*FvwmButtons: ButtonGeometry 90x26+0+0
 *FvwmButtons: Colorset 10
-*FvwmButtons: BoxSize smart
+*FvwmButtons: BoxSize fixed
 *FvwmButtons: Rows 44
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
@@ -435,7 +435,6 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons(1x2, Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
 *FvwmButtons(1x2, Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
 *FvwmButtons(1x2, Title Zeal, Icon zeal.png, Action 'Exec "Zeal" zeal &')
-*FvwmButtons(1x2, Title Writer, Icon libreoffice-writer.png, Action 'Exec "Writer" loffice --writer &')
 *FvwmButtons(1x2, Swallow "xbiff" \
              `Exec exec xbiff -bg rgb:48/46/44 -fg white`)
 
