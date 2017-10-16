@@ -2,7 +2,7 @@
 
 SetEnv fvwm_cache $[HOME]/.fvwm.cache
 SetEnv fvwm_userdir $[HOME]/.fvwm
-SetEnv fvwm_wallpaper $[fvwm_userdir]/images/wallpapers/osxelcapitan.png
+SetEnv fvwm_wallpaper $[fvwm_userdir]/images/wallpapers/poster-pinturas-famosas-gravura-9-poster-vintage_2048x1152.png
 Setenv fvwm_colors $[HOME]/.fvwm/images/icons/colors
 ModulePath $[fvwm_userdir]:$[fvwm_userdir]/modules:+
 
