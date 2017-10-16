@@ -356,6 +356,8 @@ Colorset 21 fg #ffffff, bg #6d8d6d
 
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
+PipeRead 'echo *FvwmShelf: Geometry   $$(($[vp.width]-92))x28-0+0'
+PipeRead 'echo *FvwmShelf: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmShelf: Geometry -0-0
 *FvwmShelf: Font "$[infostore.font_sans]"
 *FvwmShelf: Columns 50
@@ -365,7 +367,7 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf: Frame 1
 *FvwmShelf: Padding 1 1
 *FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) "XClock" \
-                `Exec xclock -digital -twentyfour -bg rgb:48/46/44 -fg white -padding 4 -strftime "   %H:%M %a %d %b %Y " &`, \
+                `Exec xclock -digital -twentyfour -bg rgb:48/46/44 -fg white -padding 4 -strftime " %H:%M %a %d %b %Y " &`, \
                 Action (Mouse 1) \
                 `Exec exec xterm +sb -sl 0 -name jcalendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
                 Action (Mouse 3) \
@@ -715,11 +717,11 @@ AddToFunc StartFunction
 + I Module FvwmAnimate
 + I Module FvwmEvent
 + I Module FvwmProxy
-+ I Module FvwmButtons -g 86x24+0+0 FvwmDeskControl
-+ I Module FvwmButtons -g 1x1-0-0 FvwmConky
++ I Module FvwmButtons -g +0+0 FvwmDeskControl
++ I Module FvwmButtons -g -0-0 FvwmConky
++ I Module FvwmButtons -g -0+0 FvwmShelf
 + I Module FvwmPerl
 + I FvwmEval use POSIX
-+ I PipeRead "echo Module FvwmButtons -g $$(($[vp.width]-92))x28-0+0 FvwmShelf"
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
   Icon $[fvwm_cache]/icon.tmp.$[w.id].png
 + I Read modules/Menu
@@ -871,17 +873,6 @@ AddToFunc   FuncLockScreen
               fi'
 + I Test (EnvMatch isRunning 1) Exec exec xscreensaver-command -lock
 + I TestRc (!Match) FuncShowMessage "Lock screen Info" "'xscreensaver' not running or not installed."
-
-######
-# Clock showing function
-#################
-DestroyFunc FuncStartTimeDate
-AddToFunc   FuncStartTimeDate
-+ I Test (x xclock) PipeRead `echo Exec exec xclock \
-                              -d -strftime '%a\\ %e\\ %b\\ %$0:%M' \
-                              -geometry x$((($[infostore.fontsize]-2)*2))-$((($[infostore.fontsize]-2)/2))+$((($[infostore.fontsize]-2)/2)) \
-                              -face $[infostore.used_font]:$[infostore.fontsize]:bold \
-                              -fg white -bg rgb:7a/76/64 -padding $(($[infostore.fontsize]/4))`
 
 ######
 # Tiling functions
