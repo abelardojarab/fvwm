@@ -372,7 +372,7 @@ DestroyModuleConfig FvwmShelf: *
 *FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
                 `FvwmIconMan`)
 *FvwmShelf(Size 8x1, Swallow (NoClose, Respawn, UseOld) "trayer" \
-                `Exec trayer --SetDockType true --distance 0 --padding 10 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &`)
+                `Exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --tint 30 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &`)
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
