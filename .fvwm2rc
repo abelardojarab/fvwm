@@ -317,6 +317,7 @@ Style "FvwmTaskBar"           NoTitle, WindowListSkip, CirculateSkip, Sticky, Bo
 Style "FvwmShelf"             NoTitle, StaysOnBottom, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
 Style "FvwmDeskControl"       NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles
 Style "FvwmIconMan*"          NoTitle, HandleWidth 2, BorderWidth 2, Sticky, WindowListSkip, CirculateSkip, StaysOnBottom, NeverFocus
+Style "FvwmConky"             WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnBottom, Sticky
 
 # AutoHiding Console
 Style "HiddenConsole"         Sticky, WindowListSkip, Notitle, StaysOnTop, !Handles, FixedSize, FixedPosition
@@ -353,6 +354,8 @@ Colorset 11 pixmap tile_gray.png
 Colorset 16 fg black, bg #c6c3c6, RootTransparent buffer, Tint #e4e5c7 90
 # Menu selection colorset
 Colorset 21 fg #ffffff, bg #6d8d6d
+# Transparent colorset
+Colorset 22 fg Black, NoShape, RootTransparent buffer, tint white 40
 
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
@@ -408,7 +411,8 @@ DestroyModuleConfig FvwmDeskControl: *
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtons: Font  "$[infostore.font_sans]"
-PipeRead 'echo *FvwmButtons: ButtonGeometry   90x$(($[vp.height]/44))+0+1'
+PipeRead 'echo *FvwmButtons: Geometry         90x$(($[vp.height]/1))+0+0'
+PipeRead 'echo *FvwmButtons: ButtonGeometry   90x$(($[vp.height]/44))'
 PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
@@ -515,15 +519,15 @@ DestroyModuleConfig FvwmTaskBar: *
 
 # Conky
 DestroyModuleConfig FvwmConky: *
-DestroyModuleConfig FvwmConky: *
-*FvwmConky: Geometry 250x111
-*FvwmConky: Columns 250
-*FvwmConky: Rows 111
+PipeRead 'echo *FvwmConky: Geometry         300x$(($[vp.height]/1))-0+0'
+PipeRead 'echo *FvwmConky: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
+*FvwmConky: Columns 1
+*FvwmConky: Rows 4
 *FvwmConky: Padding 0 0
-*FvwmConky: BoxSize smart
+*FvwmConky: BoxSize fixed
 *FvwmConky: Frame 0
-*FvwmConky: Colorset 1
-*FvwmConky: (18x36, Swallow (NoClose, Respawn, UseOld) "Conky" \
+*FvwmConky: Colorset 22
+*FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
                     `Exec exec conky &`)
 
 #####
