@@ -167,6 +167,7 @@ AddToMenu MenuGNOMESettings
 
 DestroyMenu MenuUtilities
 AddToMenu MenuUtilities
++ "%apps/vmware.png%VMWare Workstation" Exec exec vmware
 + "%apps/virt-manager.png%Virtual Machine Manager" Exec exec virt-manager -c qemu+ssh://localhost/system
 + "%apps/system-monitor.png%GNOME System Monitor" Exec exec gnome-system-monitor
 + "%apps/orca.png%Screen Reader" Exec exec orca --replace
