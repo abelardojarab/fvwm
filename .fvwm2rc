@@ -282,6 +282,7 @@ Style "vncviewer"             MiniIcon vncviewer.png
 Style "realvnc*"              MiniIcon vncviewer.png
 Style "VNC Viewer"            MiniIcon vncviewer.png
 Style "Vmware*"               MiniIcon vmware.png
+Style "Virtual*"              MiniIcon virt-manager.png
 Style "zeal"                  MiniIcon zeal.png
 Style "atom"                  MiniIcon atom.png
 Style "filezilla"             MiniIcon filezilla.png
@@ -447,7 +448,7 @@ PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0
 *FvwmButtons(1x2, Title Zeal, Icon zeal.png, Action 'Exec "Zeal" zeal &')
 *FvwmButtons(1x2, Title Octave, Icon octave-logo.png, Action 'Exec "Octave" octave --force-gui &')
 *FvwmButtons(1x2, Title Images, Icon eog.png, Action 'Exec "Eyes of Gnome" eog &')
-*FvwmButtons(1x2, Title VMWare, Icon vmware.png, Action 'Exec "Vmware Workstation" vmware &')
+*FvwmButtons(1x2, Title Qemu, Icon virt-manager.png, Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
 *FvwmButtons(1x2, Swallow "xbiff" \
                   `Exec exec xbiff -bg rgb:48/46/44 -fg white`)
 
