@@ -173,6 +173,7 @@ AddToMenu MenuUtilities
 + "%apps/orca.png%Screen Reader" Exec exec orca --replace
 + "%apps/folder.png%File Manager PCManFM" Exec exec pcmanfm
 + "%apps/xterm.png%XTerm" Exec exec xterm
++ "%apps/tilix.png%Tilix" Exec exec tilix
 + "%xpms/mini.font.xpm%Character Map" Exec exec gucharmap
 + "%apps/shutter.png%Capture the current active window" Exec exec shutter --active
 + "%apps/galculator.png%Calculator" Exec exec gnome-calculator

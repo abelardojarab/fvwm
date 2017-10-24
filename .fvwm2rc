@@ -12,6 +12,7 @@ ModulePath $[fvwm_userdir]:$[fvwm_userdir]/modules:+
 #################
 
 ImagePath $[fvwm_userdir]/images
+ImagePath +:$[fvwm_userdir]/images/scalable/apps
 ImagePath +:$[fvwm_userdir]/images/icons
 ImagePath +:$[fvwm_userdir]/images/bar
 ImagePath +:$[fvwm_userdir]/images/tiles
@@ -24,6 +25,7 @@ ImagePath +:$[fvwm_userdir]/images/icons/actions
 ImagePath +:$[fvwm_userdir]/images/icons/xpms
 
 IconPath  $[fvwm_userdir]/images
+IconPath +:$[fvwm_userdir]/images/scalable/apps
 IconPath +:$[fvwm_userdir]/images/icons
 IconPath +:$[fvwm_userdir]/images/bar
 IconPath +:$[fvwm_userdir]/images/tiles
@@ -67,7 +69,7 @@ PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`
 #######
 # Fonts
 #################
-InfoStoreAdd font_sans "xft:Fira Mono:size=11:encoding=iso10646-1"
+InfoStoreAdd font_sans "xft:Aquabase:size=12:encoding=iso10646-1"
 InfoStoreAdd font_mono "xft:Fira Mono:size=12:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
@@ -245,11 +247,13 @@ Style * EWMHMiniIconOverride
 
 # Comment these lines if you dont like Icons to have Titles.
 Style * StickyIcon
-Style * IconSize 160 160, IconGrid 180 180, IconBox 180x1800+180+50, IconFill top left
+Style * IconSize 160 160
+Style * IconGrid 180 180, IconBox 180x1800+180+50, IconFill top left
 Style * IconTitle, IconTitleRelief 0, IconTitleColorset 10, HilightIconTitleColorset 5
 Style * IconFont "$[infostore.font_mono]"
 Style * IconBackgroundRelief 0, IconBackGroundColorset 5
 Style * !UseIconPosition
+Style * MiniIcon IconSize 16 16
 
 # !Handles, !Borders, !Title
 Style "wine"                  FPLenient, NoFuncHint, NoDecorHint, NoOLDecor
@@ -258,46 +262,46 @@ Style "plank"                 !Title, !Handles, StaysOnTop, Sticky, NeverFocus, 
 Style "gkrellm"               !Title, !Handles, StaysOnTop, Sticky, NeverFocus, WindowListSkip, FixedPosition
 Style "trayer"                !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
 Style "stalonetray"           !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
-Style "google-chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
-Style "Google Chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chrome.png
-Style "*hromium-browser*"     !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon chromium-browser.png
+Style "google-chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
+Style "Google Chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
+Style "*hromium-browser*"     !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "chromium-browser.svg:16x16"
 Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gnome-calculator"      MiniIcon galculator.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
-Style "gedit"                 MiniIcon gedit.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
-Style "nautilus"              MiniIcon folder.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
-Style "Geary"                 MiniIcon apps/email.pngBorder, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
-Style "pcmanfm"               MiniIcon folder.png
-Style "Transmission*"         MiniIcon transmission.png
-Style "Nemo*"                 MiniIcon folder.png
-Style "gimp"                  MiniIcon gimp.png
-Style "inkscape"              MiniIcon inkscape.png
-Style "emacs*"                MiniIcon emacs24.png
-Style "Code*"                 MiniIcon code.png
+Style "gedit"                 MiniIcon "gedit.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
+Style "nautilus"              MiniIcon "folderhome.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
+Style "Geary*"                MiniIcon "email.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
+Style "pcmanfm"               MiniIcon "folderhome.svg:16x16"
+Style "Transmission*"         MiniIcon "transmission.svg:16x16"
+Style "Nemo*"                 MiniIcon "folderhome.svg:16x16"
+Style "gimp"                  MiniIcon "gimp.svg:16x16"
+Style "inkscape"              MiniIcon "inkscape.svg:16x16"
+Style "emacs*"                MiniIcon "emacs.svg:16x16"
+Style "Code*"                 MiniIcon "code.svg:16x16"
 Style "evince"                MiniIcon evince.png
-Style "subl"                  MiniIcon sublime-text.png
-Style "sublime_text"          MiniIcon sublime-text.png
+Style "subl"                  MiniIcon "sublime-text.svg:16x16"
+Style "sublime_text"          MiniIcon "sublime-text.svg:16x16"
 Style "devhelp"               MiniIcon devhelp.png
 Style "umbrello"              MiniIcon umbrello.png
 Style "vncviewer"             MiniIcon vncviewer.png
 Style "realvnc*"              MiniIcon vncviewer.png
 Style "VNC Viewer"            MiniIcon vncviewer.png
 Style "Vmware*"               MiniIcon vmware.png
-Style "Virtual*"              MiniIcon virt-manager.png
+Style "Virtual*"              MiniIcon "virt-manager.svg:16x16"
 Style "zeal"                  MiniIcon zeal.png
 Style "atom"                  MiniIcon atom.png
-Style "filezilla"             MiniIcon filezilla.png
-Style "Gitg"                  MiniIcon qgit.png
-Style "dia"                   MiniIcon dia.png
+Style "filezilla"             MiniIcon "filezilla.svg:16x16"
+Style "Gitg"                  MiniIcon "github.svg:16x16"
+Style "dia"                   MiniIcon "dia.svg:16x16"
 Style "Terminal"              MiniIcon terminal.png
-Style "Tilix*"                MiniIcon terminal.png
+Style "Tilix*"                MiniIcon "terminator.svg:16x16"
 Style "*ermini*"              MiniIcon terminal.png
 Style "gnome-terminal"        MiniIcon terminal.png
 Style "xfce4-terminal"        MiniIcon terminal.png
 Style "termin*"               MiniIcon terminal.png
 Style "xterm"                 MiniIcon terminal.png
-Style "Pidgin*"               MiniIcon pidgin.png
-Style "Acrobat*"              MiniIcon acroread.png
-Style "Adobe*"                MiniIcon acroread.png
+Style "Pidgin*"               MiniIcon "pidgin.svg:16x16"
+Style "Acrobat*"              MiniIcon "acroread.svg:16x16"
+Style "Adobe*"                MiniIcon "acroread.svg:16x16"
 Style "libreoffice-writer*"   MiniIcon libreoffice-writer.png
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon firefox.png
@@ -308,7 +312,6 @@ Style "xman"                  Icon xman.xpm, ClickToFocus
 Style "xmag"                  Icon mag_glass.xpm, ClickToFocus
 Style "xgraph"                Icon graphs.xpm, ClickToFocus
 Style "xmosaic"               Color Green/Yellow, ClickToFocus
-Style "*Dialog_popup"         WindowListSkip
 Style "gnome-do"              CenterPlacement, BorderWidth 0, NoTitle, NoHandles, MiniIcon find1.xpm, EWMHMiniIconOverride, WindowListSkip
 Style "Do"                    CenterPlacement, BorderWidth 0, NoTitle, NoHandles, MiniIcon find1.xpm, EWMHMiniIconOverride, WindowListSkip
 
@@ -413,43 +416,38 @@ DestroyModuleConfig FvwmDeskControl: *
 
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtons: Font  "$[infostore.font_sans]"
-PipeRead 'echo *FvwmButtons: Geometry         90x$(($[vp.height]/1))+0+0'
-PipeRead 'echo *FvwmButtons: ButtonGeometry   90x$(($[vp.height]/44))'
+PipeRead 'echo *FvwmButtons: Geometry         90x$(($[vp.height]+100))+0+0'
+PipeRead 'echo *FvwmButtons: ButtonGeometry   90x$((($[vp.height]/66)-1))'
 PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmButtons: Colorset 10
 *FvwmButtons: BoxSize smart
-*FvwmButtons: Rows 44
+*FvwmButtons: Rows 66
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
-*FvwmButtons(1x4+0+0, Swallow "FvwmPager" 'FvwmPager *')
-*FvwmButtons(1x1, Swallow "FvwmDeskControl" 'FvwmDeskControl *')
-*FvwmButtons(1x1, Swallow (UseOld) "cpumon" \
+*FvwmButtons(1x6+0+0, Swallow "FvwmPager" 'FvwmPager *')
+*FvwmButtons(1x2, Swallow "FvwmDeskControl" 'FvwmDeskControl *')
+*FvwmButtons(1x2, Swallow (UseOld) "cpumon" \
                   `Exec exec xosview -name cpumon -captions +labels +usedlabels +cpu -load -mem -swap -battery -gfx -net -page -disk -int -ints -irqrate -lmstemp -xrm 'cpumon*background: #484644'` \
                   Action `exec xload -bg rgb:48/46/44 -fg white -update 3`)
-*FvwmButtons(1x2, Title Start, Icon logo.png, \
+*FvwmButtons(1x4, Title Start, Icon "starthereubuntu.svg:32x32", \
                   Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +92+$top 0 -100m")
-*FvwmButtons(1x2, Title Browser, Icon chromium-browser.png, \
+*FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:32x32", \
                   Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
                   Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
-*FvwmButtons(1x2, Title Email, Icon geary.png, Action 'Exec "Geary" geary &')
-*FvwmButtons(1x2, Title Pidgin, Icon pidgin.png, Action 'Exec "Pidgin" pidgin &')
-*FvwmButtons(1x2, Title Home, Icon folder.png, Action 'Exec "Nemo" nemo &')
-*FvwmButtons(1x2, Title Terminal, Icon terminal.png, \
+*FvwmButtons(1x4, Title Email, Icon "email.svg:32x32", Action 'Exec "Geary" geary &')
+*FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:32x32", Action 'Exec "Pidgin" pidgin &')
+*FvwmButtons(1x4, Title Home, Icon "folderhome.svg:32x32", Action 'Exec "Nemo" nemo &')
+*FvwmButtons(1x4, Title Terminal, Icon "terminator.svg:32x32", \
                   Action (Mouse 1) 'Exec "Tilix" tilix &', \
                   Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/tilix &" Next "/bin/bash" +$left+$top)
-*FvwmButtons(1x2, Title Code, Icon code.png, Action 'Exec "Code" code &')
-*FvwmButtons(1x2, Title Sublime, Icon sublime-text.png, Action 'Exec "Sublime Text" subl &')
-*FvwmButtons(1x2, Title Emacs, Icon emacs24.png, Action 'Exec "Emacs Server" emacs &')
-*FvwmButtons(1x2, Title VNC, Icon vncviewer.png, Action 'Exec "VNC Viewer" vncviewer &')
-*FvwmButtons(1x2, Title Gitg, Icon qgit.png, Action 'Exec "Gitg" gitg &')
-*FvwmButtons(1x2, Title Acrobat, Icon acroread.png, Action 'Exec "Adobe Acrobat" acroread &')
-*FvwmButtons(1x2, Title Inkscape, Icon inkscape.png, Action 'Exec "Inkscape" inkscape &')
-*FvwmButtons(1x2, Title Dia, Icon dia.png, Action 'Exec "Dia" dia &')
-*FvwmButtons(1x2, Title Zeal, Icon zeal.png, Action 'Exec "Zeal" zeal &')
-*FvwmButtons(1x2, Title Octave, Icon octave-logo.png, Action 'Exec "Octave" octave --force-gui &')
-*FvwmButtons(1x2, Title Images, Icon eog.png, Action 'Exec "Eyes of Gnome" eog &')
-*FvwmButtons(1x2, Title Qemu, Icon virt-manager.png, Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
-*FvwmButtons(1x2, Swallow "xbiff" \
+*FvwmButtons(1x4, Title Sublime, Icon "sublime-text.svg:32x32", Action 'Exec "Sublime Text" subl &')
+*FvwmButtons(1x4, Title Emacs, Icon "emacs.svg:32x32", Action 'Exec "Emacs Server" emacs &')
+*FvwmButtons(1x4, Title VNC, Icon "imac-icon.svg:32x32", Action 'Exec "VNC Viewer" vncviewer &')
+*FvwmButtons(1x4, Title Gitg, Icon "github.svg:32x32", Action 'Exec "Gitg" gitg &')
+*FvwmButtons(1x4, Title Dia, Icon "dia.svg:32x32", Action 'Exec "Dia" dia &')
+*FvwmButtons(1x4, Title Images, Icon "shotwell.svg:32x32", Action 'Exec "Eyes of Gnome" eog &')
+*FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:32x32", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
+*FvwmButtons(1x4, Swallow "xbiff" \
                   `Exec exec xbiff -bg rgb:48/46/44 -fg white`)
 
 # DockLaunch Function
@@ -583,6 +581,7 @@ MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
 MenuStyle * MenuColorset 10, HilightBack, ActiveColorset 21
 MenuStyle * "$[infostore.font_sans]"
 MenuStyle * MenuFace DGradient 64 Red Black
+MenuStyle * IconSize 16 16
 
 # Window Operation Menu
 DestroyMenu Window-Ops
