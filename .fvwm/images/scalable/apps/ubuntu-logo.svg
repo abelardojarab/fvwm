@@ -1,0 +1,16 @@
+<svg preserveAspectRatio="xMinYMin" viewBox="0 0 284 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>ubuntu</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="ubuntu" sketch:type="MSLayerGroup">
+            <circle id="Oval" fill="#DD4814" sketch:type="MSShapeGroup" cx="142" cy="142" r="141.732"></circle>
+            <circle id="Oval" fill="#FFFFFF" sketch:type="MSShapeGroup" cx="45.6228" cy="142" r="18.9215"></circle>
+            <path d="M96.3941,210.395 C79.8345,199.3316 67.5156,182.4175 62.3989,162.6065 C68.377,157.7354 72.1953,150.3164 72.1953,142 C72.1953,133.6836 68.377,126.2646 62.3989,121.3935 C67.5156,101.5825 79.8345,84.6684 96.3941,73.605 L110.2285,96.7788 C96.0176,106.7803 86.7246,123.2974 86.7246,142 C86.7246,160.7026 96.0176,177.2197 110.2285,187.2212 L96.3941,210.395 Z" id="Shape" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+            <circle id="Oval" fill="#FFFFFF" sketch:type="MSShapeGroup" transform="translate(190.188600, 58.534896) rotate(120.000000) translate(-190.188600, -58.534896) " cx="190.1886" cy="58.5348965" r="18.9215"></circle>
+            <path d="M179.92355,162.16925 C163.36395,151.10585 151.04505,134.19175 145.92835,114.38075 C151.90645,109.50965 155.72475,102.09065 155.72475,93.7742496 C155.72475,85.4578496 151.90645,78.0388496 145.92835,73.1677496 C151.04505,53.3567496 163.36395,36.4426496 179.92355,25.3792496 L193.75795,48.5530496 C179.54705,58.5545496 170.25405,75.0716496 170.25405,93.7742496 C170.25405,112.47685 179.54705,128.99395 193.75795,138.99545 L179.92355,162.16925 Z" id="Shape" fill="#FFFFFF" sketch:type="MSShapeGroup" transform="translate(169.843150, 93.774250) rotate(120.000000) translate(-169.843150, -93.774250) "></path>
+            <circle id="Oval" fill="#FFFFFF" sketch:type="MSShapeGroup" transform="translate(190.188600, 225.465104) rotate(240.000000) translate(-190.188600, -225.465104) " cx="190.1886" cy="225.465104" r="18.9215"></circle>
+            <path d="M179.92355,258.62075 C163.36395,247.55735 151.04505,230.64325 145.92835,210.83225 C151.90645,205.96115 155.72475,198.54215 155.72475,190.22575 C155.72475,181.90935 151.90645,174.49035 145.92835,169.61925 C151.04505,149.80825 163.36395,132.89415 179.92355,121.83075 L193.75795,145.00455 C179.54705,155.00605 170.25405,171.52315 170.25405,190.22575 C170.25405,208.92835 179.54705,225.44545 193.75795,235.44695 L179.92355,258.62075 Z" id="Shape" fill="#FFFFFF" sketch:type="MSShapeGroup" transform="translate(169.843150, 190.225750) rotate(240.000000) translate(-169.843150, -190.225750) "></path>
+        </g>
+    </g>
+</svg>
