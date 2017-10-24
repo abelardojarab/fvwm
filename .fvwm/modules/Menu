@@ -11,7 +11,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "%desktop.svg:24x24%Show Desktop" All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail
 + "" Nop
 
-+ "%development.svg:24x24%Development" Popup MenuDevelopment
++ "%code.svg:24x24%Development" Popup MenuDevelopment
 + "%gnome-logo.svg:24x24%GNOME" Popup MenuGNOME
 + "%steam.svg:24x24%Games" Popup MenuGame
 + "%eog.svg:24x24g%Graphics" Popup MenuGraphics
@@ -161,7 +161,7 @@ AddToMenu MenuGNOMESettings
 + "%user.svg:24x24%GNOME Startup Applications" Exec exec gnome-session-properties
 + "%foldersharing.svg:24x24%GNOME Personal File Sharing" Exec exec gnome-file-share-properties
 + "%apps/logview.png%GNOME System Log" Exec exec gnome-system-log-pkexec
-+ "%xpms/mini.font.xpm%GNOME Font Viewer" Exec exec gnome-font-viewer
++ "%text.svg:24x24%GNOME Font Viewer" Exec exec gnome-font-viewer
 + "%apps/gnome-tweak-tool.png%GNOME Tweak Tool" Exec exec gnome-tweak-tool
 
 DestroyMenu MenuUtilities
@@ -173,8 +173,8 @@ AddToMenu MenuUtilities
 + "%folderhome.svg:24x24%File Manager PCManFM" Exec exec pcmanfm
 + "%apps/xterm.png%XTerm" Exec exec xterm
 + "%terminator.svg:24x24%Tilix" Exec exec tilix
-+ "%xpms/mini.font.xpm%Character Map" Exec exec gucharmap
-+ "%apps/shutter.png%Capture the current active window" Exec exec shutter --active
++ "%text.svg:24x24%Character Map" Exec exec gucharmap
++ "%apps/shutter.png%Capture the current active window " Exec exec shutter --active
 + "%gcalculator.svg:24x24%Calculator" Exec exec gnome-calculator
 + "%apps/disk-save-as.png%Startup Disk Creator" Exec exec usb-creator-gtk
 

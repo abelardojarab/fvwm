@@ -266,7 +266,7 @@ Style "google-chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLec
 Style "Google Chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
 Style "*hromium-browser*"     !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "chromium-browser.svg:16x16"
 Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
-Style "gnome-calculator"      MiniIcon galculator.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
+Style "gnome-calculator"      MiniIcon "gcalculator.svg:24x24", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gedit"                 MiniIcon "gedit.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "nautilus"              MiniIcon "folderhome.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "Geary*"                MiniIcon "email.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
@@ -292,28 +292,26 @@ Style "atom"                  MiniIcon atom.png
 Style "filezilla"             MiniIcon "filezilla.svg:16x16"
 Style "Gitg"                  MiniIcon "github.svg:16x16"
 Style "dia"                   MiniIcon "dia.svg:16x16"
-Style "Terminal"              MiniIcon terminal.png
+Style "Terminal"              MiniIcon "terminal.svg:16x16"
 Style "Tilix*"                MiniIcon "terminator.svg:16x16"
-Style "*ermini*"              MiniIcon terminal.png
-Style "gnome-terminal"        MiniIcon terminal.png
-Style "xfce4-terminal"        MiniIcon terminal.png
-Style "termin*"               MiniIcon terminal.png
-Style "xterm"                 MiniIcon terminal.png
+Style "*ermini*"              MiniIcon "terminal.svg:16x16"
+Style "gnome-terminal"        MiniIcon "terminal.svg:16x16"
+Style "xfce4-terminal"        MiniIcon "terminal.svg:16x16"
+Style "termin*"               MiniIcon "terminal.svg:16x16"
+Style "xterm"                 MiniIcon "terminal.svg:16x16"
 Style "Pidgin*"               MiniIcon "pidgin.svg:16x16"
 Style "Acrobat*"              MiniIcon "acroread.svg:16x16"
 Style "Adobe*"                MiniIcon "acroread.svg:16x16"
 Style "libreoffice-writer*"   MiniIcon libreoffice-writer.png
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
-Style "Mozilla Firefox"       CenterPlacement, MiniIcon firefox.png
-Style "firefox*"              CenterPlacement, MiniIcon firefox.png
-Style "Firefox*"              CenterPlacement, MiniIcon firefox.png
-Style "Library"               CenterPlacement, MiniIcon firefox.png
+Style "Mozilla Firefox"       CenterPlacement, MiniIcon "firefox.svg:16x16"
+Style "firefox*"              CenterPlacement, MiniIcon "firefox.svg:16x16"
+Style "Firefox*"              CenterPlacement, MiniIcon "firefox.svg:16x16"
+Style "Library"               CenterPlacement, MiniIcon "firefox.svg:16x16"
 Style "xman"                  Icon xman.xpm, ClickToFocus
 Style "xmag"                  Icon mag_glass.xpm, ClickToFocus
 Style "xgraph"                Icon graphs.xpm, ClickToFocus
 Style "xmosaic"               Color Green/Yellow, ClickToFocus
-Style "gnome-do"              CenterPlacement, BorderWidth 0, NoTitle, NoHandles, MiniIcon find1.xpm, EWMHMiniIconOverride, WindowListSkip
-Style "Do"                    CenterPlacement, BorderWidth 0, NoTitle, NoHandles, MiniIcon find1.xpm, EWMHMiniIconOverride, WindowListSkip
 
 # Buttons
 Style "FvwmButtons"           WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnTop, Sticky
