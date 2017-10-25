@@ -438,6 +438,7 @@ PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0
 *FvwmButtons(1x4, Title Terminal, Icon "terminator.svg:32x32", \
                   Action (Mouse 1) 'Exec "Tilix" tilix &', \
                   Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/tilix &" Next "/bin/bash" +$left+$top)
+*FvwmButtons(1x4, Title Code, Icon "code.svg:32x32", Action 'Exec "Visual Studio Code" code &')
 *FvwmButtons(1x4, Title Sublime, Icon "sublime-text.svg:32x32", Action 'Exec "Sublime Text" subl &')
 *FvwmButtons(1x4, Title Emacs, Icon "emacs.svg:32x32", Action 'Exec "Emacs Server" emacs &')
 *FvwmButtons(1x4, Title VNC, Icon "imac-icon.svg:32x32", Action 'Exec "VNC Viewer" vncviewer &')
@@ -445,8 +446,6 @@ PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0
 *FvwmButtons(1x4, Title Dia, Icon "dia.svg:32x32", Action 'Exec "Dia" dia &')
 *FvwmButtons(1x4, Title Images, Icon "shotwell.svg:32x32", Action 'Exec "Eyes of Gnome" eog &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:32x32", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
-*FvwmButtons(1x4, Swallow "xbiff" \
-                  `Exec exec xbiff -bg rgb:48/46/44 -fg white`)
 
 # DockLaunch Function
 DestroyFunc DockLaunch
@@ -529,6 +528,18 @@ PipeRead 'echo *FvwmConky: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmConky: Colorset 14
 *FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
                  `Exec exec conky &`)
+
+# LowerLeft dock
+DestroyModuleConfig FvwmLowerLeft: *
+*FvwmLowerLeft: Geometry 90x93+0-0
+*FvwmLowerLeft: Columns 1
+*FvwmLowerLeft: Rows 1
+*FvwmLowerLeft: Padding 0 0
+*FvwmLowerLeft: BoxSize fixed
+*FvwmLowerLeft: Frame 0
+*FvwmLowerLeft: Colorset 10
+*FvwmLowerLeft(1x1, Swallow (NoClose, Respawn, UseOld) "xbiff" \
+                  `Exec exec xbiff -bg rgb:48/46/44 -fg white`)
 
 #####
 # Module configurations
@@ -725,6 +736,7 @@ AddToFunc StartFunction
 + I Module FvwmButtons -g +0+0 FvwmDeskControl
 + I Module FvwmButtons -g -0-0 FvwmConky
 + I Module FvwmButtons -g -0+0 FvwmShelf
++ I Module FvwmButtons -g +0-0 FvwmLowerLeft
 + I Module FvwmPerl
 + I FvwmEval use POSIX
 + I Test (Restart) All (Iconic) Test (f $[fvwm_cache]/icon.tmp.$[w.id].png) WindowStyle IconOverride, \
