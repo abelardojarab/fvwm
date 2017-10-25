@@ -430,10 +430,11 @@ PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0
                       `Exec exec xterm +sb -sl 0 -name jcalendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
                       ActiveColorset 8)
 *FvwmButtons(1x4, Title Start, Icon "starthereubuntu.svg:32x32", \
-                  Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +92+$top 0 -100m")
+                  Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +92+$top 0 -100m", \
+                  Action (Mouse 3) All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail)
 *FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:32x32", \
-                  Action (Mouse 1) 'Exec "Chromium Browser" chromium-browser &', \
-                  Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/chromium-browser &" Next "New Tab - Chromium" +$left+$top)
+                  Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
+                  Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title Email, Icon "email.svg:32x32", Action 'Exec "Geary" geary &')
 *FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:32x32", Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(1x4, Title Home, Icon "folderhome.svg:32x32", Action 'Exec "Nemo" nemo &')
@@ -445,7 +446,9 @@ PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0
 *FvwmButtons(1x4, Title Emacs, Icon "emacs.svg:32x32", \
                   Action (Mouse 1) 'Exec "Emacs" emacs &', \
                   Action (Mouse 3) `WindowList (Emacs) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title VNC, Icon "imac-icon.svg:32x32", Action 'Exec "VNC Viewer" vncviewer &')
+*FvwmButtons(1x4, Title VNC, Icon "imac-icon.svg:32x32", \
+                  Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
+                  Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title Gitg, Icon "github.svg:32x32", Action 'Exec "Gitg" gitg &')
 *FvwmButtons(1x4, Title Dia, Icon "dia.svg:32x32", Action 'Exec "Dia" dia &')
 *FvwmButtons(1x4, Title Images, Icon "shotwell.svg:32x32", Action 'Exec "Eyes of Gnome" eog &')
