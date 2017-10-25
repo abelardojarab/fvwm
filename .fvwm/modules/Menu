@@ -58,13 +58,14 @@ AddToMenu MenuGame
 
 DestroyMenu MenuGraphics
 AddToMenu MenuGraphics
-+ "%apps/xsane.png%XSane Image scanning program" Exec exec xsane
++ "%apps/xsane.png%XSane Image scanning program " Exec exec xsane
 + "%apps/shutter.png%Screenshots" Exec exec shutter
 + "%shotwell.svg:24x24%Shotwell" Exec exec shotwell
++ "%dia.svg:24x24%Dia" Exec exec dia
 + "%inkscape.svg:24x24%Inkscape" Exec exec inkscape
 + "%gimp.svg:24x24%GIMP Image Editor" Exec exec gimp
++ "%krita.svg:24x24%Krita Paint Program" Exec exec krita
 + "%eog.svg:24x24%Eye of Gnome" Exec exec eog
-+ "%dia.svg:24x24%Dia" Exec exec dia
 + "%gpick.svg:24x24%Gpick Color Sampler" Exec exec gpick
 
 DestroyMenu MenuMultimedia
