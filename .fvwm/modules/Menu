@@ -10,7 +10,6 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "%terminal.svg:24x24%New Terminal" Exec exec xterm
 + "%desktop.svg:24x24%Show Desktop" All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail
 + "" Nop
-
 + "%code.svg:24x24%Development" Popup MenuDevelopment
 + "%gnome-logo.svg:24x24%GNOME" Popup MenuGNOME
 + "%steam.svg:24x24%Games" Popup MenuGame
@@ -23,7 +22,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "%uncompress.svg:24x24%Utilities" Popup MenuUtilities
 + "" Nop
 + "%xpms/mini.fvwm.xpm%Restart Fvwm" Restart
-+ "%xpms/small.exit.xpm%Quit Fvwm" Module FvwmForm FvwmForm-QuitVerify
++ "%xpms/mini.exit.xpm%Quit Fvwm" Module FvwmForm FvwmForm-QuitVerify
 
 DestroyMenu MenuDevelopment
 AddToMenu MenuDevelopment
@@ -87,10 +86,11 @@ DestroyMenu MenuNetwork
 AddToMenu MenuNetwork
 + "%google-chrome.svg:24x24%Google Chrome" Exec exec google-chrome
 + "%chromium-browser.svg:24x24%Chromium Browser" Exec exec chromium-browser
++ "%firefox.svg:24x24%Firefox" Exec exec firefox
 + "%firefox.svg:24x24%Open a New Private Window in Firefox" Exec exec firefox -private-window
 + "%email.svg:24x24%Geary Email Client" Exec exec geary
 + "%transmission.svg:24x24%Start Transmission Minimized" Exec exec transmission-gtk --minimized
-+ "%apps/xchat.png%XChat IRC" Exec exec sh -c "xchat --existing --url
++ "%apps/xchat.png%XChat IRC" Exec exec sh -c xchat --existing --url
 + "%filezilla.svg:24x24%FileZilla" Exec exec filezilla
 + "%pidgin.svg:24x24%Pidgin Internet Messenger" Exec exec pidgin
 + "%skype.svg:24x24%Skype" Exec exec skype
@@ -132,8 +132,8 @@ AddToMenu MenuSystem
 + "%systemmonitor.svg:24x24%Activity Log Manager" Exec exec activity-log-manager
 + "%apps/network.png%Networks..."                       Popup                      MenuNetworkSettings
 + "Printers...%apps/printer.png%"                       Popup                      MenuPrinterSettings
-+ "Software...%ubuntusoftwarecenter.svg:24x24%"           Popup                      MenuSWSettings
-+ "GNOME...%gnome-logo.svg:24x24%"                       Popup                      MenuGNOMESettings
++ "Software...%ubuntusoftwarecenter.svg:24x24%"         Popup                      MenuSWSettings
++ "GNOME...%gnome-logo.svg:24x24%"                      Popup                      MenuGNOMESettings
 
 DestroyMenu MenuSWSettings
 AddToMenu MenuSWSettings
