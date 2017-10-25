@@ -380,8 +380,8 @@ PipeRead 'echo *FvwmShelf: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
                 `Exec exec xclock -bg rgb:48/46/44 -fg white`,)
 *FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
                 `FvwmIconMan`)
-*FvwmShelf(Size 8x1, Swallow (NoClose, NoKill, Respawn, UseOld) "trayer" \
-                `Exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &`)
+# *FvwmShelf(Size 8x1, Swallow (NoClose, NoKill, Respawn, UseOld) "trayer" \
+#                 `Exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &`)
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -527,8 +527,8 @@ PipeRead 'echo *FvwmConky: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmConky: BoxSize fixed
 *FvwmConky: Frame 0
 *FvwmConky: Colorset 14
-*FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
-                  `Exec exec conky &`)
+#*FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
+#                  `Exec exec conky &`)
 
 #####
 # Module configurations
@@ -740,15 +740,17 @@ AddToFunc StartFunction
 DestroyFunc InitFunction
 AddToFunc   InitFunction
 + I Exec exec xrdb ~/.Xresources
-+ I Exec exec feh --bg-scale $[fvwm_wallpaper]
+# + I Exec exec feh --bg-scale $[fvwm_wallpaper]
 + I Exec exec bash -c 'if [ `getconf LONG_BIT` = "64" ]; then /usr/lib/x86_64-linux-gnu/notify-osd; else /usr/lib/i386-linux-gnu/notify-osd; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then compton -b -c; fi'
-+ I Exec exec vncconfig -nowin
+# Conky
+# + I Test (x conky) Exec exec conky
 # Tray section
++ I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right 
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 # + I Test (EnvMatch systray_started 0 ) break
-# Conky
-+ I Test (x conky) Exec exec conky
+# VNC icon
++ I Exec exec vncconfig -nowin
 # Insync
 + I Test (x insync) Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then insync start; fi'
 + I Test (x insync) Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then insync start; fi'
