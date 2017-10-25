@@ -345,10 +345,10 @@ Colorset 5 fg white, bg #a6a6a6, fgsh 3b3c37, RootTransparent
 Colorset 6 fg #9a875f, bg #fa875f
 # Available
 Colorset 7 fg #9a875f, bg #181512
-# Balloon windows colorset
+# Balloon windows colorset; active selections
 Colorset 8 fg white, bg #332d29
 # Balloon tooltip colorset
-Colorset 9 fg white, bg #686664, Plain
+Colorset 9 fg white, bg #332d29, Plain
 # Buttons, menu, icon manager background colorset
 Colorset 10 fg #fffff9, bg #484644
 # Menu selection colorset
@@ -403,7 +403,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmPager: Balloons All
 *FvwmPager: BalloonFont "$[infostore.font_mono]"
 *FvwmPager: BalloonYOffset +2
-*FvwmPager: BalloonBorderWidth 0
+*FvwmPager: BalloonBorderWidth 2
 *FvwmPager: MiniIcons
 *FvwmPager: Label 0 "0: Desk"
 *FvwmPager: Label 1 "1: Code"
@@ -423,12 +423,12 @@ PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0
 *FvwmButtons: Frame 1
 *FvwmButtons(1x6, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(1x4, Swallow (NoClose,UseOld) "wmclock" \
-                      `Exec exec wmclock -led "#6998f6"`, \
-                      Action (Mouse 3) \
-                      `Exec exec orage`, \
-                      Action (Mouse 1) \
-                      `Exec exec xterm +sb -sl 0 -name jcalendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
-                      ActiveColorset 8)
+                  `Exec exec wmclock -led "#6998f6"`, \
+                  Action (Mouse 3) \
+                  `Exec exec orage`, \
+                  Action (Mouse 1) \
+                  `Exec exec xterm +sb -sl 0 -name jcalendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
+                  ActiveColorset 8)
 *FvwmButtons(1x4, Title Start, Icon "starthereubuntu.svg:32x32", \
                   Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +92+$top 0 -100m", \
                   Action (Mouse 3) All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail)
@@ -535,7 +535,7 @@ PipeRead 'echo *FvwmConky: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmConky: Frame 0
 *FvwmConky: Colorset 14
 *FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
-                 `Exec exec conky &`)
+                  `Exec exec conky &`)
 
 # LowerLeft dock
 DestroyModuleConfig FvwmLowerLeft: *
@@ -543,19 +543,26 @@ PipeRead 'echo *FvwmLowerLeft: Geometry         90x$((($[vp.height]/66)*8+16))'
 PipeRead 'echo *FvwmLowerLeft: ButtonGeometry   90x$((($[vp.height]/66)*4+2))'
 *FvwmLowerLeft: Columns 1
 *FvwmLowerLeft: Rows 8
-*FvwmLowerLeft: Padding 12 12
 *FvwmLowerLeft: BoxSize fixed
 *FvwmLowerLeft: Frame 1
 *FvwmLowerLeft: ActiveColorset 8
 *FvwmLowerLeft: Colorset 10
-*FvwmLowerLeft(1x4, Swallow(UseOld,NoHints,Respawn) "xbiff" \
-                    `Exec exec xbiff -fg white -bg rgb:48/46/44`)
+# *FvwmLowerLeft(1x4, Swallow(UseOld,NoHints,Respawn) "xbiff" \
+  #                     `Exec exec xbiff -fg white -bg rgb:48/46/44`)
+*FvwmLowerLeft(1x4, Swallow (NoClose,UseOld) "wmhdplop" `Exec exec \
+              wmhdplop -t -d /dev/sda -d /dev/sdb -d /dev/sdc -d /dev/sdd`, \
+                    Padding 12 4, \
+                    Action (Mouse 1) \
+                    `Exec exec baobab`, \
+                    Action (Mouse 3) \
+                    `Exec exec gnome-disks`)
 *FvwmLowerLeft(1x4, Swallow(UseOld,NoHints,Respawn) "wmcpu" \
                     `Exec exec wmcpu -l`, \
                     Action (Mouse 1) \
                     `Exec exec xload -bg rgb:48/46/44 -fg white -update 3`, \
                     Action (Mouse 3) \
-                    `Exec exec gnome-system-monitor`)
+                    `Exec exec gnome-system-monitor`, \
+                    Padding 12 2)
 
 #####
 # Module configurations
@@ -690,14 +697,18 @@ AddToMenu MenuPageList
 
 DestroyDecor MyDecoration
 AddToDecor   MyDecoration
-+ TitleStyle -- Raised
++ TitleStyle -- Flat
 + TitleStyle Centered Height 26
-+ TitleStyle InActive (Colorset 2 -- Flat ) Active (Colorset 1 -- Flat)
-+ AddTitleStyle Active (TiledPixmap tile_solid-1.png) \
-  Inactive (TiledPixmap tile_gray.png)
-+ ButtonStyle All -- UseTitleStyle
-+ ButtonStyle All InActive (Colorset 0 -- Flat) -- HiddenHandles
-+ ButtonStyle All Active (Colorset 2  -- Raised)
++ TitleStyle InActive (Colorset 2 -- Flat )
++ TitleStyle Active (Colorset 1 -- Flat)
++ BorderStyle -- Flat HiddenHandles NoInset
++ ButtonStyle All -- UseTitleStyle Flat
++ ButtonStyle All InActive (Colorset 10 -- Flat) -- HiddenHandles
++ ButtonStyle All Active (Colorset 8 -- Flat) -- HiddenHandles)
++ ButtonStyle All ActiveDown (Colorset 8 -- Flat) -- HiddenHandles)
++ ButtonStyle All InActiveDown (Colorset 8 -- Flat) -- HiddenHandles)
++ ButtonStyle All ToggledActiveDown (Colorset 8 -- Flat) -- HiddenHandles)
++ ButtonStyle All ToggledInActiveDown (Colorset 10 -- Flat) -- HiddenHandles)
 + ButtonStyle 1 ActiveUp Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 \
   -- Flat UseTitleStyle
 + ButtonStyle 1 ActiveDown Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 \
