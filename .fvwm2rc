@@ -519,7 +519,7 @@ DestroyModuleConfig FvwmTaskBar: *
 
 # Conky
 DestroyModuleConfig FvwmConky: *
-PipeRead 'echo *FvwmConky: Geometry         340x$(($[vp.height]/1))-0+0'
+PipeRead 'echo *FvwmConky: Geometry         1x$(($[vp.height]/1))-0+0'
 PipeRead 'echo *FvwmConky: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmConky: Columns 1
 *FvwmConky: Rows 4
@@ -527,8 +527,8 @@ PipeRead 'echo *FvwmConky: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmConky: BoxSize fixed
 *FvwmConky: Frame 0
 *FvwmConky: Colorset 14
-#*FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
-#                  `Exec exec conky &`)
+*FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
+                 `Exec exec conky &`)
 
 #####
 # Module configurations
@@ -723,7 +723,7 @@ AddToFunc StartFunction
 + I Module FvwmEvent
 + I Module FvwmProxy
 + I Module FvwmButtons -g +0+0 FvwmDeskControl
-# + I Module FvwmButtons -g -0-0 FvwmConky
++ I Module FvwmButtons -g -0-0 FvwmConky
 + I Module FvwmButtons -g -0+0 FvwmShelf
 + I Module FvwmPerl
 + I FvwmEval use POSIX
@@ -740,13 +740,13 @@ AddToFunc StartFunction
 DestroyFunc InitFunction
 AddToFunc   InitFunction
 + I Exec exec xrdb ~/.Xresources
-# + I Exec exec feh --bg-scale $[fvwm_wallpaper]
++ I Exec exec feh --bg-scale $[fvwm_wallpaper]
 + I Exec exec bash -c 'if [ `getconf LONG_BIT` = "64" ]; then /usr/lib/x86_64-linux-gnu/notify-osd; else /usr/lib/i386-linux-gnu/notify-osd; fi'
 + I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then compton -b -c; fi'
 # Conky
 # + I Test (x conky) Exec exec conky
 # Tray section
-+ I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right 
++ I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 # + I Test (EnvMatch systray_started 0 ) break
 # VNC icon
