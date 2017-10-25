@@ -163,7 +163,7 @@ Style * SnapAttraction 3 SameType
 #######
 # MWM emulation:
 # 1) mwm-style border reliefs (less deep than default fvwm) ?
-# 2) maximize button does mwm-inversion thing
+# 2) maximize button does mwm-inversion thing; nice buttons (ugly window border?)
 # 3) makes fvwm attempt to recognize and respect the mwm decoration hints
 # that applications occasionally use
 #################
@@ -346,7 +346,7 @@ Colorset 6 fg #9a875f, bg #fa875f
 # Available
 Colorset 7 fg #9a875f, bg #181512
 # Balloon windows colorset
-Colorset 8 fg #332d29, bg #332d29
+Colorset 8 fg white, bg #332d29
 # Balloon tooltip colorset
 Colorset 9 fg white, bg #686664, Plain
 # Buttons, menu, icon manager background colorset
@@ -370,10 +370,11 @@ PipeRead 'echo *FvwmShelf: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmShelf: Rows 1
 *FvwmShelf: BoxSize smart
 *FvwmShelf: Colorset 10
+*FvwmShelf: ActiveColorset 8
 *FvwmShelf: Frame 1
 *FvwmShelf: Padding 1 1
 *FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) "XClock" \
-                `Exec xclock -digital -twentyfour -bg rgb:48/46/44 -fg white -padding 4 -strftime " %H:%M %a %d %b %Y " &`, \
+                `Exec xclock -digital -twentyfour -bg rgb:48/46/44 -fg white -padding 4 -strftime "   %H:%M %a %d %b %Y " &`, \
                 Action (Mouse 1) \
                 `Exec exec xterm +sb -sl 0 -name jcalendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
                 Action (Mouse 3) \
@@ -418,15 +419,20 @@ PipeRead 'echo *FvwmButtons: Geometry         90x$(($[vp.height]+100))+0+0'
 PipeRead 'echo *FvwmButtons: ButtonGeometry   90x$((($[vp.height]/66)-1))'
 PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmButtons: Colorset 10
+*FvwmButtons: ActiveColorset 8
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 66
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
-*FvwmButtons(1x6+0+0, Swallow "FvwmPager" 'FvwmPager *')
-*FvwmButtons(1x2, Swallow "FvwmDeskControl" 'FvwmDeskControl *')
-*FvwmButtons(1x2, Swallow (UseOld) "cpumon" \
-                  `Exec exec xosview -name cpumon -captions +labels +usedlabels +cpu -load -mem -swap -battery -gfx -net -page -disk -int -ints -irqrate -lmstemp -xrm 'cpumon*background: #484644'` \
-                  Action `exec xload -bg rgb:48/46/44 -fg white -update 3`)
+*FvwmButtons(1x6, Swallow "FvwmPager" 'FvwmPager *')
+# *FvwmButtons(1x2, Swallow "FvwmDeskControl" 'FvwmDeskControl *')
+*FvwmButtons(1x4, Swallow (NoClose,UseOld) "wmclock" \
+                      `Exec exec wmclock -led "#6998f6"`, \
+                      Action (Mouse 3) \
+                      `Exec exec orage`, \
+                      Action (Mouse 1) \
+                      `Exec exec xterm +sb -sl 0 -name jcalendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
+                      ActiveColorset 8)
 *FvwmButtons(1x4, Title Start, Icon "starthereubuntu.svg:32x32", \
                   Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +92+$top 0 -100m")
 *FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:32x32", \
@@ -438,7 +444,6 @@ PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0
 *FvwmButtons(1x4, Title Terminal, Icon "terminator.svg:32x32", \
                   Action (Mouse 1) 'Exec "Tilix" tilix &', \
                   Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/tilix &" Next "/bin/bash" +$left+$top)
-*FvwmButtons(1x4, Title Code, Icon "code.svg:32x32", Action 'Exec "Visual Studio Code" code &')
 *FvwmButtons(1x4, Title Sublime, Icon "sublime-text.svg:32x32", Action 'Exec "Sublime Text" subl &')
 *FvwmButtons(1x4, Title Emacs, Icon "emacs.svg:32x32", Action 'Exec "Emacs Server" emacs &')
 *FvwmButtons(1x4, Title VNC, Icon "imac-icon.svg:32x32", Action 'Exec "VNC Viewer" vncviewer &')
@@ -482,8 +487,8 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Action Mouse 3 N sendcommand "Menu Window-Ops Rectangle +$left+$top 0 -100m"
 *FvwmIconMan: Colorset 10
 *FvwmIconMan: ReliefThickness 1
-*FvwmIconMan: FocusAndSelectColorset 11
-*FvwmIconMan: FocusColorset 11
+*FvwmIconMan: FocusAndSelectColorset 8
+*FvwmIconMan: FocusColorset 8
 *FvwmIconMan: Resolution Page
 *FvwmIconMan: DrawIcons Always
 *FvwmIconMan: FollowFocus True
@@ -519,9 +524,10 @@ DestroyModuleConfig FvwmTaskBar: *
 # Conky
 DestroyModuleConfig FvwmConky: *
 PipeRead 'echo *FvwmConky: Geometry         1x$(($[vp.height]/1))-0+0'
+PipeRead 'echo *FvwmConky: ButtonGeometry   1x$(($[vp.height]/1))-0+0'
 PipeRead 'echo *FvwmConky: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmConky: Columns 1
-*FvwmConky: Rows 4
+*FvwmConky: Rows 1
 *FvwmConky: Padding 0 0
 *FvwmConky: BoxSize fixed
 *FvwmConky: Frame 0
@@ -531,15 +537,23 @@ PipeRead 'echo *FvwmConky: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 
 # LowerLeft dock
 DestroyModuleConfig FvwmLowerLeft: *
-*FvwmLowerLeft: Geometry 90x93+0-0
+PipeRead 'echo *FvwmLowerLeft: Geometry         90x$((($[vp.height]/66)*8+16))'
+PipeRead 'echo *FvwmLowerLeft: ButtonGeometry   90x$((($[vp.height]/66)*4+2))'
 *FvwmLowerLeft: Columns 1
-*FvwmLowerLeft: Rows 1
-*FvwmLowerLeft: Padding 0 0
+*FvwmLowerLeft: Rows 8
+*FvwmLowerLeft: Padding 12 12
 *FvwmLowerLeft: BoxSize fixed
-*FvwmLowerLeft: Frame 0
+*FvwmLowerLeft: Frame 1
+*FvwmLowerLeft: ActiveColorset 8
 *FvwmLowerLeft: Colorset 10
-*FvwmLowerLeft(1x1, Swallow (NoClose, Respawn, UseOld) "xbiff" \
-                  `Exec exec xbiff -bg rgb:48/46/44 -fg white`)
+*FvwmLowerLeft(1x4, Swallow(UseOld,NoHints,Respawn) "xbiff" \
+                    `Exec exec xbiff -fg white -bg rgb:48/46/44`)
+*FvwmLowerLeft(1x4, Swallow(UseOld,NoHints,Respawn) "wmcpu" \
+                    `Exec exec wmcpu -l`, \
+                    Action (Mouse 1) \
+                    `Exec exec xload -bg rgb:48/46/44 -fg white -update 3`, \
+                    Action (Mouse 3) \
+                    `Exec exec gnome-system-monitor`)
 
 #####
 # Module configurations
@@ -587,7 +601,7 @@ MenuStyle * BorderWidth 2
 MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
 MenuStyle * ItemFormat "%|%5.5i%1.3l%2.3>%|"
 MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
-MenuStyle * MenuColorset 10, HilightBack, ActiveColorset 21
+MenuStyle * MenuColorset 10, HilightBack, ActiveColorset 8
 MenuStyle * "$[infostore.font_sans]"
 MenuStyle * MenuFace DGradient 64 Red Black
 MenuStyle * IconSize 16 16
