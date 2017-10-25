@@ -264,7 +264,7 @@ Style "trayer"                !Title, StaysOnTop, FixedPosition, EWMHUseStacking
 Style "stalonetray"           !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
 Style "google-chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
 Style "Google Chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
-Style "*hromium-browser*"     !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "chromium-browser.svg:16x16"
+Style "*hromium-browser*"     FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "chromium-browser.svg:16x16"
 Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gnome-calculator"      MiniIcon "gcalculator.svg:24x24", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gedit"                 MiniIcon "gedit.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
@@ -362,9 +362,8 @@ Colorset 14 fg Black, NoShape, RootTransparent buffer, tint white 20
 
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
-PipeRead 'echo *FvwmShelf: Geometry   $$(($[vp.width]-92))x28-0+0'
+PipeRead 'echo *FvwmShelf: Geometry         $$(($[vp.width]-92))x28-0+0'
 PipeRead 'echo *FvwmShelf: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
-*FvwmShelf: Geometry -0-0
 *FvwmShelf: Font "$[infostore.font_sans]"
 *FvwmShelf: Columns 50
 *FvwmShelf: Rows 1
@@ -381,8 +380,6 @@ PipeRead 'echo *FvwmShelf: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
                 `Exec exec xclock -bg rgb:48/46/44 -fg white`,)
 *FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
                 `FvwmIconMan`)
-# *FvwmShelf(Size 8x1, Swallow (NoClose, NoKill, Respawn, UseOld) "trayer" \
-#                 `Exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right &`)
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -406,7 +403,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmPager: Balloons All
 *FvwmPager: BalloonFont "$[infostore.font_mono]"
 *FvwmPager: BalloonYOffset +2
-*FvwmPager: BalloonBorderWidth 1
+*FvwmPager: BalloonBorderWidth 0
 *FvwmPager: MiniIcons
 *FvwmPager: Label 0 "0: Desk"
 *FvwmPager: Label 1 "1: Code"
@@ -425,7 +422,6 @@ PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
 *FvwmButtons(1x6, Swallow "FvwmPager" 'FvwmPager *')
-# *FvwmButtons(1x2, Swallow "FvwmDeskControl" 'FvwmDeskControl *')
 *FvwmButtons(1x4, Swallow (NoClose,UseOld) "wmclock" \
                       `Exec exec wmclock -led "#6998f6"`, \
                       Action (Mouse 3) \
@@ -443,9 +439,12 @@ PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0
 *FvwmButtons(1x4, Title Home, Icon "folderhome.svg:32x32", Action 'Exec "Nemo" nemo &')
 *FvwmButtons(1x4, Title Terminal, Icon "terminator.svg:32x32", \
                   Action (Mouse 1) 'Exec "Tilix" tilix &', \
-                  Action (Mouse 3) Function FuncWinPaneApp "/usr/bin/tilix &" Next "/bin/bash" +$left+$top)
+                  Action (Mouse 3) `WindowList (Tilix) NoGeometry, \
+                  NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title Sublime, Icon "sublime-text.svg:32x32", Action 'Exec "Sublime Text" subl &')
-*FvwmButtons(1x4, Title Emacs, Icon "emacs.svg:32x32", Action 'Exec "Emacs Server" emacs &')
+*FvwmButtons(1x4, Title Emacs, Icon "emacs.svg:32x32", \
+                  Action (Mouse 1) 'Exec "Emacs" emacs &', \
+                  Action (Mouse 3) `WindowList (Emacs) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title VNC, Icon "imac-icon.svg:32x32", Action 'Exec "VNC Viewer" vncviewer &')
 *FvwmButtons(1x4, Title Gitg, Icon "github.svg:32x32", Action 'Exec "Gitg" gitg &')
 *FvwmButtons(1x4, Title Dia, Icon "dia.svg:32x32", Action 'Exec "Dia" dia &')
@@ -612,32 +611,35 @@ AddToMenu Window-Ops "Window Operations"        Title
 + "Windows list...%xpms/mini.windows.xpm%"      WindowList                 (CurrentDesk, AcceptsFocus, !Iconic) Root c c \
   NoGeometry IconifiedAtEnd, MaxLabelWidth 60
 + ""                                            Nop
-+ "Resize%xpms/mini.resize.xpm%"                Resize
-+ "Top Half%xpms/mini.maximize-horiz.xpm%"      TopHalfMix
-+ "Bottom Half%xpms/mini.maximize-horiz.xpm%"   BotHalfMix
-+ "Left Half%xpms/mini.maximize-vert.xpm%"      LeftHalfMix
-+ "Right Half%xpms/mini.maximize-vert.xpm%"     RightHalfMix
++ "Horizontal tile%mini.maximize-horiz1.xpm%"   FvwmRearrange -tile -v 0 100 97 0 -animate
++ "Vertical tile%mini.maximize-vert1.xpm%"      FvwmRearrange -tile -h 0 0 97 100 -animate
 + ""                                            Nop
-+ "(De) Iconify%xpms/mini.iconify.xpm%"         Iconify
-+ "(Un) Maximize%xpms/mini.maximize1.xpm%"      Maximize-func
-+ "(Un) Thumbnail%xpms/mini.zoom.xpm%"          Thumbnail
-+ "(Un) Shade%xpms/mini.windowshade.xpm%"       WindowShade
-+ "(Un) Stick%xpms/mini.stick1.xpm%"            Stick
++ "Resize%xpms/mini.resize3.xpm%"               Resize
++ "Top Half%xpms/mini.maximize-horiz1.xpm%"     TopHalfMix
++ "Bottom Half%xpms/mini.maximize-horiz1.xpm%"  BotHalfMix
++ "Left Half%xpms/mini.maximize-vert1.xpm%"     LeftHalfMix
++ "Right Half%xpms/mini.maximize-vert1.xpm%"    RightHalfMix
 + ""                                            Nop
-+ "Move%actions/move.png%"                      Move
-+ "Close%xpms/small.exit.xpm%"                  Close
-+ "Delete%xpms/mini.delete.xpm%"                Delete
-+ "Destroy%xpms/mini.destroy.xpm%"              Destroy
++ "(Un) Stick%xpms/mini.stick2.xpm%"            Stick
++ "(Un) Thumbnail%xpms/mini.iconify1.xpm%"      Thumbnail
++ "(De) Iconify%xpms/mini.winXX-minimize.xpm%"  Iconify
++ "(Un) Maximize%xpms/mini.winXX-maximize.xpm%" Maximize-func
++ "(Un) Shade%xpms/mini.maximize1.xpm%"         WindowShade
++ ""                                            Nop
++ "Move%xpms/mini.move1.xpm%"                   Move
++ "Close%xpms/mini.winXX-close.xpm%"            Close
++ "Delete%xpms/mini.cross.xpm%"                 Delete
++ "Destroy%xpms/mini.cross.xpm%"                Destroy
 + ""                                            Nop
 + "Stays On Top%xpms/mini.raise3.xpm%"          Pick                       (CirculateHit) Layer 0 6
 + "Layer +1%xpms/mini.raise2.xpm%"              Pick                       (CirculateHit) Layer +1
-+ "Stays Put%actions/nontop.png%"               Pick                       (CirculateHit) Layer 0 4
++ "Stays Put%xpms/mini.winXX-normalize.xpm%"    Pick                       (CirculateHit) Layer 0 4
 + "Layer -1%xpms/mini.lower2.xpm%"              Pick                       (CirculateHit) Layer -1
 + "Stays On Bottom%xpms/mini.lower3.xpm%"       Pick                       (CirculateHit) Layer 0 2
 + ""                                            Nop
 + "%xpms/mini.window.xpm%Window Screenshot"     Pick                       (CirculateHit) FvwmWindowScreenshot
 + "%xpms/mini.desktop.xpm%Desktop Screenshot"   FvwmDesktopScreenshot      5
-+ "Identify%xpms/mini.question.xpm%"            Module                     FvwmIdent
++ "Identify%xpms/mini.zoom.xpm%"                Module                     FvwmIdent
 + ""                                            Nop
 + "Modules%xpms/mini.modules.xpm%"              Popup                      MenuFvwmModules
 + "Send To...%xpms/mini.pager.xpm%"             Popup                      MenuPageList
@@ -648,7 +650,7 @@ AddToMenu MenuFvwmModules
 + "%xpms/mini.desktop.xpm%Expose"               Module                     FvwmExpose
 + "%xpms/mini.xterm.xpm%Quake-style Console"    Module                     StartHiddenConsole
 + ""                                            Nop
-+ "%xpms/small.exit.xpm%Stop modules"           Popup                      MenuFvwmStopModule
++ "%xpms/mini.exit.xpm%Stop modules"            Popup                      MenuFvwmStopModule
 
 DestroyMenu MenuFvwmStopModule
 AddToMenu MenuFvwmStopModule
