@@ -180,7 +180,10 @@ Style * HintOverride
 #######
 # Use EWMH hints and respect EWMH hints which change the window layer.
 #################
-Style * EWMHUseStackingOrderHints
+Style * EWMHUseStackingOrderHints, !EWMHDonateIcon, \
+    !EWMHDonateMiniIcon, EWMHUseStrutHints, EWMHUseStateHints, \
+    UseDecor Default, EWMHPlacementUseWorkingArea, \
+    EWMHPlacementUseDynamicWorkingArea
 
 #######
 # The WindowShadeSteps option selects the number of steps for animation
@@ -256,6 +259,10 @@ Style * IconFont "$[infostore.font_mono]"
 Style * IconBackgroundRelief 0, IconBackGroundColorset 5
 Style * !UseIconPosition
 Style * MiniIcon IconSize 16 16
+
+# Default application icon
+Defaulticon "application-default-icon.svg:24x24"
+Style * MiniIcon "application-default-icon.svg:16x16"
 
 # !Handles, !Borders, !Title
 Style "wine"                  FPLenient, NoFuncHint, NoDecorHint, NoOLDecor
@@ -419,6 +426,7 @@ PipeRead 'echo *FvwmButtons: ButtonGeometry   90x$((($[vp.height]/66)-1))'
 PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmButtons: Colorset 10
 *FvwmButtons: ActiveColorset 8
+*FvwmButtons: PressColorset 8
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 66
 *FvwmButtons: Columns 1
@@ -480,8 +488,8 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 300x28
 *FvwmIconMan: MaxButtonWidth 300
-*FvwmIconMan: FocusAndSelectButton flat
-*FvwmIconMan: FocusButton up
+*FvwmIconMan: FocusAndSelectButton raise
+*FvwmIconMan: FocusButton down
 *FvwmIconMan: IconButton up
 *FvwmIconMan: PlainButton up
 *FvwmIconMan: SelectButton down
@@ -489,8 +497,9 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Action Mouse 2 N sendcommand Thumbnail
 *FvwmIconMan: Action Mouse 1 N sendcommand "Iconify off", sendcommand RaiseLower, sendcommand FlipFocus
 *FvwmIconMan: Action Mouse 3 N sendcommand "Menu Window-Ops Rectangle +$left+$top 0 -100m"
-*FvwmIconMan: Colorset 10
 *FvwmIconMan: ReliefThickness 1
+*FvwmIconMan: Colorset 10
+*FvwmIconMan: ActiveColorset 8
 *FvwmIconMan: FocusAndSelectColorset 8
 *FvwmIconMan: FocusColorset 8
 *FvwmIconMan: Resolution Page
@@ -791,7 +800,7 @@ AddToFunc   InitFunction
 # composite support
 + I Test (x compton) Exec exec compton -c -C -f -G -b --vsync opengl-swc -r 10
 # Conky
-+ I Test (x conky) Exec exec conky 
++ I Test (x conky) Exec exec conky
 # Tray section
 + I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
