@@ -7,6 +7,14 @@ Setenv fvwm_colors $[HOME]/.fvwm/images/icons/colors
 ModulePath $[fvwm_userdir]:$[fvwm_userdir]/modules:+
 
 #######
+# Default applications
+#################
+InfoStoreAdd default_terminal tilix
+InfoStoreAdd default_browser chromium-browser
+InfoStoreAdd default_file_manager chromium-browser
+InfoStoreAdd fvwm_wallpaper $[fvwm_wallpaper]
+
+#######
 # The default ImagePath for icons is:
 # /usr/include/X11/bitmap:/usr/include/X11/pixmaps
 #################
@@ -71,6 +79,7 @@ PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`
 #################
 InfoStoreAdd font_sans "xft:Aquabase:size=12:encoding=iso10646-1"
 InfoStoreAdd font_mono "xft:Fira Mono:size=12:encoding=iso10646-1"
+InfoStoreAdd fontsize  12
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
@@ -170,6 +179,11 @@ Style * SnapAttraction 3 SameType
 Style * MWMDecor, MWMBorder, MWMFunctions, MWMButtons
 
 #######
+# Ignore Gnome application hints
+#################
+Style * !GnomeUseHints
+
+#######
 # makes fvwm shade out operations that mwm would prohibit, but it lets
 # you perform the operation anyway
 #################
@@ -241,7 +255,7 @@ Style * UseDecor MyDecoration
 Style * Colorset 3, HilightColorset 4
 Style * DecorateTransient, NakedTransient
 Style * Font "$[infostore.font_mono]"
-Style * HandleWidth 1, BorderWidth 1
+Style * HandleWidth 2, BorderWidth 2
 Style * BackingStore, SaveUnder
 Style * EWMHMiniIconOverride
 
@@ -363,7 +377,6 @@ Colorset 14 fg Black, NoShape, RootTransparent buffer, tint white 20
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
 PipeRead 'echo *FvwmShelf: Geometry         $$(($[vp.width]-92))x28-0+0'
-PipeRead 'echo *FvwmShelf: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmShelf: Font "$[infostore.font_sans]"
 *FvwmShelf: Columns 50
 *FvwmShelf: Rows 1
@@ -414,7 +427,6 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons: Font  "$[infostore.font_sans]"
 PipeRead 'echo *FvwmButtons: Geometry         90x$(($[vp.height]+100))+0+0'
 PipeRead 'echo *FvwmButtons: ButtonGeometry   90x$((($[vp.height]/66)-1))'
-PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmButtons: Colorset 10
 *FvwmButtons: ActiveColorset 8
 *FvwmButtons: BoxSize smart
@@ -453,24 +465,6 @@ PipeRead 'echo *FvwmButtons: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0
 *FvwmButtons(1x4, Title Dia, Icon "dia.svg:32x32", Action 'Exec "Dia" dia &')
 *FvwmButtons(1x4, Title Images, Icon "shotwell.svg:32x32", Action 'Exec "Eyes of Gnome" eog &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:32x32", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
-
-# DockLaunch Function
-DestroyFunc DockLaunch
-AddToFunc DockLaunch
-+ C Any ($1) Next ($1) WindowListFunc
-+ H Any ($1) WindowList ($1) Rectangle +$2+$3 0 -100m CurrentAtEnd UseListSkip SortByClass NoCurrentDeskTitle
-+ C TestRc (NoMatch) Exec exec $0
-+ D Exec exec $0
-
-DestroyFunc RunProgram
-AddToFunc RunProgram
-+ I PipeRead `$[HOME]/.fvwm/checkrun $*`
-+ I None [$0] All (FvwmButtons) Raise
-+ I None [$0] WindowList
-+ I TestRc (Match) Break 1
-+ I Next [$0] FlipFocus
-+ I Current (Iconic) IconifyAndRearrange
-+ I Current Raise
 
 # Icon Manager
 DestroyModuleConfig FvwmIconMan: *
@@ -547,8 +541,6 @@ PipeRead 'echo *FvwmLowerLeft: ButtonGeometry   90x$((($[vp.height]/66)*4+2))'
 *FvwmLowerLeft: Frame 1
 *FvwmLowerLeft: ActiveColorset 8
 *FvwmLowerLeft: Colorset 10
-# *FvwmLowerLeft(1x4, Swallow(UseOld,NoHints,Respawn) "xbiff" \
-  #                     `Exec exec xbiff -fg white -bg rgb:48/46/44`)
 *FvwmLowerLeft(1x4, Swallow (NoClose,UseOld) "wmhdplop" `Exec exec \
               wmhdplop -t -d /dev/sda -d /dev/sdb -d /dev/sdc -d /dev/sdd`, \
                     Padding 12 4, \
@@ -750,13 +742,63 @@ DestroyFunc FvwmEval
 AddToFunc   FvwmEval
 + I SendToModule FvwmPerl eval $*
 
+#####
+# Prints a message in .xsession-errors
+##################
+DestroyFunc FuncPrintDbgMsg
+AddToFunc   FuncPrintDbgMsg
++ I PipeRead `echo "[fvwm]$0: $1" >> ${HOME}/.xsession-errors`
+
+#####
+# Check which appliction are installed to get full functionality
+# print a message in .xsession-errors if check for app failed
+##################
+DestroyFunc FuncAppCheck
+AddToFunc   FuncAppCheck
+# xterm
++ I Test (!x xterm) FuncPrintDbgMsg "[AppCheck]" "xterm (view, edit) not installed"
+# xclock
++ I Test (!x xclock) FuncPrintDbgMsg "[AppCheck]" "xclock (date & time) not installed"
+# default terminal
++ I Test (!x $[infostore.default_terminal]) FuncPrintDbgMsg "[AppCheck]" "default terminal $[infostore.default_terminal] not installed"
+# default browser
++ I Test (!x $[infostore.default_browser]) FuncPrintDbgMsg "[AppCheck]" "default browser $[infostore.default_browser] not installed"
+# xscreensaver
++ I Test (!x xscreensaver-command) FuncPrintDbgMsg "[AppCheck]" "xscreensaver (lock) not installed"
+# feh
++ I Test (!x feh) FuncPrintDbgMsg "[AppCheck]" "feh (for setting scaled background) not installed"
+# import in package imagemagick
++ I Test (!x import) FuncPrintDbgMsg "[AppCheck]" "imagemagick (import for screenshot, thumbs) not installed"
+# stalonetray
++ I Test (!x trayer) FuncPrintDbgMsg "[AppCheck]" "trayer (systray) not installed"
+# systray app volumeicon
++ I Test (!x volumeicon) FuncPrintDbgMsg "[AppCheck]" "volumeicon (systray volume control) not installed"
+# systray app fdpowermon
++ I Test (!x fdpowermon) FuncPrintDbgMsg "[AppCheck]" "fdpowermon (systray pm control) not installed"
+# systray app nm-applet
++ I Test (!x nm-applet) FuncPrintDbgMsg "[AppCheck]" "nm-applet (systray network control) not installed"
+# systray app bluetooth-applet
++ I Test (!x bluetooth-applet) FuncPrintDbgMsg "[AppCheck]" "bluetooth-applet (systray bluetooth-applet) not installed"
+# Suspend, hibernate pm-is-supported
++ I Test (!x pm-is-supported) FuncPrintDbgMsg "[RequiredAppCheck]" "pm-utils (suspend, hibernate) not installed"
+# wmcpu
++ I Test (!x wmcpu) FuncPrintDbgMsg "[RequiredAppCheck]" "wmcpu (CPU monitoring docked app) not installed"
+# wmhdplop
++ I Test (!x wmhdplop) FuncPrintDbgMsg "[RequiredAppCheck]" "wmhdplop (Disks monitoring docked app) not installed"
+# wmclock
++ I Test (!x wmclock) FuncPrintDbgMsg "[RequiredAppCheck]" "wmclock (Date monitoring docked app) not installed"
+# conky
++ I Test (!x wmclock) FuncPrintDbgMsg "[RequiredAppCheck]" "conky (desklet) not installed"
+
 ######
 # Start function
 #################
 AddToFunc StartFunction
 + I Test (Init) Exec exec fvwm-root --dither --retain-pixmap $[fvwm_wallpaper]
-+ I PipeRead 'mkdir -p $[fvwm_cache]'
-+ I Exec rm $[fvwm_cache]/* 2>/dev/null
++ I Test (Init) FuncAppCheck
++ I PipeRead `mkdir -p $[fvwm_cache]`
++ I PipeRead `rm -rf $[fvwm_cache]/* 2>/dev/null`
++ I PipeRead `rm ${HOME}/.xsession-errors`
 + I FvwmButtons
 + I Module FvwmProxy
 + I Module FvwmCommandS
