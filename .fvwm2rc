@@ -31,6 +31,7 @@ ImagePath +:$[fvwm_userdir]/images/icons/decorations
 ImagePath +:$[fvwm_userdir]/images/icons/apps
 ImagePath +:$[fvwm_userdir]/images/icons/actions
 ImagePath +:$[fvwm_userdir]/images/icons/xpms
+ImagePath +:$[fvwm_cache]
 
 IconPath  $[fvwm_userdir]/images
 IconPath +:$[fvwm_userdir]/images/scalable/apps
@@ -43,6 +44,7 @@ IconPath +:$[fvwm_userdir]/images/icons/decorations
 IconPath +:$[fvwm_userdir]/images/icons/apps
 IconPath +:$[fvwm_userdir]/images/icons/actions
 IconPath +:$[fvwm_userdir]/images/icons/xpms
+IconPath +:$[fvwm_cache]
 
 ######
 # Adjust ratio to calculate resolution dependant things
@@ -192,7 +194,10 @@ Style * HintOverride
 #######
 # Use EWMH hints and respect EWMH hints which change the window layer.
 #################
-Style * EWMHUseStackingOrderHints
+Style * EWMHUseStackingOrderHints, !EWMHDonateIcon, \
+    !EWMHDonateMiniIcon, EWMHUseStrutHints, EWMHUseStateHints, \
+    UseDecor Default, EWMHPlacementUseWorkingArea, \
+    EWMHPlacementUseDynamicWorkingArea
 
 #######
 # The WindowShadeSteps option selects the number of steps for animation
@@ -268,6 +273,10 @@ Style * IconFont "$[infostore.font_mono]"
 Style * IconBackgroundRelief 0, IconBackGroundColorset 5
 Style * !UseIconPosition
 Style * MiniIcon IconSize 16 16
+
+# Default application icon
+Defaulticon "application-default-icon.svg:24x24"
+Style * MiniIcon "application-default-icon.svg:16x16"
 
 # !Handles, !Borders, !Title
 Style "wine"                  FPLenient, NoFuncHint, NoDecorHint, NoOLDecor
@@ -429,6 +438,7 @@ PipeRead 'echo *FvwmButtons: Geometry         90x$(($[vp.height]+100))+0+0'
 PipeRead 'echo *FvwmButtons: ButtonGeometry   90x$((($[vp.height]/66)-1))'
 *FvwmButtons: Colorset 10
 *FvwmButtons: ActiveColorset 8
+*FvwmButtons: PressColorset 8
 *FvwmButtons: BoxSize smart
 *FvwmButtons: Rows 66
 *FvwmButtons: Columns 1
@@ -472,8 +482,8 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 300x28
 *FvwmIconMan: MaxButtonWidth 300
-*FvwmIconMan: FocusAndSelectButton flat
-*FvwmIconMan: FocusButton up
+*FvwmIconMan: FocusAndSelectButton raise
+*FvwmIconMan: FocusButton down
 *FvwmIconMan: IconButton up
 *FvwmIconMan: PlainButton up
 *FvwmIconMan: SelectButton down
@@ -481,8 +491,9 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Action Mouse 2 N sendcommand Thumbnail
 *FvwmIconMan: Action Mouse 1 N sendcommand "Iconify off", sendcommand RaiseLower, sendcommand FlipFocus
 *FvwmIconMan: Action Mouse 3 N sendcommand "Menu Window-Ops Rectangle +$left+$top 0 -100m"
-*FvwmIconMan: Colorset 10
 *FvwmIconMan: ReliefThickness 1
+*FvwmIconMan: Colorset 10
+*FvwmIconMan: ActiveColorset 8
 *FvwmIconMan: FocusAndSelectColorset 8
 *FvwmIconMan: FocusColorset 8
 *FvwmIconMan: Resolution Page
@@ -528,8 +539,8 @@ PipeRead 'echo *FvwmConky: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
 *FvwmConky: BoxSize fixed
 *FvwmConky: Frame 0
 *FvwmConky: Colorset 14
-*FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
-                  `Exec exec conky &`)
+#*FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
+#                  `Exec exec conky &`)
 
 # LowerLeft dock
 DestroyModuleConfig FvwmLowerLeft: *
@@ -826,15 +837,18 @@ AddToFunc   InitFunction
 + I Exec exec xrdb ~/.Xresources
 + I Exec exec feh --bg-scale $[fvwm_wallpaper]
 + I Exec exec bash -c 'if [ `getconf LONG_BIT` = "64" ]; then /usr/lib/x86_64-linux-gnu/notify-osd; else /usr/lib/i386-linux-gnu/notify-osd; fi'
-+ I Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then compton -b -c; fi'
+# xsettings daemon
++ I Test (x xsettingsd) Exec exec xsettingsd
+# composite support
++ I Test (x compton) Exec exec compton -c -C -f -G -b --vsync opengl-swc -r 10
 # Conky
-# + I Test (x conky) Exec exec conky
++ I Test (x conky) Exec exec conky
 # Tray section
 + I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 # + I Test (EnvMatch systray_started 0 ) break
 # VNC icon
-+ I Exec exec vncconfig -nowin
++ I Test (x vncconfig) Exec exec vncconfig -nowin
 # Insync
 + I Test (x insync) Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then insync start; fi'
 + I Test (x insync) Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then insync start; fi'
@@ -861,22 +875,6 @@ AddToFunc   InitFunction
 + I Test (x blueman-applet) Exec exec blueman-applet
 # Screensaver daemon for locking
 + I Test (x xscreensaver-command) Test (Init) Exec xscreensaver -no-splash
-
-######
-# Pane functions
-#################
-DestroyFunc FuncWinPaneApp
-AddToFunc FuncWinPaneApp
-+ C Any ("$2") $1 ("$2") WindowListFunc
-+ C TestRc (NoMatch) Exec $0
-+ H WindowList ("$2") Rectangle $3 0 -100m NoGeometry NoCurrentDeskTitle
-+ D Exec $0
-
-DestroyFunc FuncWinPaneReset
-AddToFunc FuncWinPaneReset
-+ I PipeRead "echo SendToModule FvwmButtons ChangeButton CmdTime Title \"`date +\"%H:%M\"`\""
-+ I PipeRead "echo SendToModule FvwmButtons ChangeButton CmdDate Title \"`date +\"%d.%m.%Y\"`\""
-# Schedule Periodic 1000 FuncWinPaneReset
 
 ######
 # Thumbnailing functions
