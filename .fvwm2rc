@@ -280,7 +280,7 @@ Style * MiniIcon "application-default-icon.svg:16x16"
 
 # !Handles, !Borders, !Title
 Style "wine"                  FPLenient, NoFuncHint, NoDecorHint, NoOLDecor
-Style "conky"                 !Title, Sticky, WindowListSkip, StaysOnBottom, NeverFocus
+Style "conky"                 !Title, Sticky, WindowListSkip, NeverFocus
 Style "plank"                 !Title, !Handles, StaysOnTop, Sticky, NeverFocus, WindowListSkip, FixedPosition
 Style "gkrellm"               !Title, !Handles, StaysOnTop, Sticky, NeverFocus, WindowListSkip, FixedPosition
 Style "trayer"                !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
@@ -531,16 +531,15 @@ DestroyModuleConfig FvwmTaskBar: *
 # Conky
 DestroyModuleConfig FvwmConky: *
 PipeRead 'echo *FvwmConky: Geometry         1x$(($[vp.height]/1))-0+0'
-PipeRead 'echo *FvwmConky: ButtonGeometry   1x$(($[vp.height]/1))-0+0'
-PipeRead 'echo *FvwmConky: ManagerGeometry  1x0+$(($[infostore.fontsize]/2))+0'
+PipeRead 'echo *FvwmConky: ButtonGeometry   1x$(($[vp.height]/4))'
 *FvwmConky: Columns 1
-*FvwmConky: Rows 1
+*FvwmConky: Rows 2
 *FvwmConky: Padding 0 0
-*FvwmConky: BoxSize fixed
+*FvwmConky: BoxSize smart
 *FvwmConky: Frame 0
 *FvwmConky: Colorset 14
-#*FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
-#                  `Exec exec conky &`)
+*FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
+                 `Exec exec conky &`)
 
 # LowerLeft dock
 DestroyModuleConfig FvwmLowerLeft: *
@@ -818,6 +817,7 @@ AddToFunc StartFunction
 + I Module FvwmProxy
 + I Module FvwmButtons -g +0+0 FvwmDeskControl
 + I Module FvwmButtons -g -0-0 FvwmConky
++ I Wait FvwmConky
 + I Module FvwmButtons -g -0+0 FvwmShelf
 + I Module FvwmButtons -g +0-0 FvwmLowerLeft
 + I Module FvwmPerl
@@ -826,8 +826,6 @@ AddToFunc StartFunction
   Icon $[fvwm_cache]/icon.tmp.$[w.id].png
 + I Read modules/Menu
 + I GotoPage 0 0
-# + I FvwmAuto FvwmAutohide -menter FuncAutoEnter
-# + I Test (Init) StartHiddenConsole
 
 ######
 # Init function
@@ -842,7 +840,7 @@ AddToFunc   InitFunction
 # composite support
 + I Test (x compton) Exec exec compton -c -C -f -G -b --vsync opengl-swc -r 10
 # Conky
-+ I Test (x conky) Exec exec conky
+# + I Test (x conky) Exec exec conky
 # Tray section
 + I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
