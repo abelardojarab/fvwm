@@ -16,7 +16,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "%eog.svg:24x24g%Graphics" Popup MenuGraphics
 + "%playermultimedia.svg:24x24%Multimedia" Popup MenuMultimedia
 + "%browser.svg:24x24%Network" Popup MenuNetwork
-+ "%notetakingapp.svg:24x24%Office and Productivity" Popup MenuOffice
++ "%application-productivity.svg:24x24%Office and Productivity" Popup MenuOffice
 + "%octave-logo.svg:24x24%Science" Popup MenuScience
 + "%settings.svg:24x24%System Preferences" Popup MenuSystem
 + "%settings-tools.svg:24x24%Utilities" Popup MenuUtilities
