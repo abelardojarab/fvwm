@@ -839,8 +839,6 @@ AddToFunc   InitFunction
 + I Test (x xsettingsd) Exec exec xsettingsd
 # composite support
 + I Test (x compton) Exec exec compton -c -C -f -G -b --vsync opengl-swc -r 10
-# Conky
-# + I Test (x conky) Exec exec conky
 # Tray section
 + I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
