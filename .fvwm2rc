@@ -475,7 +475,7 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Action Mouse 2 N sendcommand Thumbnail
 *FvwmIconMan: Action Mouse 1 N sendcommand "Iconify off", sendcommand RaiseLower, sendcommand FlipFocus
 *FvwmIconMan: Action Mouse 3 N sendcommand "Menu Window-Ops Rectangle +$left+$top 0 -100m"
-*FvwmIconMan: ReliefThickness 1
+*FvwmIconMan: ReliefThickness 2
 *FvwmIconMan: Colorset 10
 *FvwmIconMan: FocusAndSelectColorset 8
 *FvwmIconMan: FocusColorset 8
