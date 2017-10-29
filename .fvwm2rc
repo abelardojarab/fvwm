@@ -28,14 +28,7 @@ ImagePath +:$[fvwm_userdir]/images/icons/tiles
 ImagePath +:$[fvwm_userdir]/images/icons/xpms
 ImagePath +:$[fvwm_cache]
 
-IconPath  $[fvwm_userdir]/images
-IconPath +:$[fvwm_userdir]/images/scalable
-IconPath +:$[fvwm_userdir]/images/scalable/apps
-IconPath +:$[fvwm_userdir]/images/icons
-IconPath +:$[fvwm_userdir]/images/icons/apps
-IconPath +:$[fvwm_userdir]/images/icons/tiles
-IconPath +:$[fvwm_userdir]/images/icons/xpms
-IconPath +:$[fvwm_cache]
+IconPath  $[fvwm_userdir]/images/scalable/apps
 
 ######
 # Adjust ratio to calculate resolution dependant things
@@ -256,13 +249,14 @@ Style * EWMHMiniIconOverride
 
 # Comment these lines if you dont like Icons to have Titles.
 Style * StickyIcon
-Style * IconSize 160 160
-Style * IconGrid 180 180, IconBox 180x1800+180+50, IconFill top left
-Style * IconTitle, IconTitleRelief 0, IconTitleColorset 10, HilightIconTitleColorset 5
+Style * IconSize 100 100 100 100
+Style * IconGrid 180 180,
+Style * IconBox 180x1800+180+50
+Style * IconFill top left
+Style * IconTitle, IconTitleRelief 0, IconTitleColorset 10, HilightIconTitleColorset 8
 Style * IconFont "$[infostore.font_mono]"
-Style * IconBackgroundRelief 0, IconBackGroundColorset 5
+Style * IconBackgroundPadding 6, IconBackgroundRelief 2, IconBackGroundColorset 5
 Style * !UseIconPosition
-Style * MiniIcon IconSize 16 16
 
 # Default application icon
 Defaulticon "application-default-icon.svg:24x24"
@@ -349,11 +343,11 @@ Colorset 1 bg #3b3c37, fg #ffffff, fgsh #f9f9f9 hi #fbfbfb, sh #171717, Tint #46
 # Inactive window decoration
 Colorset 2 bg #3b3c37, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 60
 # Default window colorset
-Colorset 3 fg #999999, bg 3b3c37, fgsh #a0a0a0
+Colorset 3 fg #999999, bg #3b3c37, fgsh #a0a0a0
 # Active window colorset
-Colorset 4 fg #f0f0f0, bg 3b3c37, fgsh #a4a4a4
+Colorset 4 fg #f0f0f0, bg #3b3c37, fgsh #a4a4a4
 # Icon colorset, balloon colorset
-Colorset 5 fg white, bg #a6a6a6, fgsh 3b3c37, RootTransparent
+Colorset 5 fg white, bg #a6a6a6, fgsh #3b3c37, RootTransparent
 # Available
 Colorset 6 fg #9a875f, bg #fa875f
 # Available
@@ -472,7 +466,7 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: ManagerGeometry 1x1
 *FvwmIconMan: ButtonGeometry 300x28
 *FvwmIconMan: MaxButtonWidth 300
-*FvwmIconMan: FocusAndSelectButton raise
+*FvwmIconMan: FocusAndSelectButton down
 *FvwmIconMan: FocusButton down
 *FvwmIconMan: IconButton up
 *FvwmIconMan: PlainButton up
@@ -483,7 +477,6 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Action Mouse 3 N sendcommand "Menu Window-Ops Rectangle +$left+$top 0 -100m"
 *FvwmIconMan: ReliefThickness 1
 *FvwmIconMan: Colorset 10
-*FvwmIconMan: ActiveColorset 8
 *FvwmIconMan: FocusAndSelectColorset 8
 *FvwmIconMan: FocusColorset 8
 *FvwmIconMan: Resolution Page
@@ -897,8 +890,8 @@ AddToFunc   ReThumbnail
 #################
 DestroyFunc FvwmExpose
 AddToFunc FvwmExpose
-+ I AddToMenu FvwmExposeMenu "e x p o s e" Title
-+ I + DynamicPopDownAction DestroyMenu FvwmExposeMenu
++ I AddToMenu FvwmExposeMenu "Expose" Title
++ I DynamicPopDownAction DestroyMenu FvwmExposeMenu
 + I All (!Iconic !Shaded AcceptsFocus)\
   PipeRead "echo Raise; \
         xwd -silent -id $[w.id] | convert -scale $$(($[w.width]/10)) -quality 0 xwd:- \
