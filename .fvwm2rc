@@ -144,6 +144,8 @@ ClickTime 550
 # bug, it is a problem of the application.
 #################
 BugOpts FlickeringMoveWorkaround True
+MoveThreshold -1
+BusyCursor DynamicMenu True, ModuleSynchronous True, Read False, Wait False
 
 # In Style statements, *’s are wild cards, so ‘Style *’ says apply this style to every window.
 # This is followed by a list of styles separated by commas that you wish to use.
@@ -251,12 +253,13 @@ Style * EWMHMiniIconOverride
 # Comment these lines if you dont like Icons to have Titles.
 Style * StickyIcon
 Style * IconSize 100 100 100 100
-Style * IconGrid 180 180
-Style * IconBox 180x1800+180+50, IconFill top left
 Style * IconTitle, IconTitleRelief 0, IconTitleColorset 10, HilightIconTitleColorset 8
 Style * IconFont "$[infostore.font_mono]"
 Style * IconBackgroundPadding 6, IconBackgroundRelief 2, IconBackGroundColorset 5
 Style * !UseIconPosition
+
+#  Placement policy for the thumbnail icons.
+Style * IconBox $[vp.width]x300-20-74, IconGrid 235 150, IconFill right bottom
 
 # Default application icon
 Defaulticon "application-default-icon.svg:24x24"
