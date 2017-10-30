@@ -168,6 +168,7 @@ Style * MWMDecor, MWMBorder, MWMFunctions, MWMButtons
 # Ignore Gnome application hints
 #################
 Style * !GnomeUseHints
+Style * GNOMEIgnoreHints
 
 #######
 # makes fvwm shade out operations that mwm would prohibit, but it lets
@@ -250,9 +251,8 @@ Style * EWMHMiniIconOverride
 # Comment these lines if you dont like Icons to have Titles.
 Style * StickyIcon
 Style * IconSize 100 100 100 100
-Style * IconGrid 180 180,
-Style * IconBox 180x1800+180+50
-Style * IconFill top left
+Style * IconGrid 180 180
+Style * IconBox 180x1800+180+50, IconFill top left
 Style * IconTitle, IconTitleRelief 0, IconTitleColorset 10, HilightIconTitleColorset 8
 Style * IconFont "$[infostore.font_mono]"
 Style * IconBackgroundPadding 6, IconBackgroundRelief 2, IconBackGroundColorset 5
