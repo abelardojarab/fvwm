@@ -96,6 +96,41 @@ EdgeResistance 400
 #################
 ColormapFocus FollowsFocus
 
+#######
+# Colorsets
+#################
+
+# Line separator on pager
+Colorset 0 fg white, bg #3b3c37, fgsh #f9f9f9, hi #8f8f8f, sh #454545
+# Active window decoration (buttons)
+Colorset 1 bg #3b3c37, fg #ffffff, fgsh #f9f9f9, hi #fbfbfb, sh #171717, Tint #3b3c37 20
+# Inactive window decoration (buttons)
+Colorset 2 bg #3b3c37, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #3b3c37 60
+# Default window colorset (border)
+Colorset 3 fg #999999, bg #3b3c37, fgsh #a0a0a0
+# Active window colorset (border)
+Colorset 4 fg #f0f0f0, bg #3b3c37, fgsh #a4a4a4
+# Icon background colorset, balloon colorset
+Colorset 5 fg white, bg #a6a6a6, fgsh #3b3c37, RootTransparent
+# Available
+Colorset 6 fg #9a875f, bg #fa875f
+# Available
+Colorset 7 fg #9a875f, bg #181512
+# Balloon windows colorset; active selections
+Colorset 8 fg white, bg #332d29
+# Balloon tooltip colorset
+Colorset 9 fg white, bg #332d29, Plain
+# Buttons, menu, icon manager background colorset
+Colorset 10 fg #fffff9, bg #484644
+# Menu selection colorset
+Colorset 11 fg #ffffff, bg #6d8d6d
+# Icon manager select colorset
+Colorset 12 fg black, bg #c6c3c6, RootTransparent buffer, Tint #e4e5c7 90
+# Pattern colorset
+Colorset 13 pixmap tile_gray.png
+# Transparent colorset
+Colorset 14 fg Black, NoShape, RootTransparent buffer, tint white 20
+
 #####
 # OpaqueMoveSize allows you to stop Large windows from being moved opaquely,
 # I like the effect, and have Cycles to burn, so all windows can use it.
@@ -144,7 +179,10 @@ ClickTime 550
 # bug, it is a problem of the application.
 #################
 BugOpts FlickeringMoveWorkaround True
-MoveThreshold -1
+
+######
+# Display a BusyCursor whenever fvwm doesn't accept any input
+#################
 BusyCursor DynamicMenu True, ModuleSynchronous True, Read False, Wait False
 
 # In Style statements, *’s are wild cards, so ‘Style *’ says apply this style to every window.
@@ -334,41 +372,6 @@ Style "FvwmConky"             WindowListSkip, NeverFocus, NoHandles, NoTitle, St
 
 # AutoHiding Console
 Style "HiddenConsole"         Sticky, WindowListSkip, Notitle, StaysOnTop, !Handles, FixedSize, FixedPosition
-
-#######
-# Colorsets
-#################
-
-# Line separator on pager
-Colorset 0 fg white, bg #3b3c37, fgsh #f9f9f9, hi #8f8f8f, sh #454545
-# Active window decoration
-Colorset 1 bg #3b3c37, fg #ffffff, fgsh #f9f9f9 hi #fbfbfb, sh #171717, Tint #464646 20
-# Inactive window decoration
-Colorset 2 bg #3b3c37, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #464646 60
-# Default window colorset
-Colorset 3 fg #999999, bg #3b3c37, fgsh #a0a0a0
-# Active window colorset
-Colorset 4 fg #f0f0f0, bg #3b3c37, fgsh #a4a4a4
-# Icon colorset, balloon colorset
-Colorset 5 fg white, bg #a6a6a6, fgsh #3b3c37, RootTransparent
-# Available
-Colorset 6 fg #9a875f, bg #fa875f
-# Available
-Colorset 7 fg #9a875f, bg #181512
-# Balloon windows colorset; active selections
-Colorset 8 fg white, bg #332d29
-# Balloon tooltip colorset
-Colorset 9 fg white, bg #332d29, Plain
-# Buttons, menu, icon manager background colorset
-Colorset 10 fg #fffff9, bg #484644
-# Menu selection colorset
-Colorset 11 fg #ffffff, bg #6d8d6d
-# Icon manager select colorset
-Colorset 12 fg black, bg #c6c3c6, RootTransparent buffer, Tint #e4e5c7 90
-# Pattern colorset
-Colorset 13 pixmap tile_gray.png
-# Transparent colorset
-Colorset 14 fg Black, NoShape, RootTransparent buffer, tint white 20
 
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
