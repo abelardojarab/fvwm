@@ -12,11 +12,11 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "" Nop
 + "%code.svg:24x24%Development" Popup MenuDevelopment
 + "%gnome-logo.svg:24x24%GNOME" Popup MenuGNOME
-+ "%steam.svg:24x24%Games" Popup MenuGame
++ "%steam.svg:24x24%Games" Popup MenuGames
 + "%eog.svg:24x24g%Graphics" Popup MenuGraphics
 + "%playermultimedia.svg:24x24%Multimedia" Popup MenuMultimedia
 + "%browser.svg:24x24%Network" Popup MenuNetwork
-+ "%application-productivity.svg:24x24%Productivity" Popup MenuOffice
++ "%application-productivity.svg:24x24%Productivity" Popup MenuProductivity
 + "%octave-logo.svg:24x24%Science" Popup MenuScience
 + "%settings.svg:24x24%System Preferences" Popup MenuSystem
 + "%settings-tools.svg:24x24%Utilities" Popup MenuUtilities
@@ -34,12 +34,13 @@ AddToMenu MenuDevelopment
 + "%qt.svg:24x24%QDevelop" Exec exec qdevelop
 + "%apps/monodevelop.png%MonoDevelop" Exec exec monodevelop
 + "%eclipse.svg:24x24%Eclipse" Exec exec eclipse
-+ "%sublime-text.svg:24x24%New File" Exec exec subl --command new_file
 + "%apps/gitg.png%Gitg" Exec exec gitg
 + "%emacs.svg:24x24%GNU Emacs 25" Exec exec emacs
 + "%apps/atom.png%Atom" Exec exec atom
-+ "%apps/glade.png%Glade" Exec exec glade
++ "%sublime-text.svg:24x24%New File" Exec exec subl --command new_file
 + "%vim.svg:24x24%Vim" Exec exec gvim
++ "%apps/glade.png%Glade" Exec exec glade
++ "%meld.svg:24x24%Meld" Exec exec meld
 
 DestroyMenu MenuGNOME
 AddToMenu MenuGNOME
@@ -47,8 +48,8 @@ AddToMenu MenuGNOME
 + "%apps/gnome-mines.png%Big board" Exec exec gnome-mines --big
 + "%apps/gnome-aisleriot.png%AisleRiot Solitaire" Exec exec /usr/games/sol
 
-DestroyMenu MenuGame
-AddToMenu MenuGame
+DestroyMenu MenuGames
+AddToMenu MenuGames
 + "%steam.svg:24x24%Friends" Exec exec steam steam://open/friends
 + "%steam.svg:24x24%Kentucky Route Zero" Exec exec steam steam://rungameid/231200
 + "%apps/playonlinux.png%PlayOnLinux" Exec exec playonlinux
@@ -73,7 +74,7 @@ AddToMenu MenuMultimedia
 + "%apps/brasero.png%CD/DVD Burner (Brasero)" Exec exec brasero --video
 + "%apps/audacious.png%Audacious Qt Interface" Exec exec audacious --qt
 + "%apps/handbrake.png%HandBrake" Exec exec ghb
-+ "%vlc.svg:24x24%VLC media player" Exec exec /usr/bin/vlc --started-from-file
++ "%vlc.svg:24x24%VLC media player" Exec exec vlc --started-from-file
 + "%rhythmbox.svg:24x24%Rhythmbox" Exec exec rhythmbox
 + "%apps/pithos.png%Pithos" Exec exec pithos
 + "%playervideo.svg:24x24%Totem" Exec exec totem
@@ -98,9 +99,9 @@ AddToMenu MenuNetwork
 + "%apps/wicd-gtk.png%Wicd Network Manager" Exec exec wicd-gtk --no-tray
 + "%apps/wireshark.png%Wireshark" Exec exec wireshark
 
-DestroyMenu MenuOffice
-AddToMenu MenuOffice
-+ "%apps/typora.png%Typora" Exec exec typora
+DestroyMenu MenuProductivity
+AddToMenu MenuProductivity
++ "%uberwriter.svg:24x24%Typora" Exec exec typora
 + "%apps/abiword.png%Abiword" Exec exec abiword
 + "%apps/gnumeric.png%Gnumeric" Exec exec gnumeric
 + "%texmaker.svg:24x24%Texmaker" Exec exec texmaker
@@ -115,7 +116,7 @@ AddToMenu MenuOffice
 
 DestroyMenu MenuScience
 AddToMenu MenuScience
-+ "%octave-logo.svg:24x24%GNU Octave" Exec exec /usr/bin/octave --force-gui
++ "%octave-logo.svg:24x24%GNU Octave" Exec exec octave --force-gui
 + "%apps/rkward.png%RKWard" Exec exec rkward -caption "%c"
 + "%apps/rstudio.png%RStudio" Exec exec rstudio
 + "%apps/r-logo.png%R" Exec exec R
@@ -139,7 +140,7 @@ AddToMenu MenuSystem
 DestroyMenu MenuSWSettings
 AddToMenu MenuSWSettings
 + "%softwareupdater.svg:24x24%Software and Updates" Exec exec software-properties-gtk
-+ "%ubuntusoftwarecenter.svg:24x24%Ubuntu Software Center" Exec exec /usr/bin/software-center
++ "%ubuntusoftwarecenter.svg:24x24%Ubuntu Software Center" Exec exec software-center
 
 DestroyMenu MenuNetworkSettings
 AddToMenu MenuNetworkSettings
@@ -150,7 +151,7 @@ AddToMenu MenuNetworkSettings
 
 DestroyMenu MenuPrinterSettings
 AddToMenu MenuPrinterSettings
-+ "%apps/hp-logo.png%HPLIP Toolbox" Exec exec /usr/bin/hp-toolbox
++ "%apps/hp-logo.png%HPLIP Toolbox" Exec exec hp-toolbox
 + "%apps/printer.png%Printers" Exec exec system-config-printer
 
 DestroyMenu MenuGNOMESettings
