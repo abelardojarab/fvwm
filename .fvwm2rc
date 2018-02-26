@@ -7,14 +7,6 @@ Setenv fvwm_colors $[HOME]/.fvwm/images/icons/colors
 ModulePath $[fvwm_userdir]:$[fvwm_userdir]/modules:+
 
 #######
-# Default applications
-#################
-InfoStoreAdd default_terminal tilix
-InfoStoreAdd default_browser chromium-browser
-InfoStoreAdd default_file_manager chromium-browser
-InfoStoreAdd fvwm_wallpaper $[fvwm_wallpaper]
-
-#######
 # The default ImagePath for icons is:
 # /usr/include/X11/bitmap:/usr/include/X11/pixmaps
 #################
@@ -27,13 +19,36 @@ ImagePath +:$[fvwm_userdir]/images/icons/apps
 ImagePath +:$[fvwm_userdir]/images/icons/tiles
 ImagePath +:$[fvwm_userdir]/images/icons/xpms
 ImagePath +:$[fvwm_cache]
-
 IconPath  $[fvwm_userdir]/images/scalable/apps
 
-######
-# Adjust ratio to calculate resolution dependant things
+#######
+# Variables (InfoStore)
 #################
 
+# used for 'Switching focus between windows. (ALT-Tab)' functionality
+InfoStoreAdd DIR Next
+
+# wallpaper directory. Should be changed to the right directory if needed
+InfoStoreAdd fvwm_wallpaper_dir $[fvwm_userdir]/images/wallpapers
+
+# actual wallpaper
+InfoStoreAdd fvwm_wallpaper $[fvwm_wallpaper_dir]/poster-pinturas-famosas-gravura-9-poster-vintage_2048x1152.png
+
+# actual pager height. Needed for the "top bar" modules
+PipeRead 'echo InfoStoreAdd fvwm_taskbar_height $(($[vp.height]/25))'
+InfoStoreAdd fvwm_taskbar_height 28
+
+# fvwm buttons dimensions
+InfoStoreAdd fvwm_buttons_rows 66
+PipeRead 'echo InfoStoreAdd fvwm_buttons_height $(($[vp.height]/$[infostore.fvwm_buttons_rows]))'
+InfoStoreAdd fvwm_buttons_width 80
+
+# Default applications
+InfoStoreAdd default_terminal tilix
+InfoStoreAdd default_browser chromium-browser
+InfoStoreAdd default_file_manager chromium-browser
+
+# Adjust ratio to calculate resolution dependant things
 PipeRead "echo InfoStoreAdd aspect_ratio `perl -e 'printf \"%.2f\",$[vp.width]/$[vp.height]'`"
 
 # find the smallest resolution depending on the aspect ratio
@@ -60,12 +75,10 @@ PipeRead "echo InfoStoreAdd hratio `perl -e 'printf \"%.2f\",($[vp.height]/540)'
 # InfoStoreAdd wratio 2
 PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`"
 
-#######
 # Fonts
-#################
-InfoStoreAdd font_sans "xft:Aquabase:size=12:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Fira Mono:size=12:encoding=iso10646-1"
 InfoStoreAdd fontsize  12
+InfoStoreAdd font_sans "xft:Ubuntu:size=$[infostore.fontsize]:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Fira Mono:size=$[infostore.fontsize]:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
@@ -159,7 +172,7 @@ XORvalue 208
 # option for normal maximization, and one for full-screen maximization.
 # Syntax: EwmhBaseStruts left right top bottom
 #################
-EwmhBaseStruts 92 0 30 0
+PipeRead 'echo EwmhBaseStruts $(($[infostore.fvwm_buttons_width]+2)) 0 $(($[infostore.fvwm_taskbar_height]+2)) 0'
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
@@ -292,7 +305,7 @@ Style * EWMHMiniIconOverride
 Style * StickyIcon
 Style * IconSize 100 100 100 100
 Style * IconTitle, IconTitleRelief 0, IconTitleColorset 10, HilightIconTitleColorset 8
-Style * IconFont "$[infostore.font_mono]"
+Style * IconFont "$[infostore.font_mono]:Medium"
 Style * IconBackgroundPadding 6, IconBackgroundRelief 2, IconBackGroundColorset 5
 Style * !UseIconPosition
 
@@ -375,7 +388,7 @@ Style "HiddenConsole"         Sticky, WindowListSkip, Notitle, StaysOnTop, !Hand
 
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
-PipeRead 'echo *FvwmShelf: Geometry         $$(($[vp.width]-92))x28-0+0'
+PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-82))x$[infostore.fvwm_taskbar_height]-0+0'
 *FvwmShelf: Font "$[infostore.font_sans]"
 *FvwmShelf: Columns 50
 *FvwmShelf: Rows 1
@@ -423,14 +436,14 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmPager: Label 3 "3: Other"
 
 # Set up the geometry so that the buttons stack vertically on the left.
-*FvwmButtons: Font  "$[infostore.font_sans]"
-PipeRead 'echo *FvwmButtons: Geometry         90x$(($[vp.height]+100))+0+0'
-PipeRead 'echo *FvwmButtons: ButtonGeometry   90x$((($[vp.height]/66)-1))'
+*FvwmButtons: Font  "$[infostore.font_sans]:Medium"
+PipeRead 'echo *FvwmButtons: Geometry         $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]x$[infostore.fvwm_buttons_rows]))+0+0'
+PipeRead 'echo *FvwmButtons: ButtonGeometry   $[infostore.fvwm_buttons_width]x$[infostore.fvwm_buttons_height]'
 *FvwmButtons: Colorset 10
 *FvwmButtons: ActiveColorset 8
 *FvwmButtons: PressColorset 8
 *FvwmButtons: BoxSize smart
-*FvwmButtons: Rows 66
+PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
 *FvwmButtons(1x6, Swallow "FvwmPager" 'FvwmPager *')
@@ -442,7 +455,7 @@ PipeRead 'echo *FvwmButtons: ButtonGeometry   90x$((($[vp.height]/66)-1))'
                   `Exec exec xterm +sb -sl 0 -name jcalendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
                   ActiveColorset 8)
 *FvwmButtons(1x4, Title Start, Icon "starthereubuntu.svg:32x32", \
-                  Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +92+$top 0 -100m", \
+                  Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +82+$top 0 -100m", \
                   Action (Mouse 3) All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail)
 *FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:32x32", \
                   Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
@@ -532,8 +545,8 @@ PipeRead 'echo *FvwmConky: ButtonGeometry   1x$(($[vp.height]/4))'
 
 # LowerLeft dock
 DestroyModuleConfig FvwmLowerLeft: *
-PipeRead 'echo *FvwmLowerLeft: Geometry         90x$((($[vp.height]/66)*8+16))'
-PipeRead 'echo *FvwmLowerLeft: ButtonGeometry   90x$((($[vp.height]/66)*4+2))'
+PipeRead 'echo *FvwmLowerLeft: Geometry         $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]*8+16))'
+PipeRead 'echo *FvwmLowerLeft: ButtonGeometry   $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]*4+2))'
 *FvwmLowerLeft: Columns 1
 *FvwmLowerLeft: Rows 8
 *FvwmLowerLeft: BoxSize fixed
@@ -831,7 +844,7 @@ AddToFunc   InitFunction
 + I Test (x gnome-settings-daemon) Exec exec gnome-settings-daemon
 + I Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 # Tray section
-+ I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand false --widthtype pixel --width 260 --heighttype pixel --height 28 --distancefrom right
++ I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 # + I Test (EnvMatch systray_started 0 ) break
 # Notification popups

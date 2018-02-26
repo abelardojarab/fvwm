@@ -71,14 +71,14 @@ AddToMenu MenuGraphics
 DestroyMenu MenuMultimedia
 AddToMenu MenuMultimedia
 + "%openshot.svg:24x24%OpenShot Video Editor" Exec exec openshot
-+ "%apps/brasero.png%CD/DVD Burner (Brasero)" Exec exec brasero --video
++ "%brasero.svg:24x24%CD/DVD Burner (Brasero)" Exec exec brasero --video
 + "%apps/audacious.png%Audacious Qt Interface" Exec exec audacious --qt
 + "%apps/handbrake.png%HandBrake" Exec exec ghb
 + "%vlc.svg:24x24%VLC media player" Exec exec vlc --started-from-file
 + "%rhythmbox.svg:24x24%Rhythmbox" Exec exec rhythmbox
 + "%apps/pithos.png%Pithos" Exec exec pithos
 + "%playervideo.svg:24x24%Totem" Exec exec totem
-+ "%apps/kodi.png%Open in standalone mode" Exec exec kodi --standalone
++ "%apps/kodi.png%Kodi (standalone mode)" Exec exec kodi --standalone
 + "%cheese.svg:24x24%Cheese" Exec exec cheese
 + "%apps/guvcview.png%Guvcview" Exec exec guvcview
 + "%apps/filebot.png%Filebot" Exec exec filebot
