@@ -151,6 +151,11 @@ Colorset 14 fg Black, NoShape, RootTransparent buffer, tint white 20
 OpaqueMoveSize -1
 
 #####
+# Animations points
+#################
+SetAnimation  10  -.01 0 .01 .03 .08 .18 .3 .45 .6 .75 .85 .90 .94 .97 .99 1.0
+
+#####
 # http://www.fvwm.org/documentation/faq/#5.5
 #################
 IgnoreModifiers L2
@@ -575,11 +580,11 @@ PipeRead 'echo *FvwmLowerLeft: ButtonGeometry   $[infostore.fvwm_buttons_width]x
 # Animations are controlled by this module
 # You could also use Frame, Lines, Turn, Twist, Random and None
 DestroyModuleConfig FvwmAnimate: *
-*FvwmAnimate: Effect Frame
-*FvwmAnimate: Iterations 32
+*FvwmAnimate: Effect Flip
+*FvwmAnimate: Delay 1
+*FvwmAnimate: Iterations 30
+*FvwmAnimate: Twist 1
 *FvwmAnimate: Width 2
-*FvwmAnimate: Twist 0.500000
-*FvwmAnimate: Delay 10
 
 # FvwmProxy allows to see all windows
 DestroyModuleConfig FvwmProxy: *
