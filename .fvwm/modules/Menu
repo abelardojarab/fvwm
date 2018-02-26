@@ -21,6 +21,9 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "%settings.svg:24x24%System Preferences" Popup MenuSystem
 + "%settings-tools.svg:24x24%Utilities" Popup MenuUtilities
 + "" Nop
+# Dynamic Fvwm Manpages realized with MissingSubmenuFunction
++ MissingSubmenuFunction FuncFvwmManpageMenu
++ "%xpms/mini.fvwm.xpm%$[gt.FVWM Man Pages]"    Popup                      "/usr/share/man/man1"
 + "%xpms/mini.fvwm.xpm%Restart Fvwm" Restart
 + "%xpms/mini.exit.xpm%Quit Fvwm" Module FvwmForm FvwmForm-QuitVerify
 

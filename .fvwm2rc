@@ -388,7 +388,7 @@ Style "HiddenConsole"         Sticky, WindowListSkip, Notitle, StaysOnTop, !Hand
 
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
-PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-82))x$[infostore.fvwm_taskbar_height]-0+0'
+PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_buttons_width]-2))x$[infostore.fvwm_taskbar_height]-0+0'
 *FvwmShelf: Font "$[infostore.font_sans]"
 *FvwmShelf: Columns 50
 *FvwmShelf: Rows 1
@@ -420,7 +420,7 @@ DestroyModuleConfig FvwmDeskControl: *
 
 # Main desk-switching panel
 *FvwmPager: Font "$[infostore.font_mono]"
-*FvwmPager: SmallFont "$[infostore.font_sans]"
+*FvwmPager: SmallFont "$[infostore.font_sans]:Small"
 *FvwmPager: Colorset * 0
 *FvwmPager: HiLightColorset * 10
 *FvwmPager: WindowColorsets 8 5
@@ -436,7 +436,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmPager: Label 3 "3: Other"
 
 # Set up the geometry so that the buttons stack vertically on the left.
-*FvwmButtons: Font  "$[infostore.font_sans]:Medium"
+*FvwmButtons: Font  "$[infostore.font_sans]:Small"
 PipeRead 'echo *FvwmButtons: Geometry         $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]x$[infostore.fvwm_buttons_rows]))+0+0'
 PipeRead 'echo *FvwmButtons: ButtonGeometry   $[infostore.fvwm_buttons_width]x$[infostore.fvwm_buttons_height]'
 *FvwmButtons: Colorset 10
@@ -658,8 +658,20 @@ AddToMenu Window-Ops "Window Operations"        Title
 + "Modules%xpms/mini.modules.xpm%"              Popup                      MenuFvwmModules
 + "Send To...%xpms/mini.pager.xpm%"             Popup                      MenuPageList
 
+# Creates a dynamic menu for all available Fvwm manpages
+DestroyFunc FuncFvwmManpageMenu
+AddToFunc FuncFvwmManpageMenu
++ I PipeRead 'fvwm-menu-directory \
+              --dir "/usr/share/man/man1" \
+              --title "Man Pages" --exec-file "^xterm -g 80x40 -n Fvwm-Help -T Fvwm-Help -e man" |\
+              grep "^Destroy\\|^AddTo\\|^+ Dynamic\\|^+ Missing\\|^+ \\"[Ff]vwm*"|sed -e "s#\\.1\\.gz##g" \
+              -e "s#/usr/share/man/man1/##g" -e "s#\\"##3" -e "s#\\"##3" '
+
 DestroyMenu MenuFvwmModules
 AddToMenu MenuFvwmModules
+# Dynamic Fvwm Manpages realized with MissingSubmenuFunction
++ MissingSubmenuFunction FuncFvwmManpageMenu
++ "%xpms/mini.fvwm.xpm%$[gt.FVWM Man Pages]"    Popup                      "/usr/share/man/man1"
 + "%xpms/mini.fvwm.xpm%Banner"                  Module                     FvwmBanner
 + "%xpms/mini.desktop.xpm%Expose"               Module                     FvwmExpose
 + "%xpms/mini.xterm.xpm%Quake-style Console"    Module                     StartHiddenConsole
