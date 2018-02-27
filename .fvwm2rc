@@ -663,6 +663,23 @@ AddToMenu Window-Ops "Window Operations"        Title
 + "Modules%xpms/mini.modules.xpm%"              Popup                      MenuFvwmModules
 + "Send To...%xpms/mini.pager.xpm%"             Popup                      MenuPageList
 
+# Wallpaper Browser by Taviso.
+DestroyFunc WallpaperBrowser
+AddToFunc   WallpaperBrowser
++ I PipeRead 'test ! -d "$0" && mkdir "$0"; \
+    test ! -d "$0/.thumbs" && mkdir "$0/.thumbs"; \
+    for i in "$0/"*; do \
+        test -f "$0/.thumbs/${i##*/}" -a "${i}" -ot "$0/.thumbs/${i##*/}" || { \
+                convert -quality 0 -sample 42 "${i}" "png:$0/.thumbs/${i##*/}" 2>/dev/null \
+                    || continue; \
+            }; \
+    done; \
+    fvwm-menu-directory --icon-title menu/folder-open.xpm --icon-file __PIXMAP__ --links \
+    --icon-dir menu/folder.xpm \
+    --dir "$0" --command-file="FuncNewWallpaper \\"%f\\"" \
+    --exec-t="^xv -wait 2 *" --func-name WallpaperBrowser | sed \
+    "s#__PIXMAP__\\(.*\\)\\\"\\(.*/\\)\\(.*\\)\\\"#\\2.thumbs/\\3\\1\\2\\3#g"'
+
 # Creates a dynamic menu for all available Fvwm manpages
 DestroyFunc FuncFvwmManpageMenu
 AddToFunc FuncFvwmManpageMenu
@@ -672,11 +689,19 @@ AddToFunc FuncFvwmManpageMenu
               grep "^Destroy\\|^AddTo\\|^+ Dynamic\\|^+ Missing\\|^+ \\"[Ff]vwm*"|sed -e "s#\\.1\\.gz##g" \
               -e "s#/usr/share/man/man1/##g" -e "s#\\"##3" -e "s#\\"##3" '
 
+# Activate lock screen if installed
+DestroyFunc FuncLockScreen
+AddToFunc   FuncLockScreen
++ I PipeRead 'if [ `pidof xscreensaver` ]; then \
+                echo SetEnv isRunning 1; \
+              else \
+                echo SetEnv isRunning 0; \
+              fi'
++ I Test (EnvMatch isRunning 1) Exec exec xscreensaver-command -lock
++ I TestRc (!Match) FuncShowMessage "Lock screen Info" "'xscreensaver' not running or not installed."
+
 DestroyMenu MenuFvwmModules
 AddToMenu MenuFvwmModules
-# Dynamic Fvwm Manpages realized with MissingSubmenuFunction
-+ MissingSubmenuFunction FuncFvwmManpageMenu
-+ "%xpms/mini.fvwm.xpm%$[gt.FVWM Man Pages]"    Popup                      "/usr/share/man/man1"
 + "%xpms/mini.fvwm.xpm%Banner"                  Module                     FvwmBanner
 + "%xpms/mini.desktop.xpm%Expose"               Module                     FvwmExpose
 + "%xpms/mini.xterm.xpm%Quake-style Console"    Module                     StartHiddenConsole

@@ -23,9 +23,10 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
 + "" Nop
 # Dynamic Fvwm Manpages realized with MissingSubmenuFunction
 + MissingSubmenuFunction FuncFvwmManpageMenu
-+ "%xpms/mini.fvwm.xpm%$[gt.FVWM Man Pages]"    Popup                      "/usr/share/man/man1"
-+ "%xpms/mini.fvwm.xpm%Restart Fvwm" Restart
-+ "%xpms/mini.exit.xpm%Quit Fvwm" Module FvwmForm FvwmForm-QuitVerify
++ "%xpms/mini.manual.xpm%$[gt.FVWM Man Pages]" Popup "/usr/share/man/man1"
++ "%xpms/mini.lock.xpm%Lock screen" FuncLockScreen
++ "%xpms/mini.exclam.xpm%Restart Fvwm" Restart
++ "%xpms/mini.fvwm.xpm%Quit Fvwm" Module FvwmForm FvwmForm-QuitVerify
 
 DestroyMenu MenuDevelopment
 AddToMenu MenuDevelopment
