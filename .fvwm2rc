@@ -177,7 +177,7 @@ XORvalue 208
 # option for normal maximization, and one for full-screen maximization.
 # Syntax: EwmhBaseStruts left right top bottom
 #################
-PipeRead 'echo EwmhBaseStruts $(($[infostore.fvwm_buttons_width]+2)) 0 $(($[infostore.fvwm_taskbar_height]+2)) 0'
+PipeRead 'echo EwmhBaseStruts $(($[infostore.fvwm_buttons_width]+0)) 0 $(($[infostore.fvwm_taskbar_height]+0)) 0'
 
 ######
 # Fvwm uses a default ClickTime of 150ms, which is way too short for me.
@@ -380,20 +380,20 @@ Style "xgraph"                Icon graphs.xpm, ClickToFocus
 Style "xmosaic"               Color Green/Yellow, ClickToFocus
 
 # Buttons
-Style "FvwmButtons"           WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnTop, Sticky
-Style "FvwmPager"             BorderWidth 2, NoHandles, NeverFocus, NoTitle, StaysOnTop, Sticky, WindowListSkip, NoIconifiable
+Style "FvwmButtons"           BorderWidth 0, WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnTop, Sticky
+Style "FvwmPager"             BorderWidth 0, NoHandles, NeverFocus, NoTitle, StaysOnTop, Sticky, WindowListSkip, NoIconifiable
 Style "FvwmTaskBar"           NoTitle, WindowListSkip, CirculateSkip, Sticky, BorderWidth 0, NoHandles, StaysOnTop, NeverFocus, Layer 0
-Style "FvwmShelf"             NoTitle, StaysOnBottom, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
-Style "FvwmDeskControl"       NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles
-Style "FvwmIconMan*"          NoHandles, NoTitle, BorderWidth 2, Sticky, WindowListSkip, CirculateSkip, StaysOnBottom, NeverFocus
-Style "FvwmConky"             WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnBottom, Sticky
+Style "FvwmShelf"             BorderWidth 0, NoTitle, StaysOnBottom, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
+Style "FvwmDeskControl"       NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles, BorderWidth 0
+Style "FvwmIconMan*"          NoHandles, NoTitle, BorderWidth 0, Sticky, WindowListSkip, CirculateSkip, StaysOnBottom, NeverFocus
+Style "FvwmConky"             BorderWidth 0, WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnBottom, Sticky
 
 # AutoHiding Console
 Style "HiddenConsole"         Sticky, WindowListSkip, Notitle, StaysOnTop, !Handles, FixedSize, FixedPosition
 
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
-PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_buttons_width]-8))x$[infostore.fvwm_taskbar_height]-0+0'
+PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_buttons_width]))x$[infostore.fvwm_taskbar_height]-0+0'
 *FvwmShelf: Font "$[infostore.font_sans]"
 *FvwmShelf: Columns 50
 *FvwmShelf: Rows 1
