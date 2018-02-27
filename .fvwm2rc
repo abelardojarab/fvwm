@@ -302,7 +302,7 @@ Style * UseDecor MyDecoration
 Style * Colorset 3, HilightColorset 4
 Style * DecorateTransient, NakedTransient
 Style * Font "$[infostore.font_mono]"
-Style * HandleWidth 2, BorderWidth 2
+Style * HandleWidth 3, BorderWidth 2
 Style * BackingStore, SaveUnder
 Style * EWMHMiniIconOverride
 
@@ -385,7 +385,7 @@ Style "FvwmPager"             BorderWidth 2, NoHandles, NeverFocus, NoTitle, Sta
 Style "FvwmTaskBar"           NoTitle, WindowListSkip, CirculateSkip, Sticky, BorderWidth 0, NoHandles, StaysOnTop, NeverFocus, Layer 0
 Style "FvwmShelf"             NoTitle, StaysOnBottom, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
 Style "FvwmDeskControl"       NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles
-Style "FvwmIconMan*"          NoTitle, HandleWidth 2, BorderWidth 2, Sticky, WindowListSkip, CirculateSkip, StaysOnBottom, NeverFocus
+Style "FvwmIconMan*"          NoHandles, NoTitle, BorderWidth 2, Sticky, WindowListSkip, CirculateSkip, StaysOnBottom, NeverFocus
 Style "FvwmConky"             WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnBottom, Sticky
 
 # AutoHiding Console
@@ -393,7 +393,7 @@ Style "HiddenConsole"         Sticky, WindowListSkip, Notitle, StaysOnTop, !Hand
 
 # An FvwmButtons-based Taskbar
 DestroyModuleConfig FvwmShelf: *
-PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_buttons_width]-2))x$[infostore.fvwm_taskbar_height]-0+0'
+PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_buttons_width]-8))x$[infostore.fvwm_taskbar_height]-0+0'
 *FvwmShelf: Font "$[infostore.font_sans]"
 *FvwmShelf: Columns 50
 *FvwmShelf: Rows 1
@@ -747,7 +747,7 @@ AddToDecor   MyDecoration
 + TitleStyle Centered Height 26
 + TitleStyle InActive (Colorset 2 -- Flat )
 + TitleStyle Active (Colorset 1 -- Flat)
-+ BorderStyle -- Flat HiddenHandles NoInset
+# + BorderStyle -- Flat HiddenHandles NoInset
 + ButtonStyle All -- UseTitleStyle Flat
 + ButtonStyle All InActive (Colorset 10 -- Flat) -- HiddenHandles
 + ButtonStyle All Active (Colorset 8 -- Flat) -- HiddenHandles)
