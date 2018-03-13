@@ -405,7 +405,7 @@ PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_butt
 *FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) "XClock" \
                 `Exec xclock -digital -twentyfour -bg rgb:48/46/44 -fg white -padding 4 -strftime "   %H:%M %a %d %b %Y " &`, \
                 Action (Mouse 1) \
-                `Exec exec xterm +sb -sl 0 -name jcalendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
+                `Exec exec xterm -g 80x20 -n Fvwm-Calendar -T Fvwm-Calendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
                 Action (Mouse 3) \
                 `Exec exec xclock -bg rgb:48/46/44 -fg white`,)
 *FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
@@ -472,7 +472,6 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
                   Action (Mouse 1) 'Exec "Tilix" tilix &', \
                   Action (Mouse 3) `WindowList (Tilix) NoGeometry, \
                   NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title Sublime, Icon "sublime-text.svg:32x32", Action 'Exec "Sublime Text" subl &')
 *FvwmButtons(1x4, Title Emacs, Icon "emacs.svg:32x32", \
                   Action (Mouse 1) 'Exec "Emacs" emacs &', \
                   Action (Mouse 3) `WindowList (Emacs) NoGeometry, NoCurrentDeskTitle`)
