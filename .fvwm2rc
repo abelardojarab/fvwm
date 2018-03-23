@@ -457,7 +457,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
                   Action (Mouse 3) \
                   `Exec exec orage`, \
                   Action (Mouse 1) \
-                  `Exec exec xterm +sb -sl 0 -name jcalendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
+                  `Exec exec xterm -g 80x20 -n Fvwm-Calendar -T Fvwm-Calendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;gcalcli agenda | head -20; sleep 600; done'`,\
                   ActiveColorset 8)
 *FvwmButtons(1x4, Title Start, Icon "starthereubuntu.svg:32x32", \
                   Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +82+$top 0 -100m", \
@@ -841,7 +841,7 @@ AddToFunc   FuncAppCheck
 # wmclock
 + I Test (!x wmclock) FuncPrintDbgMsg "[RequiredAppCheck]" "wmclock (Date monitoring docked app) not installed"
 # conky
-+ I Test (!x wmclock) FuncPrintDbgMsg "[RequiredAppCheck]" "conky (desklet) not installed"
++ I Test (!x conky) FuncPrintDbgMsg "[RequiredAppCheck]" "conky (desklet) not installed"
 
 ######
 # Start function
