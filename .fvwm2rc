@@ -138,7 +138,7 @@ Colorset 10 fg #fffff9, bg #484644
 # Menu selection colorset
 Colorset 11 fg #ffffff, bg #6d8d6d
 # Icon manager select colorset
-Colorset 12 fg black, bg #c6c3c6, RootTransparent buffer, Tint #e4e5c7 90
+Colorset 12 fg #fffff9, bg #484644, RootTransparent buffer, Tint #484644 90
 # Pattern colorset
 Colorset 13 pixmap tile_gray.png
 # Transparent colorset
@@ -408,8 +408,10 @@ PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_butt
                 `Exec exec xterm -g 80x20 -n Fvwm-Calendar -T Fvwm-Calendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
                 Action (Mouse 3) \
                 `Exec exec xclock -bg rgb:48/46/44 -fg white`,)
-*FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
+*FvwmShelf(Size 30x1, Swallow "FvwmIconMan" \
                 `FvwmIconMan`)
+*FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) "Trayer" \
+                `trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right &`)
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -499,7 +501,7 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Action Mouse 1 N sendcommand "Iconify off", sendcommand RaiseLower, sendcommand FlipFocus
 *FvwmIconMan: Action Mouse 3 N sendcommand "Menu Window-Ops Rectangle +$left+$top 0 -100m"
 *FvwmIconMan: ReliefThickness 2
-*FvwmIconMan: Colorset 10
+*FvwmIconMan: Colorset 12
 *FvwmIconMan: FocusAndSelectColorset 8
 *FvwmIconMan: FocusColorset 8
 *FvwmIconMan: Resolution Page
@@ -885,7 +887,7 @@ AddToFunc   InitFunction
 + I Test (x gnome-settings-daemon) Exec exec gnome-settings-daemon
 + I Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 # Tray section
-+ I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right
+# + I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 # + I Test (EnvMatch systray_started 0 ) break
 # Notification popups
