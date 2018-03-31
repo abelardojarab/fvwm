@@ -25,6 +25,9 @@ IconPath  $[fvwm_userdir]/images/scalable/apps
 # Variables (InfoStore)
 #################
 
+# Set resolution using xrandr
+PipeRead "echo InfoStoreAdd resolution `bash ~/.screenlayout/layout.sh`"
+
 # used for 'Switching focus between windows. (ALT-Tab)' functionality
 InfoStoreAdd DIR Next
 
@@ -138,7 +141,7 @@ Colorset 10 fg #fffff9, bg #484644
 # Menu selection colorset
 Colorset 11 fg #ffffff, bg #6d8d6d
 # Icon manager select colorset
-Colorset 12 fg #fffff9, bg #484644, RootTransparent buffer, Tint #484644 90
+Colorset 12 fg #fffff9, bg #484644, RootTransparent buffer, Tint #484644 98
 # Pattern colorset
 Colorset 13 pixmap tile_gray.png
 # Transparent colorset
@@ -408,10 +411,10 @@ PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_butt
                 `Exec exec xterm -g 80x20 -n Fvwm-Calendar -T Fvwm-Calendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
                 Action (Mouse 3) \
                 `Exec exec xclock -bg rgb:48/46/44 -fg white`,)
-*FvwmShelf(Size 30x1, Swallow "FvwmIconMan" \
+*FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
                 `FvwmIconMan`)
-*FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) "Trayer" \
-                `trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right &`)
+#*FvwmShelf(Size 6x1, Frame 0, Swallow (Kill, Respawn, UseOld) "Trayer" \
+#                `Exec exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --alpha 20 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right &`)
 
 # A little control panel for switching desks.
 DestroyModuleConfig FvwmDeskControl: *
@@ -878,6 +881,7 @@ AddToFunc StartFunction
 DestroyFunc InitFunction
 AddToFunc   InitFunction
 + I Exec exec xrdb ~/.Xresources
++ I Exec exec ~/.screenlayout/layout.sh
 + I Exec exec feh --bg-scale $[fvwm_wallpaper]
 # xsettings daemon
 + I Test (x xsettingsd) Exec exec xsettingsd
@@ -887,7 +891,7 @@ AddToFunc   InitFunction
 + I Test (x gnome-settings-daemon) Exec exec gnome-settings-daemon
 + I Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 # Tray section
-# + I Exec exec trayer --SetDockType true --distance 20 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right
++ I Exec exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 # + I Test (EnvMatch systray_started 0 ) break
 # Notification popups
