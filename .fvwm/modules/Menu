@@ -127,8 +127,9 @@ AddToMenu MenuScience
 
 DestroyMenu MenuSystem
 AddToMenu MenuSystem
-+ "%arandr.svg:24x24%Display Settings" Exec exec arandr
-+ "%equalizer.svg:24x24%PulseAudio Equalizer" Exec exec pulseaudio-equalizer-gtk
++ "%preferences-display.svg:24x24%Display Settings" Exec exec arandr
++ "%preferences-sound.svg:24x24%PulseAudio Settings" Exec exec pavucontrol
++ "%preferences-equalizer.svg:24x24%PulseAudio Equalizer" Exec exec pulseaudio-equalizer-gtk
 + "%folderhome.svg:24x24%File Manager Preferences" Exec exec pcmanfm --desktop-pref
 + "%apps/deja-dup.png%Dejadup Back Up" Exec exec deja-dup --backup
 + "%apps/baobab.png%Disk Usage Analyzer" Exec exec baobab
@@ -165,7 +166,7 @@ AddToMenu MenuGNOMESettings
 + "%settings.svg:24x24%GNOME Settings" Exec exec gnome-control-center --overview
 + "%apps/gnome-disks.png%GNOME Disks" Exec exec gnome-disks
 + "%systemmonitor.svg:24x24%GNOME System Monitor" Exec exec gnome-system-monitor
-+ "%icon-circle-eco-power.svg:24x24%GNOME Power Statistics" Exec exec gnome-power-statistics
++ "%preferences-power.svg:24x24%GNOME Power Statistics" Exec exec gnome-power-statistics
 + "%user.svg:24x24%GNOME Startup Applications" Exec exec gnome-session-properties
 + "%foldersharing.svg:24x24%GNOME Personal File Sharing" Exec exec gnome-file-share-properties
 + "%apps/logview.png%GNOME System Log" Exec exec gnome-system-log-pkexec
