@@ -79,8 +79,8 @@ PipeRead "echo InfoStoreAdd hratio `perl -e 'printf \"%.2f\",($[vp.height]/540)'
 PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`"
 
 # Fonts
-InfoStoreAdd fontsize  12
-InfoStoreAdd font_sans "xft:Ubuntu:size=$[infostore.fontsize]:encoding=iso10646-1"
+InfoStoreAdd fontsize  11
+InfoStoreAdd font_sans "xft:Aquabase:size=$[infostore.fontsize]:encoding=iso10646-1"
 InfoStoreAdd font_mono "xft:Fira Mono:size=$[infostore.fontsize]:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
@@ -456,6 +456,7 @@ PipeRead 'echo *FvwmButtons: ButtonGeometry   $[infostore.fvwm_buttons_width]x$[
 PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
+*FvwmButtons: Resolution Global
 *FvwmButtons(1x6, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(1x4, Swallow (NoClose,UseOld) "wmcalclock" \
                   `Exec exec wmcalclock`, \
@@ -894,7 +895,7 @@ AddToFunc   InitFunction
 # Notification daemon
 + I Exec exec /usr/lib/notification-daemon/notification-daemon &
 # Tray section
-+ I Exec exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right
++ I Exec exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 300 --heighttype pixel --height 28 --distancefrom right
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 # + I Test (EnvMatch systray_started 0 ) break
 # Notification popups
@@ -926,7 +927,7 @@ AddToFunc   InitFunction
 # Bluetooth
 + I Test (x blueman-applet) Exec exec blueman-applet
 # Power management
-# + I Test (x xfce4-power-manager) Exec exec xfce4-power-manager
++ I Test (x xfce4-power-manager) Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then xfce4-power-manager; fi'
 # Screensaver daemon for locking
 + I Test (x xscreensaver-command) Test (Init) Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then xscreensaver -no-splash; fi'
 
@@ -1628,6 +1629,15 @@ Key KP_Right A       C      MoveAndGotoPage 2 1
 Key KP_End   A       C      MoveAndGotoPage 0 2
 Key KP_Down  A       C      MoveAndGotoPage 1 2
 Key KP_Next  A       C      MoveAndGotoPage 2 2
+
+######
+# Display keys
+#################
+DestroyFunc ChangeDisplaySetup
+AddToFunc ChangeDisplaySetup
+ + I PipeRead $[fvwm_userdir]/scripts/xrandr-auto.sh
+
+Key XF86Display A N ChangeDisplaySetup
 
 ######
 # Pulseaudio keys
