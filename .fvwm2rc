@@ -887,9 +887,13 @@ AddToFunc   InitFunction
 + I Test (x xsettingsd) Exec exec xsettingsd
 # composite support
 + I Test (x compton) Exec exec compton -c -C -f -G -b --vsync opengl-swc -r 10
+# Pulseaudio
++ I Test (x pulseaudio) Exec exec pulseaudio --check || pulseaudio -D
 # Gnome settings daemon
 + I Test (x gnome-settings-daemon) Exec exec gnome-settings-daemon
 + I Exec exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+# Notification daemon
++ I Exec exec /usr/lib/notification-daemon/notification-daemon &
 # Tray section
 + I Exec exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
@@ -922,6 +926,8 @@ AddToFunc   InitFunction
 + I Test (x nm-applet) Exec exec nm-applet
 # Bluetooth
 + I Test (x blueman-applet) Exec exec blueman-applet
+# Power management
+# + I Test (x xfce4-power-manager) Exec exec xfce4-power-manager
 # Screensaver daemon for locking
 + I Test (x xscreensaver-command) Test (Init) Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then xscreensaver -no-splash; fi'
 
