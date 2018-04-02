@@ -407,7 +407,7 @@ PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_butt
 *FvwmShelf: Frame 1
 *FvwmShelf: Padding 1 1
 *FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) "XClock" \
-                `Exec xclock -digital -twentyfour -bg rgb:48/46/44 -fg white -padding 4 -strftime "   %H:%M %a %d %b %Y " &`, \
+                `Exec xclock -digital -twentyfour -bg rgb:48/46/44 -fg white -padding 2 -strftime "   %H:%M %a %d %b %Y " &`, \
                 Action (Mouse 1) \
                 `Exec exec xterm -g 80x20 -n Fvwm-Calendar -T Fvwm-Calendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
                 Action (Mouse 3) \
