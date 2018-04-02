@@ -318,6 +318,22 @@ AddToMenu   "/Debian/Window_Managers" "Window Managers" Title Top
 + "&FVWM" Restart /usr/bin/fvwm2
 + "&Window Maker" Restart /usr/bin/wmaker
 
+DestroyMenu "/Debian/Windows_Applications/Adobe_LiveCycle_ES2"
+AddToMenu   "/Debian/Windows_Applications/Adobe_LiveCycle_ES2" "Adobe LiveCycle ES2" Title Top
++ "&Adobe LiveCycle Designer ES2%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/7FF4_SC_Designer_PFM.70DBED24_B579_40CB_AB0B_F1221A3E9EC5.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+LiveCycle+ES2/Adobe+LiveCycle+Designer+ES2.lnk"
+
+DestroyMenu "/Debian/Windows_Applications/EndNote"
+AddToMenu   "/Debian/Windows_Applications/EndNote" "EndNote" Title Top
++ "&EndNote%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/D653_Icon86B3F2D6.1.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/EndNote/EndNote.lnk"
+
+DestroyMenu "/Debian/Windows_Applications/MathType_6"
+AddToMenu   "/Debian/Windows_Applications/MathType_6" "MathType 6" Title Top
++ "&Equation Conversion Manager%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/8A31_Setup.1.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/Equation+Conversion+Manager.lnk"
++ "&MathType%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/DEB0_MathType.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType.lnk"
++ "MathType &Help%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/579C_MT6ENU.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType+Help.lnk"
++ "MathType &Server%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/DEB0_MathType.1.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType+Server.lnk"
++ "&Remove MathType%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/8A31_Setup.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/Remove+MathType.lnk"
+
 DestroyMenu "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools"
 AddToMenu   "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools" "Microsoft Office 2010 Tools" Title Top
 + "&Digital Certificate for VBA Projects%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/E723_misc.15.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Digital+Certificate+for+VBA+Projects.lnk"
@@ -346,7 +362,12 @@ AddToMenu   "/Debian/Windows_Applications/SharePoint" "SharePoint" Title Top
 
 DestroyMenu "/Debian/Windows_Applications"
 AddToMenu   "/Debian/Windows_Applications" "Windows Applications" Title Top
-+ "&Microsoft Office%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/Microsoft_Office"
++ "&Adobe Acrobat Distiller X%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/72B2__SC_Distiller.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+Acrobat+Distiller+X.lnk"
++ "Adobe Acrobat &X Pro%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/BBEF__SC_Acrobat.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+Acrobat+X+Pro.lnk"
++ "Adobe &LiveCycle ES2%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/Adobe_LiveCycle_ES2"
++ "&EndNote%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/EndNote"
++ "&MathType 6%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/MathType_6"
++ "Microsoft &Office%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/Microsoft_Office"
 + "&SharePoint%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/SharePoint"
 
 DestroyMenu "/Debian"

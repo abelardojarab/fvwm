@@ -372,6 +372,7 @@ Style "Pidgin*"               MiniIcon "pidgin.svg:16x16"
 Style "Acrobat*"              MiniIcon "acroread.svg:16x16"
 Style "Adobe*"                MiniIcon "acroread.svg:16x16"
 Style "libreoffice-writer*"   MiniIcon libreoffice-writer.png
+Style "Crossover*"            MiniIcon "windows.svg:16x16"
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon "firefox.svg:16x16"
 Style "firefox*"              CenterPlacement, MiniIcon "firefox.svg:16x16"
@@ -456,7 +457,6 @@ PipeRead 'echo *FvwmButtons: ButtonGeometry   $[infostore.fvwm_buttons_width]x$[
 PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons: Columns 1
 *FvwmButtons: Frame 1
-*FvwmButtons: Resolution Global
 *FvwmButtons(1x6, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(1x4, Swallow (NoClose,UseOld) "wmcalclock" \
                   `Exec exec wmcalclock`, \
@@ -472,6 +472,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:24x24", \
                   Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
                   Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
+*FvwmButtons(1x4, Title Crossover, Icon "windows.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
 *FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:24x24", Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(1x4, Title Home, Icon "folderhome.svg:24x24", Action 'Exec "Nemo" nemo &')
 *FvwmButtons(1x4, Title Terminal, Icon "terminator.svg:24x24", \
@@ -485,6 +486,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
                   Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
                   Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title Gitg, Icon "github.svg:24x24", Action 'Exec "Gitg" gitg &')
+*FvwmButtons(1x4, Title Dia, Icon "dia.svg:24x24", Action 'Exec "Dia" dia &')
 *FvwmButtons(1x4, Title Images, Icon "shotwell.svg:24x24", Action 'Exec "Eyes of Gnome" eog &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
 
