@@ -372,7 +372,7 @@ Style "Pidgin*"               MiniIcon "pidgin.svg:16x16"
 Style "Acrobat*"              MiniIcon "acroread.svg:16x16"
 Style "Adobe*"                MiniIcon "acroread.svg:16x16"
 Style "libreoffice-writer*"   MiniIcon libreoffice-writer.png
-Style "Crossover*"            MiniIcon "windows.svg:16x16"
+Style "Crossover*"            MiniIcon "crossover.svg:16x16"
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon "firefox.svg:16x16"
 Style "firefox*"              CenterPlacement, MiniIcon "firefox.svg:16x16"
@@ -472,7 +472,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:24x24", \
                   Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
                   Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title Crossover, Icon "windows.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
+*FvwmButtons(1x4, Title Crossover, Icon "crossover.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
 *FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:24x24", Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(1x4, Title Home, Icon "folderhome.svg:24x24", Action 'Exec "Nemo" nemo &')
 *FvwmButtons(1x4, Title Terminal, Icon "terminator.svg:24x24", \
