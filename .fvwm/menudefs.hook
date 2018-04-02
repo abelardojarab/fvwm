@@ -5,13 +5,9 @@ DestroyMenu "/Debian/Applications/Accessibility"
 AddToMenu   "/Debian/Applications/Accessibility" "Accessibility" Title Top
 + "&Xmag" Exec exec xmag
 
-DestroyMenu "/Debian/Applications/AudioVideo"
-AddToMenu   "/Debian/Applications/AudioVideo" "AudioVideo" Title Top
-+ "&Google Music Manager%/opt/google/musicmanager/product_logo_32.xpm%" Exec exec /opt/google/musicmanager/google-musicmanager
-
 DestroyMenu "/Debian/Applications/Editors"
 AddToMenu   "/Debian/Applications/Editors" "Editors" Title Top
-+ "&Kile%/usr/share/pixmaps/kile.xpm%" Exec exec /usr/bin/kile
++ "&NE" Exec exec x-terminal-emulator  -T "NE" -e sh -c "/usr/bin/ne"
 + "&prerex" Exec exec x-terminal-emulator  -T "prerex" -e sh -c "/usr/bin/prerex"
 + "&vprerex" Exec exec /usr/bin/vprerex
 + "&Xedit" Exec exec xedit
@@ -30,7 +26,6 @@ DestroyMenu "/Debian/Applications/Graphics"
 AddToMenu   "/Debian/Applications/Graphics" "Graphics" Title Top
 + "&dotty" Exec exec /usr/bin/dotty
 + "&lefty" Exec exec /usr/bin/lefty
-+ "&smplayer" Exec exec /usr/bin/smplayer
 + "The &GIMP%/usr/share/pixmaps/gimp.xpm%" Exec exec /usr/bin/gimp
 + "&X Window Snapshot" Exec exec xwd | xwud
 
@@ -40,6 +35,7 @@ AddToMenu   "/Debian/Applications/Network/Communication" "Communication" Title T
 + "&Remmina" Exec exec /usr/bin/remmina
 + "&s-nail" Exec exec x-terminal-emulator  -T "s-nail" -e sh -c "/usr/bin/s-nail"
 + "&Telnet" Exec exec x-terminal-emulator  -T "Telnet" -e sh -c "/usr/bin/telnet.netkit"
++ "&WMbiff" Exec exec /usr/bin/wmbiff
 + "&Xbiff" Exec exec xbiff
 
 DestroyMenu "/Debian/Applications/Network/File_Transfer"
@@ -48,14 +44,12 @@ AddToMenu   "/Debian/Applications/Network/File_Transfer" "File Transfer" Title T
 
 DestroyMenu "/Debian/Applications/Network/Monitoring"
 AddToMenu   "/Debian/Applications/Network/Monitoring" "Monitoring" Title Top
-+ "&LinSSID%/usr/share/pixmaps/linssid32.xpm%" Exec exec /usr/bin/gksudo /usr/bin/linssid
 + "&wmnet" Exec exec /usr/bin/wmnet -l
 
 DestroyMenu "/Debian/Applications/Network/Web_Browsing"
 AddToMenu   "/Debian/Applications/Network/Web_Browsing" "Web Browsing" Title Top
++ "&ELinks WWW browser" Exec exec x-terminal-emulator  -T "ELinks WWW browser" -e sh -c "/usr/bin/elinks"
 + "&Google Chrome%/opt/google/chrome/product_logo_32.xpm%" Exec exec /opt/google/chrome/google-chrome
-+ "&Links 2%/usr/share/pixmaps/links2.xpm%" Exec exec /usr/bin/links2 -g
-+ "Links &2 (text)%/usr/share/pixmaps/links2.xpm%" Exec exec x-terminal-emulator  -T "Links 2 (text)" -e sh -c "/usr/bin/links2"
 + "&w3m" Exec exec x-terminal-emulator  -T "w3m" -e sh -c "/usr/bin/w3m /usr/share/doc/w3m/MANUAL.html"
 
 DestroyMenu "/Debian/Applications/Network"
@@ -71,44 +65,51 @@ AddToMenu   "/Debian/Applications/Office" "Office" Title Top
 
 DestroyMenu "/Debian/Applications/Programming"
 AddToMenu   "/Debian/Applications/Programming" "Programming" Title Top
-+ "&Doxywizard" Exec exec /usr/bin/doxywizard
-+ "&Eclipse" Exec exec eclipse
 + "&GDB" Exec exec x-terminal-emulator  -T "GDB" -e sh -c "/usr/bin/gdb"
++ "Glade &3%/usr/share/pixmaps/glade.xpm%" Exec exec /usr/bin/glade
 + "Guile &2.0" Exec exec x-terminal-emulator  -T "Guile 2.0" -e sh -c "/usr/bin/guile-2.0"
 + "&MonoDevelop%/usr/share/icons/hicolor/scalable/apps/monodevelop.svg%" Exec exec /usr/bin/monodevelop
-+ "&QDevelop%/usr/share/pixmaps/qdevelop.xpm%" Exec exec qdevelop
++ "My&SQL Workbench%/usr/share/pixmaps/mysql-workbench.xpm%" Exec exec /usr/bin/mysql-workbench
 + "&Tclsh8.6" Exec exec x-terminal-emulator  -T "Tclsh8.6" -e sh -c "/usr/bin/tclsh8.6"
 + "TkWish8.&6" Exec exec x-terminal-emulator -e /usr/bin/wish8.6
++ "&Wing Pro 6.0%/usr/lib/wingide6/resources/linux/wing32.xpm%" Exec exec /usr/bin/wing6.0
 
 DestroyMenu "/Debian/Applications/Science/Engineering"
 AddToMenu   "/Debian/Applications/Science/Engineering" "Engineering" Title Top
 + "&Dia%/usr/share/pixmaps/dia_menu.xpm%" Exec exec /usr/bin/dia
 
+DestroyMenu "/Debian/Applications/Science/Geoscience"
+AddToMenu   "/Debian/Applications/Science/Geoscience" "Geoscience" Title Top
++ "&wmweather" Exec exec /usr/bin/wmweather
+
 DestroyMenu "/Debian/Applications/Science/Mathematics"
 AddToMenu   "/Debian/Applications/Science/Mathematics" "Mathematics" Title Top
 + "&Bc" Exec exec x-terminal-emulator  -T "Bc" -e sh -c "/usr/bin/bc"
 + "&Dc" Exec exec x-terminal-emulator  -T "Dc" -e sh -c "/usr/bin/dc"
-+ "g&alculator%/usr/share/pixmaps/galculator.xpm%" Exec exec /usr/bin/galculator
-+ "&Gnuplot" Exec exec x-terminal-emulator  -T "Gnuplot" -e sh -c "/usr/bin/gnuplot5-qt"
++ "&Gnuplot" Exec exec x-terminal-emulator  -T "Gnuplot" -e sh -c "/usr/bin/gnuplot4-x11"
 + "&RKWard" Exec exec /usr/bin/rkward
 + "&Xcalc" Exec exec xcalc
 
 DestroyMenu "/Debian/Applications/Science"
 AddToMenu   "/Debian/Applications/Science" "Science" Title Top
 + "&Engineering" Popup "/Debian/Applications/Science/Engineering"
++ "&Geoscience" Popup "/Debian/Applications/Science/Geoscience"
 + "&Mathematics" Popup "/Debian/Applications/Science/Mathematics"
 
 DestroyMenu "/Debian/Applications/Shells"
 AddToMenu   "/Debian/Applications/Shells" "Shells" Title Top
 + "&Bash" Exec exec x-terminal-emulator  -T "Bash" -e sh -c "/bin/bash --login"
++ "&Csh" Exec exec x-terminal-emulator  -T "Csh" -e sh -c "/bin/bsd-csh -l"
 + "&Dash" Exec exec x-terminal-emulator  -T "Dash" -e sh -c "/bin/dash -i"
 + "&Sh" Exec exec x-terminal-emulator  -T "Sh" -e sh -c "/bin/sh --login"
++ "&Zsh" Exec exec x-terminal-emulator  -T "Zsh" -e sh -c "/bin/zsh"
 
 DestroyMenu "/Debian/Applications/Sound"
 AddToMenu   "/Debian/Applications/Sound" "Sound" Title Top
-+ "&Amarok%/usr/share/pixmaps/amarok.xpm%" Exec exec /usr/bin/amarok
++ "&Alsamixergui%/usr/share/pixmaps/alsamixergui.xpm%" Exec exec /usr/bin/alsamixergui
++ "A&marok%/usr/share/pixmaps/amarok.xpm%" Exec exec /usr/bin/amarok
++ "&GNOME ALSA Mixer%/usr/share/pixmaps/gnome-alsamixer/gnome-alsamixer-icon.xpm%" Exec exec /usr/bin/gnome-alsamixer
 + "&pavucontrol" Exec exec /usr/bin/pavucontrol
-+ "puls&eaudio-equalizer" Exec exec /usr/share/pulseaudio-equalizer/pulseaudio-equalizer.py
 + "&volumeicon" Exec exec /usr/bin/volumeicon
 
 DestroyMenu "/Debian/Applications/System/Administration"
@@ -121,6 +122,7 @@ AddToMenu   "/Debian/Applications/System/Administration" "Administration" Title 
 + "&System Information%/usr/share/pixmaps/hardinfo.xpm%" Exec exec /usr/bin/hardinfo
 + "w&mcalclock" Exec exec /usr/bin/wmCalClock
 + "&Wmclock" Exec exec /usr/bin/wmclock
++ "wms&hutdown" Exec exec /usr/bin/wmshutdown
 + "&Xclipboard" Exec exec xclipboard
 + "X&fontsel" Exec exec xfontsel
 + "X&kill" Exec exec xkill
@@ -128,6 +130,7 @@ AddToMenu   "/Debian/Applications/System/Administration" "Administration" Title 
 
 DestroyMenu "/Debian/Applications/System/Hardware"
 AddToMenu   "/Debian/Applications/System/Hardware" "Hardware" Title Top
++ "&wmxres" Exec exec /usr/bin/wmxres
 + "&Xvidtune" Exec exec xvidtune
 
 DestroyMenu "/Debian/Applications/System/Language_Environment"
@@ -137,12 +140,19 @@ AddToMenu   "/Debian/Applications/System/Language_Environment" "Language Environ
 DestroyMenu "/Debian/Applications/System/Monitoring"
 AddToMenu   "/Debian/Applications/System/Monitoring" "Monitoring" Title Top
 + "&Conky" Exec exec x-terminal-emulator  -T "Conky" -e sh -c "/usr/bin/conky"
++ "&GKrellM%/usr/share/pixmaps/gkrellm.xpm%" Exec exec /usr/bin/gkrellm
 + "&Pstree%/usr/share/pixmaps/pstree16.xpm%" Exec exec x-terminal-emulator  -T "Pstree" -e sh -c "/usr/bin/pstree.x11"
 + "&Top" Exec exec x-terminal-emulator  -T "Top" -e sh -c "/usr/bin/top"
-+ "&wmCPU" Exec exec /usr/bin/wmcpu
-+ "w&mcpuload" Exec exec /usr/bin/wmcpuload
-+ "wm&Date" Exec exec /usr/bin/wmdate
++ "wmCP&U" Exec exec /usr/bin/wmcpu
++ "wmcpulo&ad" Exec exec /usr/bin/wmcpuload
++ "wm&diskmon" Exec exec /usr/bin/wmdiskmon
 + "wm&hdplop" Exec exec /usr/bin/wmhdplop
++ "wml&oad" Exec exec /usr/bin/wmload -shape -withdrawn
++ "wmmemload" Exec exec /usr/bin/wmmemload
++ "&WMmon" Exec exec /usr/bin/wmmon
++ "W&Mnd" Exec exec /usr/bin/wmnd
++ "wm&sysmon" Exec exec /usr/bin/wmsysmon
++ "wmtop" Exec exec /usr/bin/wmtop
 + "&Xconsole" Exec exec xconsole -file /dev/xconsole
 + "X&ev" Exec exec x-terminal-emulator -e xev
 + "X&load" Exec exec xload
@@ -161,9 +171,8 @@ AddToMenu   "/Debian/Applications/System" "System" Title Top
 
 DestroyMenu "/Debian/Applications/Terminal_Emulators"
 AddToMenu   "/Debian/Applications/Terminal_Emulators" "Terminal Emulators" Title Top
-+ "&Rxvt" Exec exec /usr/bin/rxvt-xterm
-+ "X&Term%/usr/share/pixmaps/xterm-color_32x32.xpm%" Exec exec xterm
-+ "&X-Terminal as root (GKsu)%/usr/share/pixmaps/gksu-debian.xpm%" Exec exec /usr/bin/gksu -u root /usr/bin/x-terminal-emulator
++ "&Eterm" Exec exec /usr/bin/Eterm
++ "&XTerm%/usr/share/pixmaps/xterm-color_32x32.xpm%" Exec exec xterm
 + "XTerm (&Unicode)%/usr/share/pixmaps/xterm-color_32x32.xpm%" Exec exec uxterm
 
 DestroyMenu "/Debian/Applications/Text"
@@ -175,21 +184,17 @@ AddToMenu   "/Debian/Applications/Tools" "Tools" Title Top
 + "&Nero Linux%/usr/share/nero/images/appicons/nero-icon-48.png%" Exec exec /usr/bin/nero
 + "Nero &Linux Express%/usr/share/nero/images/appicons/neroexpress-icon-48.png%" Exec exec /usr/bin/neroexpress
 
-DestroyMenu "/Debian/Applications/Video"
-AddToMenu   "/Debian/Applications/Video" "Video" Title Top
-+ "&GNOME MPlayer%/usr/share/pixmaps/gnome-mplayer.xpm%" Exec exec gnome-mplayer
-
 DestroyMenu "/Debian/Applications/Viewers"
 AddToMenu   "/Debian/Applications/Viewers" "Viewers" Title Top
++ "&docker" Exec exec /usr/bin/wmdocker
 + "&Shotwell" Exec exec /usr/bin/shotwell
++ "w&msystemtray" Exec exec /usr/bin/wmsystemtray
 + "&Wordview" Exec exec /usr/bin/wordview
 + "&Xditview" Exec exec xditview
-+ "X&pdf%/usr/share/pixmaps/xpdf.xpm%" Exec exec /usr/bin/xpdf
 
 DestroyMenu "/Debian/Applications"
 AddToMenu   "/Debian/Applications" "Applications" Title Top
 + "&Accessibility" Popup "/Debian/Applications/Accessibility"
-+ "A&udioVideo" Popup "/Debian/Applications/AudioVideo"
 + "&Editors" Popup "/Debian/Applications/Editors"
 + "E&mulators" Popup "/Debian/Applications/Emulators"
 + "&File Management" Popup "/Debian/Applications/File_Management"
@@ -199,13 +204,12 @@ AddToMenu   "/Debian/Applications" "Applications" Title Top
 + "&Programming" Popup "/Debian/Applications/Programming"
 + "&Science" Popup "/Debian/Applications/Science"
 + "S&hells" Popup "/Debian/Applications/Shells"
-+ "Soun&d" Popup "/Debian/Applications/Sound"
++ "So&und" Popup "/Debian/Applications/Sound"
 + "S&ystem" Popup "/Debian/Applications/System"
 + "&Terminal Emulators" Popup "/Debian/Applications/Terminal_Emulators"
 + "Te&xt" Popup "/Debian/Applications/Text"
 + "Too&ls" Popup "/Debian/Applications/Tools"
-+ "&Video" Popup "/Debian/Applications/Video"
-+ "V&iewers" Popup "/Debian/Applications/Viewers"
++ "&Viewers" Popup "/Debian/Applications/Viewers"
 
 DestroyMenu "/Debian/CrossOver"
 AddToMenu   "/Debian/CrossOver" "CrossOver" Title Top
@@ -250,29 +254,19 @@ AddToMenu   "/Debian/FVWM_Modules" "FVWM Modules" Title Top
 + "FvwmWindowMenu" Module FvwmWindowMenu
 + "FvwmWin&List" Module FvwmWinList
 
-DestroyMenu "/Debian/Games/Adventure"
-AddToMenu   "/Debian/Games/Adventure" "Adventure" Title Top
-+ "&Freeminer%/usr/share/icons/hicolor/24x24/apps/freeminer.xpm%" Exec exec /usr/games/freeminer
-+ "&ScummVM%/usr/share/icons/scummvm.xpm%" Exec exec /usr/games/scummvm
+DestroyMenu "/Debian/Games/Action"
+AddToMenu   "/Debian/Games/Action" "Action" Title Top
++ "&nInvaders" Exec exec x-terminal-emulator  -T "nInvaders" -e sh -c "/usr/games/nInvaders"
++ "n&snake%/usr/share/pixmaps/nsnake.xpm%" Exec exec x-terminal-emulator  -T "nsnake" -e sh -c "/usr/games/nsnake"
++ "&Pacman for Console%/usr/share/pixmaps/pacman4console.xpm%" Exec exec x-terminal-emulator  -T "Pacman for Console" -e sh -c "/usr/games/pacman4console"
 
 DestroyMenu "/Debian/Games/Blocks"
 AddToMenu   "/Debian/Games/Blocks" "Blocks" Title Top
-+ "&Frozen-Bubble%/usr/share/pixmaps/frozen-bubble.xpm%" Exec exec /usr/games/frozen-bubble
-
-DestroyMenu "/Debian/Games/Puzzles"
-AddToMenu   "/Debian/Games/Puzzles" "Puzzles" Title Top
-+ "&kubrick%/usr/share/pixmaps/kubrick.xpm%" Exec exec /usr/games/kubrick
-
-DestroyMenu "/Debian/Games/Strategy"
-AddToMenu   "/Debian/Games/Strategy" "Strategy" Title Top
-+ "&MegaGlest%/usr/share/pixmaps/megaglest.xpm%" Exec exec /usr/games/megaglest
-
-DestroyMenu "/Debian/Games/Tools"
-AddToMenu   "/Debian/Games/Tools" "Tools" Title Top
-+ "&Rclock" Exec exec /usr/bin/rclock
++ "&Bastet%/usr/share/pixmaps/bastet.xpm%" Exec exec x-terminal-emulator  -T "Bastet" -e sh -c "/usr/games/bastet"
 
 DestroyMenu "/Debian/Games/Toys"
 AddToMenu   "/Debian/Games/Toys" "Toys" Title Top
++ "&ASclock" Exec exec /usr/bin/asclock
 + "&Oclock" Exec exec oclock
 + "&Xclock (analog)" Exec exec xclock -analog
 + "Xclock (&digital)" Exec exec xclock -digital -update 1
@@ -281,12 +275,9 @@ AddToMenu   "/Debian/Games/Toys" "Toys" Title Top
 
 DestroyMenu "/Debian/Games"
 AddToMenu   "/Debian/Games" "Games" Title Top
-+ "&Adventure" Popup "/Debian/Games/Adventure"
++ "&Action" Popup "/Debian/Games/Action"
 + "&Blocks" Popup "/Debian/Games/Blocks"
-+ "&Puzzles" Popup "/Debian/Games/Puzzles"
-+ "&Strategy" Popup "/Debian/Games/Strategy"
-+ "&Tools" Popup "/Debian/Games/Tools"
-+ "T&oys" Popup "/Debian/Games/Toys"
++ "&Toys" Popup "/Debian/Games/Toys"
 
 DestroyMenu "/Debian/Help"
 AddToMenu   "/Debian/Help" "Help" Title Top
@@ -320,50 +311,50 @@ AddToMenu   "/Debian/Window_Managers" "Window Managers" Title Top
 
 DestroyMenu "/Debian/Windows_Applications/Adobe_LiveCycle_ES2"
 AddToMenu   "/Debian/Windows_Applications/Adobe_LiveCycle_ES2" "Adobe LiveCycle ES2" Title Top
-+ "&Adobe LiveCycle Designer ES2%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/7FF4_SC_Designer_PFM.70DBED24_B579_40CB_AB0B_F1221A3E9EC5.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+LiveCycle+ES2/Adobe+LiveCycle+Designer+ES2.lnk"
++ "&Adobe LiveCycle Designer ES2%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/7FF4_SC_Designer_PFM.70DBED24_B579_40CB_AB0B_F1221A3E9EC5.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+LiveCycle+ES2/Adobe+LiveCycle+Designer+ES2.lnk"
 
 DestroyMenu "/Debian/Windows_Applications/EndNote"
 AddToMenu   "/Debian/Windows_Applications/EndNote" "EndNote" Title Top
-+ "&EndNote%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/D653_Icon86B3F2D6.1.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/EndNote/EndNote.lnk"
++ "&EndNote%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/D653_Icon86B3F2D6.1.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/EndNote/EndNote.lnk"
 
 DestroyMenu "/Debian/Windows_Applications/MathType_6"
 AddToMenu   "/Debian/Windows_Applications/MathType_6" "MathType 6" Title Top
-+ "&Equation Conversion Manager%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/8A31_Setup.1.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/Equation+Conversion+Manager.lnk"
-+ "&MathType%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/DEB0_MathType.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType.lnk"
-+ "MathType &Help%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/579C_MT6ENU.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType+Help.lnk"
-+ "MathType &Server%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/DEB0_MathType.1.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType+Server.lnk"
-+ "&Remove MathType%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/8A31_Setup.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/Remove+MathType.lnk"
++ "&Equation Conversion Manager%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/8A31_Setup.1.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/Equation+Conversion+Manager.lnk"
++ "&MathType%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/DEB0_MathType.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType.lnk"
++ "MathType &Help%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/579C_MT6ENU.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType+Help.lnk"
++ "MathType &Server%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/DEB0_MathType.1.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType+Server.lnk"
++ "&Remove MathType%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/8A31_Setup.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/Remove+MathType.lnk"
 
 DestroyMenu "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools"
 AddToMenu   "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools" "Microsoft Office 2010 Tools" Title Top
-+ "&Digital Certificate for VBA Projects%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/E723_misc.15.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Digital+Certificate+for+VBA+Projects.lnk"
-+ "&Microsoft Clip Organizer%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/FA41_cagicon.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Clip+Organizer.lnk"
-+ "Microsoft &Office 2010 Language Preferences%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/E723_misc.5.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+2010+Language+Preferences.lnk"
-+ "Microsoft Office 2010 &Upload Center%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/0A9A_msouc.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+2010+Upload+Center.lnk"
-+ "Microsoft Office &Picture Manager%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/4000_oisicon.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+Picture+Manager.lnk"
++ "&Digital Certificate for VBA Projects%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/E723_misc.15.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Digital+Certificate+for+VBA+Projects.lnk"
++ "&Microsoft Clip Organizer%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/FA41_cagicon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Clip+Organizer.lnk"
++ "Microsoft &Office 2010 Language Preferences%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/E723_misc.5.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+2010+Language+Preferences.lnk"
++ "Microsoft Office 2010 &Upload Center%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/0A9A_msouc.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+2010+Upload+Center.lnk"
++ "Microsoft Office &Picture Manager%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/4000_oisicon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+Picture+Manager.lnk"
 
 DestroyMenu "/Debian/Windows_Applications/Microsoft_Office"
 AddToMenu   "/Debian/Windows_Applications/Microsoft_Office" "Microsoft Office" Title Top
-+ "&Microsoft Access 2010%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/CE2A_accicons.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Access+2010.lnk"
-+ "Microsoft &Excel 2010%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/284C_xlicons.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Excel+2010.lnk"
-+ "Microsoft &InfoPath Designer 2010%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/825D_inficon.3.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Designer+2010.lnk"
-+ "Microsoft InfoPath &Filler 2010%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/825D_inficon.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Filler+2010.lnk"
++ "&Microsoft Access 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/CE2A_accicons.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Access+2010.lnk"
++ "Microsoft &Excel 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/284C_xlicons.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Excel+2010.lnk"
++ "Microsoft &InfoPath Designer 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/825D_inficon.3.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Designer+2010.lnk"
++ "Microsoft InfoPath &Filler 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/825D_inficon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Filler+2010.lnk"
 + "Microsoft &Office 2010 Tools%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools"
-+ "Microsoft OneNote &2010%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/A3D7_joticon.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+OneNote+2010.lnk"
-+ "Mi&crosoft Outlook 2010%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/DAE7_outicon.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Outlook+2010.lnk"
-+ "Microsoft &PowerPoint 2010%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/1CE1_pptico.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+PowerPoint+2010.lnk"
-+ "Mic&rosoft Publisher 2010%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/31FC_pubs.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Publisher+2010.lnk"
-+ "Microsoft &SharePoint Workspace 2010%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/7F63_grvicons.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+SharePoint+Workspace+2010.lnk"
-+ "Microsoft &Word 2010%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/0575_wordicon.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Word+2010.lnk"
++ "Microsoft OneNote &2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/A3D7_joticon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+OneNote+2010.lnk"
++ "Mi&crosoft Outlook 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/DAE7_outicon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Outlook+2010.lnk"
++ "Microsoft &PowerPoint 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/1CE1_pptico.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+PowerPoint+2010.lnk"
++ "Mic&rosoft Publisher 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/31FC_pubs.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Publisher+2010.lnk"
++ "Microsoft &SharePoint Workspace 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/7F63_grvicons.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+SharePoint+Workspace+2010.lnk"
++ "Microsoft &Word 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/0575_wordicon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Word+2010.lnk"
 
 DestroyMenu "/Debian/Windows_Applications/SharePoint"
 AddToMenu   "/Debian/Windows_Applications/SharePoint" "SharePoint" Title Top
-+ "&Microsoft SharePoint Workspace 2010%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/7F63_grvicons.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/SharePoint/Microsoft+SharePoint+Workspace+2010.lnk"
++ "&Microsoft SharePoint Workspace 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/7F63_grvicons.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/SharePoint/Microsoft+SharePoint+Workspace+2010.lnk"
 
 DestroyMenu "/Debian/Windows_Applications"
 AddToMenu   "/Debian/Windows_Applications" "Windows Applications" Title Top
-+ "&Adobe Acrobat Distiller X%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/72B2__SC_Distiller.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+Acrobat+Distiller+X.lnk"
-+ "Adobe Acrobat &X Pro%/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/BBEF__SC_Acrobat.0.png%" Exec exec "/mnt/disk2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+Acrobat+X+Pro.lnk"
++ "&Adobe Acrobat Distiller X%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/72B2__SC_Distiller.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+Acrobat+Distiller+X.lnk"
++ "Adobe Acrobat &X Pro%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/BBEF__SC_Acrobat.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+Acrobat+X+Pro.lnk"
 + "Adobe &LiveCycle ES2%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/Adobe_LiveCycle_ES2"
 + "&EndNote%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/EndNote"
 + "&MathType 6%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/MathType_6"
