@@ -63,10 +63,6 @@ AddToMenu   "/Debian/Windows_Applications/Microsoft_Office" "Microsoft Office" T
 + "Microsoft &SharePoint Workspace 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/7F63_grvicons.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+SharePoint+Workspace+2010.lnk"
 + "Microsoft &Word 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/0575_wordicon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Word+2010.lnk"
 
-DestroyMenu "/Debian/Windows_Applications/SharePoint"
-AddToMenu   "/Debian/Windows_Applications/SharePoint" "SharePoint" Title Top
-+ "&Microsoft SharePoint Workspace 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/7F63_grvicons.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/SharePoint/Microsoft+SharePoint+Workspace+2010.lnk"
-
 DestroyMenu "/Debian/Windows_Applications"
 AddToMenu   "/Debian/Windows_Applications" "Windows Applications" Title Top
 + "Adobe Acrobat &X Pro%acroread.svg:24x24%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+Acrobat+X+Pro.lnk"
@@ -77,6 +73,8 @@ AddToMenu   "/Debian/Windows_Applications" "Windows Applications" Title Top
 
 DestroyMenu MenuDevelopment
 AddToMenu MenuDevelopment
++ "%/usr/lib/wingide6/resources/linux/wing32.xpm%&Wing Pro 6.0" Exec exec wing6.0
++ "%clion.svg:24x24%CLion C/C++" Exec exec clion.sh
 + "%code.svg:24x24%Visual Studio Code" Exec exec code
 + "%gedit.svg:24x24%Open a New Document" Exec exec gedit --new-document
 + "%apps/devhelp.png%Devhelp" Exec exec devhelp

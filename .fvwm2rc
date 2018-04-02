@@ -599,9 +599,16 @@ DestroyModuleConfig FvwmProxy: *
 
 # FvwmIdent is an xwininfo replacement.
 DestroyModuleConfig FvwmIdent: *
-*FvwmIdent: Back MidnightBlue
-*FvwmIdent: Fore #f6f6f6
-*FvwmIdent: Font "xft:snap"
+*FvwmIdent: Colorset 8
+*FvwmIdent: Font "$[infostore.font_sans]"
+
+# Default form settings
+*FvwmFormDefault: Colorset 8
+*FvwmFormDefault: ItemColorset 10
+*FvwmFormDefault: Font "$[infostore.font_sans]"
+*FvwmFormDefault: InputFont "$[infostore.font_mono]"
+*FvwmFormDefault: ButtonFont "$[infostore.font_sans]"
+*FvwmFormDefault: TimeoutFont "$[infostore.font_sans]"
 
 # FvwmScroll swallows applications into smaller containers, sometimes handy.
 DestroyModuleConfig FvwmScroll: *
@@ -620,7 +627,7 @@ DestroyModuleConfig FvwmEvent: *
 # Menus
 #################
 MenuStyle * Hilight3DThin, PopupOffset 0 100, PopupDelay 300, TitleWarpOff
-MenuStyle * TitleUnderlines2, SeparatorsLong, TrianglesSolid, Animation
+MenuStyle * TitleUnderlines2, SeparatorsLong, Animation
 MenuStyle * BorderWidth 2
 MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
 MenuStyle * ItemFormat "%|%5.5i%1.3l%2.3>%|"
