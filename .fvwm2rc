@@ -564,20 +564,20 @@ PipeRead 'echo *FvwmLowerLeft: ButtonGeometry   $[infostore.fvwm_buttons_width]x
 *FvwmLowerLeft: Frame 1
 *FvwmLowerLeft: ActiveColorset 8
 *FvwmLowerLeft: Colorset 10
+*FvwmLowerLeft(1x4, Swallow(NoClose,UseOld,NoHints,Respawn) "bubblemon" \
+                    `Exec exec bubblemon`, \
+                    Action (Mouse 1) \
+                    `Exec exec gnome-system-monitor`, \
+                    Action (Mouse 3) \
+                    `Exec exec xload -bg rgb:48/46/44 -fg white -update 3`, \
+                    Padding 12 2)
 *FvwmLowerLeft(1x4, Swallow (NoClose,UseOld) "wmhdplop" `Exec exec \
-              wmhdplop -t -d /dev/sda -d /dev/sdb -d /dev/sdc -d /dev/sdd`, \
+                    wmhdplop -t -d /dev/sda -d /dev/sdb -d /dev/sdc -d /dev/sdd`, \
                     Padding 12 4, \
                     Action (Mouse 1) \
                     `Exec exec baobab`, \
                     Action (Mouse 3) \
                     `Exec exec gnome-disks`)
-*FvwmLowerLeft(1x4, Swallow(UseOld,NoHints,Respawn) "wmcpu" \
-                    `Exec exec wmcpu -l`, \
-                    Action (Mouse 1) \
-                    `Exec exec xload -bg rgb:48/46/44 -fg white -update 3`, \
-                    Action (Mouse 3) \
-                    `Exec exec gnome-system-monitor`, \
-                    Padding 12 2)
 
 #####
 # Module configurations
