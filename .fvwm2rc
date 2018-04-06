@@ -473,6 +473,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
                   Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
                   Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title Crossover, Icon "crossover.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
+*FvwmButtons(1x4, Title Email, Icon "email.svg:24x24", Action 'Exec "Email" mailspring &')
 *FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:24x24", Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(1x4, Title Home, Icon "folderhome.svg:24x24", Action 'Exec "Nemo" nemo &')
 *FvwmButtons(1x4, Title Terminal, Icon "terminator.svg:24x24", \
@@ -487,7 +488,6 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
                   Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title Gitg, Icon "github.svg:24x24", Action 'Exec "Gitg" gitg &')
 *FvwmButtons(1x4, Title Dia, Icon "dia.svg:24x24", Action 'Exec "Dia" dia &')
-*FvwmButtons(1x4, Title Images, Icon "shotwell.svg:24x24", Action 'Exec "Eyes of Gnome" eog &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
 
 # Icon Manager

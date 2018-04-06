@@ -140,6 +140,7 @@ AddToMenu MenuNetwork
 + "%chromium-browser.svg:24x24%Chromium Browser" Exec exec chromium-browser
 + "%firefox.svg:24x24%Firefox" Exec exec firefox
 + "%firefox.svg:24x24%Open a New Private Window in Firefox" Exec exec firefox -private-window
++ "%email.svg:24x24%Mailspring Email Client" Exec exec mailspring
 + "%email.svg:24x24%Geary Email Client" Exec exec geary
 + "%transmission.svg:24x24%Start Transmission Minimized" Exec exec transmission-gtk --minimized
 + "%apps/xchat.png%XChat IRC" Exec exec sh -c xchat --existing --url
