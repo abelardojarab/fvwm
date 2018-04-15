@@ -69,7 +69,6 @@ AddToMenu   "/Debian/Windows_Applications" "Windows Applications" Title Top
 + "&EndNote%crossover.svg:24x24%" Popup "/Debian/Windows_Applications/EndNote"
 + "&MathType 6%crossover.svg:24x24%" Popup "/Debian/Windows_Applications/MathType_6"
 + "Microsoft &Office%crossover.svg:24x24%" Popup "/Debian/Windows_Applications/Microsoft_Office"
-+ "&SharePoint%crossover.svg:24x24%" Popup "/Debian/Windows_Applications/SharePoint"
 
 DestroyMenu MenuDevelopment
 AddToMenu MenuDevelopment
