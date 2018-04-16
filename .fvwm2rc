@@ -715,8 +715,7 @@ AddToFunc   FuncLockScreen
 
 DestroyMenu MenuFvwmModules
 AddToMenu MenuFvwmModules
-+ "%xpms/mini.fvwm.xpm%Banner"                  Module                     FvwmBanner
-+ "%xpms/mini.desktop.xpm%Expose"               Module                     FvwmExpose
++ "%xpms/mini.fvwm.xpm%FVWM Modules"            Popup                      "/Debian/FVWM_Modules"
 + "%xpms/mini.xterm.xpm%Quake-style Console"    Module                     StartHiddenConsole
 + ""                                            Nop
 + "%xpms/mini.exit.xpm%Stop modules"            Popup                      MenuFvwmStopModule
@@ -724,6 +723,44 @@ AddToMenu MenuFvwmModules
 DestroyMenu MenuFvwmStopModule
 AddToMenu MenuFvwmStopModule
 + "%xpms/mini.xterm.xpm%Stop Quake-style Console"   KillModule             StartHiddenConsole
+
+DestroyMenu "/Debian/FVWM_Modules"
+AddToMenu   "/Debian/FVWM_Modules" "FVWM Modules" Title Top
++ "&FvwmAnimate" Module FvwmAnimate
++ "Fvw&mAnimate menu"  Popup MenuFvwmAnimate
++ "Fvwm&Auto" Module FvwmAuto 300 raise lower
++ "Fvwm&Backer" Module FvwmBacker
++ "FvwmBa&nner" Module FvwmBanner
++ "FvwmB&uttons" Module FvwmButtons
++ "FvwmButtons (&Debian)" Module FvwmButtons DebianFvwmButtons
++ "Fvwm&CommandS" Module FvwmCommandS
++ "FvwmC&onsole" Module FvwmConsole
++ "FvwmCpp" Module FvwmCpp
++ "FvwmDebug" Module FvwmDebug
++ "FvwmDragWell" Module FvwmDragWell
++ "Fvwm&Event" Module FvwmEvent
++ "FvwmForm" Module FvwmForm
++ "Fvwm&Gtk" Module FvwmGtk
++ "Fvwm&IconBox" Module FvwmIconBox
++ "FvwmIconMan" Module FvwmIconMan
++ "FvwmIdent" Module FvwmIdent
++ "FvwmM&4" Module FvwmM4
++ "Fvwm&Pager" Module FvwmPager 0 0
++ "FvwmPro&xy" Module FvwmProxy
++ "Fvwm&Rearrange (cascade)" Module FvwmRearrange -cascade
++ "FvwmRearrange (&horiz)" Module FvwmRearrange -tile -h
++ "F&vwmRearrange (vert)" Module FvwmRearrange -tile
++ "Fvwm&Save" Module FvwmSave
++ "FvwmSaveDesk" Module FvwmSaveDesk
++ "FvwmScript" Module FvwmScript
++ "FvwmScroll" Module FvwmScroll
++ "Fvwm&Talk" Module FvwmTalk
++ "FvwmTas&kBar" Module FvwmTaskBar
++ "FvwmTheme" Module FvwmTheme
++ "FvwmTile" Module FvwmTile
++ "Fvwm&Wharf" Module FvwmWharf
++ "FvwmWindowMenu" Module FvwmWindowMenu
++ "FvwmWin&List" Module FvwmWinList
 
 DestroyMenu MenuPageList
 AddToMenu MenuPageList

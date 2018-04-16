@@ -51,17 +51,17 @@ AddToMenu   "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010
 
 DestroyMenu "/Debian/Windows_Applications/Microsoft_Office"
 AddToMenu   "/Debian/Windows_Applications/Microsoft_Office" "Microsoft Office" Title Top
-+ "&Microsoft Access 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/CE2A_accicons.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Access+2010.lnk"
-+ "Microsoft &Excel 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/284C_xlicons.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Excel+2010.lnk"
-+ "Microsoft &InfoPath Designer 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/825D_inficon.3.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Designer+2010.lnk"
-+ "Microsoft InfoPath &Filler 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/825D_inficon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Filler+2010.lnk"
++ "&Microsoft Access 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/2306_accicons.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Access+2010.lnk"
++ "Microsoft &Excel 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/C521_xlicons.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Excel+2010.lnk"
++ "Microsoft &InfoPath Designer 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/6F30_inficon.3.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Designer+2010.lnk"
++ "Microsoft InfoPath &Filler 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/6F30_inficon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Filler+2010.lnk"
 + "Microsoft &Office 2010 Tools%crossover.svg:32x32%" Popup "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools"
-+ "Microsoft OneNote &2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/A3D7_joticon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+OneNote+2010.lnk"
-+ "Mi&crosoft Outlook 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/DAE7_outicon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Outlook+2010.lnk"
-+ "Microsoft &PowerPoint 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/1CE1_pptico.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+PowerPoint+2010.lnk"
-+ "Mic&rosoft Publisher 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/31FC_pubs.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Publisher+2010.lnk"
-+ "Microsoft &SharePoint Workspace 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/7F63_grvicons.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+SharePoint+Workspace+2010.lnk"
-+ "Microsoft &Word 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/0575_wordicon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Word+2010.lnk"
++ "Microsoft OneNote &2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/4EBA_joticon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+OneNote+2010.lnk"
++ "Mi&crosoft Outlook 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/378A_outicon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Outlook+2010.lnk"
++ "Microsoft &PowerPoint 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/B08C_pptico.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+PowerPoint+2010.lnk"
++ "Mic&rosoft Publisher 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/616D_pubs.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Publisher+2010.lnk"
++ "Microsoft &SharePoint Workspace 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/924F_grvicons.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+SharePoint+Workspace+2010.lnk"
++ "Microsoft &Word 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/E859_wordicon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Word+2010.lnk"
 
 DestroyMenu "/Debian/Windows_Applications"
 AddToMenu   "/Debian/Windows_Applications" "Windows Applications" Title Top
@@ -233,6 +233,7 @@ AddToMenu MenuUtilities
 + "%apps/shutter.png%Capture the current active window " Exec exec shutter --active
 + "%gcalculator.svg:24x24%Calculator" Exec exec gnome-calculator
 + "%apps/disk-save-as.png%Startup Disk Creator" Exec exec usb-creator-gtk
++ "%/usr/share/pixmaps/gparted.xpm%&GNOME partition editor" Exec exec su-to-root -X -c /usr/sbin/gparted
 
 # The following settings are interpreted by EMACS, do not remove them.
 # Local Variables:
