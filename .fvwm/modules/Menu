@@ -224,6 +224,8 @@ DestroyMenu MenuUtilities
 AddToMenu MenuUtilities
 + "%cloud-icon.svg:24x24%VMWare Workstation" Exec exec vmware
 + "%virt-manager.svg:24x24%Virtual Machine Manager" Exec exec virt-manager -c qemu+ssh://localhost/system
++ "%kitematic.svg:24x24%Kitematic" Exec exec kitematic
++ "%dockstation.svg:24x24%Dockstation" Exec exec dockstation
 + "%systemmonitor.svg:24x24%GNOME System Monitor" Exec exec gnome-system-monitor
 + "%accessibility.svg:24x24%Screen Reader" Exec exec orca --replace
 + "%folderhome.svg:24x24%File Manager PCManFM" Exec exec pcmanfm
