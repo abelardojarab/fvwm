@@ -185,6 +185,7 @@ AddToMenu MenuSystem
 + "%bleachbit.svg:24x24%System Cleaner BleachBit" Exec exec bleachbit
 + "%bleachbit.svg:24x24%BleachBit (as root)" Exec exec su-to-root -X -c bleachbit
 + "%systemmonitor.svg:24x24%Activity Log Manager" Exec exec activity-log-manager
++ "%systemmonitor.svg:24x24%DBus Services" Exec exec d-feet
 + "%apps/network.png%Networks..."                       Popup                      MenuNetworkSettings
 + "Printers...%apps/printer.png%"                       Popup                      MenuPrinterSettings
 + "Software...%ubuntusoftwarecenter.svg:24x24%"         Popup                      MenuSWSettings
