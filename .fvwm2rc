@@ -331,8 +331,8 @@ Style "plank"                 !Title, !Handles, StaysOnTop, Sticky, NeverFocus, 
 Style "gkrellm"               !Title, !Handles, StaysOnTop, Sticky, NeverFocus, WindowListSkip, FixedPosition
 Style "trayer"                !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
 Style "stalonetray"           !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
-Style "google-chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
-Style "Google Chrome*"        !Title, FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
+Style "google-chrome*"        FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
+Style "Google Chrome*"        FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
 Style "*hromium-browser*"     FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "chromium-browser.svg:16x16"
 Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "gnome-calculator"      MiniIcon "gcalculator.svg:24x24", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
@@ -356,8 +356,11 @@ Style "realvnc*"              MiniIcon vncviewer.png
 Style "VNC Viewer"            MiniIcon vncviewer.png
 Style "Vmware*"               MiniIcon vmware.png
 Style "Virtual*"              MiniIcon "virt-manager.svg:16x16"
+Style "dockstation*"          MiniIcon "dockstation.svg:16x16"
+Style "kitematic*"            MiniIcon "dockstation.svg:16x16"
 Style "zeal"                  MiniIcon zeal.png
 Style "atom"                  MiniIcon atom.png
+Style "Typora"                MiniIcon "uberwriter.svg:16x16"
 Style "filezilla"             MiniIcon "filezilla.svg:16x16"
 Style "Gitg"                  MiniIcon "github.svg:16x16"
 Style "dia"                   MiniIcon "dia.svg:16x16"
@@ -368,6 +371,7 @@ Style "gnome-terminal"        MiniIcon "terminal.svg:16x16"
 Style "xfce4-terminal"        MiniIcon "terminal.svg:16x16"
 Style "termin*"               MiniIcon "terminal.svg:16x16"
 Style "xterm"                 MiniIcon "terminal.svg:16x16"
+Style "urxvt*"                MiniIcon "terminal.svg:16x16"
 Style "Pidgin*"               MiniIcon "pidgin.svg:16x16"
 Style "Acrobat*"              MiniIcon "acroread.svg:16x16"
 Style "Adobe*"                MiniIcon "acroread.svg:16x16"
@@ -473,7 +477,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
                   Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
                   Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title Crossover, Icon "crossover.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
-*FvwmButtons(1x4, Title Email, Icon "email.svg:24x24", Action 'Exec "Email" mailspring &')
+*FvwmButtons(1x4, Title Docker, Icon "dockstation.svg:24x24", Action 'Exec "Dockstation" dockstation &')
 *FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:24x24", Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(1x4, Title Home, Icon "folderhome.svg:24x24", Action 'Exec "Nemo" nemo &')
 *FvwmButtons(1x4, Title Terminal, Icon "terminator.svg:24x24", \

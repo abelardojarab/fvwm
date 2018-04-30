@@ -231,6 +231,7 @@ AddToMenu MenuUtilities
 + "%accessibility.svg:24x24%Screen Reader" Exec exec orca --replace
 + "%folderhome.svg:24x24%File Manager PCManFM" Exec exec pcmanfm
 + "%apps/xterm.png%XTerm" Exec exec xterm
++ "%apps/xterm.png%URxvt" Exec exec urxvt
 + "%terminator.svg:24x24%Tilix" Exec exec tilix
 + "%text.svg:24x24%Character Map" Exec exec gucharmap
 + "%apps/shutter.png%Capture the current active window " Exec exec shutter --active
