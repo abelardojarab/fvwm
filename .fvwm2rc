@@ -44,7 +44,7 @@ InfoStoreAdd fvwm_taskbar_height 28
 # fvwm buttons dimensions
 InfoStoreAdd fvwm_buttons_rows 66
 PipeRead 'echo InfoStoreAdd fvwm_buttons_height $(($[vp.height]/$[infostore.fvwm_buttons_rows]))'
-InfoStoreAdd fvwm_buttons_width 80
+InfoStoreAdd fvwm_buttons_width 70
 
 # Default applications
 InfoStoreAdd default_terminal tilix
@@ -450,6 +450,83 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmPager: Label 2 "2: CAD"
 *FvwmPager: Label 3 "3: Other"
 
+#####
+# FvwmDock Styles
+###########
+Style FvwmDock* Sticky, NoTitle, NoHandles, BorderWidth 0, WindowListSkip, \
+        CirculateSkip
+Style FvwmDock-* StaysOnBottom, FixedPosition, FixedSize
+Style FvwmDockA* StaysOnTop, FixedSize
+
+################
+#
+# ButtonDock Functions. These collection of functions create
+#   single icon buttons that cause the button to hover above
+#   everything when the mouse is moved atop of it.  To get these
+#   to work it should only take copying all the five functions
+#   CreateDock, EnterHandler, LeaveHandler, RestoreButton
+#   and CreateActiveButton.  Then call the function 'CreateDock'
+#   for each button on the dock bar. The function works as follows:
+#
+# CreateDock '$0' '$1' '$2' '$3' '$4' '$5' '$6' '$7' '$8' '$9'
+#   $0 -> ButtonId
+#   $1 -> Geometry
+#   $2 -> Icon
+#   $3 -> LargeIcon
+#   $4 -> X offset (from upper left hand corner)
+#   $5 -> Y offset (from upper left hand corner)
+#   $6 -> action for Mouse 1
+#   $7 -> action for Mouse 2
+#   $8 -> action for Mouse 3
+#   $9 -> Size of LargeIcon
+#
+###################################
+DestroyFunc CreateDock
+AddToFunc CreateDock
++ I DestroyModuleConfig FvwmDock-$0: *
++ I *FvwmDock-$0: Geometry $1
++ I *FvwmDock-$0: Font none
++ I *FvwmDock-$0: Colorset 9
++ I *FvwmDock-$0: Frame 0
++ I *FvwmDock-$0: Padding 0 0
++ I *FvwmDock-$0: (Id D$0, Icon $2)
++ I Module FvwmButtons FvwmDock-$0
++ I AddToFunc StartFunction I Module FvwmAuto 100 -menter 'EnterHandler $0 "$2" $3 $4 $5 $6 $7 $8 $9' 'LeaveHandler $0 $2'
+
+DestroyFunc EnterHandler
+AddToFunc EnterHandler
++ I ThisWindow (FvwmDock-$0) ThisWindow (!FvwmDock-*) Deschedule 35
++ I ThisWindow (FvwmDock-$0) WindowId $[last_winid] (FvwmDockA$0) Deschedule 35
++ I ThisWindow (FvwmDockA$0) Deschedule 45
++ I ThisWindow (FvwmDock-$0) SendToModule FvwmDock-$0 ChangeButton D$0 Icon "shadow.png"
++ I ThisWindow (FvwmDock-$0) CreateActiveButton $0 '$1' $2 $3 $4 $5 $6 $7 $8
+
+# Delay ms should be longer than delay in FvwmAuto
+DestroyFunc LeaveHandler
+AddToFunc LeaveHandler
++ I ThisWindow SetEnv last_winid $[w.id]
++ I ThisWindow (FvwmDockA$0) Schedule 110 35 RestoreButton $0 $1
++ I ThisWindow (FvwmDock-$0) Schedule 110 45 RestoreButton $0 $1
+
+DestroyFunc RestoreButton
+AddToFunc RestoreButton
++ I SendToModule FvwmDock-$0 ChangeButton D$0 Icon $1
++ I KillModule FvwmButtons FvwmDockA$0
+
+DestroyFunc CreateActiveButton
+AddToFunc CreateActiveButton
++ I DestroyModuleConfig FvwmDockA$0: *
++ I *FvwmDockA$0: Pixmap none
++ I *FvwmDockA$0: BoxSize fixed
++ I *FvwmDockA$0: Frame 0
++ I *FvwmDockA$0: Font none
++ I *FvwmDockA$0: Padding 0 0
++ I *FvwmDockA$0: Rows 1
++ I *FvwmDockA$0: Columns 1
++ I ThisWindow PipeRead `echo *FvwmDockA$0: Geometry $8+$(($[w.x]$3))+$(($[w.y]$4))`
++ I *FvwmDockA$0: (Icon $2, Action(Mouse 1) '$5', Action(Mouse 2) '$6', Action(Mouse 3) '$7')
++ I Module FvwmButtons FvwmDockA$0
+
 # Set up the geometry so that the buttons stack vertically on the left.
 *FvwmButtons: Font  "$[infostore.font_sans]:Small"
 PipeRead 'echo *FvwmButtons: Geometry         $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]x$[infostore.fvwm_buttons_rows]))+0+0'
@@ -470,9 +547,9 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
                   Action (Mouse 1) \
                   `Exec exec xterm -g 80x20 -n Fvwm-Calendar -T Fvwm-Calendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;gcalcli agenda | head -20; sleep 600; done'`,\
                   ActiveColorset 8)
-*FvwmButtons(1x4, Title Start, Icon "starthereubuntu.svg:24x24", \
-                  Action (Mouse 1) "Menu MenuFvwmRoot Rectangle +82+$top 0 -100m", \
-                  Action (Mouse 3) All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail)
+*FvwmButtons(1x4, Title Start, Icon 'starthereubuntu.svg:24x24', \
+                  Action (Mouse 1) 'Menu MenuFvwmRoot Rectangle +70+$top 0 -100m', \
+                  Action (Mouse 3) All (AcceptsFocus CurrentPage !'xdaliclock' !Iconic !Shaded) Thumbnail)
 *FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:24x24", \
                   Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
                   Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
