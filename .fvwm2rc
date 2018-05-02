@@ -2,6 +2,7 @@
 
 SetEnv fvwm_cache $[HOME]/.fvwm.cache
 SetEnv fvwm_userdir $[HOME]/.fvwm
+SetEnv fvwm_images $[fvwm_userdir]/images
 SetEnv fvwm_wallpaper $[fvwm_userdir]/images/wallpapers/vladstudio_library_1920x1440_signed.png
 Setenv fvwm_colors $[HOME]/.fvwm/images/colors
 ModulePath $[fvwm_userdir]:$[fvwm_userdir]/modules:+
@@ -308,7 +309,7 @@ Style * FPClickRaisesFocused
 Style * FPEnterToFocus
 
 # Window behavior
-Style * UseDecor MyDecoration
+Style * UseDecor DefaultDecor
 Style * Colorset 3, HilightColorset 4
 Style * DecorateTransient, NakedTransient
 Style * Font "$[infostore.font_mono]"
@@ -487,7 +488,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmButtons: Font  "$[infostore.font_sans]:Small"
 PipeRead 'echo *FvwmButtons: Geometry         $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]x$[infostore.fvwm_buttons_rows]))+0+0'
 PipeRead 'echo *FvwmButtons: ButtonGeometry   $[infostore.fvwm_buttons_width]x$[infostore.fvwm_buttons_height]'
-*FvwmButtons: Colorset 15
+*FvwmButtons: Colorset 10
 *FvwmButtons: ActiveColorset 8
 *FvwmButtons: PressColorset 8
 *FvwmButtons: BoxSize smart
@@ -611,7 +612,7 @@ PipeRead 'echo *FvwmLowerLeft: ButtonGeometry   $[infostore.fvwm_buttons_width]x
 *FvwmLowerLeft: Rows 8
 *FvwmLowerLeft: BoxSize fixed
 *FvwmLowerLeft: Frame 1
-*FvwmLowerLeft: Colorset 15
+*FvwmLowerLeft: Colorset 10
 *FvwmLowerLeft: ActiveColorset 8
 *FvwmLowerLeft: PressColorset 8
 *FvwmLowerLeft(1x4, Swallow(NoClose,UseOld,NoHints,Respawn) "bubblemon" \
@@ -911,44 +912,31 @@ AddToMenu MenuPageList
 #   @3 Foreground (fg)
 #   @4 Invisible (just move the pointer, dont draw anything)
 
-DestroyDecor MyDecoration
-AddToDecor   MyDecoration
-+ TitleStyle -- Flat
-+ TitleStyle Centered Height 26
-+ TitleStyle InActive (Colorset 2 -- Flat )
-+ TitleStyle Active (Colorset 1 -- Flat)
-# + BorderStyle -- Flat HiddenHandles NoInset
-+ ButtonStyle All -- UseTitleStyle Flat
-+ ButtonStyle All InActive (Colorset 10 -- Flat) -- HiddenHandles
-+ ButtonStyle All Active (Colorset 8 -- Flat) -- HiddenHandles)
-+ ButtonStyle All ActiveDown (Colorset 8 -- Flat) -- HiddenHandles)
-+ ButtonStyle All InActiveDown (Colorset 8 -- Flat) -- HiddenHandles)
-+ ButtonStyle All ToggledActiveDown (Colorset 8 -- Flat) -- HiddenHandles)
-+ ButtonStyle All ToggledInActiveDown (Colorset 10 -- Flat) -- HiddenHandles)
-+ ButtonStyle 1 ActiveUp Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 \
-  -- Flat UseTitleStyle
-+ ButtonStyle 1 ActiveDown Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 \
-  -- Flat UseTitleStyle
-+ ButtonStyle 1 Inactive Vector 4 30x30@3 60x60@3 60x30@4 30x60@3 \
-  -- Flat UseTitleStyle
-+ ButtonStyle 4 ActiveUp Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
-  -- Flat UseTitleStyle
-+ ButtonStyle 4 ActiveDown Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
-  -- Flat UseTitleStyle
-+ ButtonStyle 4 Inactive Vector 5 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
-  -- Flat UseTitleStyle
+DestroyDecor DefaultDecor
+AddToDecor   DefaultDecor
++ TitleStyle Centered Height 23
++ TitleStyle InActive ( Colorset 2 -- Flat ) 
++ TitleStyle Active ( Colorset 1 -- Flat )
++ AddTitleStyle Active ( TiledPixmap $[fvwm_images]/deco/title.png -- Flat )
++ AddTitleStyle Inactive ( TiledPixmap $[fvwm_images]/deco/title.png -- Flat )
++ ButtonStyle All InActive ( Colorset 10 -- Flat )
++ ButtonStyle All Active ( Colorset 4 -- Flat )
++ ButtonStyle  1 ActiveUp TiledPixmap $[fvwm_images]/deco/close-active.png -- Flat
++ ButtonStyle  1 ActiveDown TiledPixmap $[fvwm_images]/deco/close-pressed.png -- Flat
++ ButtonStyle  1 Inactive TiledPixmap $[fvwm_images]/deco/close-inactive.png -- Flat
++ ButtonStyle  2 ActiveUp TiledPixmap $[fvwm_images]/deco/max-active.png -- Flat
++ ButtonStyle  2 ActiveDown TiledPixmap $[fvwm_images]/deco/max-pressed.png -- Flat
++ ButtonStyle  2 Inactive TiledPixmap $[fvwm_images]/deco/max-inactive.png -- Flat
++ ButtonStyle  4 ActiveUp TiledPixmap $[fvwm_images]/deco/min-active.png -- Flat
++ ButtonStyle  4 ActiveDown TiledPixmap $[fvwm_images]/deco/min-pressed.png -- Flat
++ ButtonStyle  4 Inactive TiledPixmap $[fvwm_images]/deco/min-inactive.png -- Flat
 + ButtonStyle 3 ActiveUp Vector 2 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
   -- Flat UseTitleStyle
 + ButtonStyle 3 ActiveDown Vector 2 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
   -- Flat UseTitleStyle
 + ButtonStyle 3 Inactive Vector 2 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
   -- Flat UseTitleStyle
-+ ButtonStyle 2 ActiveUp Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 \
-  -- Flat UseTitleStyle
-+ ButtonStyle 2 ActiveDown Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 \
-  -- Flat UseTitleStyle
-+ ButtonStyle 2 Inactive Vector 7 30x30@3 30x60@3 60x60@3 60x30@3 30x30@3 30x35@3 60x35@3 \
-  -- Flat UseTitleStyle
+
 
 #####
 # Re-define our own functions
