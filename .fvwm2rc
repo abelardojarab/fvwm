@@ -3,7 +3,7 @@
 SetEnv fvwm_cache $[HOME]/.fvwm.cache
 SetEnv fvwm_userdir $[HOME]/.fvwm
 SetEnv fvwm_wallpaper $[fvwm_userdir]/images/wallpapers/vladstudio_library_1920x1440_signed.png
-Setenv fvwm_colors $[HOME]/.fvwm/images/icons/colors
+Setenv fvwm_colors $[HOME]/.fvwm/images/colors
 ModulePath $[fvwm_userdir]:$[fvwm_userdir]/modules:+
 
 #######
@@ -16,8 +16,9 @@ ImagePath +:$[fvwm_userdir]/images/scalable
 ImagePath +:$[fvwm_userdir]/images/scalable/apps
 ImagePath +:$[fvwm_userdir]/images/icons
 ImagePath +:$[fvwm_userdir]/images/icons/apps
-ImagePath +:$[fvwm_userdir]/images/icons/tiles
-ImagePath +:$[fvwm_userdir]/images/icons/xpms
+ImagePath +:$[fvwm_userdir]/images/tiles
+ImagePath +:$[fvwm_userdir]/images/xpms
+ImagePath +:$[fvwm_userdir]/images/workspaces
 ImagePath +:$[fvwm_cache]
 IconPath  $[fvwm_userdir]/images/scalable/apps
 
@@ -146,6 +147,12 @@ Colorset 12 fg #fffff9, bg #484644, RootTransparent buffer, Tint #484644 98
 Colorset 13 pixmap tile_gray.png
 # Transparent colorset
 Colorset 14 fg Black, NoShape, RootTransparent buffer, tint white 20
+# Rounded dock
+Colorset 15 RootTransparent, fg rgb:00/00/00, bg average, \
+  Tint white 40, bgTint white 40, RootTransparent, \
+  Shape dock-mask.xpm
+Colorset 16 RootTransparent, fg rgb:00/00/00, bg average, \
+  Tint white 40, bgTint white 40, RootTransparent
 
 #####
 # OpaqueMoveSize allows you to stop Large windows from being moved opaquely,
@@ -399,14 +406,30 @@ Style "FvwmConky"             BorderWidth 0, WindowListSkip, NeverFocus, NoHandl
 # AutoHiding Console
 Style "HiddenConsole"         Sticky, WindowListSkip, Notitle, StaysOnTop, !Handles, FixedSize, FixedPosition
 
-# An FvwmButtons-based Taskbar
+###########################################################
+# Bottom Bar
+###########################################################
+
+DestroyModuleConfig BottomBar
+*BottomBar: Geometry 1366x34+0-10
+*BottomBar: Columns 1
+*BottomBar: Rows 1
+*BottomBar: Padding 0 0
+*BottomBar: Frame 0
+*BottomBar: Colorset 5
+*BottomBar: (1x1, Swallow "bmpanel" 'Exec bmpanel2 --theme=transpy')
+
+###########################################################
+# FvwmButtons-based Top Taskbar
+###########################################################
+
 DestroyModuleConfig FvwmShelf: *
 PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_buttons_width]))x$[infostore.fvwm_taskbar_height]-0+0'
 *FvwmShelf: Font "$[infostore.font_sans]"
 *FvwmShelf: Columns 50
 *FvwmShelf: Rows 1
 *FvwmShelf: BoxSize smart
-*FvwmShelf: Colorset 10
+*FvwmShelf: Colorset 8
 *FvwmShelf: ActiveColorset 8
 *FvwmShelf: Frame 1
 *FvwmShelf: Padding 1 1
@@ -415,13 +438,17 @@ PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_butt
                 Action (Mouse 1) \
                 `Exec exec xterm -g 80x20 -n Fvwm-Calendar -T Fvwm-Calendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
                 Action (Mouse 3) \
-                `Exec exec xclock -bg rgb:48/46/44 -fg white`,)
+                `Exec exec xclock -bg rgb:48/46/44 -fg white`)
+# *FvwmShelf(Size 31x1, Swallow "bmpanel" 'Exec bmpanel2')
 *FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
                 `FvwmIconMan`)
-#*FvwmShelf(Size 6x1, Frame 0, Swallow (Kill, Respawn, UseOld) "Trayer" \
+# *FvwmShelf(Size 6x1, Frame 0, Swallow (Kill, Respawn, UseOld) "Trayer" \
 #                `Exec exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --alpha 20 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right &`)
 
-# A little control panel for switching desks.
+###########################################################
+# Top panel for switching desks
+###########################################################
+
 DestroyModuleConfig FvwmDeskControl: *
 *FvwmDeskControl: Font "$[infostore.font_mono]"
 *FvwmDeskControl: Columns 3
@@ -433,7 +460,10 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmDeskControl: (1x1, Title ">", Action(Mouse 1) GotoDesk 1)
 *FvwmDeskControl: (1x1, Id desk, Title "$[desk.n]", Action(Mouse 1) `Next (CirculateHit, DeskControl) PipeRead 'echo LockingSlide keep $$(test $[w.y] -lt 0 && echo 0 || echo w-$$(($[w.height]-$height))p)'`)
 
+###########################################################
 # Main desk-switching panel
+###########################################################
+
 *FvwmPager: Font "$[infostore.font_mono]"
 *FvwmPager: SmallFont "$[infostore.font_sans]:Small"
 *FvwmPager: Colorset * 0
@@ -450,13 +480,154 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmPager: Label 2 "2: CAD"
 *FvwmPager: Label 3 "3: Other"
 
-#####
-# FvwmDock Styles
-###########
-Style FvwmDock* Sticky, NoTitle, NoHandles, BorderWidth 0, WindowListSkip, \
-        CirculateSkip
-Style FvwmDock-* StaysOnBottom, FixedPosition, FixedSize
-Style FvwmDockA* StaysOnTop, FixedSize
+###########################################################
+# Left-aligned dock bar
+###########################################################
+
+*FvwmButtons: Font  "$[infostore.font_sans]:Small"
+PipeRead 'echo *FvwmButtons: Geometry         $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]x$[infostore.fvwm_buttons_rows]))+0+0'
+PipeRead 'echo *FvwmButtons: ButtonGeometry   $[infostore.fvwm_buttons_width]x$[infostore.fvwm_buttons_height]'
+*FvwmButtons: Colorset 15
+*FvwmButtons: ActiveColorset 8
+*FvwmButtons: PressColorset 8
+*FvwmButtons: BoxSize smart
+PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
+*FvwmButtons: Columns 1
+*FvwmButtons: Frame 0
+*FvwmButtons(1x6, Swallow "FvwmPager" 'FvwmPager *')
+*FvwmButtons(1x4, Swallow (NoClose,UseOld) "wmcalclock" \
+                  `Exec exec wmcalclock`, \
+                  Padding 6 2, \
+                  Action (Mouse 3) \
+                  `Exec exec orage`, \
+                  Action (Mouse 1) \
+                  `Exec exec xterm -g 80x20 -n Fvwm-Calendar -T Fvwm-Calendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;gcalcli agenda | head -20; sleep 600; done'`,\
+                  ActiveColorset 8)
+*FvwmButtons(1x4, Title Start, Icon 'starthereubuntu.svg:24x24', \
+                  Action (Mouse 1) 'Menu MenuFvwmRoot Rectangle +70+$top 0 -100m', \
+                  Action (Mouse 3) All (AcceptsFocus CurrentPage !'xdaliclock' !Iconic !Shaded) Thumbnail)
+*FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:24x24", \
+                  Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
+                  Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
+*FvwmButtons(1x4, Title Crossover, Icon "crossover.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
+*FvwmButtons(1x4, Title Docker, Icon "dockstation.svg:24x24", Action 'Exec "Dockstation" dockstation &')
+*FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:24x24", Action 'Exec "Pidgin" pidgin &')
+*FvwmButtons(1x4, Title Home, Icon "folderhome.svg:24x24", Action 'Exec "Nemo" nemo &')
+*FvwmButtons(1x4, Title Terminal, Icon "terminator.svg:24x24", \
+                  Action (Mouse 1) 'Exec "Tilix" tilix &', \
+                  Action (Mouse 3) `WindowList (Tilix) NoGeometry, \
+                  NoCurrentDeskTitle`)
+*FvwmButtons(1x4, Title Emacs, Icon "emacs.svg:24x24", \
+                  Action (Mouse 1) 'Exec "Emacs" emacs &', \
+                  Action (Mouse 3) `WindowList (Emacs) NoGeometry, NoCurrentDeskTitle`)
+*FvwmButtons(1x4, Title VNC, Icon "imac-icon.svg:24x24", \
+                  Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
+                  Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
+*FvwmButtons(1x4, Title Gitg, Icon "github.svg:24x24", Action 'Exec "Gitg" gitg &')
+*FvwmButtons(1x4, Title Dia, Icon "dia.svg:24x24", Action 'Exec "Dia" dia &')
+*FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
+
+###########################################################
+# Icon Manager
+###########################################################
+
+DestroyModuleConfig FvwmIconMan: *
+*FvwmIconMan: Font "$[infostore.font_mono]"
+*FvwmIconMan: ManagerGeometry 1x1
+*FvwmIconMan: ButtonGeometry 300x28
+*FvwmIconMan: MaxButtonWidth 300
+*FvwmIconMan: FocusAndSelectButton down
+*FvwmIconMan: FocusButton down
+*FvwmIconMan: IconButton up
+*FvwmIconMan: PlainButton up
+*FvwmIconMan: SelectButton down
+*FvwmIconMan: Action Mouse 0 N sendcommand Nop
+*FvwmIconMan: Action Mouse 2 N sendcommand Thumbnail
+*FvwmIconMan: Action Mouse 1 N sendcommand "Iconify off", sendcommand RaiseLower, sendcommand FlipFocus
+*FvwmIconMan: Action Mouse 3 N sendcommand "Menu Window-Ops Rectangle +$left+$top 0 -100m"
+*FvwmIconMan: ReliefThickness 2
+*FvwmIconMan: Colorset 12
+*FvwmIconMan: FocusAndSelectColorset 8
+*FvwmIconMan: FocusColorset 8
+*FvwmIconMan: Resolution Page
+*FvwmIconMan: DrawIcons Always
+*FvwmIconMan: FollowFocus True
+*FvwmIconMan: UseWinList True
+*FvwmIconMan: ShowOnlyIcons False
+*FvwmIconMan: Title ""
+*FvwmIconMan: Sort id
+
+###########################################################
+# Task bar (not used)
+###########################################################
+
+DestroyModuleConfig FvwmTaskBar: *
+*FvwmTaskBar: Geometry +0-0
+*FvwmTaskBar: Rows 1
+*FvwmTaskBar: AutoStick
+*FvwmTaskBar: UseSkipList
+*FvwmTaskBar: PageOnly
+*FvwmTaskBar: ShowTips
+*FvwmTaskBar: NoBrightFocus
+*FvwmTaskBar: 3DFvwm
+*FvwmTaskBar: ClockFormat %T [%d/%m/%y]
+*FvwmTaskBar: WindowButtonsRightMargin 124
+*FvwmTaskBar: Font "$[infostore.font_mono]"
+*FvwmTaskBar: SelFont "$[infostore.font_mono]"
+*FvwmTaskBar: StatusFont "$[infostore.font_mono]"
+*FvwmTaskBar: TipsBack bisque
+*FvwmTaskBar: TipsFore black
+*FvwmTaskBar: Colorset 10
+*FvwmTaskBar: FocusColorset 11
+*FvwmTaskBar: UseIconNames
+*FvwmTaskBar: StartName Start
+*FvwmTaskBar: StartMenu MenuFvwmRoot mouse c -100m -60p
+*FvwmTaskBar: MailCheck 0
+
+###########################################################
+# Conky screenlet window
+###########################################################
+
+DestroyModuleConfig FvwmConky: *
+PipeRead 'echo *FvwmConky: Geometry         1x$(($[vp.height]/1))-0+0'
+PipeRead 'echo *FvwmConky: ButtonGeometry   1x$(($[vp.height]/4))'
+*FvwmConky: Columns 1
+*FvwmConky: Rows 2
+*FvwmConky: Padding 0 0
+*FvwmConky: BoxSize smart
+*FvwmConky: Frame 0
+*FvwmConky: Colorset 14
+*FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
+                 `Exec exec conky &`)
+
+###########################################################
+# LowerLeft dock
+###########################################################
+
+DestroyModuleConfig FvwmLowerLeft: *
+PipeRead 'echo *FvwmLowerLeft: Geometry         $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]*8+16))'
+PipeRead 'echo *FvwmLowerLeft: ButtonGeometry   $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]*4+2))'
+*FvwmLowerLeft: Columns 1
+*FvwmLowerLeft: Rows 8
+*FvwmLowerLeft: BoxSize fixed
+*FvwmLowerLeft: Frame 1
+*FvwmLowerLeft: Colorset 15
+*FvwmLowerLeft: ActiveColorset 8
+*FvwmLowerLeft: PressColorset 8
+*FvwmLowerLeft(1x4, Swallow(NoClose,UseOld,NoHints,Respawn) "bubblemon" \
+                    `Exec exec bubblemon`, \
+                    Action (Mouse 1) \
+                    `Exec exec gnome-system-monitor`, \
+                    Action (Mouse 3) \
+                    `Exec exec xload -bg rgb:48/46/44 -fg white -update 3`, \
+                    Padding 6 4)
+*FvwmLowerLeft(1x4, Swallow (NoClose,UseOld) "wmhdplop" `Exec exec \
+                    wmhdplop -t -d /dev/sda -d /dev/sdb -d /dev/sdc -d /dev/sdd`, \
+                    Padding 6 4, \
+                    Action (Mouse 1) \
+                    `Exec exec baobab`, \
+                    Action (Mouse 3) \
+                    `Exec exec gnome-disks`)
 
 ################
 #
@@ -526,139 +697,6 @@ AddToFunc CreateActiveButton
 + I ThisWindow PipeRead `echo *FvwmDockA$0: Geometry $8+$(($[w.x]$3))+$(($[w.y]$4))`
 + I *FvwmDockA$0: (Icon $2, Action(Mouse 1) '$5', Action(Mouse 2) '$6', Action(Mouse 3) '$7')
 + I Module FvwmButtons FvwmDockA$0
-
-# Set up the geometry so that the buttons stack vertically on the left.
-*FvwmButtons: Font  "$[infostore.font_sans]:Small"
-PipeRead 'echo *FvwmButtons: Geometry         $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]x$[infostore.fvwm_buttons_rows]))+0+0'
-PipeRead 'echo *FvwmButtons: ButtonGeometry   $[infostore.fvwm_buttons_width]x$[infostore.fvwm_buttons_height]'
-*FvwmButtons: Colorset 10
-*FvwmButtons: ActiveColorset 8
-*FvwmButtons: PressColorset 8
-*FvwmButtons: BoxSize smart
-PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
-*FvwmButtons: Columns 1
-*FvwmButtons: Frame 1
-*FvwmButtons(1x6, Swallow "FvwmPager" 'FvwmPager *')
-*FvwmButtons(1x4, Swallow (NoClose,UseOld) "wmcalclock" \
-                  `Exec exec wmcalclock`, \
-                  Padding 6 0, \
-                  Action (Mouse 3) \
-                  `Exec exec orage`, \
-                  Action (Mouse 1) \
-                  `Exec exec xterm -g 80x20 -n Fvwm-Calendar -T Fvwm-Calendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;gcalcli agenda | head -20; sleep 600; done'`,\
-                  ActiveColorset 8)
-*FvwmButtons(1x4, Title Start, Icon 'starthereubuntu.svg:24x24', \
-                  Action (Mouse 1) 'Menu MenuFvwmRoot Rectangle +70+$top 0 -100m', \
-                  Action (Mouse 3) All (AcceptsFocus CurrentPage !'xdaliclock' !Iconic !Shaded) Thumbnail)
-*FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:24x24", \
-                  Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
-                  Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title Crossover, Icon "crossover.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
-*FvwmButtons(1x4, Title Docker, Icon "dockstation.svg:24x24", Action 'Exec "Dockstation" dockstation &')
-*FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:24x24", Action 'Exec "Pidgin" pidgin &')
-*FvwmButtons(1x4, Title Home, Icon "folderhome.svg:24x24", Action 'Exec "Nemo" nemo &')
-*FvwmButtons(1x4, Title Terminal, Icon "terminator.svg:24x24", \
-                  Action (Mouse 1) 'Exec "Tilix" tilix &', \
-                  Action (Mouse 3) `WindowList (Tilix) NoGeometry, \
-                  NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title Emacs, Icon "emacs.svg:24x24", \
-                  Action (Mouse 1) 'Exec "Emacs" emacs &', \
-                  Action (Mouse 3) `WindowList (Emacs) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title VNC, Icon "imac-icon.svg:24x24", \
-                  Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
-                  Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title Gitg, Icon "github.svg:24x24", Action 'Exec "Gitg" gitg &')
-*FvwmButtons(1x4, Title Dia, Icon "dia.svg:24x24", Action 'Exec "Dia" dia &')
-*FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
-
-# Icon Manager
-DestroyModuleConfig FvwmIconMan: *
-*FvwmIconMan: Font "$[infostore.font_mono]"
-*FvwmIconMan: ManagerGeometry 1x1
-*FvwmIconMan: ButtonGeometry 300x28
-*FvwmIconMan: MaxButtonWidth 300
-*FvwmIconMan: FocusAndSelectButton down
-*FvwmIconMan: FocusButton down
-*FvwmIconMan: IconButton up
-*FvwmIconMan: PlainButton up
-*FvwmIconMan: SelectButton down
-*FvwmIconMan: Action Mouse 0 N sendcommand Nop
-*FvwmIconMan: Action Mouse 2 N sendcommand Thumbnail
-*FvwmIconMan: Action Mouse 1 N sendcommand "Iconify off", sendcommand RaiseLower, sendcommand FlipFocus
-*FvwmIconMan: Action Mouse 3 N sendcommand "Menu Window-Ops Rectangle +$left+$top 0 -100m"
-*FvwmIconMan: ReliefThickness 2
-*FvwmIconMan: Colorset 12
-*FvwmIconMan: FocusAndSelectColorset 8
-*FvwmIconMan: FocusColorset 8
-*FvwmIconMan: Resolution Page
-*FvwmIconMan: DrawIcons Always
-*FvwmIconMan: FollowFocus True
-*FvwmIconMan: UseWinList True
-*FvwmIconMan: ShowOnlyIcons False
-*FvwmIconMan: Title ""
-*FvwmIconMan: Sort id
-
-# Task bar
-DestroyModuleConfig FvwmTaskBar: *
-*FvwmTaskBar: Geometry +0-0
-*FvwmTaskBar: Rows 1
-*FvwmTaskBar: AutoStick
-*FvwmTaskBar: UseSkipList
-*FvwmTaskBar: PageOnly
-*FvwmTaskBar: ShowTips
-*FvwmTaskBar: NoBrightFocus
-*FvwmTaskBar: 3DFvwm
-*FvwmTaskBar: ClockFormat %T [%d/%m/%y]
-*FvwmTaskBar: WindowButtonsRightMargin 124
-*FvwmTaskBar: Font "$[infostore.font_mono]"
-*FvwmTaskBar: SelFont "$[infostore.font_mono]"
-*FvwmTaskBar: StatusFont "$[infostore.font_mono]"
-*FvwmTaskBar: TipsBack bisque
-*FvwmTaskBar: TipsFore black
-*FvwmTaskBar: Colorset 10
-*FvwmTaskBar: FocusColorset 11
-*FvwmTaskBar: UseIconNames
-*FvwmTaskBar: StartName Start
-*FvwmTaskBar: StartMenu MenuFvwmRoot mouse c -100m -60p
-*FvwmTaskBar: MailCheck 0
-
-# Conky
-DestroyModuleConfig FvwmConky: *
-PipeRead 'echo *FvwmConky: Geometry         1x$(($[vp.height]/1))-0+0'
-PipeRead 'echo *FvwmConky: ButtonGeometry   1x$(($[vp.height]/4))'
-*FvwmConky: Columns 1
-*FvwmConky: Rows 2
-*FvwmConky: Padding 0 0
-*FvwmConky: BoxSize smart
-*FvwmConky: Frame 0
-*FvwmConky: Colorset 14
-*FvwmConky: (1x1, Swallow (NoClose, Respawn, UseOld) "Conky" \
-                 `Exec exec conky &`)
-
-# LowerLeft dock
-DestroyModuleConfig FvwmLowerLeft: *
-PipeRead 'echo *FvwmLowerLeft: Geometry         $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]*8+16))'
-PipeRead 'echo *FvwmLowerLeft: ButtonGeometry   $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]*4+2))'
-*FvwmLowerLeft: Columns 1
-*FvwmLowerLeft: Rows 8
-*FvwmLowerLeft: BoxSize fixed
-*FvwmLowerLeft: Frame 1
-*FvwmLowerLeft: ActiveColorset 8
-*FvwmLowerLeft: Colorset 10
-*FvwmLowerLeft(1x4, Swallow(NoClose,UseOld,NoHints,Respawn) "bubblemon" \
-                    `Exec exec bubblemon`, \
-                    Action (Mouse 1) \
-                    `Exec exec gnome-system-monitor`, \
-                    Action (Mouse 3) \
-                    `Exec exec xload -bg rgb:48/46/44 -fg white -update 3`, \
-                    Padding 12 2)
-*FvwmLowerLeft(1x4, Swallow (NoClose,UseOld) "wmhdplop" `Exec exec \
-                    wmhdplop -t -d /dev/sda -d /dev/sdb -d /dev/sdc -d /dev/sdd`, \
-                    Padding 12 4, \
-                    Action (Mouse 1) \
-                    `Exec exec baobab`, \
-                    Action (Mouse 3) \
-                    `Exec exec gnome-disks`)
 
 #####
 # Module configurations
