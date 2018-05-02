@@ -705,11 +705,12 @@ AddToFunc CreateActiveButton
 # Animations are controlled by this module
 # You could also use Frame, Lines, Turn, Twist, Random and None
 DestroyModuleConfig FvwmAnimate: *
-*FvwmAnimate: Effect Flip
-*FvwmAnimate: Delay 1
-*FvwmAnimate: Iterations 30
-*FvwmAnimate: Twist 1
-*FvwmAnimate: Width 2
+*FvwmAnimate: Effect Twist
+*FvwmAnimate: Iterations 32
+*FvwmAnimate: Width 4
+*FvwmAnimate: Twist 2.000000
+*FvwmAnimate: Delay 10
+*FvwmAnimate: Color wheat
 
 # FvwmProxy allows to see all windows
 DestroyModuleConfig FvwmProxy: *
@@ -1198,6 +1199,7 @@ DestroyFunc TileFunc
 AddToFunc TileFunc
 + I Function ClearTileStatesFunc
 + I State $0 True
++ I AnimatedMove 5p 38p Warp
 + I ResizeMoveMaximize Frame $1 $2 $3 $4
 + I Current (State 10) Maximize True 100 -1p ewmhiwa
 
@@ -1223,6 +1225,7 @@ DestroyFunc TileLeftFunc
 AddToFunc TileLeftFunc
 # if not tiled, tile left
 + I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 4 48wa 98wa 0 0
++ I Maximize True 50 100
 + I TestRc (Match) Break
 # if tiled bottom-left, then tile left
 + I Current (State 1) Function TileFunc 4 48wa 98wa 0 0
@@ -1267,6 +1270,8 @@ DestroyFunc TileRightFunc
 AddToFunc TileRightFunc
 # if not tiled, tile right
 + I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 6 48wa 98wa 50 0
++ I Maximize True 50 100
++ I AnimatedMove 50 65p Warp
 + I TestRc (Match) Break
 # if tiled bottom-left, tile to bottom
 + I Current (State 1) Function TileFunc 2 98wa 48wa 0 50
@@ -1730,14 +1735,23 @@ Key F10      A       M      Maximize-func
 # Key Bindings: ctrl-arrow tile windows, alt-arrow moves windows
 #################
 #   Keyname Context  Modifi Function
-Key Left     A       C      TileLeftFunc
-Key Right    A       C      TileRightFunc
-Key Up       A       C      TileUpFunc
-Key Down     A       C      TileDownFunc
-Key Left     A       M      MoveLeft
-Key Right    A       M      MoveRight
-Key Up       A       M      MoveUp
-Key Down     A       M      MoveDown
+Key Left        A       C      ThisWindow (!Iconic, !Shaded) TileLeftFunc
+Key Right       A       C      ThisWindow (!Iconic, !Shaded) TileRightFunc
+Key Up          A       C      ThisWindow (!Iconic, !Shaded) TileUpFunc
+Key Down        A       C      ThisWindow (!Iconic, !Shaded) TileDownFunc
+Key Left        A       M      ThisWindow (!Iconic, !Shaded) MoveLeft
+Key Right       A       M      ThisWindow (!Iconic, !Shaded) MoveRight
+Key Up          A       M      ThisWindow (!Iconic, !Shaded) MoveUp
+Key Down        A       M      ThisWindow (!Iconic, !Shaded) MoveDown
+
+# Just push control and then the keypad numbers to make it work, makes things efficient
+Key KP_Down	W	C	ThisWindow (!Iconic, !Shaded) TileDownFunc
+Key KP_Left	W	C	ThisWindow (!Iconic, !Shaded) TileLeftFunc
+
+Key KP_Begin	W	C	ThisWindow (!Iconic, !Shaded) Maximize-func
+
+Key KP_Right	W	C	ThisWindow (!Iconic, !Shaded) TileRightFunc
+Key KP_Up	W	C	ThisWindow (!Iconic, !Shaded) TileUpFunc
 
 ######
 # Switch pages via keypad (no modifier)
