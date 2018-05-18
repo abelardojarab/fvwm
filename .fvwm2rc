@@ -370,6 +370,7 @@ Style "zeal"                  MiniIcon zeal.png
 Style "atom"                  MiniIcon atom.png
 Style "Typora"                MiniIcon "uberwriter.svg:16x16"
 Style "filezilla"             MiniIcon "filezilla.svg:16x16"
+Style "git-cola*"             MiniIcon "github.svg:16x16"
 Style "Gitg"                  MiniIcon "github.svg:16x16"
 Style "dia"                   MiniIcon "dia.svg:16x16"
 Style "Terminal"              MiniIcon "terminal.svg:16x16"
@@ -915,7 +916,7 @@ AddToMenu MenuPageList
 DestroyDecor DefaultDecor
 AddToDecor   DefaultDecor
 + TitleStyle Centered Height 23
-+ TitleStyle InActive ( Colorset 2 -- Flat ) 
++ TitleStyle InActive ( Colorset 2 -- Flat )
 + TitleStyle Active ( Colorset 1 -- Flat )
 + AddTitleStyle Active ( TiledPixmap $[fvwm_images]/deco/title.png -- Flat )
 + AddTitleStyle Inactive ( TiledPixmap $[fvwm_images]/deco/title.png -- Flat )
@@ -1187,7 +1188,6 @@ DestroyFunc TileFunc
 AddToFunc TileFunc
 + I Function ClearTileStatesFunc
 + I State $0 True
-+ I AnimatedMove 5p 38p Warp
 + I ResizeMoveMaximize Frame $1 $2 $3 $4
 + I Current (State 10) Maximize True 100 -1p ewmhiwa
 
@@ -1213,6 +1213,7 @@ DestroyFunc TileLeftFunc
 AddToFunc TileLeftFunc
 # if not tiled, tile left
 + I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 4 48wa 98wa 0 0
++ I AnimatedMove 5p 38p Warp
 + I Maximize True 50 100
 + I TestRc (Match) Break
 # if tiled bottom-left, then tile left
@@ -1258,8 +1259,8 @@ DestroyFunc TileRightFunc
 AddToFunc TileRightFunc
 # if not tiled, tile right
 + I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 6 48wa 98wa 50 0
-+ I Maximize True 50 100
 + I AnimatedMove 50 65p Warp
++ I Maximize True 50 100
 + I TestRc (Match) Break
 # if tiled bottom-left, tile to bottom
 + I Current (State 1) Function TileFunc 2 98wa 48wa 0 50
@@ -1303,7 +1304,7 @@ AddToFunc TileRightFunc
 DestroyFunc TileUpFunc
 AddToFunc TileUpFunc
 # if not tiled, tile up
-+ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 5 98wa 48wa 0 0
++ I Current (!State 1, !State 2, !State 3, !State 4, !State 5, !State 6, !State 7, !State 8, !State 9, !State 10) Function TileFunc 8 98wa 48wa 0 0
 + I TestRc (Match) Break
 # if tiled bottom-left, tile to left
 + I Current (State 1) Function TileFunc 4 48wa 98wa 0 0
@@ -1733,13 +1734,13 @@ Key Up          A       M      ThisWindow (!Iconic, !Shaded) MoveUp
 Key Down        A       M      ThisWindow (!Iconic, !Shaded) MoveDown
 
 # Just push control and then the keypad numbers to make it work, makes things efficient
-Key KP_Down	W	C	ThisWindow (!Iconic, !Shaded) TileDownFunc
-Key KP_Left	W	C	ThisWindow (!Iconic, !Shaded) TileLeftFunc
+Key KP_Down W   C   ThisWindow (!Iconic, !Shaded) TileDownFunc
+Key KP_Left W   C   ThisWindow (!Iconic, !Shaded) TileLeftFunc
 
-Key KP_Begin	W	C	ThisWindow (!Iconic, !Shaded) Maximize-func
+Key KP_Begin    W   C   ThisWindow (!Iconic, !Shaded) Maximize-func
 
-Key KP_Right	W	C	ThisWindow (!Iconic, !Shaded) TileRightFunc
-Key KP_Up	W	C	ThisWindow (!Iconic, !Shaded) TileUpFunc
+Key KP_Right    W   C   ThisWindow (!Iconic, !Shaded) TileRightFunc
+Key KP_Up   W   C   ThisWindow (!Iconic, !Shaded) TileUpFunc
 
 ######
 # Switch pages via keypad (no modifier)

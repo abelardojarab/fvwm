@@ -83,6 +83,7 @@ AddToMenu MenuDevelopment
 + "%apps/monodevelop.png%MonoDevelop" Exec exec monodevelop
 + "%eclipse.svg:24x24%Eclipse" Exec exec eclipse
 + "%apps/gitg.png%Gitg" Exec exec gitg
++ "%apps/gitg.png%Git Cola" Exec exec git-cola
 + "%emacs.svg:24x24%GNU Emacs 25" Exec exec emacs
 + "%apps/atom.png%Atom" Exec exec atom
 + "%sublime-text.svg:24x24%New File" Exec exec subl
