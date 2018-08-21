@@ -82,8 +82,8 @@ PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`
 
 # Fonts
 InfoStoreAdd fontsize  11
-InfoStoreAdd font_sans "xft:Aquabase:size=$[infostore.fontsize]:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Fira Mono:size=$[infostore.fontsize]:encoding=iso10646-1"
+InfoStoreAdd font_sans "xft:Iosevka:size=$[infostore.fontsize]:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Iosevka:size=$[infostore.fontsize]:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
@@ -511,7 +511,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:24x24", \
                   Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
                   Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title Crossover, Icon "crossover.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
+*FvwmButtons(1x4, Title CXOffice, Icon "crossover.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
 *FvwmButtons(1x4, Title Docker, Icon "dockstation.svg:24x24", Action 'Exec "Dockstation" dockstation &')
 *FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:24x24", Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(1x4, Title Home, Icon "folderhome.svg:24x24", Action 'Exec "Nemo" nemo &')
@@ -522,7 +522,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title Emacs, Icon "emacs.svg:24x24", \
                   Action (Mouse 1) 'Exec "Emacs" emacs &', \
                   Action (Mouse 3) `WindowList (Emacs) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title VNC, Icon "imac-icon.svg:24x24", \
+*FvwmButtons(1x4, Title VNC, Icon "vncviewer.svg:24x24", \
                   Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
                   Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title Gitg, Icon "github.svg:24x24", Action 'Exec "Gitg" gitg &')
