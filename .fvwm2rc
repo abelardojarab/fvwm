@@ -81,7 +81,7 @@ PipeRead "echo InfoStoreAdd hratio `perl -e 'printf \"%.2f\",($[vp.height]/540)'
 PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`"
 
 # Fonts
-InfoStoreAdd fontsize  11
+InfoStoreAdd fontsize  12
 InfoStoreAdd font_sans "xft:Iosevka:size=$[infostore.fontsize]:encoding=iso10646-1"
 InfoStoreAdd font_mono "xft:Iosevka:size=$[infostore.fontsize]:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
@@ -145,13 +145,12 @@ Colorset 11 fg #ffffff, bg #6d8d6d
 # Icon manager select colorset
 Colorset 12 fg #fffff9, bg #484644, RootTransparent buffer, Tint #484644 98
 # Pattern colorset
-Colorset 13 pixmap tile_gray.png
+Colorset 13 RootTransparent, fg average, NoShape, TiledPixmap tile_gray.png
 # Transparent colorset
 Colorset 14 fg Black, NoShape, RootTransparent buffer, tint white 20
 # Rounded dock
 Colorset 15 RootTransparent, fg rgb:00/00/00, bg average, \
-  Tint white 40, bgTint white 40, RootTransparent, \
-  Shape dock-mask.xpm
+  Tint white 40, bgTint white 40, Shape dock-mask.xpm
 Colorset 16 RootTransparent, fg rgb:00/00/00, bg average, \
   Tint white 40, bgTint white 40, RootTransparent
 
@@ -436,7 +435,7 @@ PipeRead 'echo *FvwmShelf: Geometry         $(($[vp.width]-$[infostore.fvwm_butt
 *FvwmShelf: Frame 1
 *FvwmShelf: Padding 1 1
 *FvwmShelf(Size 6x1, Swallow (NoKill, Respawn, UseOld) "XClock" \
-                `Exec xclock -digital -twentyfour -bg rgb:48/46/44 -fg white -padding 2 -strftime "   %H:%M %a %d %b %Y " &`, \
+                `Exec xclock -digital -face 'Iosevka:style=Regular:pixelsize=18' -twentyfour -bg rgb:48/46/44 -fg white -padding 1 -strftime "  %H:%M %a %d %b %Y " &`, \
                 Action (Mouse 1) \
                 `Exec exec xterm -g 80x20 -n Fvwm-Calendar -T Fvwm-Calendar -fg white -bg black -e 'echo Calendar; while [ 1 ]; do clear;calendar|head -10; sleep 600; done'`,\
                 Action (Mouse 3) \
@@ -511,11 +510,11 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:24x24", \
                   Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
                   Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title CXOffice, Icon "crossover.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
+*FvwmButtons(1x4, Title Wine, Icon "crossover.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
 *FvwmButtons(1x4, Title Docker, Icon "dockstation.svg:24x24", Action 'Exec "Dockstation" dockstation &')
 *FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:24x24", Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(1x4, Title Home, Icon "folderhome.svg:24x24", Action 'Exec "Nemo" nemo &')
-*FvwmButtons(1x4, Title Terminal, Icon "terminator.svg:24x24", \
+*FvwmButtons(1x4, Title XTerm, Icon "terminator.svg:24x24", \
                   Action (Mouse 1) 'Exec "Tilix" tilix &', \
                   Action (Mouse 3) `WindowList (Tilix) NoGeometry, \
                   NoCurrentDeskTitle`)
@@ -525,7 +524,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title VNC, Icon "vncviewer.svg:24x24", \
                   Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
                   Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title Gitg, Icon "github.svg:24x24", Action 'Exec "Gitg" gitg &')
+*FvwmButtons(1x4, Title Typora, Icon "uberwriter.svg:24x24", Action 'Exec "Typora" typora &')
 *FvwmButtons(1x4, Title Dia, Icon "dia.svg:24x24", Action 'Exec "Dia" dia &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
 

@@ -71,7 +71,7 @@ AddToMenu   "/Debian/Windows_Applications" "Windows Applications" Title Top
 + "Microsoft &Office%crossover.svg:24x24%" Popup "/Debian/Windows_Applications/Microsoft_Office"
 
 DestroyMenu MenuDevelopment
-AddToMenu MenuDevelopment
+AddToMenu MenuDevelopment "Development" Title Top
 + "%/usr/lib/wingide6/resources/linux/wing32.xpm%&Wing Pro 6.0" Exec exec wing6.0
 + "%clion.svg:24x24%CLion C/C++" Exec exec clion.sh
 + "%code.svg:24x24%Visual Studio Code" Exec exec code
@@ -82,7 +82,7 @@ AddToMenu MenuDevelopment
 + "%qt.svg:24x24%QDevelop" Exec exec qdevelop
 + "%apps/monodevelop.png%MonoDevelop" Exec exec monodevelop
 + "%eclipse.svg:24x24%Eclipse" Exec exec eclipse
-+ "%apps/gitg.png%Gitg" Exec exec gitg
++ "%github.svg:24x24%Gitg" Exec exec gitg
 + "%apps/gitg.png%Git Cola" Exec exec git-cola
 + "%emacs.svg:24x24%GNU Emacs 25" Exec exec emacs
 + "%apps/atom.png%Atom" Exec exec atom
@@ -92,13 +92,13 @@ AddToMenu MenuDevelopment
 + "%meld.svg:24x24%Meld" Exec exec meld
 
 DestroyMenu MenuGNOME
-AddToMenu MenuGNOME
+AddToMenu MenuGNOME "Gnome" Title Top
 + "%apps/gnome-sudoku.png%Sudoku" Exec exec gnome-sudoku
 + "%apps/gnome-mines.png%Big board" Exec exec gnome-mines --big
 + "%apps/gnome-aisleriot.png%AisleRiot Solitaire" Exec exec /usr/games/sol
 
 DestroyMenu MenuGames
-AddToMenu MenuGames
+AddToMenu MenuGames "Games" Title Top
 + "%steam.svg:24x24%Friends" Exec exec steam steam://open/friends
 + "%steam.svg:24x24%Kentucky Route Zero" Exec exec steam steam://rungameid/231200
 + "%apps/playonlinux.png%PlayOnLinux" Exec exec playonlinux
@@ -106,7 +106,7 @@ AddToMenu MenuGames
 + "%apps/scummvm.png%ScummVM" Exec exec scummvm
 
 DestroyMenu MenuGraphics
-AddToMenu MenuGraphics
+AddToMenu MenuGraphics "Graphics" Title Top
 + "%apps/xsane.png%XSane Image scanning program " Exec exec xsane
 + "%apps/shutter.png%Screenshots" Exec exec shutter
 + "%shotwell.svg:24x24%Shotwell" Exec exec shotwell
@@ -118,7 +118,7 @@ AddToMenu MenuGraphics
 + "%gpick.svg:24x24%Gpick Color Sampler" Exec exec gpick
 
 DestroyMenu MenuMultimedia
-AddToMenu MenuMultimedia
+AddToMenu MenuMultimedia "Multimedia" Title Top
 + "%openshot.svg:24x24%OpenShot Video Editor" Exec exec openshot
 + "%/usr/share/nero/images/appicons/nero-icon-24.png%&Nero Linux" Exec exec nero
 + "%/usr/share/nero/images/appicons/neroexpress-icon-24.png%Nero &Linux Express" Exec exec neroexpress
@@ -135,7 +135,7 @@ AddToMenu MenuMultimedia
 + "%apps/filebot.png%Filebot" Exec exec filebot
 
 DestroyMenu MenuNetwork
-AddToMenu MenuNetwork
+AddToMenu MenuNetwork "Network" Title Top
 + "%google-chrome.svg:24x24%Google Chrome" Exec exec google-chrome
 + "%chromium-browser.svg:24x24%Chromium Browser" Exec exec chromium-browser
 + "%firefox.svg:24x24%Firefox" Exec exec firefox
@@ -152,7 +152,7 @@ AddToMenu MenuNetwork
 + "%apps/wireshark.png%Wireshark" Exec exec wireshark
 
 DestroyMenu MenuProductivity
-AddToMenu MenuProductivity
+AddToMenu MenuProductivity "Productivity" Title Top
 + "%uberwriter.svg:24x24%Typora" Exec exec typora
 + "%apps/abiword.png%Abiword" Exec exec abiword
 + "%apps/gnumeric.png%Gnumeric" Exec exec gnumeric
