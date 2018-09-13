@@ -5,7 +5,7 @@
 #############################################################################
 
 DestroyMenu MenuFvwmRoot
-AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@"
+AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@" "Applications" Title Top
 + "%google-chrome.svg:24x24%Google Chrome" Exec exec google-chrome
 + "%terminal.svg:24x24%New Terminal" Exec exec xterm
 + "%desktop.svg:24x24%Show Desktop" All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail
@@ -153,7 +153,7 @@ AddToMenu MenuNetwork "Network" Title Top
 
 DestroyMenu MenuProductivity
 AddToMenu MenuProductivity "Productivity" Title Top
-+ "%uberwriter.svg:24x24%Typora" Exec exec typora
++ "%typora.svg:24x24%Typora" Exec exec typora
 + "%apps/abiword.png%Abiword" Exec exec abiword
 + "%apps/gnumeric.png%Gnumeric" Exec exec gnumeric
 + "%texmaker.svg:24x24%Texmaker" Exec exec texmaker
@@ -167,14 +167,14 @@ AddToMenu MenuProductivity "Productivity" Title Top
 + "%apps/libreoffice-impress.png%New Presentation" Exec exec libreoffice --impress
 
 DestroyMenu MenuScience
-AddToMenu MenuScience
+AddToMenu MenuScience "Science" Title Top
 + "%octave-logo.svg:24x24%GNU Octave" Exec exec octave --force-gui
 + "%apps/rkward.png%RKWard" Exec exec rkward -caption "%c"
 + "%apps/rstudio.png%RStudio" Exec exec rstudio
 + "%apps/r-logo.png%R" Exec exec R
 
 DestroyMenu MenuSystem
-AddToMenu MenuSystem
+AddToMenu MenuSystem "System" Title Top
 + "%preferences-display.svg:24x24%Display Settings" Exec exec arandr
 + "%preferences-sound.svg:24x24%PulseAudio Settings" Exec exec pavucontrol
 + "%preferences-equalizer.svg:24x24%PulseAudio Equalizer" Exec exec pulseaudio-equalizer-gtk
@@ -223,7 +223,7 @@ AddToMenu MenuGNOMESettings
 + "%apps/gnome-tweak-tool.png%GNOME Tweak Tool" Exec exec gnome-tweak-tool
 
 DestroyMenu MenuUtilities
-AddToMenu MenuUtilities
+AddToMenu MenuUtilities "Utilities" Title Top
 + "%cloud-icon.svg:24x24%VMWare Workstation" Exec exec vmware
 + "%virt-manager.svg:24x24%Virtual Machine Manager" Exec exec virt-manager -c qemu+ssh://localhost/system
 + "%kitematic.svg:24x24%Kitematic" Exec exec kitematic

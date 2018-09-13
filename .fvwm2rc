@@ -367,7 +367,7 @@ Style "dockstation*"          MiniIcon "dockstation.svg:16x16"
 Style "kitematic*"            MiniIcon "dockstation.svg:16x16"
 Style "zeal"                  MiniIcon zeal.png
 Style "atom"                  MiniIcon atom.png
-Style "Typora"                MiniIcon "uberwriter.svg:16x16"
+Style "Typora"                MiniIcon "typora.svg:16x16"
 Style "filezilla"             MiniIcon "filezilla.svg:16x16"
 Style "git-cola*"             MiniIcon "github.svg:16x16"
 Style "Gitg"                  MiniIcon "github.svg:16x16"
@@ -524,7 +524,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title VNC, Icon "vncviewer.svg:24x24", \
                   Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
                   Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title Typora, Icon "uberwriter.svg:24x24", Action 'Exec "Typora" typora &')
+*FvwmButtons(1x4, Title Typora, Icon "typora.svg:24x24", Action 'Exec "Typora" typora &')
 *FvwmButtons(1x4, Title Dia, Icon "dia.svg:24x24", Action 'Exec "Dia" dia &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
 
@@ -545,7 +545,7 @@ DestroyModuleConfig FvwmIconMan: *
 *FvwmIconMan: Action Mouse 0 N sendcommand Nop
 *FvwmIconMan: Action Mouse 2 N sendcommand Thumbnail
 *FvwmIconMan: Action Mouse 1 N sendcommand "Iconify off", sendcommand RaiseLower, sendcommand FlipFocus
-*FvwmIconMan: Action Mouse 3 N sendcommand "Menu Window-Ops Rectangle +$left+$top 0 -100m"
+*FvwmIconMan: Action Mouse 3 N sendcommand "Menu Window-Ops Rectangle $left+$top 0 -100m"
 *FvwmIconMan: ReliefThickness 2
 *FvwmIconMan: Colorset 12
 *FvwmIconMan: FocusAndSelectColorset 8
@@ -747,7 +747,7 @@ DestroyModuleConfig FvwmEvent: *
 ######
 # Menus
 #################
-MenuStyle * Hilight3DThin, PopupOffset 0 100, PopupDelay 300, TitleWarpOff
+MenuStyle * PopupOffset 0 100, PopupDelay 300, TitleWarpOff
 MenuStyle * TitleUnderlines2, SeparatorsLong, Animation
 MenuStyle * BorderWidth 2
 MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
