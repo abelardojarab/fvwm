@@ -147,7 +147,7 @@ Colorset 12 fg #fffff9, bg #484644, RootTransparent buffer, Tint #484644 98
 # Pattern colorset
 Colorset 13 RootTransparent, fg average, NoShape, TiledPixmap tile_gray.png
 # Transparent colorset
-Colorset 14 fg Black, NoShape, RootTransparent buffer, tint white 20
+Colorset 14 fg Black, NoShape, RootTransparent buffer, Tint white 20
 # Rounded dock
 Colorset 15 RootTransparent, fg rgb:00/00/00, bg average, \
   Tint white 40, bgTint white 40, Shape dock-mask.xpm
@@ -255,7 +255,7 @@ Style * EWMHUseStackingOrderHints, !EWMHDonateIcon, \
 # The WindowShadeSteps option selects the number of steps for animation
 # when shading a window with WindowShade.
 #################
-Style * WindowShadeSteps 20, WindowShadeScrolls
+Style * WindowShadeSteps 120, WindowShadeShrinks, WindowShadeLazy
 
 #######
 # NoPPosition instructs fvwm to ignore the PPosition field in window geometry hints.
@@ -283,6 +283,7 @@ Style * ClickToFocus
 Style * RaiseTransient
 Style * LowerTransient
 Style * StackTransientParent
+Style * ParentalRelativity
 
 #######
 # FP-related functions
@@ -315,6 +316,7 @@ Style * Font "$[infostore.font_mono]"
 Style * HandleWidth 3, BorderWidth 2
 Style * BackingStore, SaveUnder
 Style * EWMHMiniIconOverride
+Style * RoundedCorners, BorderUnderTitle
 
 # Comment these lines if you dont like Icons to have Titles.
 Style * StickyIcon
@@ -353,20 +355,20 @@ Style "gimp"                  MiniIcon "gimp.svg:16x16"
 Style "inkscape"              MiniIcon "inkscape.svg:16x16"
 Style "emacs*"                MiniIcon "emacs.svg:16x16"
 Style "Code*"                 MiniIcon "code.svg:16x16"
-Style "evince"                MiniIcon evince.png
+Style "evince"                MiniIcon "evince.svg:16x16"
 Style "subl"                  MiniIcon "sublime-text.svg:16x16"
 Style "sublime_text"          MiniIcon "sublime-text.svg:16x16"
-Style "devhelp"               MiniIcon devhelp.png
-Style "umbrello"              MiniIcon umbrello.png
-Style "vncviewer"             MiniIcon vncviewer.png
-Style "realvnc*"              MiniIcon vncviewer.png
-Style "VNC Viewer"            MiniIcon vncviewer.png
-Style "Vmware*"               MiniIcon vmware.png
+Style "devhelp"               MiniIcon "devhelp.svg:16x16"
+Style "umbrello"              MiniIcon "umbrello.svg:16x16"
+Style "vncviewer"             MiniIcon "vncviewer.svg:16x16"
+Style "realvnc*"              MiniIcon "vncviewer.svg:16x16"
+Style "VNC Viewer"            MiniIcon "vncviewer.svg:16x16"
+Style "Vmware*"               MiniIcon "vmware.svg:16x16"
 Style "Virtual*"              MiniIcon "virt-manager.svg:16x16"
 Style "dockstation*"          MiniIcon "dockstation.svg:16x16"
 Style "kitematic*"            MiniIcon "dockstation.svg:16x16"
-Style "zeal"                  MiniIcon zeal.png
-Style "atom"                  MiniIcon atom.png
+Style "zeal"                  MiniIcon "zeal.svg:16x16"
+Style "atom"                  MiniIcon "atom.svg:16x16"
 Style "Typora"                MiniIcon "typora.svg:16x16"
 Style "filezilla"             MiniIcon "filezilla.svg:16x16"
 Style "git-cola*"             MiniIcon "github.svg:16x16"
@@ -706,12 +708,11 @@ AddToFunc CreateActiveButton
 # Animations are controlled by this module
 # You could also use Frame, Lines, Turn, Twist, Random and None
 DestroyModuleConfig FvwmAnimate: *
-*FvwmAnimate: Effect Twist
-*FvwmAnimate: Iterations 32
-*FvwmAnimate: Width 4
-*FvwmAnimate: Twist 2.000000
-*FvwmAnimate: Delay 10
-*FvwmAnimate: Color wheat
+*FvwmAnimate: Effect frame
+*FvwmAnimate: Iterations 200
+*FvwmAnimate: Width 1
+*FvwmAnimate: Delay 3
+*FvwmAnimate: Color white
 
 # FvwmProxy allows to see all windows
 DestroyModuleConfig FvwmProxy: *
