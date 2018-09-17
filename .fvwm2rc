@@ -763,8 +763,10 @@ DestroyModuleConfig FvwmEvent: *
 # Menus
 #################
 MenuStyle * PopupOffset 0 100, PopupDelay 300, TitleWarpOff
-MenuStyle * TitleUnderlines2, SeparatorsLong, Animation
+MenuStyle * TitleUnderlines2, SeparatorsLong, Animation, FlatSeparators
 MenuStyle * BorderWidth 2
+MenuStyle * TrianglesUseFore, TrianglesSolid
+MenuStyle * VerticalTitleSpacing 0 0, VerticalItemSpacing 2 1
 MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
 MenuStyle * ItemFormat "%|%5.5i%1.3l%2.3>%|"
 MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
