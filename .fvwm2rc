@@ -8,6 +8,19 @@ Setenv fvwm_colors $[HOME]/.fvwm/images/colors
 ModulePath $[fvwm_userdir]:$[fvwm_userdir]/modules:+
 
 #######
+# Preferred applications
+#################
+
+SetEnv fvwm_browser chromium-browser
+SetEnv fvwm_terminal tilix
+SetEnv fvwm_editor "emacs -nw"
+SetEnv fvwm_mail "xterm -e mutt"
+SetEnv fvwm_player "xterm -e vlc"
+SetEnv fvwm_filemanager pcmanfm
+SetEnv fvwm_image_viewer feh
+SetEnv fvwm_runner gmrun
+
+#######
 # The default ImagePath for icons is:
 # /usr/include/X11/bitmap:/usr/include/X11/pixmaps
 #################
@@ -47,11 +60,6 @@ InfoStoreAdd fvwm_taskbar_height 28
 InfoStoreAdd fvwm_buttons_rows 66
 PipeRead 'echo InfoStoreAdd fvwm_buttons_height $(($[vp.height]/$[infostore.fvwm_buttons_rows]))'
 InfoStoreAdd fvwm_buttons_width 70
-
-# Default applications
-InfoStoreAdd default_terminal tilix
-InfoStoreAdd default_browser chromium-browser
-InfoStoreAdd default_file_manager chromium-browser
 
 # Adjust ratio to calculate resolution dependant things
 PipeRead "echo InfoStoreAdd aspect_ratio `perl -e 'printf \"%.2f\",$[vp.width]/$[vp.height]'`"
@@ -118,37 +126,39 @@ ColormapFocus FollowsFocus
 # Colorsets
 #################
 
-# Line separator on pager
+# 0 = Line separator on pager
+# 1 = Active window decoration (buttons)
+# 2 = Inactive window decoration (buttons)
+# 3 = Default window colorset (border)
+# 4 = Active window colorset (border)
+# 5 = Icon background colorset, balloon colorset
+# 6 = Available
+# 7 = Available
+# 8 = Balloon windows colorset; active selections
+# 9 = Balloon tooltip colorset
+# 10 = Buttons, menu, icon manager background colorset
+# 11 = Selection colorset for Menu
+# 12 = Selection colorset for Icon Manager
+# 13 = Pattern colorset
+# 14 = Transparent colorset
+# 15 = Rounded dock
+# 16 = Rounded dock
+
 Colorset 0 fg white, bg #3b3c37, fgsh #f9f9f9, hi #8f8f8f, sh #454545
-# Active window decoration (buttons)
 Colorset 1 bg #3b3c37, fg #ffffff, fgsh #f9f9f9, hi #fbfbfb, sh #171717, Tint #3b3c37 20
-# Inactive window decoration (buttons)
 Colorset 2 bg #3b3c37, fg #d1d2d7, fgsh #f9f9f9, hi #8f8f8f, sh #454545, Tint #3b3c37 60
-# Default window colorset (border)
 Colorset 3 fg #999999, bg #3b3c37, fgsh #a0a0a0
-# Active window colorset (border)
 Colorset 4 fg #f0f0f0, bg #3b3c37, fgsh #a4a4a4
-# Icon background colorset, balloon colorset
 Colorset 5 fg white, bg #a6a6a6, fgsh #3b3c37, RootTransparent
-# Available
 Colorset 6 fg #9a875f, bg #fa875f
-# Available
 Colorset 7 fg #9a875f, bg #181512
-# Balloon windows colorset; active selections
 Colorset 8 fg white, bg #332d29
-# Balloon tooltip colorset
 Colorset 9 fg white, bg #332d29, Plain
-# Buttons, menu, icon manager background colorset
 Colorset 10 fg #fffff9, bg #484644
-# Menu selection colorset
 Colorset 11 fg #ffffff, bg #6d8d6d
-# Icon manager select colorset
 Colorset 12 fg #fffff9, bg #484644, RootTransparent buffer, Tint #484644 98
-# Pattern colorset
 Colorset 13 RootTransparent, fg average, NoShape, TiledPixmap tile_gray.png
-# Transparent colorset
 Colorset 14 fg Black, NoShape, RootTransparent buffer, Tint white 20
-# Rounded dock
 Colorset 15 RootTransparent, fg rgb:00/00/00, bg average, \
   Tint white 40, bgTint white 40, Shape dock-mask.xpm
 Colorset 16 RootTransparent, fg rgb:00/00/00, bg average, \
@@ -317,6 +327,10 @@ Style * HandleWidth 3, BorderWidth 2
 Style * BackingStore, SaveUnder
 Style * EWMHMiniIconOverride
 Style * RoundedCorners, BorderUnderTitle
+
+# Indexed window names to make sure
+# each window name is unique
+Style * IndexedWindowName
 
 # Comment these lines if you dont like Icons to have Titles.
 Style * StickyIcon
@@ -937,7 +951,9 @@ AddToDecor   DefaultDecor
   -- Flat UseTitleStyle
 + ButtonStyle 3 Inactive Vector 2 30x60@3 60x60@3 60x50@3 30x50@3 30x60@3 \
   -- Flat UseTitleStyle
-
++ TitleStyle -- Flat
++ BorderStyle Simple -- NoInset Flat
++ ButtonStyle All -- UseTitleStyle
 
 #####
 # Re-define our own functions
@@ -1139,12 +1155,8 @@ AddToFunc FvwmExpose
 #################
 DestroyFunc TransparencyChangeFocus
 AddToFunc TransparencyChangeFocus
-# + I Next (!Focused) Exec exec transset -i $[w.id] 0.5
 + I Next (!Focused) PipeRead "(echo -n nofocused; xwininfo -id $[w.id] | grep '^xwininfo') >> /tmp/log"
-# + I Prev (Focused) Exec exec transset -i $[w.id] 1
 + I Prev (Focused) PipeRead "(echo -n focused; xwininfo -id $[w.id] | grep '^xwininfo') >> /tmp/log"
-# + I Next (!Focused) Echo 'lose $[w.id]'
-# + I Prev (Focused) Echo 'get $[w.id]'
 
 ######
 # Screenshot functions (uses ImageMagick)
