@@ -523,8 +523,8 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title Start, Icon 'starthereubuntu.svg:24x24', \
                   Action (Mouse 1) 'Menu MenuFvwmRoot Rectangle +70+$top 0 -100m', \
                   Action (Mouse 3) All (AcceptsFocus CurrentPage !'xdaliclock' !Iconic !Shaded) Thumbnail)
-*FvwmButtons(1x4, Title Browser, Icon "chromium-browser.svg:24x24", \
-                  Action (Mouse 1) 'Exec "Chromium-browser" chromium-browser &', \
+*FvwmButtons(1x4, Title Browser, Icon "google-chrome.svg:24x24", \
+                  Action (Mouse 1) 'Exec "Google Chrome" google-chrome &', \
                   Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title Wine, Icon "crossover.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
 *FvwmButtons(1x4, Title Docker, Icon "dockstation.svg:24x24", Action 'Exec "Dockstation" dockstation &')
@@ -1068,7 +1068,7 @@ AddToFunc   InitFunction
 # Notification daemon
 + I Exec exec /usr/lib/notification-daemon/notification-daemon &
 # Tray section
-+ I Exec exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 300 --heighttype pixel --height 28 --distancefrom right
++ I Exec exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 360 --heighttype pixel --height 28 --distancefrom right
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
 # + I Test (EnvMatch systray_started 0 ) break
 # Notification popups
