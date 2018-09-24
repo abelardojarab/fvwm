@@ -11,12 +11,12 @@ ModulePath $[fvwm_userdir]:$[fvwm_userdir]/modules:+
 # Preferred applications
 #################
 
-SetEnv fvwm_browser chromium-browser
+SetEnv fvwm_browser google-chrome
 SetEnv fvwm_terminal tilix
 SetEnv fvwm_editor "emacs -nw"
 SetEnv fvwm_mail "xterm -e mutt"
 SetEnv fvwm_player "xterm -e vlc"
-SetEnv fvwm_filemanager pcmanfm
+SetEnv fvwm_filemanager nemo
 SetEnv fvwm_image_viewer feh
 SetEnv fvwm_runner gmrun
 
@@ -991,9 +991,9 @@ AddToFunc   FuncAppCheck
 # xclock
 + I Test (!x xclock) FuncPrintDbgMsg "[AppCheck]" "xclock (date & time) not installed"
 # default terminal
-+ I Test (!x $[infostore.default_terminal]) FuncPrintDbgMsg "[AppCheck]" "default terminal $[infostore.default_terminal] not installed"
++ I Test (!x $[infostore.fvwm_terminal]) FuncPrintDbgMsg "[AppCheck]" "default terminal $[infostore.fvwm_terminal] not installed"
 # default browser
-+ I Test (!x $[infostore.default_browser]) FuncPrintDbgMsg "[AppCheck]" "default browser $[infostore.default_browser] not installed"
++ I Test (!x $[infostore.fvwm_browser]) FuncPrintDbgMsg "[AppCheck]" "default browser $[infostore.fvwm_browser] not installed"
 # xscreensaver
 + I Test (!x xscreensaver-command) FuncPrintDbgMsg "[AppCheck]" "xscreensaver (lock) not installed"
 # feh
