@@ -512,7 +512,7 @@ PipeRead 'echo *FvwmButtons: ButtonGeometry   $[infostore.fvwm_buttons_width]x$[
 *FvwmButtons: BoxSize smart
 PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons: Columns 1
-*FvwmButtons: Frame 2
+*FvwmButtons: Frame 1
 *FvwmButtons(1x6, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(1x4, Swallow (NoClose,UseOld) "wmcalclock" \
                   `Exec exec wmcalclock`, \
