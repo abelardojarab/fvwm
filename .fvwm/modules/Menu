@@ -72,24 +72,24 @@ AddToMenu   "/Debian/Windows_Applications" "Windows Applications" Title Top
 
 DestroyMenu MenuDevelopment
 AddToMenu MenuDevelopment "Development" Title Top
-+ "%/usr/lib/wingide6/resources/linux/wing32.xpm%&Wing Pro 6.0" Exec exec wing6.0
-+ "%clion.svg:24x24%CLion C/C++" Exec exec clion.sh
-+ "%code.svg:24x24%Visual Studio Code" Exec exec code
-+ "%gedit.svg:24x24%Open a New Document" Exec exec gedit --new-document
++ "%apps/wing32.svg:24x24%&Wing Pro 6.0" Exec exec wing6.0
++ "%apps/clion.svg:24x24%CLion C/C++" Exec exec clion.sh
++ "%apps/code.svg:24x24%Visual Studio Code" Exec exec code
++ "%apps/gedit.svg:24x24%Gedit" Exec exec gedit
 + "%apps/devhelp.png%Devhelp" Exec exec devhelp
 + "%apps/zeal.png%Zeal" Exec exec zeal
 + "%apps/umbrello.png%Umbrello" Exec exec umbrello
-+ "%qt.svg:24x24%QDevelop" Exec exec qdevelop
++ "%apps/qt.svg:24x24%QDevelop" Exec exec qdevelop
 + "%apps/monodevelop.png%MonoDevelop" Exec exec monodevelop
-+ "%eclipse.svg:24x24%Eclipse" Exec exec eclipse
-+ "%github.svg:24x24%Gitg" Exec exec gitg
++ "%apps/eclipse.svg:24x24%Eclipse" Exec exec eclipse
++ "%apps/github.svg:24x24%Gitg" Exec exec gitg
 + "%apps/gitg.png%Git Cola" Exec exec git-cola
-+ "%emacs.svg:24x24%GNU Emacs 25" Exec exec emacs
++ "%apps/emacs.svg:24x24%GNU Emacs 25" Exec exec emacs
 + "%apps/atom.png%Atom" Exec exec atom
-+ "%sublime-text.svg:24x24%New File" Exec exec subl
-+ "%vim.svg:24x24%Vim" Exec exec gvim
++ "%apps/sublime-text.svg:24x24%Sublime" Exec exec subl
++ "%apps/vim.svg:24x24%Vim" Exec exec gvim
 + "%apps/glade.png%Glade" Exec exec glade
-+ "%meld.svg:24x24%Meld" Exec exec meld
++ "%apps/meld.svg:24x24%Meld" Exec exec meld
 
 DestroyMenu MenuGNOME
 AddToMenu MenuGNOME "Gnome" Title Top
@@ -99,8 +99,8 @@ AddToMenu MenuGNOME "Gnome" Title Top
 
 DestroyMenu MenuGames
 AddToMenu MenuGames "Games" Title Top
-+ "%steam.svg:24x24%Friends" Exec exec steam steam://open/friends
-+ "%steam.svg:24x24%Kentucky Route Zero" Exec exec steam steam://rungameid/231200
++ "%apps/steam.svg:24x24%Friends" Exec exec steam steam://open/friends
++ "%apps/steam.svg:24x24%Kentucky Route Zero" Exec exec steam steam://rungameid/231200
 + "%apps/playonlinux.png%PlayOnLinux" Exec exec playonlinux
 + "%apps/dosbox.png%DOSBox Emulator" Exec exec dosbox
 + "%apps/scummvm.png%ScummVM" Exec exec scummvm
@@ -109,58 +109,58 @@ DestroyMenu MenuGraphics
 AddToMenu MenuGraphics "Graphics" Title Top
 + "%apps/xsane.png%XSane Image scanning program " Exec exec xsane
 + "%apps/shutter.png%Screenshots" Exec exec shutter
-+ "%shotwell.svg:24x24%Shotwell" Exec exec shotwell
-+ "%dia.svg:24x24%Dia" Exec exec dia
-+ "%inkscape.svg:24x24%Inkscape" Exec exec inkscape
-+ "%gimp.svg:24x24%GIMP Image Editor" Exec exec gimp
-+ "%krita.svg:24x24%Krita Paint Program" Exec exec krita
-+ "%eog.svg:24x24%Eye of Gnome" Exec exec eog
-+ "%gpick.svg:24x24%Gpick Color Sampler" Exec exec gpick
++ "%apps/shotwell.svg:24x24%Shotwell" Exec exec shotwell
++ "%apps/dia.svg:24x24%Dia" Exec exec dia
++ "%apps/inkscape.svg:24x24%Inkscape" Exec exec inkscape
++ "%apps/gimp.svg:24x24%GIMP Image Editor" Exec exec gimp
++ "%apps/krita.svg:24x24%Krita Paint Program" Exec exec krita
++ "%apps/eog.svg:24x24%Eye of Gnome" Exec exec eog
++ "%apps/gpick.svg:24x24%Gpick Color Sampler" Exec exec gpick
 
 DestroyMenu MenuMultimedia
 AddToMenu MenuMultimedia "Multimedia" Title Top
-+ "%openshot.svg:24x24%OpenShot Video Editor" Exec exec openshot
++ "%apps/openshot.svg:24x24%OpenShot Video Editor" Exec exec openshot
 + "%/usr/share/nero/images/appicons/nero-icon-24.png%&Nero Linux" Exec exec nero
 + "%/usr/share/nero/images/appicons/neroexpress-icon-24.png%Nero &Linux Express" Exec exec neroexpress
-+ "%brasero.svg:24x24%CD/DVD Burner (Brasero)" Exec exec brasero --video
++ "%apps/brasero.svg:24x24%CD/DVD Burner (Brasero)" Exec exec brasero --video
 + "%apps/audacious.png%Audacious Qt Interface" Exec exec audacious --qt
 + "%apps/handbrake.png%HandBrake" Exec exec ghb
-+ "%vlc.svg:24x24%VLC media player" Exec exec vlc --started-from-file
-+ "%rhythmbox.svg:24x24%Rhythmbox" Exec exec rhythmbox
++ "%apps/vlc.svg:24x24%VLC media player" Exec exec vlc --started-from-file
++ "%apps/rhythmbox.svg:24x24%Rhythmbox" Exec exec rhythmbox
 + "%apps/pithos.png%Pithos" Exec exec pithos
-+ "%playervideo.svg:24x24%Totem" Exec exec totem
++ "%apps/playervideo.svg:24x24%Totem" Exec exec totem
 + "%apps/kodi.png%Kodi (standalone mode)" Exec exec kodi --standalone
-+ "%cheese.svg:24x24%Cheese" Exec exec cheese
++ "%apps/cheese.svg:24x24%Cheese" Exec exec cheese
 + "%apps/guvcview.png%Guvcview" Exec exec guvcview
 + "%apps/filebot.png%Filebot" Exec exec filebot
 
 DestroyMenu MenuNetwork
 AddToMenu MenuNetwork "Network" Title Top
-+ "%google-chrome.svg:24x24%Google Chrome" Exec exec google-chrome
-+ "%chromium-browser.svg:24x24%Chromium Browser" Exec exec chromium-browser
-+ "%firefox.svg:24x24%Firefox" Exec exec firefox
-+ "%firefox.svg:24x24%Open a New Private Window in Firefox" Exec exec firefox -private-window
-+ "%email.svg:24x24%Mailspring Email Client" Exec exec mailspring
-+ "%email.svg:24x24%Geary Email Client" Exec exec geary
-+ "%transmission.svg:24x24%Start Transmission Minimized" Exec exec transmission-gtk --minimized
++ "%apps/google-chrome.svg:24x24%Google Chrome" Exec exec google-chrome
++ "%apps/chromium-browser.svg:24x24%Chromium Browser" Exec exec chromium-browser
++ "%apps/firefox.svg:24x24%Firefox" Exec exec firefox
++ "%apps/firefox.svg:24x24%Open a New Private Window in Firefox" Exec exec firefox -private-window
++ "%apps/email.svg:24x24%Mailspring Email Client" Exec exec mailspring
++ "%apps/email.svg:24x24%Geary Email Client" Exec exec geary
++ "%apps/transmission.svg:24x24%Start Transmission Minimized" Exec exec transmission-gtk --minimized
 + "%apps/xchat.png%XChat IRC" Exec exec sh -c xchat --existing --url
-+ "%filezilla.svg:24x24%FileZilla" Exec exec filezilla
-+ "%pidgin.svg:24x24%Pidgin Internet Messenger" Exec exec pidgin
-+ "%skype.svg:24x24%Skype" Exec exec skype
++ "%apps/filezilla.svg:24x24%FileZilla" Exec exec filezilla
++ "%apps/pidgin.svg:24x24%Pidgin Internet Messenger" Exec exec pidgin
++ "%apps/skype.svg:24x24%Skype" Exec exec skype
 + "%apps/vncviewer.png%Real VNC Viewer" Exec exec vncviewer
 + "%apps/wicd-gtk.png%Wicd Network Manager" Exec exec wicd-gtk --no-tray
 + "%apps/wireshark.png%Wireshark" Exec exec wireshark
 
 DestroyMenu MenuProductivity
 AddToMenu MenuProductivity "Productivity" Title Top
-+ "%typora.svg:24x24%Typora" Exec exec typora
++ "%apps/typora.svg:24x24%Typora" Exec exec typora
 + "%apps/abiword.png%Abiword" Exec exec abiword
 + "%apps/gnumeric.png%Gnumeric" Exec exec gnumeric
 + "%texmaker.svg:24x24%Texmaker" Exec exec texmaker
 + "%apps/gnucash-icon.png%GnuCash" Exec exec gnucash
-+ "%acroread.svg:24x24%Acrobat Reader" Exec exec acroread
++ "%apps/acroread.svg:24x24%Acrobat Reader" Exec exec acroread
 + "%apps/evince.png%Document Viewer" Exec exec evince
-+ "%calibre-gui.svg:24x24%Calibre" Exec exec calibre
++ "%apps/calibre-gui.svg:24x24%Calibre" Exec exec calibre
 + "%apps/libreoffice-writer.png%New Document" Exec exec libreoffice --writer
 + "%apps/libreoffice-calc.png%New Spreadsheet" Exec exec libreoffice --calc
 + "%apps/libreoffice-draw.png%New Drawing" Exec exec libreoffice --draw
@@ -168,7 +168,7 @@ AddToMenu MenuProductivity "Productivity" Title Top
 
 DestroyMenu MenuScience
 AddToMenu MenuScience "Science" Title Top
-+ "%octave-logo.svg:24x24%GNU Octave" Exec exec octave --force-gui
++ "%apps/octave-logo.svg:24x24%GNU Octave" Exec exec octave --force-gui
 + "%apps/rkward.png%RKWard" Exec exec rkward -caption "%c"
 + "%apps/rstudio.png%RStudio" Exec exec rstudio
 + "%apps/r-logo.png%R" Exec exec R
@@ -183,8 +183,8 @@ AddToMenu MenuSystem "System" Title Top
 + "%apps/baobab.png%Disk Usage Analyzer" Exec exec baobab
 + "%apps/logo.png%System Profiler and Benchmark" Exec exec hardinfo
 + "%apps/gparted.png%GParted" Exec exec gparted-pkexec
-+ "%bleachbit.svg:24x24%System Cleaner BleachBit" Exec exec bleachbit
-+ "%bleachbit.svg:24x24%BleachBit (as root)" Exec exec su-to-root -X -c bleachbit
++ "%apps/bleachbit.svg:24x24%System Cleaner BleachBit" Exec exec bleachbit
++ "%apps/bleachbit.svg:24x24%BleachBit (as root)" Exec exec su-to-root -X -c bleachbit
 + "%systemmonitor.svg:24x24%Activity Log Manager" Exec exec activity-log-manager
 + "%systemmonitor.svg:24x24%DBus Services" Exec exec d-feet
 + "%apps/network.png%Networks..."                       Popup                      MenuNetworkSettings
@@ -224,19 +224,19 @@ AddToMenu MenuGNOMESettings
 
 DestroyMenu MenuUtilities
 AddToMenu MenuUtilities "Utilities" Title Top
-+ "%cloud-icon.svg:24x24%VMWare Workstation" Exec exec vmware
-+ "%virt-manager.svg:24x24%Virtual Machine Manager" Exec exec virt-manager -c qemu+ssh://localhost/system
-+ "%kitematic.svg:24x24%Kitematic" Exec exec kitematic
-+ "%dockstation.svg:24x24%Dockstation" Exec exec dockstation
++ "%apps/vmware.svg:24x24%VMWare Workstation" Exec exec vmware
++ "%apps/virt-manager.svg:24x24%Virtual Machine Manager" Exec exec virt-manager -c qemu+ssh://localhost/system
++ "%apps/kitematic.svg:24x24%Kitematic" Exec exec kitematic
++ "%apps/dockstation.svg:24x24%Dockstation" Exec exec dockstation
 + "%systemmonitor.svg:24x24%GNOME System Monitor" Exec exec gnome-system-monitor
 + "%accessibility.svg:24x24%Screen Reader" Exec exec orca --replace
 + "%folderhome.svg:24x24%File Manager PCManFM" Exec exec pcmanfm
 + "%apps/xterm.png%XTerm" Exec exec xterm
 + "%apps/xterm.png%URxvt" Exec exec urxvt
-+ "%terminator.svg:24x24%Tilix" Exec exec tilix
++ "%apps/terminator.svg:24x24%Tilix" Exec exec tilix
 + "%text.svg:24x24%Character Map" Exec exec gucharmap
 + "%apps/shutter.png%Capture the current active window " Exec exec shutter --active
-+ "%gcalculator.svg:24x24%Calculator" Exec exec gnome-calculator
++ "%apps/gcalculator.svg:24x24%Calculator" Exec exec gnome-calculator
 + "%apps/disk-save-as.png%Startup Disk Creator" Exec exec usb-creator-gtk
 + "%/usr/share/pixmaps/gparted.xpm%&GNOME partition editor" Exec exec su-to-root -X -c /usr/sbin/gparted
 

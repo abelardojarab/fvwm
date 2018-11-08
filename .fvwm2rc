@@ -369,6 +369,8 @@ Style "gimp"                  MiniIcon "gimp.svg:16x16"
 Style "inkscape"              MiniIcon "inkscape.svg:16x16"
 Style "emacs*"                MiniIcon "emacs.svg:16x16"
 Style "Code*"                 MiniIcon "code.svg:16x16"
+Style "*CLion*"               MiniIcon "clion.svg:16x16"
+Style "*Wing*"                MiniIcon "wing32.svg:16x16"
 Style "evince"                MiniIcon "evince.svg:16x16"
 Style "subl"                  MiniIcon "sublime-text.svg:16x16"
 Style "sublime_text"          MiniIcon "sublime-text.svg:16x16"
@@ -534,6 +536,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
                   Action (Mouse 1) 'Exec "Tilix" tilix &', \
                   Action (Mouse 3) `WindowList (Tilix) NoGeometry, \
                   NoCurrentDeskTitle`)
+*FvwmButtons(1x4, Title Code, Icon "code.svg:24x24", Action 'Exec "Visual Studio Code" code &')
 *FvwmButtons(1x4, Title Emacs, Icon "emacs.svg:24x24", \
                   Action (Mouse 1) 'Exec "Emacs" emacs &', \
                   Action (Mouse 3) `WindowList (Emacs) NoGeometry, NoCurrentDeskTitle`)
@@ -541,7 +544,6 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
                   Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
                   Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title Typora, Icon "typora.svg:24x24", Action 'Exec "Typora" typora &')
-*FvwmButtons(1x4, Title Dia, Icon "dia.svg:24x24", Action 'Exec "Dia" dia &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
 
 ###########################################################
