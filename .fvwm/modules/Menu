@@ -159,6 +159,7 @@ AddToMenu MenuProductivity "Productivity" Title Top
 + "%texmaker.svg:24x24%Texmaker" Exec exec texmaker
 + "%apps/gnucash-icon.png%GnuCash" Exec exec gnucash
 + "%apps/acroread.svg:24x24%Acrobat Reader" Exec exec acroread
++ "%apps/masterpdfeditor3.svg:24x24%Master PDF Editor" Exec exec /opt/master-pdf-editor-3/masterpdfeditor3
 + "%apps/evince.png%Document Viewer" Exec exec evince
 + "%apps/calibre-gui.svg:24x24%Calibre" Exec exec calibre
 + "%apps/libreoffice-writer.png%New Document" Exec exec libreoffice --writer
