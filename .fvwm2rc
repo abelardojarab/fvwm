@@ -401,6 +401,7 @@ Style "urxvt*"                MiniIcon "terminal.svg:16x16"
 Style "Pidgin*"               MiniIcon "pidgin.svg:16x16"
 Style "Acrobat*"              MiniIcon "acroread.svg:16x16"
 Style "Adobe*"                MiniIcon "acroread.svg:16x16"
+Style "Master*"               MiniIcon "masterpdfeditor3.svg:16x16"
 Style "libreoffice-writer*"   MiniIcon libreoffice-writer.png
 Style "Crossover*"            MiniIcon "crossover.svg:16x16"
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
