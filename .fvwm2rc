@@ -355,6 +355,7 @@ Style "gkrellm"               !Title, !Handles, StaysOnTop, Sticky, NeverFocus, 
 Style "trayer"                !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
 Style "stalonetray"           !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
 Style "google-chrome*"        FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
+Style "Google-chrome*"        FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
 Style "Google Chrome*"        FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
 Style "*hromium-browser*"     FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "chromium-browser.svg:16x16"
 Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
@@ -401,7 +402,7 @@ Style "urxvt*"                MiniIcon "terminal.svg:16x16"
 Style "Pidgin*"               MiniIcon "pidgin.svg:16x16"
 Style "Acrobat*"              MiniIcon "acroread.svg:16x16"
 Style "Adobe*"                MiniIcon "acroread.svg:16x16"
-Style "libreoffice-writer*"   MiniIcon libreoffice-writer.png
+Style "Steam*"                MiniIcon "steam.svg:16x16"
 Style "Crossover*"            MiniIcon "crossover.svg:16x16"
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon "firefox.svg:16x16"
