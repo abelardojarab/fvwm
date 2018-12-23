@@ -89,9 +89,9 @@ PipeRead "echo InfoStoreAdd hratio `perl -e 'printf \"%.2f\",($[vp.height]/540)'
 PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`"
 
 # Fonts
-InfoStoreAdd fontsize 10
-InfoStoreAdd font_sans "xft:Source Code Pro:size=$[infostore.fontsize]:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Source Code Pro:size=$[infostore.fontsize]:encoding=iso10646-1"
+InfoStoreAdd fontsize 11
+InfoStoreAdd font_sans "xft:Iosevka:size=$[infostore.fontsize]:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Iosevka:size=$[infostore.fontsize]:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
@@ -518,7 +518,7 @@ PipeRead 'echo *FvwmButtons: ButtonGeometry   $[infostore.fvwm_buttons_width]x$[
 *FvwmButtons: Padding 1 1
 PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons: Columns 1
-*FvwmButtons: Frame 1
+*FvwmButtons: Frame 0
 *FvwmButtons(1x6, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(1x4, Swallow (NoClose,UseOld) "wmcalclock" \
                   `Exec exec wmcalclock`, \
@@ -771,7 +771,7 @@ DestroyModuleConfig FvwmEvent: *
 #################
 MenuStyle * PopupOffset 0 100, PopupDelay 300, TitleWarpOff
 MenuStyle * TitleUnderlines2, SeparatorsLong, Animation, FlatSeparators
-MenuStyle * BorderWidth 2
+MenuStyle * BorderWidth 1
 MenuStyle * TrianglesUseFore, TrianglesSolid
 MenuStyle * VerticalTitleSpacing 0 0, VerticalItemSpacing 2 1
 MenuStyle * PopupAsSubmenu, HoldSubmenus, SubmenusRight
@@ -780,7 +780,7 @@ MenuStyle * VerticalItemSpacing 1 1, VerticalTitleSpacing 2 2
 MenuStyle * MenuColorset 10, HilightBack, ActiveColorset 8
 MenuStyle * "$[infostore.font_sans]"
 MenuStyle * MenuFace DGradient 64 Red Black
-MenuStyle * IconSize 16 16
+MenuStyle * IconSize 24 24
 
 # Window Operation Menu
 DestroyMenu Window-Ops
