@@ -89,9 +89,9 @@ PipeRead "echo InfoStoreAdd hratio `perl -e 'printf \"%.2f\",($[vp.height]/540)'
 PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`"
 
 # Fonts
-InfoStoreAdd fontsize  12
-InfoStoreAdd font_sans "xft:Iosevka:size=$[infostore.fontsize]:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Iosevka:size=$[infostore.fontsize]:encoding=iso10646-1"
+InfoStoreAdd fontsize 10
+InfoStoreAdd font_sans "xft:Source Code Pro:size=$[infostore.fontsize]:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Source Code Pro:size=$[infostore.fontsize]:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
@@ -405,6 +405,8 @@ Style "Adobe*"                MiniIcon "acroread.svg:16x16"
 Style "Master*"               MiniIcon "masterpdfeditor3.svg:16x16"
 Style "Steam*"                MiniIcon "steam.svg:16x16"
 Style "Crossover*"            MiniIcon "crossover.svg:16x16"
+Style "Nxplayer*"             MiniIcon "nomachine.svg:16x16"
+Style "*NoMachine*"           MiniIcon "nomachine.svg:16x16"
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon "firefox.svg:16x16"
 Style "firefox*"              CenterPlacement, MiniIcon "firefox.svg:16x16"
@@ -488,6 +490,7 @@ DestroyModuleConfig FvwmDeskControl: *
 *FvwmPager: Font "$[infostore.font_mono]"
 *FvwmPager: SmallFont "$[infostore.font_sans]:Small"
 *FvwmPager: Colorset * 0
+*FvwmPager: Frame 0
 *FvwmPager: HiLightColorset * 10
 *FvwmPager: WindowColorsets 8 5
 *FvwmPager: BalloonColorset * 9
@@ -512,13 +515,14 @@ PipeRead 'echo *FvwmButtons: ButtonGeometry   $[infostore.fvwm_buttons_width]x$[
 *FvwmButtons: ActiveColorset 8
 *FvwmButtons: PressColorset 8
 *FvwmButtons: BoxSize smart
+*FvwmButtons: Padding 1 1
 PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons: Columns 1
-*FvwmButtons: Frame 0
+*FvwmButtons: Frame 1
 *FvwmButtons(1x6, Swallow "FvwmPager" 'FvwmPager *')
 *FvwmButtons(1x4, Swallow (NoClose,UseOld) "wmcalclock" \
                   `Exec exec wmcalclock`, \
-                  Padding 6 2, \
+                  Padding 1 1, \
                   Action (Mouse 3) \
                   `Exec exec orage`, \
                   Action (Mouse 1) \
@@ -530,9 +534,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title Browser, Icon "google-chrome.svg:24x24", \
                   Action (Mouse 1) 'Exec "Google Chrome" google-chrome &', \
                   Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title Wine, Icon "crossover.svg:24x24", Action 'Exec "Crossover" /opt/cxoffice/bin/crossover &')
 *FvwmButtons(1x4, Title Docker, Icon "dockstation.svg:24x24", Action 'Exec "Dockstation" dockstation &')
-*FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:24x24", Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(1x4, Title Home, Icon "folderhome.svg:24x24", Action 'Exec "Nemo" nemo &')
 *FvwmButtons(1x4, Title XTerm, Icon "terminator.svg:24x24", \
                   Action (Mouse 1) 'Exec "Tilix" tilix &', \
@@ -545,6 +547,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title VNC, Icon "vncviewer.svg:24x24", \
                   Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
                   Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
+*FvwmButtons(1x4, Title NPlayer, Icon "nomachine.svg:24x24", Action 'Exec "NoMachine" /usr/NX/bin/nxplayer &')
 *FvwmButtons(1x4, Title Typora, Icon "typora.svg:24x24", Action 'Exec "Typora" typora &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
 
@@ -641,10 +644,10 @@ PipeRead 'echo *FvwmLowerLeft: ButtonGeometry   $[infostore.fvwm_buttons_width]x
                     `Exec exec gnome-system-monitor`, \
                     Action (Mouse 3) \
                     `Exec exec xload -bg rgb:48/46/44 -fg white -update 3`, \
-                    Padding 6 4)
+                    Padding 3 4)
 *FvwmLowerLeft(1x4, Swallow (NoClose,UseOld) "wmhdplop" `Exec exec \
                     wmhdplop -t -d /dev/sda -d /dev/sdb -d /dev/sdc -d /dev/sdd`, \
-                    Padding 6 4, \
+                    Padding 3 4, \
                     Action (Mouse 1) \
                     `Exec exec baobab`, \
                     Action (Mouse 3) \

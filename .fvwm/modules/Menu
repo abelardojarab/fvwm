@@ -147,7 +147,8 @@ AddToMenu MenuNetwork "Network" Title Top
 + "%apps/filezilla.svg:24x24%FileZilla" Exec exec filezilla
 + "%apps/pidgin.svg:24x24%Pidgin Internet Messenger" Exec exec pidgin
 + "%apps/skype.svg:24x24%Skype" Exec exec skype
-+ "%apps/vncviewer.png%Real VNC Viewer" Exec exec vncviewer
++ "%apps/vncviewer.svg:24x24%Real VNC Viewer" Exec exec vncviewer
++ "%apps/nomachine.svg:24x24%NX Viewer" Exec exec /usr/NX/bin/nxplayer
 + "%apps/wicd-gtk.png%Wicd Network Manager" Exec exec wicd-gtk --no-tray
 + "%apps/wireshark.png%Wireshark" Exec exec wireshark
 
