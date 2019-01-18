@@ -363,6 +363,7 @@ Style "gnome-calculator"      MiniIcon "gcalculator.svg:24x24", EWMHMiniIconOver
 Style "gedit"                 MiniIcon "gedit.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "nautilus"              MiniIcon "folderhome.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
 Style "Geary*"                MiniIcon "email.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
+Style "Mailspring*"           MiniIcon "email.svg:16x16"
 Style "pcmanfm"               MiniIcon "folderhome.svg:16x16"
 Style "Transmission*"         MiniIcon "transmission.svg:16x16"
 Style "Nemo*"                 MiniIcon "folderhome.svg:16x16"
@@ -550,6 +551,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title NPlayer, Icon "nomachine.svg:24x24", Action 'Exec "NoMachine" /usr/NX/bin/nxplayer &')
 *FvwmButtons(1x4, Title Typora, Icon "typora.svg:24x24", Action 'Exec "Typora" typora &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
+*FvwmButtons(1x4, Title Mail, Icon "email.svg:24x24", Action 'Exec "Mailspring" mailspring &')
 
 ###########################################################
 # Icon Manager
