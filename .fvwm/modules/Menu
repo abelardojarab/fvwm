@@ -11,7 +11,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@" "Applications" Title Top
 + "%desktop.svg:24x24%Show Desktop" All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail
 + "" Nop
 + "%crossover.svg:24x24%W&indows Applications" Popup "/Debian/Windows_Applications"
-+ "%code.svg:24x24%Development" Popup MenuDevelopment
++ "%programming.svg:24x24%Development" Popup MenuDevelopment
 + "%gnome-logo.svg:24x24%GNOME" Popup MenuGNOME
 + "%steam.svg:24x24%Games" Popup MenuGames
 + "%eog.svg:24x24g%Graphics" Popup MenuGraphics
@@ -20,7 +20,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@" "Applications" Title Top
 + "%application-productivity.svg:24x24%Productivity" Popup MenuProductivity
 + "%octave-logo.svg:24x24%Science" Popup MenuScience
 + "%settings.svg:24x24%System Preferences" Popup MenuSystem
-+ "%settings-tools.svg:24x24%Utilities" Popup MenuUtilities
++ "%tools.svg:24x24%Utilities" Popup MenuUtilities
 + "" Nop
 # Dynamic Fvwm Manpages realized with MissingSubmenuFunction
 + MissingSubmenuFunction FuncFvwmManpageMenu
