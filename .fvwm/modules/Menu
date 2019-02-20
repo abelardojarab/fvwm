@@ -227,6 +227,7 @@ AddToMenu MenuGNOMESettings
 DestroyMenu MenuUtilities
 AddToMenu MenuUtilities "Utilities" Title Top
 + "%apps/vmware.svg:24x24%VMWare Workstation" Exec exec vmware
++ "%apps/virt-manager.svg:24x24%Gnome Boxes" Exec exec gnome-boxes
 + "%apps/virt-manager.svg:24x24%Virtual Machine Manager" Exec exec virt-manager -c qemu+ssh://localhost/system
 + "%apps/kitematic.svg:24x24%Kitematic" Exec exec kitematic
 + "%apps/dockstation.svg:24x24%Dockstation" Exec exec dockstation
