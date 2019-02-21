@@ -411,6 +411,7 @@ Style "Meld*"                 MiniIcon "meld.svg:16x16"
 Style "Crossover*"            MiniIcon "crossover.svg:16x16"
 Style "Nxplayer*"             MiniIcon "nomachine.svg:16x16"
 Style "*NoMachine*"           MiniIcon "nomachine.svg:16x16"
+Style "Soffice*"              MiniIcon "libreofficewriter.svg:16x16"
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon "firefox.svg:16x16"
 Style "firefox*"              CenterPlacement, MiniIcon "firefox.svg:16x16"
