@@ -552,7 +552,7 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
                   Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
                   Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title NPlayer, Icon "nomachine.svg:24x24", Action 'Exec "NoMachine" /usr/NX/bin/nxplayer &')
-*FvwmButtons(1x4, Title Typora, Icon "typora.svg:24x24", Action 'Exec "Typora" typora &')
+*FvwmButtons(1x4, Title Sublime, Icon "sublime-text.svg:24x24", Action 'Exec "Sublime" sublime_text &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
 
 ###########################################################
