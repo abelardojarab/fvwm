@@ -3,7 +3,7 @@
 SetEnv fvwm_cache $[HOME]/.fvwm.cache
 SetEnv fvwm_userdir $[HOME]/.fvwm
 SetEnv fvwm_images $[fvwm_userdir]/images
-SetEnv fvwm_wallpaper $[fvwm_userdir]/images/wallpapers/ubuntu_wallpaper.png
+SetEnv fvwm_wallpaper $[fvwm_userdir]/images/wallpapers/4800x3600-haven-i-see-stars.png
 Setenv fvwm_colors $[HOME]/.fvwm/images/colors
 ModulePath $[fvwm_userdir]:$[fvwm_userdir]/modules:+
 
