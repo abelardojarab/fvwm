@@ -86,7 +86,8 @@ AddToMenu MenuDevelopment "Development" Title Top
 + "%apps/gitg.png%Git Cola" Exec exec git-cola
 + "%apps/emacs.svg:24x24%GNU Emacs 25" Exec exec emacs
 + "%apps/atom.png%Atom" Exec exec atom
-+ "%apps/sublime-text.svg:24x24%Sublime" Exec exec subl
++ "%apps/sublime.svg:24x24%Sublime" Exec exec subl
++ "%apps/brackets.svg:24x24%Brackets" Exec exec brackets
 + "%apps/vim.svg:24x24%Vim" Exec exec gvim
 + "%apps/glade.png%Glade" Exec exec glade
 + "%apps/meld.svg:24x24%Meld" Exec exec meld

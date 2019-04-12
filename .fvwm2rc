@@ -375,8 +375,9 @@ Style "Code*"                 MiniIcon "code.svg:16x16"
 Style "*CLion*"               MiniIcon "clion.svg:16x16"
 Style "*Wing*"                MiniIcon "wing32.svg:16x16"
 Style "evince"                MiniIcon "evince.svg:16x16"
-Style "subl"                  MiniIcon "sublime-text.svg:16x16"
-Style "sublime_text"          MiniIcon "sublime-text.svg:16x16"
+Style "subl"                  MiniIcon "sublime.svg:16x16"
+Style "sublime_text"          MiniIcon "sublime.svg:16x16"
+Style "Brackets*"             MiniIcon "brackets.svg:16x16"
 Style "devhelp"               MiniIcon "devhelp.svg:16x16"
 Style "umbrello"              MiniIcon "umbrello.svg:16x16"
 Style "vncviewer"             MiniIcon "vncviewer.svg:16x16"
@@ -548,12 +549,12 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
                   Action (Mouse 3) `WindowList (Tilix) NoGeometry, \
                   NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title Code, Icon "code.svg:24x24", Action 'Exec "Visual Studio Code" code &')
-*FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:24x24", Action 'Exec "Pidgin" pidgin &')
 *FvwmButtons(1x4, Title VNC, Icon "vncviewer.svg:24x24", \
                   Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
                   Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
 *FvwmButtons(1x4, Title NPlayer, Icon "nomachine.svg:24x24", Action 'Exec "NoMachine" /usr/NX/bin/nxplayer &')
-*FvwmButtons(1x4, Title Sublime, Icon "sublime-text.svg:24x24", Action 'Exec "Sublime" sublime_text &')
+*FvwmButtons(1x4, Title Brackets, Icon "brackets.svg:24x24", Action 'Exec "Brackets" brackets &')
+*FvwmButtons(1x4, Title Sublime, Icon "sublime.svg:24x24", Action 'Exec "Sublime" sublime_text &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
 
 ###########################################################
