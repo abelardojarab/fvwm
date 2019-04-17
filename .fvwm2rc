@@ -50,7 +50,7 @@ InfoStoreAdd DIR Next
 InfoStoreAdd fvwm_wallpaper_dir $[fvwm_userdir]/images/wallpapers
 
 # actual wallpaper
-InfoStoreAdd fvwm_wallpaper $[fvwm_wallpaper_dir]/poster-pinturas-famosas-gravura-9-poster-vintage_2048x1152.png
+InfoStoreAdd fvwm_wallpaper $[fvwm_wallpaper]
 
 # actual pager height. Needed for the "top bar" modules
 PipeRead 'echo InfoStoreAdd fvwm_taskbar_height $(($[vp.height]/25))'
@@ -354,15 +354,15 @@ Style "plank"                 !Title, !Handles, StaysOnTop, Sticky, NeverFocus, 
 Style "gkrellm"               !Title, !Handles, StaysOnTop, Sticky, NeverFocus, WindowListSkip, FixedPosition
 Style "trayer"                !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
 Style "stalonetray"           !Title, StaysOnTop, FixedPosition, EWMHUseStackingOrderHints
-Style "google-chrome*"        FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
-Style "Google-chrome*"        FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
-Style "Google Chrome*"        FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "google-chrome.svg:16x16"
-Style "*hromium-browser*"     FPLenient, NoFuncHint, NoDecorHint, NoOLecor, CenterPlacement, MiniIcon "chromium-browser.svg:16x16"
-Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
-Style "gnome-calculator"      MiniIcon "gcalculator.svg:24x24", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
-Style "gedit"                 MiniIcon "gedit.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
-Style "nautilus"              MiniIcon "folderhome.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
-Style "Geary*"                MiniIcon "email.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, NoTitle, NoHandles
+Style "google-chrome*"        CenterPlacement, MiniIcon "google-chrome.svg:16x16"
+Style "Google-chrome*"        CenterPlacement, MiniIcon "google-chrome.svg:16x16"
+Style "Google Chrome*"        CenterPlacement, MiniIcon "google-chrome.svg:16x16"
+Style "*hromium-browser*"     CenterPlacement, MiniIcon "chromium-browser.svg:16x16"
+Style "baobab"                MiniIcon baobab.png, EWMHMiniIconOverride, BorderWidth 0, !Title, !Handles
+Style "gnome-calculator"      MiniIcon "gcalculator.svg:24x24", EWMHMiniIconOverride, BorderWidth 0, !Title, !Handles
+Style "gedit"                 MiniIcon "gedit.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, !Title, !Handles
+Style "nautilus"              MiniIcon "folderhome.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, !Title, !Handles
+Style "Geary*"                MiniIcon "email.svg:16x16", EWMHMiniIconOverride, BorderWidth 0, !Title, !Handles
 Style "Mailspring*"           MiniIcon "email.svg:16x16"
 Style "pcmanfm"               MiniIcon "folderhome.svg:16x16"
 Style "Nm*"                   MiniIcon "network-manager.svg:16x16"
@@ -422,19 +422,18 @@ Style "Library"               CenterPlacement, MiniIcon "firefox.svg:16x16"
 Style "xman"                  Icon xman.xpm, ClickToFocus
 Style "xmag"                  Icon mag_glass.xpm, ClickToFocus
 Style "xgraph"                Icon graphs.xpm, ClickToFocus
-Style "xmosaic"               Color Green/Yellow, ClickToFocus
 
 # Buttons
-Style "FvwmButtons"           BorderWidth 0, WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnTop, Sticky
-Style "FvwmPager"             BorderWidth 0, NoHandles, NeverFocus, NoTitle, StaysOnTop, Sticky, WindowListSkip, NoIconifiable
-Style "FvwmTaskBar"           NoTitle, WindowListSkip, CirculateSkip, Sticky, BorderWidth 0, NoHandles, StaysOnTop, NeverFocus, Layer 0
+Style "FvwmButtons"           BorderWidth 0, WindowListSkip, NeverFocus, !Handles, !Title, StaysOnTop, Sticky
+Style "FvwmPager"             BorderWidth 0, !Handles, NeverFocus, !Title, StaysOnTop, Sticky, WindowListSkip, NoIconifiable
+Style "FvwmTaskBar"           NoTitle, WindowListSkip, CirculateSkip, Sticky, BorderWidth 0, !Handles, StaysOnTop, NeverFocus, Layer 0
 Style "FvwmShelf"             BorderWidth 0, NoTitle, StaysOnBottom, Sticky, WindowListSkip, CirculateSkip, NeverFocus, FixedSize, NoHandles
-Style "FvwmDeskControl"       NoTitle, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles, BorderWidth 0
-Style "FvwmIconMan*"          NoHandles, NoTitle, BorderWidth 0, Sticky, WindowListSkip, CirculateSkip, StaysOnBottom, NeverFocus
-Style "FvwmConky"             BorderWidth 0, WindowListSkip, NeverFocus, NoHandles, NoTitle, StaysOnBottom, Sticky
+Style "FvwmDeskControl"       !Title, NeverFocus, CirculateSkip, WindowListSkip, Sticky, StaysOnBottom, FixedSize, NoHandles, BorderWidth 0
+Style "FvwmIconMan*"          !Handles, !Title, BorderWidth 0, Sticky, WindowListSkip, CirculateSkip, StaysOnBottom, NeverFocus
+Style "FvwmConky"             BorderWidth 0, WindowListSkip, NeverFocus, NoHandles, !Title, StaysOnBottom, Sticky
 
 # AutoHiding Console
-Style "HiddenConsole"         Sticky, WindowListSkip, Notitle, StaysOnTop, !Handles, FixedSize, FixedPosition
+Style "HiddenConsole"         Sticky, WindowListSkip, !Title, StaysOnTop, !Handles, FixedSize, FixedPosition
 
 ###########################################################
 # Bottom Bar
@@ -516,7 +515,7 @@ DestroyModuleConfig FvwmDeskControl: *
 ###########################################################
 
 *FvwmButtons: Font  "$[infostore.font_sans]:Small"
-PipeRead 'echo *FvwmButtons: Geometry         $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]x$[infostore.fvwm_buttons_rows]))+0+0'
+PipeRead 'echo *FvwmButtons: Geometry         $[infostore.fvwm_buttons_width]x$(($[infostore.fvwm_buttons_height]*$[infostore.fvwm_buttons_rows]))+0+0'
 PipeRead 'echo *FvwmButtons: ButtonGeometry   $[infostore.fvwm_buttons_width]x$[infostore.fvwm_buttons_height]'
 *FvwmButtons: Colorset 10
 *FvwmButtons: ActiveColorset 8
