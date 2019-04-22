@@ -225,6 +225,10 @@ AddToMenu   "/Debian/CrossOver" "CrossOver" Title Top
 + "&CrossOver%/opt/cxoffice/share/icons/32x32/crossover.png%" Exec exec /opt/cxoffice/bin/crossover
 + "&Uninstall CrossOver Linux%/opt/cxoffice/share/icons/32x32/cxuninstall.png%" Exec exec /opt/cxoffice/bin/cxuninstall
 
+DestroyMenu "/Debian/Development"
+AddToMenu   "/Debian/Development" "Development" Title Top
++ "&Brackets%/opt/brackets/appshell32.png%" Exec exec /usr/bin/brackets
+
 DestroyMenu "/Debian/FVWM_Modules"
 AddToMenu   "/Debian/FVWM_Modules" "FVWM Modules" Title Top
 + "&FvwmAnimate" Module FvwmAnimate
@@ -323,62 +327,20 @@ AddToMenu   "/Debian/Window_Managers" "Window Managers" Title Top
 + "&FVWM" Restart /usr/bin/fvwm2
 + "&Window Maker" Restart /usr/bin/wmaker
 
-DestroyMenu "/Debian/Windows_Applications/Adobe_LiveCycle_ES2"
-AddToMenu   "/Debian/Windows_Applications/Adobe_LiveCycle_ES2" "Adobe LiveCycle ES2" Title Top
-+ "&Adobe LiveCycle Designer ES2%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/7FF4_SC_Designer_PFM.70DBED24_B579_40CB_AB0B_F1221A3E9EC5.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+LiveCycle+ES2/Adobe+LiveCycle+Designer+ES2.lnk"
-
-DestroyMenu "/Debian/Windows_Applications/EndNote"
-AddToMenu   "/Debian/Windows_Applications/EndNote" "EndNote" Title Top
-+ "&EndNote%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/D653_Icon86B3F2D6.1.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/EndNote/EndNote.lnk"
-
-DestroyMenu "/Debian/Windows_Applications/MathType_6"
-AddToMenu   "/Debian/Windows_Applications/MathType_6" "MathType 6" Title Top
-+ "&Equation Conversion Manager%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/8A31_Setup.1.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/Equation+Conversion+Manager.lnk"
-+ "&MathType%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/DEB0_MathType.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType.lnk"
-+ "MathType &Help%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/579C_MT6ENU.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType+Help.lnk"
-+ "MathType &Server%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/DEB0_MathType.1.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType+Server.lnk"
-+ "&Remove MathType%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/8A31_Setup.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/Remove+MathType.lnk"
-
-DestroyMenu "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools"
-AddToMenu   "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools" "Microsoft Office 2010 Tools" Title Top
-+ "&Digital Certificate for VBA Projects%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/B7B2_misc.15.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Digital+Certificate+for+VBA+Projects.lnk"
-+ "&Microsoft Clip Organizer%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/172C_cagicon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Clip+Organizer.lnk"
-+ "Microsoft &Office 2010 Language Preferences%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/B7B2_misc.5.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+2010+Language+Preferences.lnk"
-+ "Microsoft Office 2010 &Upload Center%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/A60B_msouc.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+2010+Upload+Center.lnk"
-+ "Microsoft Office &Picture Manager%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/AD6D_oisicon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+Picture+Manager.lnk"
-
 DestroyMenu "/Debian/Windows_Applications/Microsoft_Office"
 AddToMenu   "/Debian/Windows_Applications/Microsoft_Office" "Microsoft Office" Title Top
-+ "&Microsoft Access 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/2306_accicons.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Access+2010.lnk"
-+ "Microsoft &Excel 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/C521_xlicons.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Excel+2010.lnk"
-+ "Microsoft &InfoPath Designer 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/6F30_inficon.3.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Designer+2010.lnk"
-+ "Microsoft InfoPath &Filler 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/6F30_inficon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Filler+2010.lnk"
-+ "Microsoft &Office 2010 Tools%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools"
-+ "Microsoft OneNote &2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/4EBA_joticon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+OneNote+2010.lnk"
-+ "Mi&crosoft Outlook 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/378A_outicon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Outlook+2010.lnk"
-+ "Microsoft &PowerPoint 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/B08C_pptico.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+PowerPoint+2010.lnk"
-+ "Mic&rosoft Publisher 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/616D_pubs.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Publisher+2010.lnk"
-+ "Microsoft &SharePoint Workspace 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/924F_grvicons.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+SharePoint+Workspace+2010.lnk"
-+ "Microsoft &Word 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/E859_wordicon.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Word+2010.lnk"
-
-DestroyMenu "/Debian/Windows_Applications/SharePoint"
-AddToMenu   "/Debian/Windows_Applications/SharePoint" "SharePoint" Title Top
-+ "&Microsoft SharePoint Workspace 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/924F_grvicons.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/SharePoint/Microsoft+SharePoint+Workspace+2010.lnk"
++ "&Microsoft Access 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/2306_accicons.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Access+2010.lnk"
++ "Microsoft &Excel 2010%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/C521_xlicons.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Excel+2010.lnk"
 
 DestroyMenu "/Debian/Windows_Applications"
 AddToMenu   "/Debian/Windows_Applications" "Windows Applications" Title Top
-+ "&Adobe Acrobat Distiller X%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/72B2__SC_Distiller.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+Acrobat+Distiller+X.lnk"
-+ "Adobe Acrobat &X Pro%/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/windata/cxmenu/icons/hicolor/32x32/apps/BBEF__SC_Acrobat.0.png%" Exec exec "/media/btrfsdrive2/workspace/cxoffice/Microsoft_Office_2010-2/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+Acrobat+X+Pro.lnk"
-+ "Adobe &LiveCycle ES2%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/Adobe_LiveCycle_ES2"
-+ "&EndNote%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/EndNote"
-+ "&MathType 6%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/MathType_6"
-+ "Microsoft &Office%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/Microsoft_Office"
-+ "&SharePoint%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/SharePoint"
++ "&Microsoft Office%/opt/cxoffice/share/icons/48x48/cxmenu.png%" Popup "/Debian/Windows_Applications/Microsoft_Office"
 
 DestroyMenu "/Debian"
 AddToMenu   "/Debian" "Debian Menu" Title Top
 + "&Applications" Popup "/Debian/Applications"
 + "&CrossOver%/opt/cxoffice/share/icons/32x32/crossover.png%" Popup "/Debian/CrossOver"
++ "&Development" Popup "/Debian/Development"
 + "&FVWM Modules" Popup "/Debian/FVWM_Modules"
 + "&Games" Popup "/Debian/Games"
 + "&Help" Popup "/Debian/Help"
