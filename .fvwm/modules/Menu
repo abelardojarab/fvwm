@@ -10,7 +10,6 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@" "Applications" Title Top
 + "%terminal.svg:24x24%New Terminal" Exec exec xterm
 + "%desktop.svg:24x24%Show Desktop" All (AcceptsFocus CurrentPage !"xdaliclock" !Iconic !Shaded) Thumbnail
 + "" Nop
-+ "%crossover.svg:24x24%W&indows Applications" Popup "/Debian/Windows_Applications"
 + "%programming.svg:24x24%Development" Popup MenuDevelopment
 + "%gnome-logo.svg:24x24%GNOME" Popup MenuGNOME
 + "%steam.svg:24x24%Games" Popup MenuGames
@@ -18,7 +17,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@" "Applications" Title Top
 + "%playermultimedia.svg:24x24%Multimedia" Popup MenuMultimedia
 + "%browser.svg:24x24%Network" Popup MenuNetwork
 + "%application-productivity.svg:24x24%Productivity" Popup MenuProductivity
-+ "%octave-logo.svg:24x24%Science" Popup MenuScience
++ "%octave.svg:24x24%Science" Popup MenuScience
 + "%settings.svg:24x24%System Preferences" Popup MenuSystem
 + "%tools.svg:24x24%Utilities" Popup MenuUtilities
 + "" Nop
@@ -28,47 +27,6 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@" "Applications" Title Top
 + "%xpms/mini.lock.xpm%Lock screen" FuncLockScreen
 + "%xpms/mini.exclam.xpm%Restart Fvwm" Restart
 + "%xpms/mini.fvwm.xpm%Quit Fvwm" Module FvwmForm FvwmForm-QuitVerify
-
-DestroyMenu "/Debian/Windows_Applications/EndNote"
-AddToMenu   "/Debian/Windows_Applications/EndNote" "EndNote" Title Top
-+ "&EndNote%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/D653_Icon86B3F2D6.1.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/EndNote/EndNote.lnk"
-
-DestroyMenu "/Debian/Windows_Applications/MathType_6"
-AddToMenu   "/Debian/Windows_Applications/MathType_6" "MathType 6" Title Top
-+ "&Equation Conversion Manager%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/8A31_Setup.1.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/Equation+Conversion+Manager.lnk"
-+ "&MathType%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/DEB0_MathType.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType.lnk"
-+ "MathType &Help%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/579C_MT6ENU.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType+Help.lnk"
-+ "MathType &Server%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/DEB0_MathType.1.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/MathType+Server.lnk"
-+ "&Remove MathType%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/8A31_Setup.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_ProgramData_Microsoft_Windows_Start^2BMenu/Programs/MathType+6/Remove+MathType.lnk"
-
-DestroyMenu "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools"
-AddToMenu   "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools" "Microsoft Office 2010 Tools" Title Top
-+ "&Digital Certificate for VBA Projects%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/E723_misc.15.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Digital+Certificate+for+VBA+Projects.lnk"
-+ "&Microsoft Clip Organizer%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/FA41_cagicon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Clip+Organizer.lnk"
-+ "Microsoft &Office 2010 Language Preferences%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/E723_misc.5.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+2010+Language+Preferences.lnk"
-+ "Microsoft Office 2010 &Upload Center%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/0A9A_msouc.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+2010+Upload+Center.lnk"
-+ "Microsoft Office &Picture Manager%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/4000_oisicon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Office+2010+Tools/Microsoft+Office+Picture+Manager.lnk"
-
-DestroyMenu "/Debian/Windows_Applications/Microsoft_Office"
-AddToMenu   "/Debian/Windows_Applications/Microsoft_Office" "Microsoft Office" Title Top
-+ "&Microsoft Access 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/2306_accicons.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Access+2010.lnk"
-+ "Microsoft &Excel 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/C521_xlicons.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Excel+2010.lnk"
-+ "Microsoft &InfoPath Designer 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/6F30_inficon.3.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Designer+2010.lnk"
-+ "Microsoft InfoPath &Filler 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/6F30_inficon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+InfoPath+Filler+2010.lnk"
-+ "Microsoft &Office 2010 Tools%crossover.svg:32x32%" Popup "/Debian/Windows_Applications/Microsoft_Office/Microsoft_Office_2010_Tools"
-+ "Microsoft OneNote &2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/4EBA_joticon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+OneNote+2010.lnk"
-+ "Mi&crosoft Outlook 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/378A_outicon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Outlook+2010.lnk"
-+ "Microsoft &PowerPoint 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/B08C_pptico.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+PowerPoint+2010.lnk"
-+ "Mic&rosoft Publisher 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/616D_pubs.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Publisher+2010.lnk"
-+ "Microsoft &SharePoint Workspace 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/924F_grvicons.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+SharePoint+Workspace+2010.lnk"
-+ "Microsoft &Word 2010%$[HOME]/.cxoffice/Microsoft_Office_2010/windata/cxmenu/icons/hicolor/32x32/apps/E859_wordicon.0.png%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Microsoft+Office/Microsoft+Word+2010.lnk"
-
-DestroyMenu "/Debian/Windows_Applications"
-AddToMenu   "/Debian/Windows_Applications" "Windows Applications" Title Top
-+ "Adobe Acrobat &X Pro%acroread.svg:24x24%" Exec exec "$[HOME]/.cxoffice/Microsoft_Office_2010/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Adobe+Acrobat+X+Pro.lnk"
-+ "&EndNote%crossover.svg:24x24%" Popup "/Debian/Windows_Applications/EndNote"
-+ "&MathType 6%crossover.svg:24x24%" Popup "/Debian/Windows_Applications/MathType_6"
-+ "Microsoft &Office%crossover.svg:24x24%" Popup "/Debian/Windows_Applications/Microsoft_Office"
 
 DestroyMenu MenuDevelopment
 AddToMenu MenuDevelopment "Development" Title Top
@@ -147,6 +105,7 @@ AddToMenu MenuNetwork "Network" Title Top
 + "%apps/xchat.png%XChat IRC" Exec exec sh -c xchat --existing --url
 + "%apps/filezilla.svg:24x24%FileZilla" Exec exec filezilla
 + "%apps/pidgin.svg:24x24%Pidgin Internet Messenger" Exec exec pidgin
++ "%apps/slack.svg:24x24%Slack" Exec exec slack
 + "%apps/skype.svg:24x24%Skype" Exec exec skype
 + "%apps/vncviewer.svg:24x24%Real VNC Viewer" Exec exec vncviewer
 + "%apps/nomachine.svg:24x24%NX Viewer" Exec exec /usr/NX/bin/nxplayer
@@ -171,10 +130,10 @@ AddToMenu MenuProductivity "Productivity" Title Top
 
 DestroyMenu MenuScience
 AddToMenu MenuScience "Science" Title Top
-+ "%apps/octave-logo.svg:24x24%GNU Octave" Exec exec octave --force-gui
-+ "%apps/rkward.png%RKWard" Exec exec rkward -caption "%c"
-+ "%apps/rstudio.png%RStudio" Exec exec rstudio
-+ "%apps/r-logo.png%R" Exec exec R
++ "%apps/octave.svg:24x24%GNU Octave" Exec exec octave --force-gui
++ "%apps/rkward.svg:24x24%RKWard" Exec exec rkward -caption "%c"
++ "%apps/rstudio.svg:24x24%RStudio" Exec exec rstudio
++ "%apps/r.svg:24x24%R" Exec exec R
 
 DestroyMenu MenuSystem
 AddToMenu MenuSystem "System" Title Top
