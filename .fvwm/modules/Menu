@@ -33,6 +33,7 @@ AddToMenu MenuDevelopment "Development" Title Top
 + "%apps/wing32.svg:24x24%&Wing Pro 6.0" Exec exec wing6.0
 + "%apps/clion.svg:24x24%CLion C/C++" Exec exec xterm -g 80x20 -n CLion -T CLion -fg white -bg black -e 'sh `which clion.sh`'
 + "%apps/code.svg:24x24%Visual Studio Code" Exec exec code
++ "%apps/code.svg:24x24%Visual Studio Codium" Exec exec vscodium
 + "%apps/gedit.svg:24x24%Gedit" Exec exec gedit
 + "%apps/devhelp.png%Devhelp" Exec exec devhelp
 + "%apps/zeal.png%Zeal" Exec exec zeal
