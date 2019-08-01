@@ -30,7 +30,7 @@ AddToMenu  "MenuFvwmRoot@macosx/menudebian.png@" "Applications" Title Top
 
 DestroyMenu MenuDevelopment
 AddToMenu MenuDevelopment "Development" Title Top
-+ "%apps/wing32.svg:24x24%&Wing Pro 6.0" Exec exec wing6.0
++ "%apps/wing32.svg:24x24%&Wing Pro 7.1" Exec exec wing7.1
 + "%apps/clion.svg:24x24%CLion C/C++" Exec exec xterm -g 80x20 -n CLion -T CLion -fg white -bg black -e 'sh `which clion.sh`'
 + "%apps/code.svg:24x24%Visual Studio Code" Exec exec code
 + "%apps/code.svg:24x24%Visual Studio Codium" Exec exec vscodium
