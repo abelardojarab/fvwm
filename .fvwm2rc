@@ -416,6 +416,8 @@ Style "Crossover*"            MiniIcon "crossover.svg:16x16"
 Style "Nxplayer*"             MiniIcon "nomachine.svg:16x16"
 Style "*NoMachine*"           MiniIcon "nomachine.svg:16x16"
 Style "Soffice*"              MiniIcon "libreofficewriter.svg:16x16"
+Style "Matlab*"               MiniIcon "matlab.svg:16x16"
+Style "MATLAB*"               MiniIcon "matlab.svg:16x16"
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon "firefox.svg:16x16"
 Style "firefox*"              CenterPlacement, MiniIcon "firefox.svg:16x16"
@@ -542,20 +544,20 @@ PipeRead 'echo *FvwmButtons: Rows             $[infostore.fvwm_buttons_rows]'
 *FvwmButtons(1x4, Title Browser, Icon "google-chrome.svg:24x24", \
                   Action (Mouse 1) 'Exec "Google Chrome" google-chrome &', \
                   Action (Mouse 3) `WindowList (Chromium-browser) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title Mail, Icon "email.svg:24x24", Action 'Exec "Mailspring" mailspring &')
 *FvwmButtons(1x4, Title Docker, Icon "dockstation.svg:24x24", Action 'Exec "Dockstation" dockstation &')
 *FvwmButtons(1x4, Title Home, Icon "folderhome.svg:24x24", Action 'Exec "Nemo" nemo &')
 *FvwmButtons(1x4, Title XTerm, Icon "terminator.svg:24x24", \
                   Action (Mouse 1) 'Exec "Tilix" tilix &', \
                   Action (Mouse 3) `WindowList (Tilix) NoGeometry, \
                   NoCurrentDeskTitle`)
+*FvwmButtons(1x4, Title Matlab, Icon "matlab.svg:24x24", Action 'Exec "Mailspring" /opt/Matlab/R2019a/bin/matlab -desktop &')
 *FvwmButtons(1x4, Title Code, Icon "code.svg:24x24", Action 'Exec "Visual Studio Code" code &')
+*FvwmButtons(1x4, Title WingIDE, Icon "wing32.svg:24x24", Action 'Exec "WingIDE," wing7.1 &')
+*FvwmButtons(1x4, Title Sublime, Icon "sublime.svg:24x24", Action 'Exec "Sublime" sublime_text &')
 *FvwmButtons(1x4, Title VNC, Icon "vncviewer.svg:24x24", \
                   Action (Mouse 1) 'Exec "realvnc-vncviewer" vncviewer &', \
                   Action (Mouse 3) `WindowList (realvnc-vncviewer) NoGeometry, NoCurrentDeskTitle`)
-*FvwmButtons(1x4, Title NPlayer, Icon "nomachine.svg:24x24", Action 'Exec "NoMachine" /usr/NX/bin/nxplayer &')
 *FvwmButtons(1x4, Title Pidgin, Icon "pidgin.svg:24x24", Action 'Exec "Pidgin" pidgin &')
-*FvwmButtons(1x4, Title Sublime, Icon "sublime.svg:24x24", Action 'Exec "Sublime" sublime_text &')
 *FvwmButtons(1x4, Title VM, Icon "virt-manager.svg:24x24", Action 'Exec "Qemu Manager" virt-manager -c qemu+ssh://localhost/system &')
 
 ###########################################################
