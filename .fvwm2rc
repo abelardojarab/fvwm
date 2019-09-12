@@ -1093,7 +1093,7 @@ AddToFunc   InitFunction
 + I Test (x vncconfig) Exec exec vncconfig -nowin
 # Insync
 + I Test (x insync) Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then insync start; fi'
-+ I Test (x insync) Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then insync start; fi'
++ I Test (x insync-headless) Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then insync-headless start; fi'
 # Dropbox
 + I Test (x dropbox) Exec exec bash -c 'if [ $DISPLAY = ":0" ]; then dropbox start; fi'
 + I Test (x dropbox) Exec exec bash -c 'if [ $DISPLAY = ":99" ]; then dropbox start; fi'
