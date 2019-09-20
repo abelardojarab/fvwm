@@ -38,7 +38,8 @@ AddToMenu MenuDevelopment "Development" Title Top
 + "%apps/devhelp.png%Devhelp" Exec exec devhelp
 + "%apps/zeal.png%Zeal" Exec exec zeal
 + "%apps/umbrello.png%Umbrello" Exec exec umbrello
-+ "%apps/qt.svg:24x24%QDevelop" Exec exec qdevelop
++ "%apps/qdevelop.svg:24x24%QDevelop" Exec exec qdevelop
++ "%apps/qtcreator.svg:24x24%QtCreator" Exec exec qtcreator -noload Welcome -noload QmlDesigner -noload QmlProfiler
 + "%apps/monodevelop.png%MonoDevelop" Exec exec monodevelop
 + "%apps/eclipse.svg:24x24%Eclipse" Exec exec eclipse
 + "%apps/github.svg:24x24%Gitg" Exec exec gitg
