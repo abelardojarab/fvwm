@@ -107,6 +107,7 @@ AddToMenu MenuNetwork "Network" Title Top
 + "%apps/xchat.png%XChat IRC" Exec exec sh -c xchat --existing --url
 + "%apps/filezilla.svg:24x24%FileZilla" Exec exec filezilla
 + "%apps/pidgin.svg:24x24%Pidgin Internet Messenger" Exec exec pidgin
++ "%apps/discord.svg:24x24%Discord" Exec exec discord
 + "%apps/slack.svg:24x24%Slack" Exec exec slack
 + "%apps/skype.svg:24x24%Skype" Exec exec skype
 + "%apps/vncviewer.svg:24x24%Real VNC Viewer" Exec exec vncviewer
