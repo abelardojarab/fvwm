@@ -133,6 +133,8 @@ AddToMenu MenuProductivity "Productivity" Title Top
 
 DestroyMenu MenuScience
 AddToMenu MenuScience "Science" Title Top
++ "%apps/matlab.svg:24x24%Matlab" Exec exec /opt/Matlab/R2019a/bin/matlab -desktop &
++ "%apps/mathematica.svg:24x24%Mathematica" Exec exec mathematica
 + "%apps/octave.svg:24x24%GNU Octave" Exec exec octave --force-gui
 + "%apps/rkward.svg:24x24%RKWard" Exec exec rkward -caption "%c"
 + "%apps/rstudio.svg:24x24%RStudio" Exec exec rstudio
