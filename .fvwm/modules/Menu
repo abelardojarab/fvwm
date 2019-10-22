@@ -97,6 +97,7 @@ AddToMenu MenuMultimedia "Multimedia" Title Top
 
 DestroyMenu MenuNetwork
 AddToMenu MenuNetwork "Network" Title Top
++ "%apps/postman.svg:24x24%Postman" Exec exec /opt/Postman/Postman
 + "%apps/google-chrome.svg:24x24%Google Chrome" Exec exec google-chrome
 + "%apps/chromium-browser.svg:24x24%Chromium Browser" Exec exec chromium-browser
 + "%apps/firefox.svg:24x24%Firefox" Exec exec firefox
