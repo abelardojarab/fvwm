@@ -1021,7 +1021,7 @@ AddToFunc   FuncAppCheck
 # import in package imagemagick
 + I Test (!x import) FuncPrintDbgMsg "[AppCheck]" "imagemagick (import for screenshot, thumbs) not installed"
 # stalonetray
-+ I Test (!x trayer) FuncPrintDbgMsg "[AppCheck]" "trayer (systray) not installed"
++ I Test (!x stalonetray) FuncPrintDbgMsg "[AppCheck]" "stalonetray (systray) not installed"
 # systray app volumeicon
 + I Test (!x volumeicon) FuncPrintDbgMsg "[AppCheck]" "volumeicon (systray volume control) not installed"
 # systray app fdpowermon
@@ -1088,8 +1088,8 @@ AddToFunc   InitFunction
 # Notification daemon
 + I Exec exec /usr/lib/notification-daemon/notification-daemon &
 # Tray section
-+ I Exec exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --alpha 60 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 360 --heighttype pixel --height 28 --distancefrom right
-+ I PipeRead 'echo SetEnv systray_started `ps -e | grep -c trayer`'
++ I Exec exec stalonetray
++ I PipeRead 'echo SetEnv systray_started `ps -e | grep -c stalonetray`'
 # + I Test (EnvMatch systray_started 0 ) break
 # Notification popups
 + I Exec exec bash -c 'if [ `getconf LONG_BIT` = "64" ]; then /usr/lib/x86_64-linux-gnu/notify-osd; else /usr/lib/i386-linux-gnu/notify-osd; fi'
