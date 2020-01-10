@@ -430,6 +430,8 @@ Style "Library"               CenterPlacement, MiniIcon "firefox.svg:16x16"
 Style "xman"                  Icon xman.xpm, ClickToFocus
 Style "xmag"                  Icon mag_glass.xpm, ClickToFocus
 Style "xgraph"                Icon graphs.xpm, ClickToFocus
+Style "Quartus*"              MiniIcon "altera_quartus.svg:16x16"
+Style "Vivado*"               MiniIcon "xilinx.svg:16x16"
 
 # Buttons
 Style "FvwmButtons"           BorderWidth 0, WindowListSkip, NeverFocus, !Handles, !Title, StaysOnTop, Sticky
