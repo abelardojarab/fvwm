@@ -90,8 +90,8 @@ PipeRead "echo InfoStoreAdd wratio `perl -e 'printf \"%.2f\",($[vp.width]/800)'`
 
 # Fonts
 InfoStoreAdd fontsize 11
-InfoStoreAdd font_sans "xft:Iosevka:size=$[infostore.fontsize]:encoding=iso10646-1"
-InfoStoreAdd font_mono "xft:Iosevka:size=$[infostore.fontsize]:encoding=iso10646-1"
+InfoStoreAdd font_sans "xft:Meslo:size=$[infostore.fontsize]:encoding=iso10646-1"
+InfoStoreAdd font_mono "xft:Cascadia Code:size=$[infostore.fontsize]:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
 WindowFont "$[infostore.font_mono]"
 
