@@ -51,6 +51,7 @@ AddToMenu MenuDevelopment "Development" Title Top
 + "%apps/vim.svg:24x24%Vim" Exec exec gvim
 + "%apps/glade.png%Glade" Exec exec glade
 + "%apps/meld.svg:24x24%Meld" Exec exec meld
++ "%apps/nvidia.svg:24x24%Nvidia SDK Manager" Exec exec sdkmanager
 
 DestroyMenu MenuGNOME
 AddToMenu MenuGNOME "Gnome" Title Top
@@ -118,6 +119,7 @@ AddToMenu MenuNetwork "Network" Title Top
 
 DestroyMenu MenuProductivity
 AddToMenu MenuProductivity "Productivity" Title Top
++ "%apps/crossover.svg:24x24%Crossover" Exec exec /opt/cxoffice/bin/crossover
 + "%apps/typora.svg:24x24%Typora" Exec exec typora
 + "%apps/abiword.png%Abiword" Exec exec abiword
 + "%apps/gnumeric.png%Gnumeric" Exec exec gnumeric
