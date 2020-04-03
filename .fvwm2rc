@@ -93,7 +93,7 @@ InfoStoreAdd fontsize 11
 InfoStoreAdd font_sans "xft:Meslo:size=$[infostore.fontsize]:encoding=iso10646-1"
 InfoStoreAdd font_mono "xft:Cascadia Code:size=$[infostore.fontsize]:encoding=iso10646-1"
 DefaultFont "$[infostore.font_mono]"
-WindowFont "$[infostore.font_mono]"
+WindowFont "$[infostore.font_sans]"
 
 ######
 # Resize and move feedback windows in the center of the screen
@@ -157,11 +157,11 @@ Colorset 9 fg white, bg #332d29, Plain
 Colorset 10 fg #fffff9, bg #484644
 Colorset 11 fg #ffffff, bg #6d8d6d
 Colorset 12 fg #fffff9, bg #484644, RootTransparent buffer, Tint #484644 98
-Colorset 13 RootTransparent, fg average, NoShape, TiledPixmap tile_gray.png
+Colorset 13 RootTransparent, fg #fffff9, NoShape, TiledPixmap tile_gray.png
 Colorset 14 fg Black, NoShape, RootTransparent buffer, Tint white 20
-Colorset 15 RootTransparent, fg rgb:00/00/00, bg average, \
+Colorset 15 RootTransparent, fg rgb:00/00/00, bg #6d8d6d, \
   Tint white 40, bgTint white 40, Shape dock-mask.xpm
-Colorset 16 RootTransparent, fg rgb:00/00/00, bg average, \
+Colorset 16 RootTransparent, fg rgb:00/00/00, bg #6d8d6d, \
   Tint white 40, bgTint white 40, RootTransparent
 
 #####
@@ -326,7 +326,6 @@ Style * Font "$[infostore.font_mono]"
 Style * HandleWidth 3, BorderWidth 2
 Style * BackingStore, SaveUnder
 Style * EWMHMiniIconOverride
-Style * RoundedCorners, BorderUnderTitle
 
 # Indexed window names to make sure
 # each window name is unique
