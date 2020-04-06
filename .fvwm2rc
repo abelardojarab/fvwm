@@ -432,6 +432,7 @@ Style "xgraph"                Icon graphs.xpm, ClickToFocus
 Style "Quartus*"              MiniIcon "altera_quartus.svg:16x16"
 Style "Vivado*"               MiniIcon "xilinx.svg:16x16"
 Style "sdkmanager*"           MiniIcon "nvidia.svg:16x16"
+Style "*nap-store*"           MiniIcon "snapcraft.svg:16x16"
 Style "notify*"               MiniIcon "notification.svg:16x16"
 
 # Buttons

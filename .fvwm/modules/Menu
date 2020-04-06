@@ -164,6 +164,7 @@ AddToMenu MenuSystem "System" Title Top
 
 DestroyMenu MenuSWSettings
 AddToMenu MenuSWSettings
++ "%snapcraft.svg:24x24%Snap Store" Exec exec snap-store
 + "%softwareupdater.svg:24x24%Software and Updates" Exec exec software-properties-gtk
 + "%ubuntusoftwarecenter.svg:24x24%Ubuntu Software Center" Exec exec software-center
 
