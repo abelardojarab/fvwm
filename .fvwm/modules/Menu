@@ -128,7 +128,7 @@ AddToMenu MenuProductivity "Productivity" Title Top
 + "%apps/acroread.svg:24x24%Acrobat Reader" Exec exec acroread
 + "%apps/masterpdfeditor3.svg:24x24%Master PDF Editor" Exec exec /opt/master-pdf-editor-3/masterpdfeditor3
 + "%apps/evince.png%Document Viewer" Exec exec evince
-+ "%apps/calibre-gui.svg:24x24%Calibre" Exec exec calibre
++ "%apps/calibre-gui.svg:24x24%Calibre" Exec exec /usr/bin/calibre
 + "%apps/libreofficewriter.svg:24x24%New Document" Exec exec libreoffice --writer
 + "%apps/libreofficecalc.svg:24x24%New Spreadsheet" Exec exec libreoffice --calc
 + "%apps/libreofficedraw.svg:24x24%New Drawing" Exec exec libreoffice --draw

@@ -422,6 +422,7 @@ Style "Soffice*"              MiniIcon "libreofficewriter.svg:16x16"
 Style "Matlab*"               MiniIcon "matlab.svg:16x16"
 Style "MATLAB*"               MiniIcon "matlab.svg:16x16"
 Style "Mathematica*"          MiniIcon "mathematica.svg:16x16"
+Style "calibre*"              MiniIcon "calibre-gui.svg:16x16"
 Style "Wicd Network Manager"  CenterPlacement, MiniIcon network.png
 Style "Mozilla Firefox"       CenterPlacement, MiniIcon "firefox.svg:16x16"
 Style "firefox*"              CenterPlacement, MiniIcon "firefox.svg:16x16"
