@@ -120,15 +120,16 @@ AddToMenu MenuNetwork "Network" Title Top
 DestroyMenu MenuProductivity
 AddToMenu MenuProductivity "Productivity" Title Top
 + "%apps/crossover.svg:24x24%Crossover" Exec exec /opt/cxoffice/bin/crossover
++ "%apps/calibre-gui.svg:24x24%Calibre" Exec exec /usr/bin/calibre
++ "%apps/texmaker.svg:24x24%Texmaker" Exec exec texmaker
++ "%apps/scribus.svg:24x24%Scribus" Exec exec scribus
 + "%apps/typora.svg:24x24%Typora" Exec exec typora
 + "%apps/abiword.png%Abiword" Exec exec abiword
 + "%apps/gnumeric.png%Gnumeric" Exec exec gnumeric
-+ "%texmaker.svg:24x24%Texmaker" Exec exec texmaker
 + "%apps/gnucash-icon.png%GnuCash" Exec exec gnucash
 + "%apps/acroread.svg:24x24%Acrobat Reader" Exec exec acroread
 + "%apps/masterpdfeditor3.svg:24x24%Master PDF Editor" Exec exec /opt/master-pdf-editor-3/masterpdfeditor3
 + "%apps/evince.png%Document Viewer" Exec exec evince
-+ "%apps/calibre-gui.svg:24x24%Calibre" Exec exec /usr/bin/calibre
 + "%apps/libreofficewriter.svg:24x24%New Document" Exec exec libreoffice --writer
 + "%apps/libreofficecalc.svg:24x24%New Spreadsheet" Exec exec libreoffice --calc
 + "%apps/libreofficedraw.svg:24x24%New Drawing" Exec exec libreoffice --draw
