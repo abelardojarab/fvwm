@@ -487,10 +487,10 @@ PipeRead 'echo SetEnv trayer_width $((2*$[infostore.fvwm_buttons_width]))'
                 Action (Mouse 3) \
                 `Exec exec xclock -bg rgb:48/46/44 -fg white`)
 # *FvwmShelf(Size 31x1, Swallow "bmpanel" 'Exec bmpanel2')
-*FvwmShelf(Size 36x1, Swallow "FvwmIconMan" \
+*FvwmShelf(Size 35x1, Swallow "FvwmIconMan" \
                 `FvwmIconMan`)
-*FvwmShelf(Size 1x1, Frame 0, Swallow (NoKill, UseOld, Respawn) "stalonetray" \
-                `Exec exec stalonetray --grow-gravity E -geometry 12x1-0+0&`)
+*FvwmShelf(Size 8x1, Frame 0, Swallow (NoKill, UseOld, Respawn) "stalonetray" \
+                `Exec exec stalonetray --grow-gravity W -geometry 12x1-12+0&`)
 # *FvwmShelf(Size 6x1, Frame 0, Swallow (Kill, Respawn, UseOld) "Trayer" \
 #                `Exec exec trayer --SetDockType true --distance 0 --padding 10 --transparent true --alpha 20 --tint 3b3c37 --edge top --align right --expand true --widthtype pixel --width 280 --heighttype pixel --height 28 --distancefrom right &`)
 
@@ -1100,7 +1100,7 @@ AddToFunc   InitFunction
 # Notification daemon
 + I Exec exec /usr/lib/notification-daemon/notification-daemon &
 # Tray section
-+ I Exec exec stalonetray stalonetray --grow-gravity E -geometry 12x1-0+0
++ I Exec exec stalonetray stalonetray --grow-gravity W -geometry 12x1-12+0
 + I PipeRead 'echo SetEnv systray_started `ps -e | grep -c stalonetray`'
 # + I Test (EnvMatch systray_started 0 ) break
 # Notification popups
