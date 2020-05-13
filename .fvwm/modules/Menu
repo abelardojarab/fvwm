@@ -119,6 +119,9 @@ AddToMenu MenuNetwork "Network" Title Top
 
 DestroyMenu MenuProductivity
 AddToMenu MenuProductivity "Productivity" Title Top
++ "%apps/textmaker.svg:24x24%Textmaker" Exec exec textmaker18
++ "%apps/planmaker.svg:24x24%Planmaker" Exec exec planmaker18
++ "%apps/presentations.svg:24x24%Presentations" Exec exec presentations18
 + "%apps/crossover.svg:24x24%Crossover" Exec exec /opt/cxoffice/bin/crossover
 + "%apps/calibre-gui.svg:24x24%Calibre" Exec exec /usr/bin/calibre
 + "%apps/texmaker.svg:24x24%Texmaker" Exec exec texmaker
