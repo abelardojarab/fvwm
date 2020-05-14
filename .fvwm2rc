@@ -465,7 +465,8 @@ DestroyModuleConfig BottomBar
 *BottomBar: Padding 0 0
 *BottomBar: Frame 0
 *BottomBar: Colorset 5
-*BottomBar: (1x1, Swallow "bmpanel" 'Exec bmpanel2 --theme=transpy')
+*BottomBar(Size 1x1, Swallow (NoKill, Respawn, UseOld) "bmpanel" \
+                `Exec bmpanel2 --theme=transpy`)
 
 ###########################################################
 # FvwmButtons-based Top Taskbar
